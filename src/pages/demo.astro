@@ -1,16 +1,82 @@
 ---
 import Layout from '../layouts/Layout.astro';
 ---
-<Layout title="Demo Ao Vivo | GetNexo">
+<Layout title="Demonstração | GetNexo">
   <section style="padding: 6rem 10%; max-width: 1200px; margin: 0 auto; color: #e5e7eb; text-align: center;">
-    <h1 style="color:#00ff9d; font-size: 3rem;">Demo em Tempo Real</h1>
-    <p style="font-size: 1.2rem;">Veja o chatbot responder, fechar venda e enviar PIX.</p>
+    <h1 style="color:#00ff9d; font-size: 3rem;">Demonstração Interativa</h1>
+    <p style="font-size: 1.3rem; margin: 1rem 0 3rem; color: #94a3b8;">Veja o GetNexo em ação – converse com nossa IA agora mesmo</p>
+    
+    <!-- Live Chat Demo -->
+    <div style="background: rgba(20,30,50,0.8); border-radius: 16px; padding: 3rem; border: 1px solid #00d4ff55; max-width: 600px; margin: 0 auto;">
+      <div style="text-align: left; margin-bottom: 2rem;">
+        <h3 style="color: #00d4ff; margin-bottom: 1rem;">💬 Chat Demonstração</h3>
+        <p style="color: #94a3b8; font-size: 0.9rem;">Digite uma mensagem para ver como funciona o atendimento automatizado:</p>
+      </div>
+      
+      <div id="chat-messages" style="background: #0a0e17; border-radius: 12px; padding: 1.5rem; min-height: 300px; max-height: 400px; overflow-y: auto; margin-bottom: 1.5rem; text-align: left;">
+        <div class="msg-bot">
+          <span style="color: #00ff9d; font-size: 0.8rem;">🤖 GetNexo Bot</span>
+          <p style="background: #1e293b; padding: 0.8rem; border-radius: 8px; margin: 0.3rem 0 1rem; color: white;">Olá! Sou o assistente virtual da GetNexo. Posso te ajudar com:
+• Informações sobre preços
+• Como funciona a plataforma
+• Integrações disponíveis
+• Agendar uma demonstração
 
-    <div style="margin: 3rem 0;">
-      <iframe src="https://demo.getnexo.com.br" width="100%" height="600" style="border:none; border-radius: 12px; border: 1px solid #333;"></iframe>
+Digite sua dúvida! 👇</p>
+        </div>
+      </div>
+      
+      <form id="demo-form" style="display: flex; gap: 0.5rem;">
+        <input type="text" id="demo-input" placeholder="Digite sua mensagem..." style="flex: 1; padding: 1rem; border-radius: 8px; background: #1e293b; color: white; border: 1px solid #334155; font-size: 1rem;" />
+        <button type="submit" style="background: linear-gradient(90deg, #00d4ff, #00ff9d); color: black; padding: 1rem 1.5rem; border: none; border-radius: 8px; font-weight: bold; cursor: pointer;">Enviar</button>
+      </form>
     </div>
-
-    <p style="text-align:center; margin:2rem 0; font-size: 1.2rem;">Ou teste agora no seu próprio chat:</p>
-    <a href="/criar-bot" class="btn-cta" style="background:#00d4ff; color:black; padding:1rem 2rem; border-radius:50px; text-decoration:none; font-weight:bold;">Instalar Demo</a>
+    
+    <div style="margin-top: 3rem;">
+      <p style="color: #64748b; margin-bottom: 1.5rem;">Gostou? Instale em seu site agora mesmo:</p>
+      <a href="/criar-bot" class="btn-cta" style="background: linear-gradient(90deg, #00d4ff, #00ff9d); color: black; padding: 1rem 2rem; border-radius: 50px; text-decoration: none; font-weight: bold; display: inline-block;">Criar Meu Bot Grátis →</a>
+    </div>
   </section>
+
+  <script is:inline>
+    const API_URL = window.location.hostname === 'localhost' 
+      ? 'http://localhost:8080' 
+      : 'https://api.getnexo.com.br';
+    
+    const chatMessages = document.getElementById('chat-messages');
+    const form = document.getElementById('demo-form');
+    const input = document.getElementById('demo-input');
+    
+    function addMessage(text, isBot) {
+      const div = document.createElement('div');
+      div.className = isBot ? 'msg-bot' : 'msg-user';
+      div.innerHTML = `
+        <span style="color: ${isBot ? '#00ff9d' : '#00d4ff'}; font-size: 0.8rem;">${isBot ? '🤖 GetNexo Bot' : '👤 Você'}</span>
+        <p style="background: ${isBot ? '#1e293b' : '#00d4ff22'}; padding: 0.8rem; border-radius: 8px; margin: 0.3rem 0 1rem; color: white;">${text}</p>
+      `;
+      chatMessages.appendChild(div);
+      chatMessages.scrollTop = chatMessages.scrollHeight;
+    }
+    
+    form.onsubmit = async (e) => {
+      e.preventDefault();
+      const msg = input.value.trim();
+      if (!msg) return;
+      
+      addMessage(msg, false);
+      input.value = '';
+      
+      try {
+        const res = await fetch(`${API_URL}/api/chat`, {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify({ botId: 'demo', mensagem: msg })
+        });
+        const data = await res.json();
+        addMessage(data.resposta, true);
+      } catch (e) {
+        addMessage('Desculpe, houve um erro. Por favor, tente novamente.', true);
+      }
+    };
+  </script>
 </Layout>
