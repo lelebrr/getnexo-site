@@ -12,7 +12,7 @@ export default defineConfig({
     site: 'https://getnexo.com.br/',
     integrations: [
         react(),
-        sitemap(),
+        // sitemap(),
         partytown({
             config: {
                 forward: ['dataLayer.push'],

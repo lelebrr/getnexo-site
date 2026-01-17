@@ -1,6 +1,11 @@
 ---
 import '../styles/global.css';
-const { title = "GetNexo – Assistente de Vendas WhatsApp Grátis", description = "IA que fecha vendas sozinho 24h. Sem nuvem. Sem mensalidade. Sem risco." } = Astro.props;
+const { 
+  title = "GetNexo – Assistente de Vendas WhatsApp Grátis", 
+  description = "IA que fecha vendas sozinho 24h. Sem nuvem. Sem mensalidade. Sem risco.",
+  keywords = "assistente vendas whatsapp grátis, ia whatsapp vendas, automação whatsapp sem nuvem, getnexo, evolution api, n8n whatsapp, vendas 24h, self hosted ia",
+  isLanding = false
+} = Astro.props;
 ---
 <!doctype html>
 <html lang="pt-BR">
@@ -9,7 +14,7 @@ const { title = "GetNexo – Assistente de Vendas WhatsApp Grátis", description
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>{title}</title>
   <meta name="description" content={description} />
-  <meta name="keywords" content="assistente vendas whatsapp grátis, ia whatsapp vendas, automação whatsapp sem nuvem, getnexo, evolution api, n8n whatsapp, vendas 24h, self hosted ia" />
+  <meta name="keywords" content={keywords} />
   <meta name="author" content="GetNexo" />
   <meta name="robots" content="index, follow" />
   <link rel="canonical" href={`https://getnexo.com.br${Astro.url.pathname}`} />
@@ -52,7 +57,7 @@ const { title = "GetNexo – Assistente de Vendas WhatsApp Grátis", description
   </script>
   
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;800&display=swap" rel="stylesheet" />
-  <style is:global>
+  <style is:global define:vars={{ mainPadding: isLanding ? '0' : '100px', mainMinHeight: isLanding ? 'auto' : '100vh' }}>
     :root { 
       --primary: #00d4ff; 
       --success: #00ff9d; 
@@ -76,14 +81,14 @@ const { title = "GetNexo – Assistente de Vendas WhatsApp Grátis", description
     footer p { color: #64748b; font-size: 0.95rem; margin: 0.5rem 0; }
     footer a { color: var(--primary); text-decoration: none; }
     footer a:hover { color: var(--success); }
-    main { padding-top: 100px; min-height: 100vh; }
+    main { padding-top: var(--mainPadding); min-height: var(--mainMinHeight); }
     .floating-cta { position: fixed; bottom: 30px; right: 30px; background: var(--success); color: black; padding: 1rem 1.8rem; border-radius: 50px; font-weight: 800; box-shadow: 0 10px 30px rgba(0,255,157,0.4); z-index: 999; text-decoration: none; transition: all 0.3s; }
     .floating-cta:hover { transform: scale(1.1); box-shadow: 0 15px 40px rgba(0,255,157,0.6); }
     @media (max-width: 900px) {
       header { flex-direction: column; padding: 1rem; gap: 1rem; }
       nav { justify-content: center; }
       nav a { margin-left: 0.8rem; font-size: 0.85rem; }
-      main { padding-top: 140px; }
+      main { padding-top: var(--mainPadding); }
       .floating-cta { bottom: 20px; right: 20px; padding: 0.8rem 1.2rem; font-size: 0.9rem; }
     }
   </style>
@@ -91,6 +96,7 @@ const { title = "GetNexo – Assistente de Vendas WhatsApp Grátis", description
 <body>
   <canvas id="particles" class="canvas-particles" aria-hidden="true"></canvas>
   
+  { !isLanding && (
   <header>
     <a href="/" class="logo">GETNEXO</a>
     <nav>
@@ -106,11 +112,13 @@ const { title = "GetNexo – Assistente de Vendas WhatsApp Grátis", description
       <a href="#" onclick="window.$chatwoot.toggle(); return false;" class="btn-cta">Falar com IA →</a>
     </nav>
   </header>
+  )}
 
   <main>
     <slot />
   </main>
 
+  { !isLanding && (
   <footer>
     <p>
       <a href="/sobre">Sobre</a> · 
@@ -124,6 +132,7 @@ const { title = "GetNexo – Assistente de Vendas WhatsApp Grátis", description
     <p>© {new Date().getFullYear()} GetNexo – Assistente de Vendas WhatsApp 100% Grátis. Zero nuvem. Zero risco.</p>
     <p style="margin-top: 1.5rem;"><a href="/revenda?revenda=sim" style="color: #64748b; font-weight: 600;">Sou revendedor →</a></p>
   </footer>
+  )}
 
   <a href="#" onclick="window.$chatwoot.toggle(); return false;" class="floating-cta">💬 Testar Grátis</a>
 

@@ -1,114 +1,235 @@
 ---
 import Layout from '../layouts/Layout.astro';
+const title = "GetNexo – Plataforma WhatsApp Oficial | API, Vendas, Automação";
+const description = "API oficial WhatsApp + automação, vendas 24h, chatbot IA, PIX e CRM. Integração simples com e-commerce. Grátis para começar.";
+const keywords = "api whatsapp oficial, plataforma whatsapp, vendas whatsapp, chatbot ia whatsapp, broadcast whatsapp, click to whatsapp ads, pix whatsapp";
 ---
+<Layout title={title} description={description} keywords={keywords} isLanding={true}>
+  
+  <nav class="top-nav">
+    <div class="nav-content">
+      <div class="logo-area">
+        <h1 class="glow-text">GetNexo</h1>
+        <div class="desktop-menu">
+          <a href="/produtos">Produtos</a>
+          <a href="/recursos">Recursos</a>
+          <a href="/revenda">Revenda</a>
+          <a href="/precos">Preços</a>
+          <a href="/demo">Demo</a>
+          <a href="/blog">Blog</a>
+          <a href="/suporte">Suporte</a>
+        </div>
+      </div>
+      <div class="cta-area">
+        <a href="/criar-bot" class="btn-primary">Começar Grátis</a>
+        <a href="/admin/login" class="link-login">Entrar</a>
+      </div>
+    </div>
+  </nav>
 
-<Layout title="GetNexo – Venda no WhatsApp 24h">
-  <header style="background:#0a0e17; padding:4rem; text-align:center; min-height:80vh; display:flex; flex-direction:column; justify-content:center; align-items:center;">
-    <h1 class="glow" style="font-size:6rem; color:#00d4ff; font-weight:800; margin:0;">GetNexo</h1>
-    <p style="font-size:2rem; color:#e5e7eb; margin:2rem 0; font-weight:300;">
-      A única plataforma que vende sozinha.<br>
-      <strong style="color:#00ff9d;">Sem mensalidade. Sem truque.</strong>
+  <!-- Hero Expandido -->
+  <section class="hero-section">
+    <h1 class="hero-title">API Oficial WhatsApp <br/><span class="text-gradient">IA que vende sozinha</span></h1>
+    <p class="hero-subtitle">
+      Plataforma 100% integrada: broadcast, chatbot, pagamentos PIX, recuperação de carrinho, ads Click to WhatsApp.<br>
+      <strong>Zero taxa por mensagem. Roda no seu domínio.</strong>
     </p>
-    <a href="#" id="instalar-btn" class="btn-cta" style="font-size:1.6rem; padding:1.2rem 3.5rem; text-decoration:none; color:black; background:linear-gradient(90deg,#00d4ff,#00ff9d); border-radius:50px; font-weight:800; box-shadow:0 0 20px rgba(0,212,255,0.4); display:inline-block; transition:transform 0.2s;">
-        Começar agora
-    </a>
-  </header>
+    <div class="hero-ctas">
+      <a href="/criar-bot" class="btn-xl">Instalar no Site</a>
+      <a href="/demo" class="btn-outline">Assistir Demo</a>
+    </div>
+    <div class="hero-badges">
+      <span>🔐 API Oficial Meta</span>
+      <span>📱 100% Mobile</span>
+      <span>⚡ Sem Latência</span>
+      <span>🇧🇷 Feito no Brasil</span>
+    </div>
+  </section>
 
-  <div id="modal-instal" style="display:none; position:fixed; inset:0; background:rgba(0,0,0,0.85); z-index:9999; align-items:center; justify-content:center;">
-      <div style="background:#111827; border-radius:16px; padding:3rem; width:90%; max-width:600px; color:#e5e7eb; border:1px solid #333; box-shadow:0 0 50px rgba(0,212,255,0.2);">
-        <h3 style="color:#00ff9d; text-align:center; font-size:2rem; margin-bottom:1rem;">Instale no seu site</h3>
-        <p style="text-align:center; margin-bottom:1.5rem; color:#94a3b8;">Copie esse snippet e cole antes do <code style="color:#00d4ff">&lt;/body&gt;</code> do seu HTML.</p>
-        
-        <div style="background:#0a0e17; padding:1.5rem; border-radius:8px; border:1px solid #333; margin-bottom:1.5rem; overflow-x:auto;">
-            <code style="font-family:monospace; color:#00tile; white-space:pre; font-size:0.9rem; color:#a5b4fc;">&lt;script src="https://cdn.getnexo.com.br/widget.js" data-bot="seu_id" data-theme="neon"&gt;&lt;/script&gt;</code>
-        </div>
-        
-        <p style="text-align:center; font-size:0.9rem; color:#64748b;"><small>Substitua <strong>seu_id</strong> pelo ID do seu bot depois de criar.</small></p>
-        
-        <div style="text-align:center; gap:2rem; display:flex; justify-content:center; margin-top:2rem; align-items:center;">
-          <a href="/dashboard" style="color:#00d4ff; text-decoration:none; font-weight:bold;">Criar meu bot →</a>
-          <button id="fechar-modal-btn" style="background:#00ff9d; color:black; padding:0.8rem 2rem; border:none; border-radius:50px; font-weight:bold; cursor:pointer;">Fechar</button>
-        </div>
+  <!-- Produtos -->
+  <section class="section-dark">
+    <h2 class="section-title">Produtos & Soluções</h2>
+    <div class="grid-cards">
+      <div class="card-product">
+        <h3 class="text-neon">Automação Completa</h3>
+        <p>Chatbot IA, fluxos no-code, integração com e-commerce, vendas 24h.</p>
+        <a href="/produtos/automacao" class="link-arrow">Saiba mais →</a>
       </div>
-  </div>
-
-  <script is:inline>
-      const btn = document.getElementById('instalar-btn');
-      const modal = document.getElementById('modal-instal');
-      const closeBtn = document.getElementById('fechar-modal-btn');
-
-      if(btn && modal) {
-          btn.onclick = (e) => {
-              e.preventDefault();
-              modal.style.display = 'flex';
-          };
-      }
-      
-      if(closeBtn && modal) {
-          closeBtn.onclick = () => {
-              modal.style.display = 'none';
-          };
-      }
-      
-      // Close on outside click
-      window.onclick = (event) => {
-          if (event.target == modal) {
-              modal.style.display = "none";
-          }
-      }
-  </script>
-
-  <section style="padding:5rem 15%; background:linear-gradient(to bottom, #0a0e17, #111827);">
-    <div style="display:grid; grid-template-columns:repeat(auto-fit,minmax(280px,1fr)); gap:2rem;">
-      <div class="card">
-        <h3 style="color:white; font-size:1.5rem; margin-bottom:0.5rem;">📢 Envie pra milhares</h3>
-        <p style="color:#94a3b8;">Campanhas inteligentes. Abre, clica, vende.</p>
+      <div class="card-product">
+        <h3 class="text-neon">Vendas com PIX</h3>
+        <p>Carrinho, catálogo, pagamento direto no chat. Zero abandono.</p>
+        <a href="/produtos/vendas" class="link-arrow">Saiba mais →</a>
       </div>
-      <div class="card">
-        <h3 style="color:white; font-size:1.5rem; margin-bottom:0.5rem;">🤖 IA que fecha</h3>
-        <p style="color:#94a3b8;">Responde, qualifica, upsell. 24h sozinha.</p>
+      <div class="card-product">
+        <h3 class="text-neon">Marketing & Ads</h3>
+        <p>Click to WhatsApp Ads, broadcast inteligente, retargeting.</p>
+        <a href="/produtos/marketing" class="link-arrow">Saiba mais →</a>
       </div>
-      <div class="card">
-        <h3 style="color:white; font-size:1.5rem; margin-bottom:0.5rem;">🛒 Loja no WhatsApp</h3>
-        <p style="color:#94a3b8;">Catálogo. Carrinho. PIX na hora.</p>
-      </div>
-      <div class="card">
-        <h3 style="color:white; font-size:1.5rem; margin-bottom:0.5rem;">💼 CRM simples</h3>
-        <p style="color:#94a3b8;">Lead → qualificado → fechado. Arraste e pronto.</p>
-      </div>
-      <div class="card">
-        <h3 style="color:white; font-size:1.5rem; margin-bottom:0.5rem;">📊 Veja o lucro</h3>
-        <p style="color:#94a3b8;">Vendas, taxa de resposta, tudo num olhar.</p>
-      </div>
-      <div class="card">
-        <h3 style="color:white; font-size:1.5rem; margin-bottom:0.5rem;">👥 Revenda e ganhe</h3>
-        <p style="color:#94a3b8;">Indique. Instale. Compre. Ganhe R$500 cada.</p>
+      <div class="card-product">
+        <h3 class="text-neon">CRM & Suporte</h3>
+        <p>Equipe multi-agente, kanban, SLA, histórico de leads.</p>
+        <a href="/produtos/crm" class="link-arrow">Saiba mais →</a>
       </div>
     </div>
   </section>
 
-  <footer style="padding:3rem; text-align:center; background:#000; color:#666; font-size:0.9rem;">
-    GetNexo • Feito no Brasil • 2026 <br/>
-    <a href="#" style="color:#00d4ff; text-decoration:none; margin-top:10px; display:inline-block;">Suporte</a>
+  <!-- Recursos -->
+  <section class="section-gray">
+    <h2 class="section-title">Recursos Avançados</h2>
+    <div class="grid-features">
+      <div class="feature-item"><strong>📢</strong> Broadcast ilimitado + agendamento</div>
+      <div class="feature-item"><strong>🤖</strong> IA generativa (Llama local)</div>
+      <div class="feature-item"><strong>💳</strong> PIX nativo no chat</div>
+      <div class="feature-item"><strong>🔍</strong> Click tracking & retarget</div>
+      <div class="feature-item"><strong>📊</strong> Dashboard com métricas em tempo real</div>
+      <div class="feature-item"><strong>🔗</strong> Integração Shopify, Woo, VTEX</div>
+    </div>
+  </section>
+
+  <!-- Prova Social (Reconstructed) -->
+  <section class="section-dark text-center">
+    <h2 class="text-neon section-title">Clientes que já usam</h2>
+    <p class="text-gray-400 mb-8">Marcas reais que dobraram vendas com GetNexo</p> 
+    
+    <div class="logos-grid">
+      <div class="logo-placeholder">Loja A</div>
+      <div class="logo-placeholder">Loja B</div>
+      <div class="logo-placeholder">Agência C</div>
+      <div class="logo-placeholder">E-com D</div>
+    </div>
+    
+    <blockquote class="testimonial">
+      "Triplicamos leads com o chatbot IA – zero mensalidade." 
+      <footer>– João, CEO Loja B</footer>
+    </blockquote>
+  </section>
+
+  <!-- Blog (Reconstructed) -->
+  <section class="section-gray">
+    <h2 class="section-title">Últimas do Blog</h2>
+    <div class="grid-cards">
+      <div class="card-blog">
+        <h4>Como recuperar 70% dos carrinhos no WhatsApp</h4>
+        <p>Passo a passo para não perder mais vendas...</p>
+        <a href="/blog/recuperar-carrinho">Ler agora →</a>
+      </div>
+      <div class="card-blog">
+        <h4>API Oficial WhatsApp: Custo em 2026</h4>
+        <p>Quanto custa de verdade e como não cair em cilada...</p>
+        <a href="/blog/custo-api">Ler agora →</a>
+      </div>
+      <div class="card-blog">
+        <h4>5 campanhas de Click to WhatsApp que convertem</h4>
+        <p>Anúncios que geram vendas no dia...</p>
+        <a href="/blog/campanhas">Ler agora →</a>
+      </div>
+    </div>
+  </section>
+
+  <!-- Final CTA -->
+  <section class="cta-final">
+    <h2>Pronto pra vender 5x mais?</h2>
+    <p>Instale o GetNexo no seu site em 2 minutos. Zero risco.</p>
+    <a href="/criar-bot" class="btn-xl">Instalar Agora – 100% Grátis</a>
+  </section>
+
+  <!-- Footer (Reconstructed) -->
+  <footer class="main-footer">
+    <div class="footer-grid">
+      <div class="footer-col">
+        <h3 class="text-neon">GetNexo</h3>
+        <p>Plataforma WhatsApp Oficial</p>
+        <p class="text-sm">São Paulo, Brasil • 2026</p>
+      </div>
+      <div class="footer-col">
+        <a href="/produtos">Produtos</a>
+        <a href="/recursos">Recursos</a>
+        <a href="/revenda">Revenda</a>
+      </div>
+      <div class="footer-col">
+        <a href="/precos">Preços</a>
+        <a href="/demo">Demo</a>
+        <a href="/blog">Blog</a>
+      </div>
+      <div class="footer-col">
+        <a href="/suporte">Suporte</a>
+        <a href="/termos">Termos</a>
+        <a href="/privacidade">Privacidade</a>
+      </div>
+    </div>
+    <div class="contact-footer">
+      <a href="https://wa.me/..." target="_blank" class="btn-outline">Fale no WhatsApp</a>
+    </div>
   </footer>
+
 </Layout>
 
 <style>
-  .card {
-    background:rgba(30,41,59,0.8);
-    backdrop-filter:blur(12px);
-    border:1px solid rgba(0,212,255,0.2);
-    border-radius:16px;
-    padding:2rem;
-    text-align:center;
-    transition:0.3s all ease;
-    cursor: default;
+  /* Base & Typography */
+  .text-gradient { background:linear-gradient(90deg, #00d4ff, #00ff9d); -webkit-background-clip:text; color:transparent; }
+  .text-neon { color: #00ff9d; }
+  .text-gray-400 { color: #9ca3af; }
+  .glow-text { color:#00ff9d; text-shadow: 0 0 15px rgba(0, 255, 157, 0.5); font-weight: 800; font-size: 1.5rem; }
+
+  /* Navigation */
+  .top-nav { background:#0a0e17; padding:1.5rem 5%; border-bottom: 1px solid rgba(0,212,255,0.1); }
+  .nav-content { display:flex; justify-content:space-between; align-items:center; max-width: 1200px; margin: 0 auto; }
+  .logo-area { display:flex; align-items:center; gap:2rem; }
+  .desktop-menu { display:flex; gap:1.5rem; }
+  .desktop-menu a { color:#e5e7eb; text-decoration:none; font-weight:500; transition:0.3s; }
+  .desktop-menu a:hover { color:#00ff9d; }
+  .cta-area { display:flex; align-items:center; gap:1rem; }
+  .link-login { color:#00d4ff; text-decoration:none; font-weight:600; }
+  
+  /* Buttons */
+  .btn-primary { background:#00ff9d; color:black; padding:0.6rem 1.5rem; border-radius:50px; text-decoration:none; font-weight:700; transition:0.3s; }
+  .btn-primary:hover { transform:scale(1.05); box-shadow:0 0 20px rgba(0,255,157,0.4); }
+  .btn-xl { background:linear-gradient(90deg, #00d4ff, #00ff9d); color:black; font-size:1.4rem; padding:1.2rem 3rem; border-radius:50px; text-decoration:none; font-weight:800; display:inline-block; transition:0.3s; }
+  .btn-xl:hover { transform:translateY(-3px); box-shadow:0 10px 30px rgba(0,212,255,0.3); }
+  .btn-outline { border:2px solid #00ff9d; color:#00ff9d; padding:0.8rem 2rem; border-radius:50px; text-decoration:none; font-weight:600; transition:0.3s; display:inline-block; }
+  .btn-outline:hover { background: rgba(0,255,157,0.1); }
+
+  /* Hero */
+  .hero-section { background:linear-gradient(135deg, #0a0e17 0%, #111827 100%); padding:6rem 5%; text-align:center; min-height:80vh; display:flex; flex-direction:column; justify-content:center; align-items:center; }
+  .hero-title { font-size:4rem; color:white; font-weight:900; line-height:1.1; margin-bottom:1.5rem; }
+  .hero-subtitle { font-size:1.5rem; color:#d1d5db; max-width:800px; margin-bottom:3rem; }
+  .hero-ctas { display:flex; gap:1.5rem; flex-wrap:wrap; justify-content:center; margin-bottom:3rem; }
+  .hero-badges { display:flex; gap:1.5rem; color:#00d4ff; font-weight:600; flex-wrap:wrap; justify-content:center; }
+
+  /* Sections */
+  .section-dark { background:#0a0e17; padding:5rem 5%; }
+  .section-gray { background:#111827; padding:5rem 5%; }
+  .section-title { font-size:2.5rem; color:#00d4ff; text-align:center; margin-bottom:3rem; font-weight:800; }
+  
+  /* Grids */
+  .grid-cards { display:grid; grid-template-columns:repeat(auto-fit, minmax(300px, 1fr)); gap:2rem; max-width:1200px; margin:0 auto; }
+  .grid-features { display:grid; grid-template-columns:repeat(auto-fit, minmax(250px, 1fr)); gap:2rem; max-width:1200px; margin:0 auto; }
+  
+  /* Cards */
+  .card-product, .feature-item, .card-blog { background:rgba(30,41,59,0.5); padding:2rem; border-radius:16px; border:1px solid rgba(0,212,255,0.1); backdrop-filter:blur(10px); transition:0.3s; }
+  .card-product:hover { border-color:#00ff9d; transform:translateY(-5px); }
+  .link-arrow { color:#00d4ff; text-decoration:none; font-weight:600; margin-top:1rem; display:block; }
+  .feature-item { font-size:1.1rem; color:#e5e7eb; display:flex; align-items:center; gap:0.5rem; }
+  
+  /* Testimonials */
+  .logos-grid { display:flex; gap:2rem; justify-content:center; margin-bottom:3rem; flex-wrap:wrap; }
+  .logo-placeholder { font-weight:800; color:#4b5563; font-size:1.5rem; }
+  .testimonial { font-size:1.8rem; color:white; font-style:italic; max-width:800px; margin:0 auto; text-align:center; }
+  .testimonial footer { margin-top:1rem; font-size:1rem; color:#00ff9d; font-style:normal; }
+
+  /* Footer */
+  .main-footer { background:black; padding:4rem 5%; border-top:1px solid #1f2937; color:#9ca3af; }
+  .footer-grid { display:grid; grid-template-columns:repeat(auto-fit, minmax(150px, 1fr)); gap:3rem; max-width:1200px; margin:0 auto; }
+  .footer-col h3 { margin-bottom:1rem; color:white; }
+  .footer-col a { display:block; color:#9ca3af; text-decoration:none; margin-bottom:0.5rem; transition:0.2s; }
+  .footer-col a:hover { color:#00ff9d; }
+  .contact-footer { text-align:center; margin-top:3rem; padding-top:2rem; border-top:1px solid #1f2937; }
+  .cta-final { background:#0a0e17; padding:5rem; text-align:center; border-top:1px solid #1f2937; }
+  
+  @media (max-width: 768px) {
+    .nav-content { flex-direction:column; gap:1rem; }
+    .desktop-menu { display:none; } /* Hide complex menu on mobile for now or make it simple */
+    .hero-title { font-size:2.5rem; }
+    .hero-ctas { flex-direction:column; }
   }
-  .card:hover { 
-      transform:translateY(-10px); 
-      border-color:#00ff9d; 
-      box-shadow: 0 10px 30px rgba(0,0,0,0.5);
-  }
-  .glow { text-shadow: 0 0 40px rgba(0,212,255,0.4); }
-  .btn-cta:hover { transform: scale(1.05); }
 </style>
