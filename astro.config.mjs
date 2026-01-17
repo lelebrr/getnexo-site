@@ -3,7 +3,7 @@ import sitemap from '@astrojs/sitemap';
 import partytown from '@astrojs/partytown';
 
 export default defineConfig({
-    site: 'https://getnexo.com.br',
+    site: 'https://getnexo.com.br/',
     integrations: [
         sitemap(),
         partytown({
