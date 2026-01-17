@@ -1,52 +1,14 @@
 ---
-import Layout from '../layouts/Layout.astro';
+import Layout from '../../layouts/Layout.astro';
 ---
+<Layout title="Suporte GetNexo | Fale Conosco">
+  <section style="padding: 6rem 10%; max-width: 1200px; margin: 0 auto; color: #e5e7eb; text-align: center;">
+    <h1 style="color:#00ff9d; font-size: 3rem;">Precisa de Ajuda?</h1>
+    <p style="font-size: 1.2rem;">Estamos no WhatsApp 24h ou por e-mail.</p>
 
-<Layout title="Suporte GetNexo – Dúvida? Resolvemos em 2 min">
-  <section style="padding: 100px 20px 60px; max-width: 1100px; margin: auto;">
-    <h1 style="text-align: center; font-size: 3.4rem; background: linear-gradient(90deg, var(--primary), var(--success)); -webkit-background-clip: text; color: transparent;">
-      Suporte Rápido – Sem filas
-    </h1>
-    <p style="text-align: center; font-size: 1.3rem; max-width: 700px; margin: 1.5rem auto; color: var(--text);">
-      Erro na instalação? WhatsApp não liga? A gente conserta. Agora.
-    </p>
-  </section>
-
-  <section style="padding: 0 20px 80px; max-width: 1100px; margin: auto;">
-    <h2 style="font-size: 2.5rem; text-align: center; margin-bottom: 3rem; color: var(--light);">
-      Problemas comuns? Já resolvemos
-    </h2>
-
-    <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 2rem;">
-      <div style="background: rgba(30,41,59,0.8); padding: 2rem; border-radius: 16px; border: 1px solid rgba(0,212,255,0.15);">
-        <strong style="font-size: 1.5rem; color: var(--primary);">❌ QR Code não aparece</strong>
-        <p style="margin-top: 1rem; color: var(--text);">Atualiza a página do Evolution. Fecha tudo. Abre de novo. Se não rolar, tira print e manda no Whats.</p>
-      </div>
-
-      <div style="background: rgba(30,41,59,0.8); padding: 2rem; border-radius: 16px; border: 1px solid rgba(0,212,255,0.15);">
-        <strong style="font-size: 1.5rem; color: var(--primary);">⚡ PC de 8GB trava</strong>
-        <p style="margin-top: 1rem; color: var(--text);">Fecha navegadores. Desliga antivirus. Usa só Chrome. Vai liso. Se não, manda RAM livre no suporte.</p>
-      </div>
-
-      <div style="background: rgba(30,41,59,0.8); padding: 2rem; border-radius: 16px; border: 1px solid rgba(0,212,255,0.15);">
-        <strong style="font-size: 1.5rem; color: var(--primary);">🔌 Cloudflare Tunnel dá erro</strong>
-        <p style="margin-top: 1rem; color: var(--text);">Copia o comando <code style="background: #0a0e17; padding: 0.3rem 0.6rem; border-radius: 6px;">cloudflared tunnel --url localhost:3000</code> de novo. Executa no WSL. Funciona sempre.</p>
-      </div>
-
-      <div style="background: rgba(30,41,59,0.8); padding: 2rem; border-radius: 16px; border: 1px solid rgba(0,212,255,0.15);">
-        <strong style="font-size: 1.5rem; color: var(--primary);">🤖 IA responde estranho</strong>
-        <p style="margin-top: 1rem; color: var(--text);">Atualiza o prompt no n8n. Usa esse pronto: <code style="background: #0a0e17; padding: 0.3rem 0.6rem; border-radius: 6px;">"Responde como vendedor proativo, fecha venda."</code></p>
-      </div>
+    <div style="text-align:center; margin-top: 3rem;">
+        <a href="https://wa.me/5511999999999?text=Oi%20GetNexo" class="btn-cta" style="background:#00ff9d; color:black; padding:1rem 2rem; border-radius:50px; text-decoration:none; font-weight:bold; font-size: 1.2rem;">Falar no WhatsApp</a>
+        <p style="margin-top: 2rem; font-size: 1.2rem;">suporte@getnexo.com.br</p>
     </div>
-  </section>
-
-  <section style="background: var(--gray); padding: 80px 20px; text-align: center;">
-    <h2 style="font-size: 2.8rem; margin-bottom: 2rem;">Ainda preso? Fala direto</h2>
-    <p style="font-size: 1.4rem; color: var(--text); max-width: 700px; margin: 0 auto 2.5rem;">
-      Eu respondo em 2 minutos. Print, erro, vídeo – manda tudo.
-    </p>
-    <a href="#" onclick="window.$chatwoot.toggle(); return false;" target="_blank" style="background: var(--success); color: black; padding: 1.1rem 2.5rem; border-radius: 50px; font-weight: 800; text-decoration: none; font-size: 1.3rem; box-shadow: 0 10px 30px rgba(0,255,157,0.3);">
-      Mandar mensagem no Whats →
-    </a>
   </section>
 </Layout>

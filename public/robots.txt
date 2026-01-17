@@ -1,4 +1,7 @@
 User-agent: *
 Allow: /
-
-Sitemap: https://getnexo.com.br/sitemap-index.xml
+Disallow: /admin/
+Disallow: /login/
+Disallow: /api/
+Disallow: /demo/
+Sitemap: https://getnexo.com.br/sitemap.xml

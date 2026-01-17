@@ -1,74 +1,21 @@
 ---
-import Layout from '../layouts/Layout.astro';
-
-const { search } = new URL(Astro.request.url);
-const acesso = search === "?revenda=sim";
+import Layout from '../../layouts/Layout.astro';
 ---
+<Layout title="Seja Revendedor GetNexo | Ganhe R$500 por Indicado">
+  <section style="padding: 6rem 10%; max-width: 1200px; margin: 0 auto; color: #e5e7eb; text-align: center;">
+      <h1 style="color:#00ff9d; font-size: 3rem;">Revenda e Ganhe Dinheiro</h1>
+      <p style="font-size: 1.2rem;">Instale em agências, lojas, e-commerce. Cobra o que quiser. Você ganha R$500 por cada.</p>
 
-{acesso ? (
-  <Layout title="Revenda GetNexo – Ganhe R$500 por cliente instalado">
-    <section class="hero" style="padding: 120px 20px 80px; text-align: center; background: linear-gradient(135deg, var(--dark), #0a1125);">
-      <h1 style="font-size: 3.8rem; background: linear-gradient(90deg, var(--primary), var(--success)); -webkit-background-clip: text; color: transparent;">
-        Revenda GetNexo e Ganhe R$500 por Cliente
-      </h1>
-      <p style="font-size: 1.5rem; max-width: 900px; margin: 2rem auto; color: var(--text);">
-        Você instala em 10 minutos, o cliente ama, você recebe comissão alta e eu cuido de todo suporte técnico.
-      </p>
-      <div class="buttons" style="display: flex; gap: 2rem; justify-content: center; flex-wrap: wrap; margin: 3rem 0;">
-        <a href="mailto:lelebrr@gmail.com?subject=Quero%20ser%20revendedor%20GetNexo" target="_blank" class="btn-cta" style="padding: 1.2rem 3rem; font-size: 1.3rem;">
-          Quero começar AGORA →
-        </a>
+      <div style="margin-top: 3rem; text-align: left; display: inline-block;">
+        <ul style="font-size: 1.2rem; line-height: 2;">
+          <li>💼 Treinamento completo</li>
+          <li>📈 Comissão vitalícia</li>
+          <li>🔧 Suporte dedicado</li>
+          <li>🚀 Leads prontos pra vender</li>
+        </ul>
       </div>
-    </section>
-
-    <section class="container" style="padding: 80px 20px; max-width: 1100px; margin: auto;">
-      <h2 style="text-align: center; font-size: 3rem; margin-bottom: 4rem; background: linear-gradient(90deg, var(--primary), var(--success)); -webkit-background-clip: text; color: transparent;">
-        Como funciona a revenda
-      </h2>
-
-      <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(320px, 1fr)); gap: 2.5rem;">
-        <div class="card" style="background: rgba(30,41,59,0.8); padding: 2.5rem; border-radius: 16px; border: 1px solid rgba(0,212,255,0.15);">
-          <h3 style="color: var(--success); font-size: 1.5rem; margin-bottom: 1rem;">1. Você se torna parceiro</h3>
-          <p style="color: var(--text);">Preenche o formulário ou manda Whats. Eu te libero acesso ao kit completo: guia PDF, vídeos tutoriais, banners, scripts de venda.</p>
-        </div>
-
-        <div class="card" style="background: rgba(30,41,59,0.8); padding: 2.5rem; border-radius: 16px; border: 1px solid rgba(0,212,255,0.15);">
-          <h3 style="color: var(--success); font-size: 1.5rem; margin-bottom: 1rem;">2. Instala no cliente</h3>
-          <p style="color: var(--text);">10–20 minutos no PC dele (WSL + Docker + Tunnel). Você ganha R$500 na hora que o cliente aprova.</p>
-        </div>
-
-        <div class="card" style="background: rgba(30,41,59,0.8); padding: 2.5rem; border-radius: 16px; border: 1px solid rgba(0,212,255,0.15);">
-          <h3 style="color: var(--success); font-size: 1.5rem; margin-bottom: 1rem;">3. Cliente feliz, você ganha recorrente</h3>
-          <p style="color: var(--text);">Cliente pode pagar você R$99–299/mês pelo "serviço premium". Você fica com 100%. Eu cuido de suporte técnico.</p>
-        </div>
-
-        <div class="card" style="background: rgba(30,41,59,0.8); padding: 2.5rem; border-radius: 16px; border: 1px solid rgba(0,212,255,0.15);">
-          <h3 style="color: var(--success); font-size: 1.5rem; margin-bottom: 1rem;">4. Escala sem dor</h3>
-          <p style="color: var(--text);">5 clientes/mês = R$2.500 extra. 10 clientes = R$5.000. Sem estoque, sem suporte pesado, sem risco.</p>
-        </div>
+      <div style="margin-top: 2rem;">
+        <a href="/form-revenda" class="btn-cta" style="background:#00d4ff; color:black; padding:1rem 2rem; border-radius:50px; text-decoration:none; font-weight:bold;">Quero Ser Revendedor</a>
       </div>
-
-      <div style="text-align: center; margin: 5rem 0;">
-        <p style="font-size: 1.4rem; margin-bottom: 2rem; color: var(--text);">
-          Quer o kit completo? (guia PDF, vídeos, banners prontos, script de venda)
-        </p>
-        <a href="mailto:lelebrr@gmail.com?subject=Quero%20o%20kit%20de%20revenda%20GetNexo" target="_blank" class="btn-cta" style="padding: 1.3rem 3.5rem; font-size: 1.4rem;">
-          Receber Kit de Revenda →
-        </a>
-      </div>
-    </section>
-  </Layout>
-) : (
-  <Layout title="Acesso Restrito">
-    <section style="padding: 200px 20px; text-align: center;">
-      <h1 style="font-size: 3rem; color: var(--text);">Área de Revenda</h1>
-      <p style="font-size: 1.3rem; margin: 2rem 0; color: var(--text);">
-        Esta página é exclusiva para parceiros revendedores.<br/>
-        Acesse com o link correto: <code style="background: #1e293b; padding: 0.5rem 1rem; border-radius: 8px;">/revenda?revenda=sim</code>
-      </p>
-      <p style="font-size: 1.1rem; color: #64748b;">
-        Sem senha? <a href="mailto:lelebrr@gmail.com" style="color: var(--primary);">Fale comigo</a>
-      </p>
-    </section>
-  </Layout>
-)}
+  </section>
+</Layout>

@@ -1,248 +1,48 @@
 ---
-import Layout from '../layouts/Layout.astro';
+import Layout from '../../layouts/Layout.astro';
 ---
+<Layout title="Preços Transparentes | GetNexo">
+  <section style="padding: 6rem 10%; max-width: 1200px; margin: 0 auto; color: #e5e7eb; text-align: center;">
+    <h1 style="color:#00ff9d; font-size: 3rem;">Preços Sem Pegadinha</h1>
+    <p style="font-size: 1.2rem;">Grátis pra começar. Paga só pelo que usa.</p>
 
-<Layout title="Preços – GetNexo Assistente de Vendas WhatsApp">
-  <section class="pricing-hero">
-    <h1>Preços Transparentes</h1>
-    <p>O GetNexo é 100% grátis. Só pagamos serviços opcionais se você quiser.</p>
-  </section>
-
-  <section class="pricing-grid">
-    <div class="pricing-card free">
-      <div class="card-badge">MAIS POPULAR</div>
-      <h2>Grátis</h2>
-      <div class="price">
-        <span class="amount">R$ 0</span>
-        <span class="period">/mês pra sempre</span>
-      </div>
-      <ul class="features-list">
-        <li>✓ Assistente IA 24h no WhatsApp</li>
-        <li>✓ Ilimitado de mensagens</li>
-        <li>✓ n8n para automações</li>
-        <li>✓ Chatwoot para suporte</li>
-        <li>✓ Evolution API</li>
-        <li>✓ Cloudflare Tunnel</li>
-        <li>✓ Criptografia AES-256</li>
-        <li>✓ Roda no seu PC/servidor</li>
-        <li>✓ Documentação completa</li>
-        <li>✓ Suporte comunidade</li>
-      </ul>
-      <a href="#" onclick="window.$chatwoot.toggle(); return false;" class="btn-primary" target="_blank">Começar Agora →</a>
-      <p class="card-note">Precisa de: PC com 8GB RAM + Internet</p>
+    <div style="display:flex; justify-content:center; gap:4rem; flex-wrap:wrap; margin-top: 4rem;">
+    <div style="background:#1e293b; padding:2rem; border-radius:12px; text-align:center; min-width: 250px;">
+    <h3 style="color: #00d4ff; font-size: 1.5rem;">Grátis</h3>
+    <p style="font-size: 2rem; font-weight: bold;">R$0<span style="font-size: 1rem;">/mês</span></p>
+    <ul style="list-style:none; padding:0; line-height: 2; margin-bottom: 2rem;">
+    <li>1 número</li>
+    <li>1k mensagens</li>
+    <li>Chatbot básico</li>
+    <li>1 integração</li>
+    </ul>
+    <a href="/criar-bot" class="btn-cta" style="background:#00ff9d; color:black; padding:0.8rem 1.5rem; border-radius:50px; text-decoration:none; font-weight:bold;">Começar</a>
     </div>
 
-    <div class="pricing-card pro">
-      <h2>Pro</h2>
-      <div class="price">
-        <span class="amount">R$ 97</span>
-        <span class="period">/mês</span>
-      </div>
-      <ul class="features-list">
-        <li>✓ Tudo do Grátis</li>
-        <li>✓ Instalação assistida remota</li>
-        <li>✓ Configuração personalizada</li>
-        <li>✓ Suporte prioritário WhatsApp</li>
-        <li>✓ 2 sessões de consultoria/mês</li>
-        <li>✓ Fluxos n8n customizados</li>
-        <li>✓ Treinamento da IA com seus dados</li>
-        <li>✓ Backup automatizado</li>
-      </ul>
-      <a href="#" onclick="window.$chatwoot.toggle(); return false;" class="btn-secondary" target="_blank">Falar sobre Pro →</a>
+    <div style="background:#00ff9d; color:black; padding:2rem; border-radius:12px; text-align:center; min-width: 250px; transform: scale(1.1);">
+    <h3 style="font-size: 1.5rem;">Pro</h3>
+    <p style="font-size: 2rem; font-weight: bold;">R$97<span style="font-size: 1rem;">/mês</span></p>
+    <ul style="list-style:none; padding:0; line-height: 2; margin-bottom: 2rem;">
+    <li>10 números</li>
+    <li>100k mensagens</li>
+    <li>IA completa</li>
+    <li>PIX + CRM + Ads</li>
+    <li>Suporte prioridade</li>
+    </ul>
+    <a href="/criar-bot" class="btn-cta" style="background:black; color:#00ff9d; padding:0.8rem 1.5rem; border-radius:50px; text-decoration:none; font-weight:bold;">Escolher Pro</a>
     </div>
 
-    <div class="pricing-card enterprise">
-      <h2>Enterprise</h2>
-      <div class="price">
-        <span class="amount">Sob consulta</span>
-      </div>
-      <ul class="features-list">
-        <li>✓ Tudo do Pro</li>
-        <li>✓ Multi-atendentes</li>
-        <li>✓ Multi-números WhatsApp</li>
-        <li>✓ Integração com seu CRM/ERP</li>
-        <li>✓ SLA de 4h para suporte</li>
-        <li>✓ Consultoria ilimitada</li>
-        <li>✓ Servidor dedicado (opcional)</li>
-        <li>✓ White-label disponível</li>
-      </ul>
-      <a href="#" onclick="window.$chatwoot.toggle(); return false;" class="btn-secondary" target="_blank">Solicitar Proposta →</a>
+    <div style="background:#1e293b; padding:2rem; border-radius:12px; text-align:center; min-width: 250px;">
+    <h3 style="color: #00d4ff; font-size: 1.5rem;">Enterprise</h3>
+    <p style="font-size: 2rem; font-weight: bold;">Custom</p>
+    <ul style="list-style:none; padding:0; line-height: 2; margin-bottom: 2rem;">
+    <li>Ilimitado</li>
+    <li>Customização</li>
+    <li>White label</li>
+    <li>Suporte 24/7</li>
+    </ul>
+    <a href="/fale-conosco" class="btn-cta" style="background:#00ff9d; color:black; padding:0.8rem 1.5rem; border-radius:50px; text-decoration:none; font-weight:bold;">Falar com Vendas</a>
     </div>
-  </section>
-
-  <section class="pricing-faq">
-    <h2>Dúvidas sobre preços?</h2>
-    <div class="faq-grid">
-      <div class="faq-item">
-        <h3>Por que o básico é grátis?</h3>
-        <p>Acreditamos que todo empreendedor merece acesso a ferramentas de automação. O software é open-source – cobramos apenas por serviços de suporte e customização.</p>
-      </div>
-      <div class="faq-item">
-        <h3>Preciso pagar algo pra Cloudflare ou Meta?</h3>
-        <p>O Cloudflare Tunnel é grátis. O WhatsApp é grátis. Você só paga o custo do seu servidor (que pode ser seu próprio PC).</p>
-      </div>
-      <div class="faq-item">
-        <h3>Posso cancelar a qualquer momento?</h3>
-        <p>Sim! Sem fidelidade, sem multa. Os planos pagos são apenas para serviços de suporte – o software continua funcionando mesmo se você cancelar.</p>
-      </div>
     </div>
   </section>
 </Layout>
-
-<style>
-  .pricing-hero {
-    text-align: center;
-    padding: 7rem 5% 4rem;
-    background: linear-gradient(135deg, var(--dark), var(--gray));
-  }
-  .pricing-hero h1 {
-    font-size: 3.5rem;
-    background: linear-gradient(90deg, var(--primary), var(--success));
-    -webkit-background-clip: text;
-    color: transparent;
-  }
-  .pricing-hero p {
-    color: var(--text);
-    font-size: 1.3rem;
-    margin-top: 1rem;
-  }
-
-  .pricing-grid {
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
-    gap: 2rem;
-    max-width: 1200px;
-    margin: 4rem auto;
-    padding: 0 5%;
-  }
-
-  .pricing-card {
-    background: rgba(30,41,59,0.8);
-    backdrop-filter: blur(10px);
-    border: 1px solid rgba(0,212,255,0.15);
-    border-radius: 24px;
-    padding: 2.5rem;
-    position: relative;
-    transition: all 0.4s;
-  }
-  .pricing-card:hover {
-    transform: translateY(-10px);
-    box-shadow: 0 20px 40px rgba(0,212,255,0.2);
-  }
-  .pricing-card.free {
-    border-color: var(--success);
-    box-shadow: 0 0 30px rgba(0,255,157,0.15);
-  }
-
-  .card-badge {
-    position: absolute;
-    top: -12px;
-    left: 50%;
-    transform: translateX(-50%);
-    background: linear-gradient(90deg, var(--success), var(--primary));
-    color: #000;
-    padding: 0.4rem 1.5rem;
-    border-radius: 50px;
-    font-size: 0.8rem;
-    font-weight: 800;
-  }
-
-  .pricing-card h2 {
-    font-size: 1.8rem;
-    color: var(--light);
-    margin-bottom: 1.5rem;
-  }
-
-  .price {
-    margin-bottom: 2rem;
-  }
-  .price .amount {
-    font-size: 3rem;
-    font-weight: 800;
-    background: linear-gradient(90deg, var(--primary), var(--success));
-    -webkit-background-clip: text;
-    color: transparent;
-  }
-  .price .period {
-    color: var(--text);
-    font-size: 1rem;
-  }
-
-  .features-list {
-    list-style: none;
-    padding: 0;
-    margin-bottom: 2rem;
-  }
-  .features-list li {
-    padding: 0.6rem 0;
-    color: var(--light);
-    border-bottom: 1px solid rgba(255,255,255,0.05);
-  }
-
-  .btn-primary {
-    display: block;
-    text-align: center;
-    background: linear-gradient(90deg, var(--primary), var(--success));
-    color: #000;
-    padding: 1rem 2rem;
-    border-radius: 50px;
-    font-weight: 800;
-    text-decoration: none;
-    transition: all 0.3s;
-  }
-  .btn-primary:hover {
-    transform: scale(1.05);
-    box-shadow: 0 10px 30px rgba(0,255,157,0.3);
-  }
-
-  .btn-secondary {
-    display: block;
-    text-align: center;
-    border: 2px solid var(--primary);
-    color: var(--primary);
-    padding: 1rem 2rem;
-    border-radius: 50px;
-    font-weight: 800;
-    text-decoration: none;
-    transition: all 0.3s;
-  }
-  .btn-secondary:hover {
-    background: var(--primary);
-    color: #000;
-  }
-
-  .card-note {
-    text-align: center;
-    color: var(--text);
-    font-size: 0.85rem;
-    margin-top: 1rem;
-  }
-
-  .pricing-faq {
-    max-width: 1100px;
-    margin: 4rem auto;
-    padding: 3rem 5%;
-    background: rgba(0,212,255,0.05);
-    border-radius: 24px;
-  }
-  .pricing-faq h2 {
-    text-align: center;
-    font-size: 2rem;
-    color: var(--light);
-    margin-bottom: 2rem;
-  }
-  .faq-grid {
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-    gap: 2rem;
-  }
-  .faq-item h3 {
-    color: var(--success);
-    font-size: 1.1rem;
-    margin-bottom: 0.5rem;
-  }
-  .faq-item p {
-    color: var(--text);
-    line-height: 1.6;
-  }
-</style>
