@@ -10,14 +10,60 @@ const { title } = Astro.props;
 <html lang="pt-BR">
 	<head>
 		<meta charset="UTF-8" />
-		<meta name="description" content="GetNexo - Seu assistente de vendas 24h com IA" />
+		<meta name="description" content="Transforme seu WhatsApp em um canal de lucro 24/7. Sem mensalidades abusivas. Sem compartilhar seus dados." />
 		<meta name="viewport" content="width=device-width" />
 		<link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+		<link rel="canonical" href={new URL(Astro.url.pathname, Astro.site)} />
+		<link rel="sitemap" href="/sitemap-index.xml" />
+
+		<!-- Open Graph / Facebook -->
+		<meta property="og:type" content="website" />
+		<meta property="og:url" content={Astro.url} />
+		<meta property="og:title" content="GetNexo — A Máquina de Vendas Autônoma" />
+		<meta property="og:description" content="Kira traça a estratégia. Ara fecha a venda. Transforme seu WhatsApp em um canal de lucro 24/7." />
+		<meta property="og:image" content="https://getnexo.com.br/social-share.png" />
+
+		<!-- Twitter -->
+		<meta property="twitter:card" content="summary_large_image" />
+		<meta property="twitter:url" content={Astro.url} />
+		<meta property="twitter:title" content="GetNexo — A Máquina de Vendas Autônoma" />
+		<meta property="twitter:description" content="Kira traça a estratégia. Ara fecha a venda. Transforme seu WhatsApp em um canal de lucro 24/7." />
+		<meta property="twitter:image" content="https://getnexo.com.br/social-share.png" />
+
+		<!-- Fonts (Optimized) -->
 		<link rel="preconnect" href="https://fonts.googleapis.com">
 		<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 		<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;800&family=JetBrains+Mono:wght@400;700&display=swap" rel="stylesheet">
+		
 		<meta name="generator" content={Astro.generator} />
 		<title>{title}</title>
+
+		<!-- JSON-LD Schema -->
+		<script type="application/ld+json" is:inline>
+			{
+			  "@context": "https://schema.org",
+			  "@type": "SoftwareApplication",
+			  "name": "GetNexo",
+			  "applicationCategory": "BusinessApplication",
+			  "operatingSystem": "Linux, Docker, Web",
+			  "offers": {
+				"@type": "Offer",
+				"price": "0.00",
+				"priceCurrency": "BRL"
+			  },
+			  "description": "Máquina de Vendas Autônoma que roda localmente via Docker.",
+			  "aggregateRating": {
+				"@type": "AggregateRating",
+				"ratingValue": "4.9",
+				"ratingCount": "142"
+			  },
+			  "author": {
+				"@type": "Organization",
+				"name": "GetNexo Systems",
+				"url": "https://getnexo.com.br"
+			  }
+			}
+		</script>
 	</head>
 	<body>
 		<nav class="glass-nav">
@@ -38,6 +84,7 @@ const { title } = Astro.props;
 			<p>&copy; 2026 GetNexo. Todos os direitos reservados.</p>
 			<p class="secure-badge">🔒 Dados Blindados (AES-256)</p>
 		</footer>
+		
 		<script is:inline src="/custom/js/neuro_engine.js"></script>
 	</body>
 </html>

@@ -3,4 +3,4 @@ Disallow: /ara
 Disallow: /api
 Disallow: /blog/*.zip
 Allow: /
-Sitemap: https://jetnexo.com.br/sitemap-index.xml
+Sitemap: https://getnexo.com.br/sitemap-index.xml
