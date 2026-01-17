@@ -1,247 +1,141 @@
 ---
 import '../styles/global.css';
-
-interface Props {
-  title: string;
-  description?: string;
-  type?: 'website' | 'article' | 'product';
-  image?: string;
-}
-
-const { 
-  title, 
-  description = "Assistente de vendas no WhatsApp 100% grátis – IA que fecha vendas sozinho, sem nuvem, sem risco.",
-  type = 'website',
-  image = "https://getnexo.com.br/images/og-image.jpg"
-} = Astro.props;
-
-const canonicalUrl = `https://getnexo.com.br${Astro.url.pathname}`;
-
-// JSON-LD Structured Data
-const organizationSchema = {
-  "@context": "https://schema.org",
-  "@type": "Organization",
-  "name": "GetNexo",
-  "url": "https://getnexo.com.br",
-  "logo": "https://getnexo.com.br/images/logo.png",
-  "description": "Assistente de vendas no WhatsApp 100% grátis com IA local",
-  "sameAs": [
-    "https://github.com/lelebrr"
-  ],
-  "contactPoint": {
-    "@type": "ContactPoint",
-    "contactType": "customer service",
-    "url": "https://chat.getnexo.com.br"
-  }
-};
-
-const productSchema = {
-  "@context": "https://schema.org",
-  "@type": "SoftwareApplication",
-  "name": "GetNexo - Assistente de Vendas WhatsApp",
-  "applicationCategory": "BusinessApplication",
-  "operatingSystem": "Windows, Linux, macOS",
-  "offers": {
-    "@type": "Offer",
-    "price": "0",
-    "priceCurrency": "BRL"
-  },
-  "aggregateRating": {
-    "@type": "AggregateRating",
-    "ratingValue": "4.9",
-    "ratingCount": "127"
-  }
-};
-
-const breadcrumbSchema = {
-  "@context": "https://schema.org",
-  "@type": "BreadcrumbList",
-  "itemListElement": [
-    {
-      "@type": "ListItem",
-      "position": 1,
-      "name": "Home",
-      "item": "https://getnexo.com.br/"
-    },
-    {
-      "@type": "ListItem",
-      "position": 2,
-      "name": title,
-      "item": canonicalUrl
-    }
-  ]
-};
+const { title = "GetNexo – Assistente de Vendas WhatsApp Grátis", description = "IA que fecha vendas sozinho 24h. Sem nuvem. Sem mensalidade. Sem risco." } = Astro.props;
 ---
-
 <!doctype html>
 <html lang="pt-BR">
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>{title} | GetNexo – Assistente de Vendas WhatsApp Grátis</title>
-  
-  <!-- SEO Meta Tags -->
+  <title>{title}</title>
   <meta name="description" content={description} />
-  <meta name="keywords" content="assistente de vendas whatsapp, ia vendas whatsapp, automação whatsapp grátis, ia local whatsapp, getnexo, evolution api, n8n whatsapp, vendas 24h whatsapp, chatbot whatsapp gratis, automatizar whatsapp vendas" />
-  <meta name="robots" content="index, follow, max-image-preview:large" />
+  <meta name="keywords" content="assistente vendas whatsapp grátis, ia whatsapp vendas, automação whatsapp sem nuvem, getnexo, evolution api, n8n whatsapp, vendas 24h, self hosted ia" />
   <meta name="author" content="GetNexo" />
-  <link rel="canonical" href={canonicalUrl} />
-  
-  <!-- Open Graph -->
-  <meta property="og:title" content={`${title} – GetNexo`} />
-  <meta property="og:description" content={description} />
-  <meta property="og:url" content={canonicalUrl} />
-  <meta property="og:type" content={type} />
-  <meta property="og:image" content={image} />
+  <meta name="robots" content="index, follow" />
+  <link rel="canonical" href={`https://getnexo.com.br${Astro.url.pathname}`} />
+  <meta property="og:type" content="website" />
   <meta property="og:site_name" content="GetNexo" />
-  <meta property="og:locale" content="pt_BR" />
-  
-  <!-- Twitter Card -->
+  <meta property="og:title" content={title} />
+  <meta property="og:description" content={description} />
+  <meta property="og:image" content="https://getnexo.com.br/images/og.jpg" />
   <meta name="twitter:card" content="summary_large_image" />
-  <meta name="twitter:title" content={`${title} – GetNexo`} />
-  <meta name="twitter:description" content={description} />
-  <meta name="twitter:image" content={image} />
-  
-  <!-- Fonts -->
-  <link rel="preconnect" href="https://fonts.googleapis.com" />
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;800&display=swap" rel="stylesheet" />
-  
-  <!-- Favicon -->
-  <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
-  <link rel="apple-touch-icon" href="/apple-touch-icon.png" />
-  
-  <!-- Theme Color -->
-  <meta name="theme-color" content="#0a0e17" />
-  
-  <!-- JSON-LD Structured Data -->
-  <script type="application/ld+json" set:html={JSON.stringify(organizationSchema)} />
-  <script type="application/ld+json" set:html={JSON.stringify(productSchema)} />
-  <script type="application/ld+json" set:html={JSON.stringify(breadcrumbSchema)} />
+  <style is:global>
+    :root { 
+      --primary: #00d4ff; 
+      --success: #00ff9d; 
+      --dark: #0a0e17; 
+      --gray: #1e293b; 
+      --light: #e2e8f0; 
+      --text: #94a3b8; 
+    }
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    body { font-family: 'Inter', sans-serif; background: var(--dark); color: var(--light); line-height: 1.7; overflow-x: hidden; }
+    header { background: rgba(10,14,23,0.9); backdrop-filter: blur(12px); position: fixed; top: 0; width: 100%; z-index: 1000; padding: 1rem 5%; display: flex; justify-content: space-between; align-items: center; border-bottom: 1px solid rgba(0,212,255,0.1); }
+    .logo { font-size: 1.8rem; font-weight: 800; color: var(--primary); text-decoration: none; }
+    nav { display: flex; align-items: center; flex-wrap: wrap; gap: 0.5rem; }
+    nav a { color: var(--light); margin-left: 1.5rem; text-decoration: none; font-weight: 600; font-size: 0.95rem; transition: all 0.3s; }
+    nav a:hover { color: var(--success); transform: translateY(-2px); }
+    .btn-cta { color: var(--success); border: 2px solid var(--success); padding: 0.6rem 1.8rem; border-radius: 50px; font-weight: 800; transition: all 0.3s; animation: pulse 2s infinite; }
+    .btn-cta:hover { background: var(--success); color: black; transform: translateY(-3px); box-shadow: 0 10px 30px rgba(0,255,157,0.3); }
+    @keyframes pulse { 0%,100%{opacity:1} 50%{opacity:0.7} }
+    .canvas-particles { position: fixed; top: 0; left: 0; width: 100%; height: 100%; pointer-events: none; z-index: -1; }
+    footer { background: var(--dark); padding: 3rem 5%; text-align: center; border-top: 1px solid rgba(0,212,255,0.1); }
+    footer p { color: #64748b; font-size: 0.95rem; margin: 0.5rem 0; }
+    footer a { color: var(--primary); text-decoration: none; }
+    footer a:hover { color: var(--success); }
+    main { padding-top: 100px; min-height: 100vh; }
+    .floating-cta { position: fixed; bottom: 30px; right: 30px; background: var(--success); color: black; padding: 1rem 1.8rem; border-radius: 50px; font-weight: 800; box-shadow: 0 10px 30px rgba(0,255,157,0.4); z-index: 999; text-decoration: none; transition: all 0.3s; }
+    .floating-cta:hover { transform: scale(1.1); box-shadow: 0 15px 40px rgba(0,255,157,0.6); }
+    @media (max-width: 900px) {
+      header { flex-direction: column; padding: 1rem; gap: 1rem; }
+      nav { justify-content: center; }
+      nav a { margin-left: 0.8rem; font-size: 0.85rem; }
+      main { padding-top: 140px; }
+      .floating-cta { bottom: 20px; right: 20px; padding: 0.8rem 1.2rem; font-size: 0.9rem; }
+    }
+  </style>
 </head>
 <body>
-  <!-- Skip Link for Accessibility -->
-  <a href="#main-content" class="skip-link">Pular para o conteúdo</a>
+  <canvas id="particles" class="canvas-particles" aria-hidden="true"></canvas>
   
-  <!-- Particles Canvas -->
-  <canvas class="canvas-particles" id="particles" aria-hidden="true"></canvas>
-
-  <!-- Header -->
-  <header role="banner">
-    <a href="/" class="logo" aria-label="GetNexo - Página Inicial">GETNEXO</a>
-    <nav role="navigation" aria-label="Menu principal">
+  <header>
+    <a href="/" class="logo">GETNEXO</a>
+    <nav>
       <a href="/">Início</a>
-      <a href="/assistente-vendas-whatsapp">Assistente IA</a>
+      <a href="/assistente-vendas-whatsapp">Assistente</a>
+      <a href="/comparacao">Comparação</a>
       <a href="/como-funciona">Como Funciona</a>
-      <a href="/precos">Preços</a>
+      <a href="/depoimentos">Depoimentos</a>
       <a href="/blog">Blog</a>
       <a href="/faq">FAQ</a>
-      <a href="/sobre">Sobre</a>
-      <a href="/contato">Contato</a>
-      <a href="https://chat.getnexo.com.br" class="btn-cta" target="_blank" rel="noopener noreferrer">Testar Grátis →</a>
+      <a href="/precos">Preços</a>
+      <a href="https://chat.getnexo.com.br" class="btn-cta" target="_blank" rel="noopener">Falar com IA →</a>
     </nav>
   </header>
 
-  <!-- Main Content -->
-  <main id="main-content" role="main">
+  <main>
     <slot />
   </main>
 
-  <!-- Footer -->
-  <footer role="contentinfo">
-    <div class="footer-links">
-      <a href="/sobre">Sobre</a> |
-      <a href="/precos">Preços</a> |
-      <a href="/faq">FAQ</a> |
-      <a href="/blog">Blog</a> |
-      <a href="/depoimentos">Depoimentos</a> |
-      <a href="/documentacao">Docs</a> |
-      <a href="/changelog">Changelog</a> |
-      <a href="/contato">Contato</a> |
-      <a href="/privacidade">Privacidade</a> |
+  <footer>
+    <p>
+      <a href="/sobre">Sobre</a> · 
+      <a href="/documentacao">Docs</a> · 
+      <a href="/changelog">Changelog</a> · 
+      <a href="/contato">Contato</a> · 
+      <a href="/privacidade">Privacidade</a> · 
       <a href="/api">API</a>
-    </div>
-    <p>© {new Date().getFullYear()} GetNexo – Assistente de Vendas WhatsApp 100% Grátis, IA Local e Automação Sem Nuvem.</p>
-    <p>Dados Blindados (AES-256) + Zero Risco de Banimento + Roda em PC Comum</p>
+    </p>
+    <p>© {new Date().getFullYear()} GetNexo – Assistente de Vendas WhatsApp 100% Grátis. Zero nuvem. Zero risco.</p>
   </footer>
 
-  <!-- Scripts -->
+  <a href="https://chat.getnexo.com.br" class="floating-cta" target="_blank" rel="noopener">💬 Testar Grátis</a>
+
   <script is:inline>
-    // Optimized Particle System
     (function() {
       const canvas = document.getElementById('particles');
       if (!canvas) return;
-      
-      // Respect reduced motion preference
-      if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) return;
-      
       const ctx = canvas.getContext('2d');
+      canvas.width = window.innerWidth;
+      canvas.height = window.innerHeight;
+      window.addEventListener('resize', () => { 
+        canvas.width = window.innerWidth; 
+        canvas.height = window.innerHeight; 
+      });
       const particles = [];
-      const maxParticles = 100; // Limit for performance
-      
-      function resize() {
-        canvas.width = window.innerWidth;
-        canvas.height = window.innerHeight;
-      }
-      resize();
-      window.addEventListener('resize', resize);
-      
-      const mouse = { x: null, y: null };
-      
-      document.addEventListener('mousemove', e => {
-        mouse.x = e.clientX;
-        mouse.y = e.clientY;
-        
-        if (particles.length < maxParticles) {
+      const maxParticles = 80;
+      window.addEventListener('mousemove', e => {
+        if (particles.length >= maxParticles) return;
+        const x = e.clientX, y = e.clientY;
+        for(let i = 0; i < 2; i++) {
           particles.push({
-            x: mouse.x,
-            y: mouse.y,
-            vx: (Math.random() - 0.5) * 3,
-            vy: (Math.random() - 0.5) * 3,
+            x, y,
+            vx: (Math.random() - 0.5) * 4,
+            vy: (Math.random() - 0.5) * 4,
             life: 50
           });
         }
       });
-      
-      function animate() {
+      function animar() {
         ctx.clearRect(0, 0, canvas.width, canvas.height);
-        
         for (let i = particles.length - 1; i >= 0; i--) {
           const p = particles[i];
           p.x += p.vx;
           p.y += p.vy;
           p.life--;
-          
           if (p.life <= 0) {
             particles.splice(i, 1);
             continue;
           }
-          
-          const alpha = p.life / 50;
           ctx.beginPath();
           ctx.arc(p.x, p.y, p.life / 10, 0, Math.PI * 2);
-          ctx.fillStyle = `rgba(0, 212, 255, ${alpha})`;
+          ctx.fillStyle = `rgba(0, 212, 255, ${p.life / 50})`;
           ctx.fill();
         }
-        
-        requestAnimationFrame(animate);
+        requestAnimationFrame(animar);
       }
-      animate();
-    })();
-    
-    // Scroll Fade-in Animation
-    (function() {
-      if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) return;
-      
-      const observer = new IntersectionObserver((entries) => {
-        entries.forEach(entry => {
-          if (entry.isIntersecting) {
-            entry.target.classList.add('visible');
-          }
-        });
-      }, { threshold: 0.1 });
-      
-      document.querySelectorAll('.fade-in').forEach(el => observer.observe(el));
+      animar();
     })();
   </script>
 </body>
