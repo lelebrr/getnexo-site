@@ -7,46 +7,68 @@ import Layout from '../layouts/Layout.astro';
     <h1>Como Funciona: <span class="highlight">IA Sem Nuvem</span></h1>
     <p class="lead">Entenda a arquitetura Self-Hosted que garante sua liberdade.</p>
     
-    <div class="steps">
-      <div class="step">
-        <div class="num">1</div>
-        <h3>Instalação Docker</h3>
-        <p>Rodamos containers isolados no seu hardware (PC ou VPS).</p>
+    <div class="steps-grid">
+      <div class="step-card">
+        <div class="icon">🐳</div>
+        <h3>1. Instalação Docker</h3>
+        <p>Rodamos containers isolados no seu hardware (PC ou VPS). Tudo empacotado, sem conflitos, pronto para uso.</p>
       </div>
-      <div class="step">
-        <div class="num">2</div>
-        <h3>Túnel Criptografado</h3>
-        <p>Conexão segura via Cloudflare Tunnel sem abrir portas no roteador.</p>
+      
+      <div class="step-card">
+        <div class="icon">🚇</div>
+        <h3>2. Túnel Criptografado</h3>
+        <p>Conexão segura via Cloudflare Tunnel. Seu IP real fica oculto. Zero portas abertas no roteador.</p>
       </div>
-      <div class="step">
-        <div class="num">3</div>
-        <h3>IA Neurológica</h3>
-        <p>O modelo Llama 3 roda localmente processando intenções.</p>
+      
+      <div class="step-card">
+        <div class="icon">🧠</div>
+        <h3>3. IA Neurológica</h3>
+        <p>O modelo Llama 3 roda localmente processando intenções. Sem enviar dados para OpenAI ou terceiros.</p>
+      </div>
+
+      <div class="step-card">
+        <div class="icon">⚡</div>
+        <h3>4. Venda Automática</h3>
+        <p>Ara AI qualifica o lead, supera objeções e fecha a venda. Tudo integrado ao n8n.</p>
       </div>
     </div>
     
     <div class="cta-box">
-      <a href="/assistente-vendas-whatsapp" class="btn">Ver Recursos →</a>
+      <a href="/assistente-vendas-whatsapp" class="btn-cta-glow">Ver Demonstração Técnica →</a>
     </div>
   </div>
 </Layout>
 
 <style>
-  .content { max-width: 1000px; margin: 6rem auto; padding: 0 1rem; text-align: center; }
+  .content { max-width: 1200px; margin: 6rem auto; padding: 0 5%; text-align: center; }
   h1 { font-size: 3.5rem; margin-bottom: 1rem; }
-  .highlight { color: #00ff9d; }
-  .lead { font-size: 1.5rem; color: #a0aec0; margin-bottom: 4rem; }
+  .highlight { color: var(--success); }
+  .lead { font-size: 1.5rem; color: #a0aec0; margin-bottom: 5rem; }
   
-  .steps { margin-bottom: 4rem; text-align: left; }
-  .step { display: flex; align-items: flex-start; gap: 1.5rem; margin-bottom: 2rem; background: rgba(255,255,255,0.03); padding: 2rem; border-radius: 12px; }
-  .num { font-size: 3rem; color: #334; font-weight: 900; line-height: 1; }
-  .step h3 { color: #00d4ff; font-size: 1.8rem; margin-bottom: 0.5rem; }
-  .step p { font-size: 1.1rem; color: #cbd5e0; }
+  .steps-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 2rem; }
   
-  .btn {
-    border: 2px solid #00d4ff; color: #00d4ff; padding: 1rem 2rem; border-radius: 50px; 
-    font-weight: 800; text-transform: uppercase; letter-spacing: 1px;
-    transition: 0.3s;
+  .step-card { 
+    background: rgba(30,41,59,0.7); backdrop-filter: blur(10px);
+    border: 1px solid rgba(0,212,255,0.1); border-radius: 20px;
+    padding: 3rem 1.5rem; text-align: left;
+    transition: 0.4s;
+    position: relative; overflow: hidden;
   }
-  .btn:hover { background: #00d4ff; color: #000; }
+  .step-card:hover { transform: translateY(-10px); border-color: var(--primary); }
+  .step-card::before {
+    content: ''; position: absolute; top: 0; left: 0; width: 100%; height: 5px;
+    background: linear-gradient(90deg, var(--primary), var(--success));
+  }
+  
+  .icon { font-size: 3rem; margin-bottom: 1.5rem; }
+  h3 { color: var(--light); font-size: 1.5rem; margin-bottom: 1rem; }
+  p { color: #94a3b8; line-height: 1.6; }
+  
+  .btn-cta-glow {
+    background: transparent; color: var(--primary);
+    border: 2px solid var(--primary); padding: 1rem 2rem;
+    border-radius: 50px; font-weight: 800; text-decoration: none;
+    transition: 0.3s; display: inline-block; margin-top: 4rem;
+  }
+  .btn-cta-glow:hover { background: var(--primary); color: #000; box-shadow: 0 0 30px rgba(0,212,255,0.4); }
 </style>

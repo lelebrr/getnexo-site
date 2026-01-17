@@ -3,113 +3,73 @@ import Layout from '../layouts/Layout.astro';
 ---
 
 <Layout title="Privacidade Zero-Knowledge — GetNexo">
-    <div class="privacy-page">
-        <div class="container">
-            <header>
-                <h1>MANIFESTO DE PRIVACIDADE <span class="text-neon">ZERO-KNOWLEDGE</span></h1>
-                <p class="updated">Última atualização: Hoje.</p>
-            </header>
+    <div class="privacy-container">
+        <header>
+            <h1>MANIFESTO <span class="text-neon">ZERO-KNOWLEDGE</span></h1>
+            <p class="updated">Nós não queremos seus dados.</p>
+        </header>
 
-            <article class="prose">
-                <p class="lead">
-                    No GetNexo, nós não vendemos seus dados. Nós nem sequer <em>vemos</em> seus dados.
-                    Diferente das Big Techs, nossa arquitetura é descentralizada. O software roda na 
-                    <strong>sua máquina</strong>, no <strong>seu Docker</strong>, sob a <strong>sua rede</strong>.
-                </p>
+        <article class="glass-card">
+            <p class="lead">
+                Diferente das Big Techs, nossa arquitetura é descentralizada. 
+                O software roda na <strong>sua máquina</strong>, no <strong>seu Docker</strong>.
+            </p>
 
-                <div class="grid">
-                    <div class="point">
-                        <h3>🔒 Criptografia Ponta-a-Ponta</h3>
-                        <p>Do Cloudflare Tunnel até o seu banco Postgres local. Nada trafega em texto claro (plaintext).</p>
-                    </div>
-
-                    <div class="point">
-                        <h3>⛔ Sem Telemetria Oculta</h3>
-                        <p>O código é aberto para auditoria em <code>/scripts</code>. Nenhuma informação sai do seu servidor sem sua permissão explícita.</p>
-                    </div>
-
-                    <div class="point">
-                        <h3>📜 Logs Imutáveis</h3>
-                        <p>Todas as ações do sistema são registradas em logs SHA-256 locais para sua auditoria e compliance.</p>
-                    </div>
-
-                    <div class="point">
-                        <h3>💥 Soberania de Dados</h3>
-                        <p>Você pode apagar, exportar ou queimar seus dados a qualquer segundo. O botão 'Kill Switch' é real.</p>
-                    </div>
+            <div class="grid">
+                <div class="point">
+                    <h3>🔒 Criptografia AES-256</h3>
+                    <p>Do Cloudflare Tunnel até o seu banco Postgres local. Nada trafega em texto claro.</p>
                 </div>
 
-                <hr />
+                <div class="point">
+                    <h3>⛔ Sem Telemetria</h3>
+                    <p>O código é aberto em <code>/scripts</code>. Nenhuma informação sai sem você saber.</p>
+                </div>
 
-                <h3>Termos de Uso Simplificados</h3>
-                <p>O GetNexo é uma ferramenta de software ("tooling"). Nós não nos responsabilizamos pelo conteúdo que você gera ou vende usando a plataforma. Você é o capitão do seu navio.</p>
+                <div class="point">
+                    <h3>📜 Logs Locais</h3>
+                    <p>Auditoria completa no seu disco. Nós não temos acesso a nada.</p>
+                </div>
 
-                <a href="/" class="btn-back">← Voltar para a Base</a>
-            </article>
-        </div>
+                <div class="point">
+                    <h3>💥 Kill Switch</h3>
+                    <p>Apague tudo com um comando. Soberania digital total.</p>
+                </div>
+            </div>
+
+            <div class="legal">
+                <h3>Termos de Uso</h3>
+                <p>O GetNexo é uma ferramenta ("tooling"). Você é responsável pelo uso ético do assistente.</p>
+            </div>
+
+            <a href="/" class="btn-back">← Voltar para a Base</a>
+        </article>
     </div>
 </Layout>
 
 <style>
-    .privacy-page {
-        padding: 4rem 1rem;
-        max-width: 800px;
-        margin: 0 auto;
+    .privacy-container { padding: 6rem 5%; max-width: 900px; margin: 0 auto; }
+    header { text-align: center; margin-bottom: 4rem; }
+    h1 { font-size: 3.5rem; margin-bottom: 1rem; }
+    .text-neon { color: var(--primary); text-shadow: 0 0 20px rgba(0,212,255,0.3); }
+    .updated { color: var(--text); font-family: 'JetBrains Mono', monospace; }
+
+    .glass-card {
+        background: rgba(30,41,59,0.6); backdrop-filter: blur(10px);
+        border: 1px solid rgba(255,255,255,0.1); border-radius: 20px;
+        padding: 3rem;
     }
 
-    header {
-        margin-bottom: 3rem;
-        border-bottom: 1px solid #333;
-        padding-bottom: 2rem;
-    }
+    .lead { font-size: 1.4rem; color: var(--light); margin-bottom: 3rem; text-align: center; }
+    strong { color: var(--success); }
 
-    h1 {
-        font-size: 2.5rem;
-    }
+    .grid { display: grid; grid-template-columns: 1fr 1fr; gap: 2rem; margin-bottom: 3rem; }
+    @media (max-width: 768px) { .grid { grid-template-columns: 1fr; } }
 
-    .updated {
-        color: #666;
-        font-family: 'JetBrains Mono', monospace;
-        margin-top: 0.5rem;
-    }
+    .point h3 { color: var(--primary); margin-bottom: 0.5rem; font-size: 1.3rem; }
+    .point p { color: #94a3b8; }
 
-    .lead {
-        font-size: 1.3rem;
-        line-height: 1.6;
-        color: white;
-        margin-bottom: 3rem;
-    }
-
-    .grid {
-        display: grid;
-        grid-template-columns: 1fr 1fr;
-        gap: 2rem;
-        margin-bottom: 3rem;
-    }
-
-    .point h3 {
-        color: var(--gold);
-        margin-bottom: 0.5rem;
-    }
-
-    .point p {
-        color: #aaa;
-        font-size: 0.95rem;
-        line-height: 1.5;
-    }
-
-    hr {
-        border: 0;
-        border-top: 1px solid #333;
-        margin: 3rem 0;
-    }
-
-    .btn-back {
-        display: inline-block;
-        margin-top: 2rem;
-        color: var(--neon-blue);
-        font-family: 'JetBrains Mono', monospace;
-    }
-
-    .text-neon { color: var(--neon-blue); }
+    .legal { background: rgba(0,0,0,0.3); padding: 1.5rem; border-radius: 12px; margin-bottom: 2rem; }
+    .btn-back { color: var(--light); text-decoration: none; font-weight: 600; display: block; text-align: center; }
+    .btn-back:hover { color: var(--primary); }
 </style>
