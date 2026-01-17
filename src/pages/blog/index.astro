@@ -1,16 +1,24 @@
 ---
-// src/pages/blog/index.astro
+import Layout from '../../layouts/Layout.astro';
+
 const posts = [
-  { title: 'Primeiro post', content: 'Teste do blog.' }
+  { title: "Lançamento do GetNexo", slug: "lancamento", data: "2026-01-01", excerpt: "Bem-vindo ao nosso novo site!" },
+  { title: "Automação com n8n", slug: "n8n", data: "2026-01-02", excerpt: "Aprenda a integrar WhatsApp e CRM." },
+  { title: "Segurança no WSL", slug: "wsl", data: "2026-01-03", excerpt: "Como rodar tudo em 8GB sem lag." },
+  { title: "Cloudflare Tunnel", slug: "tunnel", data: "2026-01-04", excerpt: "Túnel zero trust pra servidores locais." }
 ];
 ---
 
-<div>
-  <h1>Blog GetNexo</h1>
-  {posts.map(post => (
-    <article>
-      <h2>{post.title}</h2>
-      <p>{post.content}</p>
-    </article>
-  ))}
-</div>
+<Layout title="Blog GetNexo">
+  <h1>Blog</h1>
+  <ul>
+    {posts.map(post => (
+      <li>
+        <h3>{post.title}</h3>
+        <p>{post.data}</p>
+        <p>{post.excerpt}</p>
+        <a href={`/blog/${post.slug}`}>Ler mais →</a>
+      </li>
+    ))}
+  </ul>
+</Layout>
