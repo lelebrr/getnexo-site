@@ -10,78 +10,329 @@ import Layout from '../layouts/Layout.astro';
 
   <main style="padding:3rem 5%; display:flex; justify-content:center; gap:3rem; flex-wrap:wrap;">
 
-    <!-- Passo 1: Configuração -->
-    <div class="passo" style="flex:1; min-width:300px; background:rgba(20,30,50,0.6); border-radius:16px; padding:2rem; border:1px solid #00d4ff55;">
-      <h3 style="color:#00ff9d;">1. Nome e Loja</h3>
+    <!-- Passo 1: Informações do Negócio -->
+    <div class="passo" id="step1" style="flex:1; min-width:350px; max-width:450px; background:rgba(20,30,50,0.6); border-radius:16px; padding:2rem; border:1px solid #00d4ff55;">
+      <h3 style="color:#00ff9d; font-size:1.5rem; margin-bottom:1.5rem;">📋 1. Informações do Negócio</h3>
       <form id="form1">
-        <input name="nome" placeholder="Nome do bot (ex: Loja da Maria)" style="width:100%; padding:1rem; margin:1rem 0; border-radius:8px; background:#1e293b; color: white; border: 1px solid #334155;" required />
-        <input name="site" placeholder="URL do seu site (ex: minhame.com.br)" style="width:100%; padding:1rem; margin:1rem 0; border-radius:8px; background:#1e293b; color: white; border: 1px solid #334155;" required />
-        <button type="submit" class="btn-cta">Próximo</button>
+        <div class="field">
+          <label>Nome do Bot / Loja *</label>
+          <input name="nome" placeholder="Ex: Loja da Maria" required />
+        </div>
+        
+        <div class="field">
+          <label>WhatsApp do Atendimento *</label>
+          <input name="whatsapp" type="tel" placeholder="(11) 99999-9999" required />
+        </div>
+        
+        <div class="field">
+          <label>E-mail Comercial *</label>
+          <input name="email" type="email" placeholder="contato@sualoja.com.br" required />
+        </div>
+        
+        <div class="field">
+          <label>URL do Site (opcional)</label>
+          <input name="site" placeholder="https://sualoja.com.br" />
+        </div>
+        
+        <div class="field">
+          <label>Segmento do Negócio *</label>
+          <select name="segmento" required>
+            <option value="">Selecione...</option>
+            <option value="moda">Moda & Vestuário</option>
+            <option value="eletronicos">Eletrônicos & Tech</option>
+            <option value="cosmeticos">Cosméticos & Beleza</option>
+            <option value="alimentacao">Alimentação</option>
+            <option value="servicos">Serviços & Consultoria</option>
+            <option value="saude">Saúde & Bem-estar</option>
+            <option value="educacao">Educação & Cursos</option>
+            <option value="imoveis">Imóveis</option>
+            <option value="automotivo">Automotivo</option>
+            <option value="pet">Pet Shop</option>
+            <option value="outro">Outro</option>
+          </select>
+        </div>
+        
+        <div class="field">
+          <label>Mensagem de Boas-vindas (opcional)</label>
+          <textarea name="mensagem" rows="3" placeholder="Ex: Olá! Sou a IA da Loja da Maria. Como posso ajudar?"></textarea>
+        </div>
+        
+        <button type="submit" class="btn-cta" style="width:100%; margin-top:1rem;">Próximo →</button>
       </form>
     </div>
 
-    <!-- Passo 2: Integração -->
-    <div class="passo" style="flex:1; min-width:300px; background:rgba(20,30,50,0.6); border-radius:16px; padding:2rem; border:1px solid #00d4ff55; opacity:0.3; transition: opacity 0.3s;">
-      <h3 style="color:#00ff9d;">2. Conectar à loja</h3>
-      <p style="color: #94a3b8;">Escolha sua plataforma:</p>
-      <div style="color: #cbd5e1; margin-top: 1rem;">
-        <label style="display:block; margin-bottom:0.5rem;"><input type="radio" name="plataforma" value="custom" /> API Personalizada</label>
-        <label style="display:block; margin-bottom:0.5rem;"><input type="radio" name="plataforma" value="woocommerce" /> WooCommerce</label>
-        <label style="display:block; margin-bottom:0.5rem;"><input type="radio" name="plataforma" value="shopify" /> Shopify</label>
+    <!-- Passo 2: Integração com E-commerce -->
+    <div class="passo" id="step2" style="flex:1; min-width:350px; max-width:450px; background:rgba(20,30,50,0.6); border-radius:16px; padding:2rem; border:1px solid #00d4ff55; opacity:0.3; transition: opacity 0.3s;">
+      <h3 style="color:#00ff9d; font-size:1.5rem; margin-bottom:1rem;">🛒 2. Conectar à Loja</h3>
+      <p style="color: #94a3b8; margin-bottom:1.5rem;">Escolha sua plataforma de e-commerce:</p>
+      
+      <div class="platforms-grid">
+        <label class="platform-card">
+          <input type="radio" name="plataforma" value="nenhuma" checked />
+          <span class="platform-name">🚫 Sem integração</span>
+          <span class="platform-desc">Só chat, sem catálogo</span>
+        </label>
+        
+        <label class="platform-card">
+          <input type="radio" name="plataforma" value="shopify" />
+          <span class="platform-name">🟢 Shopify</span>
+          <span class="platform-desc">Integração nativa</span>
+        </label>
+        
+        <label class="platform-card">
+          <input type="radio" name="plataforma" value="woocommerce" />
+          <span class="platform-name">🟣 WooCommerce</span>
+          <span class="platform-desc">Plugin WordPress</span>
+        </label>
+        
+        <label class="platform-card">
+          <input type="radio" name="plataforma" value="vtex" />
+          <span class="platform-name">🔴 VTEX</span>
+          <span class="platform-desc">Enterprise</span>
+        </label>
+        
+        <label class="platform-card">
+          <input type="radio" name="plataforma" value="nuvemshop" />
+          <span class="platform-name">☁️ Nuvemshop</span>
+          <span class="platform-desc">Tiendanube</span>
+        </label>
+        
+        <label class="platform-card">
+          <input type="radio" name="plataforma" value="mercadolivre" />
+          <span class="platform-name">🟡 Mercado Livre</span>
+          <span class="platform-desc">Marketplace</span>
+        </label>
+        
+        <label class="platform-card">
+          <input type="radio" name="plataforma" value="tray" />
+          <span class="platform-name">🔵 Tray</span>
+          <span class="platform-desc">Locaweb</span>
+        </label>
+        
+        <label class="platform-card">
+          <input type="radio" name="plataforma" value="lojaintegrada" />
+          <span class="platform-name">🟠 Loja Integrada</span>
+          <span class="platform-desc">Vtex Light</span>
+        </label>
+        
+        <label class="platform-card">
+          <input type="radio" name="plataforma" value="magento" />
+          <span class="platform-name">🟤 Magento</span>
+          <span class="platform-desc">Adobe Commerce</span>
+        </label>
+        
+        <label class="platform-card">
+          <input type="radio" name="plataforma" value="opencart" />
+          <span class="platform-name">🔷 OpenCart</span>
+          <span class="platform-desc">Open Source</span>
+        </label>
+        
+        <label class="platform-card">
+          <input type="radio" name="plataforma" value="prestashop" />
+          <span class="platform-name">💎 PrestaShop</span>
+          <span class="platform-desc">Europa</span>
+        </label>
+        
+        <label class="platform-card">
+          <input type="radio" name="plataforma" value="wix" />
+          <span class="platform-name">⬛ Wix</span>
+          <span class="platform-desc">Site Builder</span>
+        </label>
+        
+        <label class="platform-card">
+          <input type="radio" name="plataforma" value="api" />
+          <span class="platform-name">⚙️ API Própria</span>
+          <span class="platform-desc">Custom REST</span>
+        </label>
       </div>
-      <div id="chave-api" style="margin-top:1rem; display:none;">
-        <input placeholder="Chave API (se tiver)" style="width:100%; padding:0.8rem; margin:0.5rem 0; border-radius:8px; background:#1e293b; color: white; border: 1px solid #334155;" />
+      
+      <div id="api-config" style="margin-top:1.5rem; display:none;">
+        <div class="field">
+          <label>URL da API</label>
+          <input name="api_url" placeholder="https://api.sualoja.com.br/products" />
+        </div>
+        <div class="field">
+          <label>Chave/Token (se houver)</label>
+          <input name="api_key" placeholder="sk_live_xxxxx" />
+        </div>
       </div>
+      
+      <button type="button" id="btn-step2" class="btn-cta" style="width:100%; margin-top:1.5rem;" disabled>Gerar Código →</button>
     </div>
 
-    <!-- Passo 3: Gerar código -->
-    <div class="passo" style="flex:1; min-width:300px; background:rgba(20,30,50,0.6); border-radius:16px; padding:2rem; border:1px solid #00ff9d; opacity:0.1; transition: opacity 0.3s;">
-      <h3 style="color:#00ff9d;">3. Pronto! Cole no site</h3>
-      <p style="color: #94a3b8;">Seu código:</p>
-      <code id="widget-code" style="background:#0a0e17; padding:1rem; border-radius:8px; display:block; white-space:pre-wrap; color:#00ff9d; font-size:0.9rem; margin:1rem 0; word-break: break-all;">
+    <!-- Passo 3: Código do Widget -->
+    <div class="passo" id="step3" style="flex:1; min-width:350px; max-width:450px; background:rgba(20,30,50,0.6); border-radius:16px; padding:2rem; border:2px solid #00ff9d; opacity:0.1; transition: opacity 0.3s;">
+      <h3 style="color:#00ff9d; font-size:1.5rem; margin-bottom:1rem;">✅ 3. Pronto! Cole no site</h3>
+      
+      <div id="bot-summary" style="background:#0a0e17; padding:1rem; border-radius:8px; margin-bottom:1rem;">
+        <p style="color:#94a3b8; margin:0;"><strong style="color:#00d4ff;">Bot:</strong> <span id="sum-nome">-</span></p>
+        <p style="color:#94a3b8; margin:0;"><strong style="color:#00d4ff;">WhatsApp:</strong> <span id="sum-whatsapp">-</span></p>
+        <p style="color:#94a3b8; margin:0;"><strong style="color:#00d4ff;">Integração:</strong> <span id="sum-plataforma">-</span></p>
+      </div>
+      
+      <p style="color: #94a3b8;">Cole este código antes do <code>&lt;/body&gt;</code>:</p>
+      <code id="widget-code" style="background:#0a0e17; padding:1rem; border-radius:8px; display:block; white-space:pre-wrap; color:#00ff9d; font-size:0.85rem; margin:1rem 0; word-break: break-all; border:1px solid #00ff9d55;">
 &lt;script src="https://getnexo.com.br/widget.js" data-bot="carregando..."&gt;&lt;/script&gt;
       </code>
-      <button onclick="copiar()" class="btn-cta">Copiar código</button>
-      <p style="font-size:0.9rem; color:#666; margin-top:1rem;">Cole antes do &lt;/body&gt;</p>
+      <button onclick="copiar()" class="btn-cta" style="width:100%;">📋 Copiar Código</button>
+      
+      <div style="margin-top:1.5rem; padding:1rem; background:rgba(0,255,157,0.1); border-radius:8px;">
+        <p style="color:#00ff9d; margin:0; font-size:0.9rem;">🎉 <strong>Parabéns!</strong> Seu bot já está ativo. Acesse o <a href="/admin" style="color:#00d4ff;">Painel Admin</a> para gerenciar.</p>
+      </div>
     </div>
 
   </main>
 
   <script is:inline>
-    let botId = '';
+    let botData = {};
+    
+    // Step 1 Submit
     document.getElementById('form1').onsubmit = (e) => {
       e.preventDefault();
       const form = new FormData(e.target);
-      const nome = form.get('nome');
-      // Simple ID generation
-      botId = 'bot_' + Date.now();
+      botData = {
+        nome: form.get('nome'),
+        whatsapp: form.get('whatsapp'),
+        email: form.get('email'),
+        site: form.get('site'),
+        segmento: form.get('segmento'),
+        mensagem: form.get('mensagem')
+      };
       
-      const codeBlock = document.getElementById('widget-code');
-      // We use the localhost URL for the demo environment, but in prod it would be the domain
-      const scriptUrl = window.location.hostname === 'localhost' ? 'http://localhost:8080/widget.js' : 'https://getnexo.com.br/widget.js';
-      
-      codeBlock.textContent = `<script src="${scriptUrl}" data-bot="${botId}" data-theme="neon"><\/script>`;
-      
-      document.querySelector('.passo:nth-child(2)').style.opacity = 1;
-      document.querySelector('.passo:nth-child(3)').style.opacity = 1;
+      document.getElementById('step2').style.opacity = 1;
+      document.getElementById('btn-step2').disabled = false;
+      document.getElementById('step1').style.border = '1px solid #00ff9d';
     };
-
-    document.querySelectorAll('input[type=radio]').forEach(el => {
-      el.onchange = () => {
-        document.getElementById('chave-api').style.display = 'block';
+    
+    // Platform selection
+    document.querySelectorAll('input[name="plataforma"]').forEach(el => {
+      el.onchange = (e) => {
+        const apiConfig = document.getElementById('api-config');
+        if (e.target.value === 'api') {
+          apiConfig.style.display = 'block';
+        } else {
+          apiConfig.style.display = 'none';
+        }
       };
     });
-
+    
+    // Step 2 Submit
+    document.getElementById('btn-step2').onclick = () => {
+      const plataforma = document.querySelector('input[name="plataforma"]:checked').value;
+      botData.plataforma = plataforma;
+      
+      // Generate bot ID
+      const botId = 'bot_' + Date.now();
+      botData.id = botId;
+      
+      // Update summary
+      document.getElementById('sum-nome').textContent = botData.nome;
+      document.getElementById('sum-whatsapp').textContent = botData.whatsapp;
+      document.getElementById('sum-plataforma').textContent = plataforma === 'nenhuma' ? 'Sem integração' : plataforma.toUpperCase();
+      
+      // Generate widget code
+      const scriptUrl = window.location.hostname === 'localhost' 
+        ? 'http://localhost:8080/widget.js' 
+        : 'https://getnexo.com.br/widget.js';
+      
+      document.getElementById('widget-code').textContent = 
+        `<script src="${scriptUrl}" data-bot="${botId}" data-theme="neon"><\/script>`;
+      
+      // Show step 3
+      document.getElementById('step3').style.opacity = 1;
+      document.getElementById('step2').style.border = '1px solid #00ff9d';
+      
+      // Scroll to step 3
+      document.getElementById('step3').scrollIntoView({ behavior: 'smooth' });
+    };
+    
+    // Copy function
     window.copiar = function() {
       const code = document.getElementById('widget-code');
       navigator.clipboard.writeText(code.textContent).then(() => {
-        alert('✅ Código copiado!');
+        alert('✅ Código copiado! Cole antes do </body> no seu site.');
       });
     }
   </script>
 </Layout>
 
 <style>
-  .btn-cta { background: linear-gradient(90deg, #00d4ff, #00ff9d); color: black; padding: .8rem 2rem; border: none; border-radius: 50px; font-weight: 700; cursor: pointer; transition: transform 0.2s; }
+  .btn-cta { 
+    background: linear-gradient(90deg, #00d4ff, #00ff9d); 
+    color: black; 
+    padding: .8rem 2rem; 
+    border: none; 
+    border-radius: 50px; 
+    font-weight: 700; 
+    cursor: pointer; 
+    transition: transform 0.2s; 
+  }
   .btn-cta:hover { transform: scale(1.05); }
+  .btn-cta:disabled { opacity: 0.5; cursor: not-allowed; transform: none; }
+  
+  .field { margin-bottom: 1rem; }
+  .field label { 
+    display: block; 
+    color: #94a3b8; 
+    font-size: 0.9rem; 
+    margin-bottom: 0.3rem; 
+  }
+  .field input, .field select, .field textarea { 
+    width: 100%; 
+    padding: 0.8rem; 
+    border-radius: 8px; 
+    background: #1e293b; 
+    color: white; 
+    border: 1px solid #334155; 
+    font-size: 1rem;
+  }
+  .field input:focus, .field select:focus, .field textarea:focus { 
+    outline: none; 
+    border-color: #00d4ff; 
+  }
+  
+  .platforms-grid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 0.8rem;
+  }
+  
+  .platform-card {
+    display: flex;
+    flex-direction: column;
+    padding: 0.8rem;
+    background: #1e293b;
+    border: 1px solid #334155;
+    border-radius: 8px;
+    cursor: pointer;
+    transition: all 0.2s;
+  }
+  .platform-card:hover {
+    border-color: #00d4ff;
+  }
+  .platform-card input[type="radio"] {
+    display: none;
+  }
+  .platform-card input[type="radio"]:checked + .platform-name {
+    color: #00ff9d;
+  }
+  .platform-card:has(input:checked) {
+    border-color: #00ff9d;
+    background: rgba(0,255,157,0.1);
+  }
+  .platform-name {
+    font-weight: 600;
+    color: #e5e7eb;
+    font-size: 0.95rem;
+  }
+  .platform-desc {
+    font-size: 0.75rem;
+    color: #64748b;
+  }
+  
+  @media (max-width: 768px) {
+    .platforms-grid {
+      grid-template-columns: 1fr;
+    }
+  }
 </style>
