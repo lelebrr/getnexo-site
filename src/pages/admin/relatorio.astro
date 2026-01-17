@@ -43,7 +43,7 @@ import Layout from '../../layouts/Layout.astro';
 
   <script is:inline>
     // Fetch Data on Load
-    fetch('http://localhost:3006/api/relatorio')
+    fetch('https://api.getnexo.com.br/api/relatorio')
         .then(r => r.json())
         .then(data => {
             document.getElementById('loading').style.display = 'none';
