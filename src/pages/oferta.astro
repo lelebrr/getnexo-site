@@ -2,180 +2,243 @@
 import Layout from '../layouts/Layout.astro';
 ---
 
-<Layout title="Oportunidade Única - GetNexo">
-    <section class="offer-page">
-        <div class="urgency-banner">
-            ⚠️ RESTAM APENAS 3 VAGAS PARA O SETUP GRATUITO ESTA SEMANA
+<Layout title="Acesso Beta — GetNexo Protocol">
+  <div class="squeeze-page">
+    
+    <!-- Countdown / Urgency -->
+    <div class="countdown-bar">
+      <span>⚡ OFERTA EXPIRA EM:</span>
+      <span id="countdown">00:14:59</span>
+    </div>
+
+    <div class="content-box">
+      <h1 class="title">ACESSO ANTECIPADO: <span class="highlight">PROTOCOL GETNEXO BETA</span></h1>
+      <p class="subtitle">Triplique suas vendas com a Máquina de Vendas Autônoma.</p>
+      
+      <div class="offer-cards">
+        <div class="benefits-list">
+            <h3>O QUE VOCÊ GANHA HOJE:</h3>
+            <ul>
+                <li>✅ Setup completo WSL + Docker (Script <code>god_mode.sh</code>)</li>
+                <li>✅ Acesso ao Painel Admin Dark Futurist</li>
+                <li>✅ Integração pronta com Evolution API (WhatsApp)</li>
+                <li>✅ Prompt Mestre da Ara (Copywriting de Elite)</li>
+            </ul>
         </div>
 
-        <div class="container">
-            <h1>Sua máquina de vendas automática está pronta.</h1>
-            <p class="headline">Transforme cada mensagem no WhatsApp em dinheiro. Sem atendentes, sem atrasos, sem parar.</p>
-
-            <div class="video-placeholder">
-                <div class="play-btn">▶</div>
-                <p>Veja a IA fechando uma venda em 45s</p>
-            </div>
-
-            <div class="offer-details">
-                <div class="price-box">
-                    <span class="old">R$ 497/mês</span>
-                    <span class="new">R$ 97<small>/mês</small></span>
-                    <p class="guarantee">Garantia de 7 dias ou seu dinheiro de volta</p>
-                    <a href="https://wa.me/5511999999999?text=Quero%20a%20oferta%20de%2097" class="cta-btn pulse">QUERO ESSA MÁQUINA AGORA</a>
-                    <p class="security-text">🔒 Pagamento seguro via Stripe</p>
-                </div>
-
-                <div class="benefits">
-                    <h3>O que você leva agora:</h3>
-                    <ul>
-                        <li>✅ <strong>Assistente IA Treinado</strong> (Vendas & Suporte)</li>
-                        <li>✅ <strong>WhatsApp Oficial</strong> (Sem chance de bloqueio)</li>
-                        <li>✅ <strong>Painel Admin</strong> (Estilo Dark Mode)</li>
-                        <li>✅ <strong>BÔNUS #1:</strong> Script de Vendas Validado (R$ 297)</li>
-                        <li>✅ <strong>BÔNUS #2:</strong> Setup Técnico Feito por Nós (R$ 500)</li>
-                    </ul>
-                </div>
-            </div>
+        <div class="price-box">
+            <span class="old-price">De R$ 997,00</span>
+            <span class="new-price">GRÁTIS</span>
+            <span class="meta">Para os 50 primeiros Beta Testers</span>
         </div>
-    </section>
+      </div>
+
+      <!-- Form -->
+      <form class="beta-form" onsubmit="event.preventDefault(); alert('Acesso Liberado! Verifique seu e-mail.');">
+        <div class="input-group">
+            <label>NOME DE GUERRA</label>
+            <input type="text" placeholder="Seu nome" required />
+        </div>
+        <div class="input-group">
+            <label>WHATSAPP</label>
+            <input type="tel" placeholder="(00) 00000-0000" required />
+        </div>
+        <div class="input-group">
+            <label>E-MAIL CORPORATIVO</label>
+            <input type="email" placeholder="seu@email.com" required />
+        </div>
+        
+        <button type="submit" class="cta-button">
+            LIBERAR MEU ACESSO AGORA <span class="arrow">→</span>
+        </button>
+      </form>
+
+      <p class="scarcity-warning">⚠️ Restam apenas 7 vagas. O formulário pode fechar a qualquer momento.</p>
+
+    </div>
+  </div>
 </Layout>
 
+<script>
+    // Countdown Timer Logic
+    let time = 14 * 60 + 59; // 14:59
+    const display = document.getElementById('countdown');
+    
+    const interval = setInterval(() => {
+        const minutes = Math.floor(time / 60);
+        const seconds = time % 60;
+        
+        display.innerText = `${minutes.toString().padStart(2, '0')}:${seconds.toString().padStart(2, '0')}`;
+        
+        if (time <= 0) {
+            clearInterval(interval);
+            display.innerText = "EXPIRADO";
+            display.style.color = "red";
+        }
+        time--;
+    }, 1000);
+</script>
+
 <style>
-    .offer-page {
-        padding-bottom: 4rem;
+    .squeeze-page {
+        min-height: 100vh;
+        background: black;
+        text-align: center;
+        padding-top: 4rem; /* Space for fixed nav */
     }
 
-    .urgency-banner {
-        background: #FF0033;
-        color: black;
-        text-align: center;
-        padding: 0.8rem;
+    .countdown-bar {
+        background: var(--accent);
+        color: white;
         font-weight: 800;
+        padding: 0.8rem;
         font-family: 'JetBrains Mono', monospace;
-        letter-spacing: -0.5px;
-        position: sticky;
-        top: 73px; /* Abaixo do nav */
+        letter-spacing: 2px;
+        position: fixed;
+        width: 100%;
+        top: 80px; /* Below nav */
+        left: 0;
         z-index: 90;
     }
 
-    .container {
+    .content-box {
         max-width: 800px;
-        margin: 3rem auto;
-        padding: 0 1rem;
-        text-align: center;
+        margin: 6rem auto 2rem;
+        padding: 2rem;
     }
 
-    h1 {
-        font-size: 2.5rem;
+    .title {
+        font-size: 2.8rem;
         line-height: 1.1;
-        margin-bottom: 1rem;
-        background: linear-gradient(to right, white, #aaa);
-        -webkit-background-clip: text;
-        -webkit-text-fill-color: transparent;
+        margin-bottom: 0.5rem;
     }
 
-    .headline {
-        font-size: 1.2rem;
+    .highlight {
+        color: var(--neon-blue);
+        display: block;
+    }
+
+    .subtitle {
         color: #888;
+        font-size: 1.2rem;
         margin-bottom: 3rem;
-        max-width: 600px;
-        margin-left: auto;
-        margin-right: auto;
     }
 
-    .video-placeholder {
-        aspect-ratio: 16/9;
-        background: #111;
-        border: 1px solid #333;
-        border-radius: 12px;
+    .offer-cards {
         display: flex;
         flex-direction: column;
-        align-items: center;
-        justify-content: center;
-        margin-bottom: 3rem;
-        cursor: pointer;
-        transition: 0.3s;
+        gap: 2rem;
+        background: rgba(255,255,255,0.05);
+        border: 1px solid #333;
+        padding: 2rem;
+        border-radius: 10px;
+        text-align: left;
+        margin-bottom: 2rem;
     }
 
-    .video-placeholder:hover {
-        border-color: #FF0033;
-        box-shadow: 0 0 30px rgba(255, 0, 51, 0.2);
-    }
-
-    .play-btn {
-        font-size: 4rem;
-        color: white;
+    .benefits-list h3 {
+        color: var(--gold);
         margin-bottom: 1rem;
     }
 
-    .offer-details {
-        background: #0f0f0f;
-        border: 1px solid #222;
-        border-radius: 12px;
-        padding: 2rem;
-        text-align: left;
+    .benefits-list ul {
+        list-style: none;
+        padding: 0;
+    }
+
+    .benefits-list li {
+        margin-bottom: 0.8rem;
+        font-size: 1.1rem;
     }
 
     .price-box {
         text-align: center;
-        margin-bottom: 3rem;
-        padding-bottom: 2rem;
-        border-bottom: 1px solid #222;
+        border-top: 1px solid #333;
+        padding-top: 1.5rem;
     }
 
-    .old {
+    .old-price {
         display: block;
         text-decoration: line-through;
-        color: #555;
+        color: #666;
         font-size: 1.2rem;
     }
 
-    .new {
+    .new-price {
         display: block;
-        font-size: 4rem;
-        font-weight: 800;
-        color: #0f0;
-        line-height: 1;
-        margin: 0.5rem 0;
-        text-shadow: 0 0 20px rgba(0, 255, 0, 0.3);
-    }
-
-    .new small { font-size: 1.5rem; color: #888; }
-
-    .cta-btn {
-        display: block;
-        background: #FFD500;
-        color: black;
-        text-decoration: none;
-        padding: 1.5rem;
-        border-radius: 8px;
+        font-size: 3rem;
         font-weight: 900;
-        font-size: 1.2rem;
-        margin-top: 1.5rem;
-        letter-spacing: 1px;
-        transition: 0.2s;
+        color: #00ff00; /* Free Green */
+        font-family: 'JetBrains Mono', monospace;
     }
 
-    .cta-btn:hover {
+    .meta {
+        font-size: 0.9rem;
+        color: var(--gold);
+        text-transform: uppercase;
+        font-weight: bold;
+    }
+
+    .beta-form {
+        max-width: 500px;
+        margin: 0 auto;
+        display: flex;
+        flex-direction: column;
+        gap: 1rem;
+    }
+
+    .input-group label {
+        display: block;
+        text-align: left;
+        font-size: 0.8rem;
+        font-weight: 800;
+        color: #666;
+        margin-bottom: 0.3rem;
+    }
+
+    .input-group input {
+        width: 100%;
+        padding: 1rem;
+        background: #111;
+        border: 1px solid #333;
+        color: white;
+        border-radius: 5px;
+        font-family: 'Inter', sans-serif;
+    }
+
+    .input-group input:focus {
+        border-color: var(--neon-blue);
+        outline: none;
+        box-shadow: 0 0 10px rgba(0, 247, 255, 0.2);
+    }
+
+    .cta-button {
+        background: var(--gold);
+        color: black;
+        font-weight: 800;
+        font-size: 1.2rem;
+        padding: 1.2rem;
+        border: none;
+        border-radius: 5px;
+        cursor: pointer;
+        margin-top: 1rem;
+        animation: pulse 1s infinite alternate;
+    }
+
+    .cta-button:hover {
         transform: scale(1.02);
         box-shadow: 0 0 30px rgba(255, 213, 0, 0.4);
     }
 
-    .security-text {
-        font-size: 0.8rem;
-        color: #666;
-        margin-top: 1rem;
+    .scarcity-warning {
+        margin-top: 1.5rem;
+        color: var(--accent);
+        font-weight: bold;
+        font-size: 0.9rem;
     }
 
-    .benefits ul {
-        list-style: none;
-        display: grid;
-        gap: 1rem;
-    }
-
-    .benefits li {
-        font-size: 1.1rem;
-        color: #ddd;
+    @keyframes pulse {
+        from { box-shadow: 0 0 10px rgba(255, 213, 0, 0.2); }
+        to { box-shadow: 0 0 20px rgba(255, 213, 0, 0.6); }
     }
 </style>

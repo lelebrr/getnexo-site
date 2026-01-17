@@ -2,10 +2,153 @@
 import Layout from '../layouts/Layout.astro';
 ---
 
-<Layout title="API — GetNexo">
-  <h1>API GetNexo</h1>
-  <p>Documentação em construção.</p>
-  <p>Endpoint principal: <code>https://api.getnexo.com.br/status</code></p>
-  <p>Em 1 minuto, isso vira real com o túnel do Cloudflare.</p>
-  <p><a href="/">← Voltar</a></p>
+<Layout title="Developer Hub — GetNexo API">
+    <div class="api-page">
+        <header>
+            <div class="badge">V 2.0</div>
+            <h1>GETNEXO <span class="highlight">DEVELOPER HUB</span></h1>
+            <p class="lead">Controle sua máquina de vendas via código. RESTful. Documentada. Rápida.</p>
+        </header>
+
+        <div class="container">
+            <div class="endpoint-list">
+                <!-- Endpoint 1 -->
+                <div class="endpoint">
+                    <div class="method get">GET</div>
+                    <div class="url">/api/status</div>
+                    <p class="desc">Retorna a saúde dos serviços (Postgres, Redis, n8n).</p>
+                </div>
+
+                <!-- Endpoint 2 -->
+                <div class="endpoint">
+                    <div class="method post">POST</div>
+                    <div class="url">/api/chat/send</div>
+                    <p class="desc">Dispara mensagem via Evolution API (WhatsApp).</p>
+                </div>
+
+                <!-- Endpoint 3 -->
+                <div class="endpoint">
+                    <div class="method post">POST</div>
+                    <div class="url">/api/kira/plan</div>
+                    <p class="desc">Solicita nova estratégia de vendas para a IA Kira.</p>
+                </div>
+
+                <!-- Endpoint 4 -->
+                <div class="endpoint">
+                    <div class="method get">GET</div>
+                    <div class="url">/api/metrics</div>
+                    <p class="desc">Extrai dados brutos de vendas para BI/Dashboard.</p>
+                </div>
+            </div>
+
+            <div class="code-block">
+                <pre><code>curl -X GET https://api.getnexo.com.br/api/status \
+  -H "Authorization: Bearer YOUR_API_KEY"</code></pre>
+            </div>
+            
+            <p class="note">Consulte o painel Admin para gerar suas chaves de acesso.</p>
+        </div>
+    </div>
 </Layout>
+
+<style>
+    .api-page {
+        padding: 4rem 1rem;
+        background: #050505;
+        min-height: 100vh;
+    }
+
+    header {
+        text-align: center;
+        margin-bottom: 4rem;
+    }
+
+    .badge {
+        display: inline-block;
+        background: #222;
+        color: white;
+        padding: 0.2rem 0.6rem;
+        border-radius: 4px;
+        font-family: 'JetBrains Mono', monospace;
+        font-size: 0.8rem;
+        margin-bottom: 1rem;
+    }
+
+    h1 {
+        font-size: 3rem;
+        margin-bottom: 1rem;
+    }
+
+    .highlight {
+        color: var(--neon-blue);
+    }
+
+    .lead {
+        font-size: 1.2rem;
+        color: #888;
+        font-family: 'JetBrains Mono', monospace;
+    }
+
+    .container {
+        max-width: 800px;
+        margin: 0 auto;
+    }
+
+    .endpoint-list {
+        display: flex;
+        flex-direction: column;
+        gap: 1rem;
+        margin-bottom: 3rem;
+    }
+
+    .endpoint {
+        display: flex;
+        align-items: center;
+        background: #111;
+        border: 1px solid #222;
+        padding: 1rem;
+        border-radius: 6px;
+        font-family: 'JetBrains Mono', monospace;
+    }
+
+    .method {
+        font-weight: bold;
+        padding: 0.2rem 0.5rem;
+        border-radius: 4px;
+        margin-right: 1rem;
+        font-size: 0.9rem;
+    }
+
+    .method.get { background: rgba(0, 255, 0, 0.2); color: #00ff00; }
+    .method.post { background: rgba(255, 213, 0, 0.2); color: var(--gold); }
+
+    .url {
+        color: white;
+        margin-right: auto;
+    }
+
+    .desc {
+        color: #666;
+        font-size: 0.85rem;
+    }
+
+    .code-block {
+        background: #000;
+        border: 1px solid #333;
+        padding: 1.5rem;
+        border-radius: 8px;
+        overflow-x: auto;
+    }
+
+    code {
+        font-family: 'JetBrains Mono', monospace;
+        color: #ccc;
+    }
+
+    .note {
+        text-align: center;
+        margin-top: 2rem;
+        color: #555;
+        font-size: 0.9rem;
+    }
+</style>

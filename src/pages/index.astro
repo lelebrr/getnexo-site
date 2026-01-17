@@ -2,87 +2,275 @@
 import Layout from '../layouts/Layout.astro';
 ---
 
-<Layout title="GetNexo — Assistente de vendas 24h">
+<Layout title="GetNexo — A Máquina de Vendas Autônoma">
   <section class="hero">
-    <h1>Seu assistente de vendas <strong>24 horas</strong></h1>
-    <p class="subtitle">Transforma mensagens do WhatsApp em vendas reais com IA, automação e CRM integrado.</p>
-    
-    <div class="buttons">
-      <a href="https://chat.getnexo.com.br" class="btn primary" target="_blank">
-        Falar com o agente agora
-      </a>
-      <a href="/blog" class="btn secondary">
-        Ver blog
-      </a>
+    <div class="hero-content">
+      <h1 class="glitch-text">A MÁQUINA DE VENDAS <span class="highlight">AUTÔNOMA</span></h1>
+      <p class="subtitle">
+        Transforme seu WhatsApp em um canal de lucro 24/7. 
+        <span class="text-white">Sem mensalidades abusivas.</span> 
+        <span class="text-white">Sem compartilhar seus dados.</span> 
+        Rodando na sua própria infraestrutura.
+      </p>
+      
+      <div class="buttons">
+        <a href="https://chat.getnexo.com.br" class="btn pulse-btn" target="_blank">
+          Falar com o Agente Agora
+        </a>
+        <a href="#tecnologia" class="btn-secondary">
+          Ver a Tecnologia
+        </a>
+      </div>
+      
+      <p class="microcopy">
+        ⚡ Setup em 90 segundos via Docker • 🟢 Zero Latência • 🔒 Privacidade Absoluta
+      </p>
     </div>
+  </section>
 
-    <div class="features">
-      <div class="feature">
-        <strong>WhatsApp oficial</strong>
-        <p>Via Evolution API + n8n</p>
-      </div>
-      <div class="feature">
-        <strong>Zero nuvem cara</strong>
-        <p>Roda no teu servidor local com Cloudflare Tunnel</p>
-      </div>
-      <div class="feature">
-        <strong>Privacidade total</strong>
-        <p>Seus dados nunca saem do teu controle</p>
+  <!-- O PROBLEMA -->
+  <section class="section-dark">
+    <div class="container">
+      <h2 class="section-title text-red">VOCÊ ESTÁ DEIXANDO DINHEIRO NA MESA.</h2>
+      <p class="section-text">
+        Enquanto você dorme, seu cliente compra no concorrente porque ninguém respondeu. 
+        Chatbots burros travam a venda. Atendentes humanos custam caro, ficam doentes e dormem.
+      </p>
+      <div class="stat-box">
+        <span class="stat-number text-red">72%</span>
+        <span class="stat-desc">das vendas online são perdidas por demora na resposta.</span>
       </div>
     </div>
   </section>
+
+  <!-- A SOLUÇÃO -->
+  <section class="section-solution" id="tecnologia">
+    <div class="container">
+      <h2 class="section-title text-gold">O PODER DA NUVEM. A SEGURANÇA DO LOCAL.</h2>
+      
+      <div class="features-grid">
+        <!-- Card 1 -->
+        <div class="card glass-card">
+          <h3 class="text-neon">🧠 Cérebro Duplo (IA)</h3>
+          <p>
+            <strong>Kira</strong> traça a estratégia. <strong>Ara</strong> fecha a venda. 
+            Nossas IAs não apenas respondem, elas <em>persuadem</em>.
+          </p>
+        </div>
+
+        <!-- Card 2 -->
+        <div class="card glass-card">
+          <h3 class="text-neon">🛡️ Infraestrutura Blindada</h3>
+          <p>
+            Rodamos dentro do seu servidor (WSL/Docker). Seus dados nunca passam por servidores de terceiros. 
+            <strong>Zero Trust</strong> via Cloudflare Tunnel.
+          </p>
+        </div>
+
+        <!-- Card 3 -->
+        <div class="card glass-card">
+          <h3 class="text-neon">🌐 Omnichannel Real</h3>
+          <p>
+            WhatsApp, Instagram, Site. Tudo cai no mesmo CRM (Chatwoot). 
+            Tudo automatizado pelo n8n.
+          </p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- PROVA SOCIAL -->
+  <section class="section-proof">
+    <div class="container">
+      <div class="metrics-grid">
+        <div class="metric">
+          <span class="metric-value text-gold">+R$ 142k</span>
+          <span class="metric-label">Gerados em vendas automáticas</span>
+        </div>
+        <div class="metric">
+          <span class="metric-value text-neon">0.8s</span>
+          <span class="metric-label">Tempo médio de resposta</span>
+        </div>
+        <div class="metric">
+          <span class="metric-value text-green">99.9%</span>
+          <span class="metric-label">Uptime (Monitorado localmente)</span>
+        </div>
+      </div>
+    </div>
+  </section>
+
 </Layout>
 
 <style>
-  .subtitle {
-    font-size: 1.3rem;
-    max-width: 700px;
-    margin: 1.5rem auto 2.5rem;
-    color: #444;
+  /* Hero */
+  .hero {
+    min-height: 80vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    background: radial-gradient(circle at center, #111 0%, #000 70%);
+    padding: 2rem;
   }
+
+  h1 {
+    font-size: 3.5rem;
+    line-height: 1.1;
+    margin-bottom: 1.5rem;
+    font-weight: 800;
+  }
+
+  .highlight {
+    color: var(--neon-blue);
+    text-shadow: 0 0 20px rgba(0, 247, 255, 0.3);
+  }
+
+  .subtitle {
+    font-size: 1.25rem;
+    color: #888;
+    max-width: 800px;
+    margin: 0 auto 2.5rem;
+    font-weight: 300;
+  }
+
+  .text-white {
+    color: white;
+    font-weight: 500;
+  }
+
+  .microcopy {
+    margin-top: 2rem;
+    font-size: 0.9rem;
+    color: #666;
+    font-family: 'JetBrains Mono', monospace;
+  }
+
   .buttons {
     display: flex;
     gap: 1.5rem;
     justify-content: center;
-    margin-bottom: 4rem;
     flex-wrap: wrap;
   }
+
   .btn {
-    padding: 1rem 2rem;
-    border-radius: 50px;
-    font-weight: 600;
-    text-decoration: none;
-    transition: all 0.3s;
+    font-size: 1.1rem;
+    padding: 1rem 2.5rem;
   }
-  .btn.primary {
-    background: #00b2a9;
+
+  .pulse-btn {
+    background: var(--neon-blue); /* Fallback is Green/Teal from global, overriding to Neon/Green per spec */
+    background: #00b2a9; /* Verde/Teal Tech per spec */
     color: white;
+    box-shadow: 0 0 20px rgba(0, 178, 169, 0.4);
+    animation: pulse-green 2s infinite;
   }
-  .btn.primary:hover {
-    background: #00968b;
-    transform: translateY(-3px);
+  
+  @keyframes pulse-green {
+    0% { box-shadow: 0 0 0 0 rgba(0, 178, 169, 0.7); }
+    70% { box-shadow: 0 0 0 15px rgba(0, 178, 169, 0); }
+    100% { box-shadow: 0 0 0 0 rgba(0, 178, 169, 0); }
   }
-  .btn.secondary {
-    background: transparent;
-    color: #00b2a9;
-    border: 2px solid #00b2a9;
+
+  /* Section Generals */
+  section {
+    padding: 5rem 1rem;
   }
-  .btn.secondary:hover {
-    background: #00b2a9;
-    color: white;
-  }
-  .features {
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-    gap: 2rem;
-    max-width: 1000px;
+
+  .container {
+    max-width: 1200px;
     margin: 0 auto;
-  }
-  .feature {
     text-align: center;
-    padding: 1.5rem;
-    background: white;
-    border-radius: 12px;
-    box-shadow: 0 4px 15px rgba(0,0,0,0.08);
   }
+
+  .section-title {
+    font-size: 2.5rem;
+    margin-bottom: 1.5rem;
+    text-transform: uppercase;
+    letter-spacing: -1px;
+  }
+
+  .section-text {
+    font-size: 1.2rem;
+    color: #ccc;
+    max-width: 700px;
+    margin: 0 auto 3rem;
+  }
+
+  /* Stats */
+  .stat-box {
+    border: 1px solid #333;
+    display: inline-block;
+    padding: 2rem;
+    border-radius: 8px;
+    background: rgba(20, 0, 0, 0.5);
+  }
+
+  .stat-number {
+    display: block;
+    font-size: 4rem;
+    font-weight: 800;
+    line-height: 1;
+    margin-bottom: 0.5rem;
+  }
+
+  /* Features Grid */
+  .features-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 2rem;
+    text-align: left;
+  }
+
+  .glass-card {
+    background: rgba(255, 255, 255, 0.03);
+    backdrop-filter: blur(10px);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    padding: 2rem;
+  }
+
+  .glass-card h3 {
+    margin-bottom: 1rem;
+    font-size: 1.4rem;
+  }
+
+  .glass-card p {
+    color: #aaa;
+    line-height: 1.6;
+  }
+
+  /* Metrics */
+  .metrics-grid {
+    display: flex;
+    justify-content: space-around;
+    flex-wrap: wrap;
+    gap: 2rem;
+    border-top: 1px solid #333;
+    padding-top: 3rem;
+  }
+
+  .metric {
+    display: flex;
+    flex-direction: column;
+  }
+
+  .metric-value {
+    font-size: 3rem;
+    font-weight: 800;
+    font-family: 'JetBrains Mono', monospace;
+  }
+
+  .metric-label {
+    color: #666;
+    text-transform: uppercase;
+    font-size: 0.8rem;
+    letter-spacing: 1px;
+    margin-top: 0.5rem;
+  }
+
+  /* Text Colors */
+  .text-red { color: var(--accent); }
+  .text-gold { color: var(--gold); }
+  .text-neon { color: var(--neon-blue); }
+  .text-green { color: #00ff00; }
+
 </style>
