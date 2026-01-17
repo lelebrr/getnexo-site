@@ -56,6 +56,14 @@ const currentPath = Astro.url.pathname;
             border:1px solid rgba(0,212,255,0.1);
         }
     </style>
+    <!-- Google Analytics 4 -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-F8P994EX00"></script>
+    <script is:inline>
+      window.dataLayer = window.dataLayer || [];
+      function gtag(){dataLayer.push(arguments);}
+      gtag('js', new Date());
+      gtag('config', 'G-F8P994EX00');
+    </script>
 </head>
 <body>
   <div style="display:flex; flex-direction:column; min-height:100vh;">
