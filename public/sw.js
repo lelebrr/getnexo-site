@@ -1,42 +1,68 @@
-importScripts('https://storage.googleapis.com/workbox-cdn/releases/6.5.4/workbox-sw.js');
+// GetNexo Service Worker - Offline Support
+const CACHE_NAME = 'getnexo-v2';
+const OFFLINE_URL = '/offline.html';
 
-workbox.routing.registerRoute(
-    ({ request }) => request.destination === 'image',
-    new workbox.strategies.CacheFirst({
-        cacheName: 'static-assets'
-    })
-);
-
-const CACHE_NAME = 'jetnexo-v1';
-const ASSETS = [
+const STATIC_ASSETS = [
     '/',
-    '/index.html',
-    '/assets/vendor.css',
-    '/assets/critical.css',
-    '/fonts/inter.woff2'
+    '/faq',
+    '/precos',
+    '/sobre',
+    '/contato',
+    '/blog',
+    '/como-funciona',
+    '/offline.html'
 ];
 
-// Offline-First Logic
-self.addEventListener('install', (e) => {
-    e.waitUntil(caches.open(CACHE_NAME).then(cache => cache.addAll(ASSETS)));
+// Install event - cache static assets
+self.addEventListener('install', (event) => {
+    event.waitUntil(
+        caches.open(CACHE_NAME).then((cache) => {
+            return cache.addAll(STATIC_ASSETS);
+        })
+    );
+    self.skipWaiting();
 });
 
-self.addEventListener('fetch', (e) => {
-    // Cache Strategies
-    // 1. API: Network First, Fallback to Cache (Stale-While-Revalidate logic)
-    if (e.request.url.includes('/api/')) {
-        e.respondWith(
-            fetch(e.request).then(res => {
-                const clone = res.clone();
-                caches.open(CACHE_NAME).then(cache => cache.put(e.request, clone));
-                return res;
-            }).catch(() => caches.match(e.request))
+// Activate event - clean old caches
+self.addEventListener('activate', (event) => {
+    event.waitUntil(
+        caches.keys().then((keys) => {
+            return Promise.all(
+                keys
+                    .filter((key) => key !== CACHE_NAME)
+                    .map((key) => caches.delete(key))
+            );
+        })
+    );
+    self.clients.claim();
+});
+
+// Fetch event - serve from cache, fallback to network
+self.addEventListener('fetch', (event) => {
+    if (event.request.mode === 'navigate') {
+        event.respondWith(
+            fetch(event.request).catch(() => {
+                return caches.match(OFFLINE_URL);
+            })
         );
         return;
     }
 
-    // 2. Static: Cache First
-    e.respondWith(
-        caches.match(e.request).then((res) => res || fetch(e.request))
+    event.respondWith(
+        caches.match(event.request).then((cachedResponse) => {
+            if (cachedResponse) {
+                return cachedResponse;
+            }
+            return fetch(event.request).then((networkResponse) => {
+                // Cache successful responses
+                if (networkResponse.ok && event.request.method === 'GET') {
+                    const responseClone = networkResponse.clone();
+                    caches.open(CACHE_NAME).then((cache) => {
+                        cache.put(event.request, responseClone);
+                    });
+                }
+                return networkResponse;
+            });
+        })
     );
 });

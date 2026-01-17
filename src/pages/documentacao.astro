@@ -1,0 +1,317 @@
+---
+import Layout from '../layouts/Layout.astro';
+---
+
+<Layout title="Documentação Técnica – Guia de Instalação | GetNexo">
+  <section class="hero">
+    <h1>Documentação Técnica</h1>
+    <p>Guia completo de instalação e configuração do GetNexo</p>
+  </section>
+
+  <nav class="docs-nav">
+    <a href="#requisitos">Requisitos</a>
+    <a href="#instalacao">Instalação</a>
+    <a href="#configuracao">Configuração</a>
+    <a href="#whatsapp">WhatsApp</a>
+    <a href="#n8n">Automações</a>
+    <a href="#troubleshooting">Problemas</a>
+  </nav>
+
+  <section class="docs-content">
+    <article id="requisitos" class="doc-section">
+      <h2>📋 Requisitos do Sistema</h2>
+      <div class="requirements-grid">
+        <div class="req-card">
+          <h3>Hardware Mínimo</h3>
+          <ul>
+            <li>CPU: 2 cores (x64)</li>
+            <li>RAM: 8GB</li>
+            <li>Disco: 20GB SSD</li>
+            <li>Internet: 10 Mbps</li>
+          </ul>
+        </div>
+        <div class="req-card">
+          <h3>Software</h3>
+          <ul>
+            <li>Windows 10/11 com WSL2</li>
+            <li>OU Linux (Ubuntu 22.04+)</li>
+            <li>Docker + Docker Compose</li>
+            <li>Conta Cloudflare (grátis)</li>
+          </ul>
+        </div>
+        <div class="req-card">
+          <h3>Serviços</h3>
+          <ul>
+            <li>Número WhatsApp dedicado</li>
+            <li>Domínio próprio (opcional)</li>
+            <li>Conta GitHub (opcional)</li>
+          </ul>
+        </div>
+      </div>
+    </article>
+
+    <article id="instalacao" class="doc-section">
+      <h2>🚀 Instalação Rápida (10 min)</h2>
+      <div class="code-block">
+        <div class="code-header">Terminal (WSL ou Linux)</div>
+        <pre><code># 1. Clone o repositório
+git clone https://github.com/getnexo/stack.git
+cd stack
+
+# 2. Configure as variáveis de ambiente
+cp .env.example .env
+nano .env  # Edite com suas credenciais
+
+# 3. Inicie todos os serviços
+docker compose up -d
+
+# 4. Verifique se está rodando
+docker compose ps</code></pre>
+      </div>
+      <p class="note">💡 Após esses comandos, os serviços estarão rodando em localhost nas portas configuradas.</p>
+    </article>
+
+    <article id="configuracao" class="doc-section">
+      <h2>⚙️ Configuração do Cloudflare Tunnel</h2>
+      <ol class="steps-list">
+        <li>
+          <h4>Crie uma conta no Cloudflare</h4>
+          <p>Acesse <a href="https://dash.cloudflare.com" target="_blank">dash.cloudflare.com</a> e crie uma conta gratuita.</p>
+        </li>
+        <li>
+          <h4>Adicione seu domínio</h4>
+          <p>Siga o assistente para adicionar seu domínio e alterar os nameservers no registrador.</p>
+        </li>
+        <li>
+          <h4>Crie um Tunnel</h4>
+          <p>Vá em Zero Trust → Networks → Tunnels → Create Tunnel. Copie o token gerado.</p>
+        </li>
+        <li>
+          <h4>Configure o .env</h4>
+          <p>Cole o token em <code>CLOUDFLARED_TOKEN</code> no seu arquivo <code>.env</code>.</p>
+        </li>
+        <li>
+          <h4>Configure os hostnames</h4>
+          <p>No painel do Tunnel, adicione Public Hostnames apontando para os serviços locais (ex: chat.seudominio.com → http://172.18.0.1:3000).</p>
+        </li>
+      </ol>
+    </article>
+
+    <article id="whatsapp" class="doc-section">
+      <h2>📱 Conectando o WhatsApp</h2>
+      <ol class="steps-list">
+        <li>
+          <h4>Acesse o Manager da Evolution API</h4>
+          <p>Abra <code>https://api.seudominio.com/manager</code> no navegador.</p>
+        </li>
+        <li>
+          <h4>Crie uma nova instância</h4>
+          <p>Clique em "New Instance" e dê um nome (ex: vendas).</p>
+        </li>
+        <li>
+          <h4>Escaneie o QR Code</h4>
+          <p>Abra o WhatsApp no celular → Menu → Aparelhos conectados → Conectar aparelho → Escanear.</p>
+        </li>
+        <li>
+          <h4>Teste a conexão</h4>
+          <p>Envie uma mensagem de teste usando a API ou o Chatwoot.</p>
+        </li>
+      </ol>
+      <p class="warning">⚠️ Use um número dedicado para o assistente. Não use seu número pessoal.</p>
+    </article>
+
+    <article id="n8n" class="doc-section">
+      <h2>🔄 Configurando Automações (n8n)</h2>
+      <ol class="steps-list">
+        <li>
+          <h4>Acesse o n8n</h4>
+          <p>Abra <code>https://n8n.seudominio.com</code> e crie sua conta inicial.</p>
+        </li>
+        <li>
+          <h4>Importe os workflows</h4>
+          <p>Na pasta <code>/workflows</code> do repositório, temos templates prontos para vendas, suporte e remarketing.</p>
+        </li>
+        <li>
+          <h4>Configure as credenciais</h4>
+          <p>Adicione as credenciais da Evolution API, OpenAI (ou Ollama local), e seu CRM.</p>
+        </li>
+        <li>
+          <h4>Ative os workflows</h4>
+          <p>Teste cada workflow manualmente antes de ativar a execução automática.</p>
+        </li>
+      </ol>
+    </article>
+
+    <article id="troubleshooting" class="doc-section">
+      <h2>🔧 Troubleshooting</h2>
+      <div class="trouble-grid">
+        <div class="trouble-item">
+          <h4>Container não sobe</h4>
+          <p>Verifique os logs: <code>docker compose logs -f [nome-do-serviço]</code></p>
+        </div>
+        <div class="trouble-item">
+          <h4>WhatsApp desconecta</h4>
+          <p>Mantenha o celular conectado à internet. Reconecte via Manager se necessário.</p>
+        </div>
+        <div class="trouble-item">
+          <h4>Túnel não funciona</h4>
+          <p>Verifique se o token está correto e se os hostnames estão configurados no Cloudflare Dashboard.</p>
+        </div>
+        <div class="trouble-item">
+          <h4>IA não responde</h4>
+          <p>Verifique a API key do OpenAI/Ollama e os logs do n8n para erros nos workflows.</p>
+        </div>
+      </div>
+    </article>
+  </section>
+
+  <section class="cta-section">
+    <h2>Precisa de ajuda?</h2>
+    <p>Nossa IA pode responder dúvidas técnicas em tempo real.</p>
+    <a href="https://chat.getnexo.com.br" class="btn-cta" target="_blank">Falar com Suporte →</a>
+  </section>
+</Layout>
+
+<style>
+  .hero {
+    text-align: center;
+    padding: 7rem 5% 4rem;
+    background: linear-gradient(135deg, var(--dark), var(--gray));
+  }
+  .hero h1 {
+    font-size: 3.5rem;
+    background: linear-gradient(90deg, var(--primary), var(--success));
+    -webkit-background-clip: text;
+    color: transparent;
+  }
+  .hero p { color: var(--text); font-size: 1.3rem; margin-top: 1rem; }
+
+  .docs-nav {
+    display: flex;
+    justify-content: center;
+    gap: 1.5rem;
+    padding: 1.5rem 5%;
+    background: rgba(30,41,59,0.9);
+    position: sticky;
+    top: 80px;
+    z-index: 100;
+    flex-wrap: wrap;
+  }
+  .docs-nav a {
+    color: var(--text);
+    text-decoration: none;
+    font-weight: 600;
+    padding: 0.5rem 1rem;
+    border-radius: 8px;
+    transition: all 0.3s;
+  }
+  .docs-nav a:hover { color: var(--primary); background: rgba(0,212,255,0.1); }
+
+  .docs-content { max-width: 900px; margin: 0 auto; padding: 2rem 5%; }
+
+  .doc-section {
+    margin-bottom: 4rem;
+    padding-bottom: 2rem;
+    border-bottom: 1px solid rgba(0,212,255,0.1);
+  }
+  .doc-section h2 {
+    font-size: 2rem;
+    color: var(--light);
+    margin-bottom: 1.5rem;
+  }
+
+  .requirements-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    gap: 1.5rem;
+  }
+  .req-card {
+    background: rgba(30,41,59,0.6);
+    border: 1px solid rgba(0,212,255,0.1);
+    border-radius: 12px;
+    padding: 1.5rem;
+  }
+  .req-card h3 { color: var(--success); font-size: 1.1rem; margin-bottom: 1rem; }
+  .req-card ul { padding-left: 1.2rem; color: var(--text); }
+  .req-card li { margin: 0.5rem 0; }
+
+  .code-block {
+    background: #0f172a;
+    border-radius: 12px;
+    overflow: hidden;
+    margin: 1.5rem 0;
+  }
+  .code-header {
+    background: rgba(0,212,255,0.1);
+    padding: 0.8rem 1.5rem;
+    color: var(--primary);
+    font-weight: 600;
+    font-size: 0.9rem;
+  }
+  .code-block pre {
+    padding: 1.5rem;
+    margin: 0;
+    overflow-x: auto;
+  }
+  .code-block code {
+    color: var(--light);
+    font-family: 'Consolas', monospace;
+    font-size: 0.9rem;
+    line-height: 1.6;
+  }
+
+  .note, .warning {
+    padding: 1rem 1.5rem;
+    border-radius: 12px;
+    margin: 1rem 0;
+  }
+  .note { background: rgba(0,212,255,0.1); color: var(--light); }
+  .warning { background: rgba(255,77,77,0.1); color: #ff6b6b; }
+
+  .steps-list { padding-left: 0; list-style: none; counter-reset: step; }
+  .steps-list li {
+    position: relative;
+    padding-left: 3rem;
+    margin-bottom: 2rem;
+  }
+  .steps-list li::before {
+    counter-increment: step;
+    content: counter(step);
+    position: absolute;
+    left: 0;
+    top: 0;
+    width: 2rem;
+    height: 2rem;
+    background: linear-gradient(135deg, var(--primary), var(--success));
+    color: #000;
+    font-weight: 800;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+  .steps-list h4 { color: var(--light); margin: 0 0 0.5rem; }
+  .steps-list p { color: var(--text); margin: 0; }
+
+  .trouble-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: 1.5rem;
+  }
+  .trouble-item {
+    background: rgba(30,41,59,0.6);
+    border: 1px solid rgba(0,212,255,0.1);
+    border-radius: 12px;
+    padding: 1.5rem;
+  }
+  .trouble-item h4 { color: var(--primary); margin: 0 0 0.5rem; }
+  .trouble-item p { color: var(--text); margin: 0; font-size: 0.95rem; }
+
+  .cta-section {
+    text-align: center;
+    padding: 4rem 5%;
+    background: rgba(0,212,255,0.05);
+  }
+  .cta-section h2 { font-size: 2rem; color: var(--light); margin-bottom: 1rem; }
+  .cta-section p { color: var(--text); margin-bottom: 2rem; }
+</style>
