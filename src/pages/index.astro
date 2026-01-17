@@ -2,270 +2,33 @@
 import Layout from '../layouts/Layout.astro';
 ---
 
-<Layout title="GetNexo — A Máquina de Vendas Autônoma">
+<Layout title="GetNexo – Assistente de vendas WhatsApp 100% grátis">
   <section class="hero">
-    <div class="hero-content">
-      		<div class="hero-content">
-			<h1>Sua Empresa <span class="text-gradient">Vende Sozinha</span></h1>
-			<p class="hero-desc">
-				Transforme o WhatsApp em uma máquina de lucro 24/7 com IA Local.
-				<br />Sem mensalidades abusivas. Totalmente sob seu controle.
-			</p>
-            <!-- Item 134: client:only="react" -->
-            <div class="demo-badge" client:only="react">
-                <span class="pulsing-dot"></span> IA Ativa: <strong>Ara v2.0</strong>
-            </div>
-			<div class="cta-group">
-				<a href="https://chat.getnexo.com.br" class="btn primary">Falar com Ara</a>
-				<a href="/blog" class="btn secondary">Ver Cases</a>
-			</div>
-		</div>
-        <div class="buttons">
-        <a href="https://chat.getnexo.com.br" class="btn primary" target="_blank">
-          Falar com o Agente Agora
-        </a>
-        <a href="#tecnologia" class="btn secondary">
-          Ver a Tecnologia
-        </a>
-      </div>
-      
-      <p class="microcopy">
-        ⚡ Setup em 90 segundos via Docker • 🟢 Zero Latência • 🔒 Privacidade Absoluta
-      </p>
+    <h1>Assistente de Vendas no WhatsApp <strong>100% Grátis</strong></h1>
+    <p>IA que fecha vendas sozinho, sem nuvem, sem risco, sem mensalidade.</p>
+    <div class="buttons">
+      <a href="https://chat.getnexo.com.br" class="btn-cta">Falar com o Agente Agora →</a>
+      <a href="/como-funciona" class="btn-cta">Como Funciona</a>
+    </div>
+
+    <div class="features">
+      <div class="card">IA 24h no teu WhatsApp → <strong>Grátis pra sempre</strong></div>
+      <div class="card">Zero nuvem cara → <strong>Dados 100% no teu servidor</strong></div>
+      <div class="card">Privacidade militar → <strong>AES-256 + Cloudflare Tunnel</strong></div>
+      <div class="card">Roda no teu PC de 8GB → <strong>Sem lag, sem contrato</strong></div>
     </div>
   </section>
-
-  <!-- O PROBLEMA -->
-  <section class="section-dark">
-    <div class="container">
-      <h2 class="section-title text-red">VOCÊ ESTÁ DEIXANDO DINHEIRO NA MESA.</h2>
-      <p class="section-text">
-        Enquanto você dorme, seu cliente compra no concorrente porque ninguém respondeu. 
-        Chatbots burros travam a venda. Atendentes humanos custam caro, ficam doentes e dormem.
-      </p>
-      <div class="stat-box">
-        <span class="stat-number text-red">72%</span>
-        <span class="stat-desc">das vendas online são perdidas por demora na resposta.</span>
-      </div>
-    </div>
-  </section>
-
-  <!-- A SOLUÇÃO -->
-  <section class="section-solution" id="tecnologia">
-    <div class="container">
-      <h2 class="section-title text-gold">O PODER DA NUVEM. A SEGURANÇA DO LOCAL.</h2>
-      
-      <div class="features-grid">
-        <!-- Card 1 -->
-        <div class="card glass-card">
-          <h3 class="text-neon">🧠 Cérebro Duplo (IA)</h3>
-          <p>
-            <strong>Kira</strong> traça a estratégia. <strong>Ara</strong> fecha a venda. 
-            Nossas IAs não apenas respondem, elas <em>persuadem</em>.
-          </p>
-        </div>
-
-        <!-- Card 2 -->
-        <div class="card glass-card">
-          <h3 class="text-neon">🛡️ Infraestrutura Blindada</h3>
-          <p>
-            Rodamos dentro do seu servidor (WSL/Docker). Seus dados nunca passam por servidores de terceiros. 
-            <strong>Zero Trust</strong> via Cloudflare Tunnel.
-          </p>
-        </div>
-
-        <!-- Card 3 -->
-        <div class="card glass-card">
-          <h3 class="text-neon">🌐 Omnichannel Real</h3>
-          <p>
-            WhatsApp, Instagram, Site. Tudo cai no mesmo CRM (Chatwoot). 
-            Tudo automatizado pelo n8n.
-          </p>
-        </div>
-      </div>
-    </div>
-  </section>
-
-  <!-- PROVA SOCIAL -->
-  <section class="section-proof">
-    <div class="container">
-      <div class="metrics-grid">
-        <div class="metric">
-          <span class="metric-value text-gold">+R$ 142k</span>
-          <span class="metric-label">Gerados em vendas automáticas</span>
-        </div>
-        <div class="metric">
-          <span class="metric-value text-neon">0.8s</span>
-          <span class="metric-label">Tempo médio de resposta</span>
-        </div>
-        <div class="metric">
-          <span class="metric-value text-green">99.9%</span>
-          <span class="metric-label">Uptime (Monitorado localmente)</span>
-        </div>
-      </div>
-    </div>
-  </section>
-
 </Layout>
 
 <style>
-  /* Hero */
-  .hero {
-    min-height: 80vh;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    text-align: center;
-    background: radial-gradient(circle at center, #111 0%, #000 70%);
-    padding: 2rem;
-  }
-
-  h1 {
-    font-size: 3.5rem;
-    line-height: 1.1;
-    margin-bottom: 1.5rem;
-    font-weight: 800;
-  }
-
-  .highlight {
-    color: var(--neon-blue);
-    text-shadow: 0 0 20px rgba(0, 247, 255, 0.3);
-  }
-
-  .subtitle {
-    font-size: 1.25rem;
-    color: #888;
-    max-width: 800px;
-    margin: 0 auto 2.5rem;
-    font-weight: 300;
-  }
-
-  .text-white {
-    color: white;
-    font-weight: 500;
-  }
-
-  .microcopy {
-    margin-top: 2rem;
-    font-size: 0.9rem;
-    color: #666;
-    font-family: 'JetBrains Mono', monospace;
-  }
-
-  .buttons {
-    display: flex;
-    gap: 1.5rem;
-    justify-content: center;
-    flex-wrap: wrap;
-  }
-
-  .btn {
-    font-size: 1.1rem;
-    padding: 1rem 2.5rem;
-  }
-
-
-
-  /* Section Generals */
-  section {
-    padding: 5rem 1rem;
-  }
-
-  .container {
-    max-width: 1200px;
-    margin: 0 auto;
-    text-align: center;
-  }
-
-  .section-title {
-    font-size: 2.5rem;
-    margin-bottom: 1.5rem;
-    text-transform: uppercase;
-    letter-spacing: -1px;
-  }
-
-  .section-text {
-    font-size: 1.2rem;
-    color: #ccc;
-    max-width: 700px;
-    margin: 0 auto 3rem;
-  }
-
-  /* Stats */
-  .stat-box {
-    border: 1px solid #333;
-    display: inline-block;
-    padding: 2rem;
-    border-radius: 8px;
-    background: rgba(20, 0, 0, 0.5);
-  }
-
-  .stat-number {
-    display: block;
-    font-size: 4rem;
-    font-weight: 800;
-    line-height: 1;
-    margin-bottom: 0.5rem;
-  }
-
-  /* Features Grid */
-  .features-grid {
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-    gap: 2rem;
-    text-align: left;
-  }
-
-  .glass-card {
-    background: rgba(255, 255, 255, 0.03);
-    backdrop-filter: blur(10px);
-    border: 1px solid rgba(255, 255, 255, 0.1);
-    padding: 2rem;
-  }
-
-  .glass-card h3 {
-    margin-bottom: 1rem;
-    font-size: 1.4rem;
-  }
-
-  .glass-card p {
-    color: #aaa;
-    line-height: 1.6;
-  }
-
-  /* Metrics */
-  .metrics-grid {
-    display: flex;
-    justify-content: space-around;
-    flex-wrap: wrap;
-    gap: 2rem;
-    border-top: 1px solid #333;
-    padding-top: 3rem;
-  }
-
-  .metric {
-    display: flex;
-    flex-direction: column;
-  }
-
-  .metric-value {
-    font-size: 3rem;
-    font-weight: 800;
-    font-family: 'JetBrains Mono', monospace;
-  }
-
-  .metric-label {
-    color: #666;
-    text-transform: uppercase;
-    font-size: 0.8rem;
-    letter-spacing: 1px;
-    margin-top: 0.5rem;
-  }
-
-  /* Text Colors */
-  .text-red { color: var(--accent); }
-  .text-gold { color: var(--gold); }
-  .text-neon { color: var(--neon-blue); }
-  .text-green { color: #00ff00; }
-
+  .hero { text-align: center; padding: 7rem 5%; background: linear-gradient(135deg, #0a0e17, #1e293b); }
+  .hero h1 { font-size: 4rem; margin: 0 0 1rem; background: linear-gradient(90deg, #00d4ff, #00ff9d); -webkit-background-clip: text; color: transparent; }
+  .buttons { display: flex; gap: 1.5rem; justify-content: center; margin: 2rem 0; flex-wrap: wrap; }
+  .features { display: grid; grid-template-columns: repeat(auto-fit, minmax(250px,1fr)); gap: 2rem; max-width: 1100px; margin: 4rem auto; }
+  .card { background: rgba(30,41,59,0.7); backdrop-filter: blur(10px); border: 1px solid rgba(0,212,255,0.2); border-radius: 16px; padding: 2rem; text-align: center; font-size: 1.1rem; }
+  .card strong { color: var(--success); }
+  
+  /* Helper to make btn-cta work inside content if not global */
+  .btn-cta { color: #00ff9d; border: 2px solid #00ff9d; padding: 0.6rem 1.8rem; border-radius: 50px; font-weight: 800; transition: all 0.3s; text-decoration: none; }
+  .btn-cta:hover { background: #00ff9d; color: black; transform: translateY(-3px); }
 </style>
