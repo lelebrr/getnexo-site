@@ -1,5 +1,11 @@
 ---
 import '../styles/global.css';
+import { ViewTransitions } from 'astro:transitions';
+
+interface Props {
+	title: string;
+}
+
 const { title } = Astro.props;
 ---
 
@@ -9,7 +15,6 @@ const { title } = Astro.props;
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>{title} | GetNexo</title>
-  <meta name="description" content="Assistente de vendas 24h com IA, WhatsApp e automação. Zero nuvem cara." />
   <meta name="description" content="Assistente de vendas 24h com IA, WhatsApp e automação. Zero nuvem cara." />
   <meta name="robots" content="index, follow" />
   
