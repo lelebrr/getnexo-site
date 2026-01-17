@@ -1,5 +1,11 @@
 ---
 import Layout from '../layouts/Layout.astro';
+const status = {
+  "status": 200,
+  "message": "Welcome to the Evolution API, it is working!",
+  "version": "2.2.2",
+  "clientName": "evolution_exchange"
+};
 ---
 
 <Layout title="API GetNexo">
@@ -10,14 +16,7 @@ import Layout from '../layouts/Layout.astro';
     <div class="endpoint">
       <h2>Status da API</h2>
       <code>GET https://api.getnexo.com.br/status</code>
-      <pre>
-{
-  "status": 200,
-  "message": "Welcome to the Evolution API, it is working!",
-  "version": "2.2.2",
-  "clientName": "evolution_exchange"
-}
-      </pre>
+      <pre>{JSON.stringify(status, null, 2)}</pre>
     </div>
 
     <div class="swagger-mock">
