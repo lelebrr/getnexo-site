@@ -58,61 +58,104 @@ const {
   </script>
   
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;800&display=swap" rel="stylesheet" />
-  <style is:global define:vars={{ mainPadding: isLanding ? '0' : '100px', mainMinHeight: isLanding ? 'auto' : '100vh' }}>
+  <style is:global define:vars={{ mainPadding: isLanding ? '0' : '80px', mainMinHeight: isLanding ? 'auto' : '100vh' }}>
     :root { 
       --primary: #00d4ff; 
       --success: #00ff9d; 
-      --dark: #0a0e17; 
-      --gray: #1e293b; 
-      --light: #e2e8f0; 
+      --dark: #030712; 
+      --gray: #111827; 
+      --light: #f8fafc; 
       --text: #94a3b8; 
+      --glass: rgba(15, 23, 42, 0.7);
     }
     * { box-sizing: border-box; margin: 0; padding: 0; }
-    body { font-family: 'Inter', sans-serif; background: var(--dark); color: var(--light); line-height: 1.7; overflow-x: hidden; }
-    header { background: rgba(10,14,23,0.9); backdrop-filter: blur(12px); position: fixed; top: 0; width: 100%; z-index: 1000; padding: 1rem 5%; display: flex; justify-content: space-between; align-items: center; border-bottom: 1px solid rgba(0,212,255,0.1); }
-    .logo { font-size: 1.8rem; font-weight: 800; color: var(--primary); text-decoration: none; }
-    nav { display: flex; align-items: center; flex-wrap: wrap; gap: 0.5rem; }
-    nav a { color: var(--light); margin-left: 1.5rem; text-decoration: none; font-weight: 600; font-size: 0.95rem; transition: all 0.3s; }
-    nav a:hover { color: var(--success); transform: translateY(-2px); }
-    .btn-cta { color: var(--success); border: 2px solid var(--success); padding: 0.6rem 1.8rem; border-radius: 50px; font-weight: 800; transition: all 0.3s; animation: pulse 2s infinite; }
-    .btn-cta:hover { background: var(--success); color: black; transform: translateY(-3px); box-shadow: 0 10px 30px rgba(0,255,157,0.3); }
-    @keyframes pulse { 0%,100%{opacity:1} 50%{opacity:0.7} }
-    .canvas-particles { position: fixed; top: 0; left: 0; width: 100%; height: 100%; pointer-events: none; z-index: -1; }
-    footer { background: var(--dark); padding: 3rem 5%; text-align: center; border-top: 1px solid rgba(0,212,255,0.1); }
-    footer p { color: #64748b; font-size: 0.95rem; margin: 0.5rem 0; }
-    footer a { color: var(--primary); text-decoration: none; }
-    footer a:hover { color: var(--success); }
+    body { 
+      font-family: 'Inter', sans-serif; 
+      background: var(--dark); 
+      color: var(--light); 
+      line-height: 1.6; 
+      overflow-x: hidden; 
+    }
+
+    /* Premium Common Styles */
+    .text-gradient { background:linear-gradient(90deg, #00d4ff, #00ff9d); -webkit-background-clip:text; color:transparent; font-weight: 800; }
+    .glass-panel { background: var(--glass); backdrop-filter: blur(12px); border: 1px solid rgba(255,255,255,0.05); border-radius: 20px; }
+
+    /* Animated Background */
+    .animated-bg { position: fixed; top: 0; left: 0; right: 0; bottom: 0; z-index: -1; overflow: hidden; background: #030712; }
+    .blob { position: absolute; width: 600px; height: 600px; background: radial-gradient(circle, rgba(0, 212, 255, 0.08) 0%, transparent 70%); border-radius: 50%; filter: blur(80px); animation: move 20s infinite alternate; }
+    .blob-1 { top: -100px; left: -100px; }
+    .blob-2 { bottom: -100px; right: -100px; background: radial-gradient(circle, rgba(0, 255, 157, 0.05) 0%, transparent 70%); }
+    @keyframes move { from { transform: translate(0, 0); } to { transform: translate(100px, 100px); } }
+
+    /* Layout Parts */
     main { padding-top: var(--mainPadding); min-height: var(--mainMinHeight); }
-    .floating-cta { position: fixed; bottom: 30px; right: 30px; background: var(--success); color: black; padding: 1rem 1.8rem; border-radius: 50px; font-weight: 800; box-shadow: 0 10px 30px rgba(0,255,157,0.4); z-index: 999; text-decoration: none; transition: all 0.3s; }
-    .floating-cta:hover { transform: scale(1.1); box-shadow: 0 15px 40px rgba(0,255,157,0.6); }
+
+    .global-header { 
+      background: rgba(3, 7, 18, 0.8); 
+      backdrop-filter: blur(15px); 
+      position: fixed; top: 0; width: 100%; z-index: 1000; 
+      padding: 1rem 5%; 
+      display: flex; justify-content: space-between; align-items: center; 
+      border-bottom: 1px solid rgba(255,255,255,0.05); 
+    }
+    .logo-link { display: flex; align-items: center; gap: 0.8rem; text-decoration: none; }
+    .logo-box { width: 32px; height: 32px; background: linear-gradient(135deg, var(--primary), var(--success)); color: black; display: flex; align-items: center; justify-content: center; font-weight: 900; border-radius: 8px; font-size: 0.9rem; }
+    .logo-text { color:white; font-weight: 800; font-size: 1.4rem; margin:0; letter-spacing: -0.5px; }
+    .logo-text span { color: var(--success); }
+
+    .nav-links { display: flex; align-items: center; gap: 1.5rem; }
+    .nav-links a { color: var(--text); text-decoration: none; font-weight: 600; font-size: 0.9rem; transition: 0.2s; }
+    .nav-links a:hover { color: white; }
+
+    .header-ctas { display: flex; align-items: center; gap: 1rem; }
+    .btn-login { color: white; text-decoration: none; font-weight: 600; font-size: 0.9rem; }
+    .btn-start { background: white; color: black; padding: 0.5rem 1.2rem; border-radius: 10px; font-weight: 700; text-decoration: none; font-size: 0.9rem; transition: 0.3s; }
+    .btn-start:hover { background: var(--success); transform: translateY(-2px); }
+
+    .global-footer { padding: 5rem 5% 3rem; background: #020617; border-top: 1px solid rgba(255,255,255,0.05); margin-top: 4rem; }
+    .footer-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 4rem; max-width: 1200px; margin: 0 auto; }
+    .footer-col h4 { color: white; margin-bottom: 1.5rem; font-size: 1.1rem; }
+    .footer-col a { display: block; color: var(--text); text-decoration: none; margin-bottom: 0.8rem; font-weight: 500; font-size: 0.9rem; transition: 0.2s; }
+    .footer-col a:hover { color: var(--success); }
+    .footer-bottom { border-top: 1px solid rgba(255,255,255,0.05); margin-top: 4rem; padding-top: 2rem; text-align: center; color: #475569; font-size: 0.85rem; }
+
+    .floating-whatsapp { position: fixed; bottom: 30px; right: 30px; background: #25d366; color: white; width: 60px; height: 60px; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-size: 2rem; box-shadow: 0 10px 20px rgba(37,211,102,0.3); z-index: 1000; text-decoration: none; transition: 0.3s; }
+    .floating-whatsapp:hover { transform: scale(1.1) rotate(10deg); }
+
     @media (max-width: 900px) {
-      header { flex-direction: column; padding: 1rem; gap: 1rem; }
-      nav { justify-content: center; }
-      nav a { margin-left: 0.8rem; font-size: 0.85rem; }
-      main { padding-top: var(--mainPadding); }
-      .floating-cta { bottom: 20px; right: 20px; padding: 0.8rem 1.2rem; font-size: 0.9rem; }
+      .nav-links, .header-ctas .btn-login { display: none; }
+      .global-header { padding: 1rem 5%; }
     }
   </style>
 </head>
 <body>
-  <canvas id="particles" class="canvas-particles" aria-hidden="true"></canvas>
-  
+  <canvas id="neural-bg" class="neural-canvas"></canvas>
+  <style is:global>
+    .neural-canvas {
+      position: fixed; top: 0; left: 0; width: 100%; height: 100%;
+      z-index: -1; pointer-events: none; background: #030712;
+    }
+  </style>
+
   { !isLanding && (
-  <header>
-    <a href="/" class="logo">GETNEXO</a>
-    <nav>
-      <a href="/">Início</a>
-      <a href="/assistente-vendas">Assistente</a>
-      <a href="/comparacao">Comparação</a>
-      <a href="/como-funciona">Como Funciona</a>
-      <a href="/depoimentos">Depoimentos</a>
-      <a href="/blog">Blog</a>
-      <a href="/suporte">Suporte</a>
-      <a href="/faq">FAQ</a>
-      <a href="/precos">Preços</a>
-      <a href="#" onclick="window.$chatwoot.toggle(); return false;" class="btn-cta">Falar com IA →</a>
-    </nav>
-  </header>
+    <header class="global-header">
+      <a href="/" class="logo-link">
+        <div class="logo-box">N</div>
+        <h1 class="logo-text">Get<span>Nexo</span></h1>
+      </a>
+      <nav class="nav-links">
+        <a href="/produtos">Soluções</a>
+        <a href="/como-funciona">Como Funciona</a>
+        <a href="/precos">Preços</a>
+        <a href="/blog">Estratégias</a>
+        <a href="/suporte">Suporte</a>
+      </nav>
+      <div class="header-ctas">
+        <a href="/admin/login" class="btn-login">Entrar</a>
+        <a href="/criar-bot" class="btn-start">Criar Meu Bot</a>
+      </div>
+    </header>
   )}
 
   <main>
@@ -120,68 +163,293 @@ const {
   </main>
 
   { !isLanding && (
-  <footer>
-    <p>
-      <a href="/sobre">Sobre</a> · 
-      <a href="/documentacao">Docs</a> · 
-      <a href="/changelog">Changelog</a> · 
-      <a href="/contato">Contato</a> · 
-      <a href="/privacidade">Privacidade</a> · 
-      <a href="/api">API</a> · 
-      <a href="/suporte">Precisa de ajuda?</a>
-    </p>
-    <p>© {new Date().getFullYear()} GetNexo – Assistente de Vendas WhatsApp 100% Grátis. Zero nuvem. Zero risco.</p>
-    <p style="margin-top: 1.5rem;"><a href="/revenda?revenda=sim" style="color: #64748b; font-weight: 600;">Sou revendedor →</a></p>
-  </footer>
+    <footer class="global-footer">
+      <div class="footer-grid">
+        <div class="footer-col">
+          <a href="/" class="logo-link" style="margin-bottom:1rem;">
+            <div class="logo-box">N</div>
+            <h1 class="logo-text">Get<span>Nexo</span></h1>
+          </a>
+          <p style="font-size:0.9rem; color:#64748b; line-height:1.5;">A primeira plataforma de IA Generativa self-hosted para o WhatsApp Oficial Meta no Brasil.</p>
+        </div>
+        <div class="footer-col">
+          <h4>Plataforma</h4>
+          <a href="/produtos">Produtos</a>
+          <a href="/assistente-vendas">Assistente AI</a>
+          <a href="/ecommerce">E-commerce</a>
+          <a href="/recursos">Recursos</a>
+        </div>
+        <div class="footer-col">
+          <h4>Suporte</h4>
+          <a href="/suporte">Central de Ajuda</a>
+          <a href="/documentacao">Documentação</a>
+          <a href="/faq">FAQ</a>
+          <a href="/contato">Contato</a>
+        </div>
+        <div class="footer-col">
+          <h4>Legal</h4>
+          <a href="/privacidade">Privacidade</a>
+          <a href="/termos">Termos de Uso</a>
+          <a href="/revenda">Programa de Revenda</a>
+        </div>
+      </div>
+      <div class="footer-bottom">
+        <p>© {new Date().getFullYear()} GetNexo - Inteligência Artificial Aplicada a Vendas. Todos os direitos reservados.</p>
+      </div>
+    </footer>
   )}
 
-  <a href="#" onclick="window.$chatwoot.toggle(); return false;" class="floating-cta">💬 Testar Grátis</a>
+  <a href="https://wa.me/55..." target="_blank" class="floating-whatsapp">
+    <svg width="30" height="30" viewBox="0 0 24 24" fill="currentColor"><path d="M12.031 6.172c-3.181 0-5.767 2.586-5.768 5.4 0 1.177.308 2.279.846 3.234l-.893 3.245 3.32-.871c.907.493 1.946.77 3.5.77 3.182 0 5.77-2.587 5.77-5.4 0-3.183-2.587-5.378-5.775-5.378zM12.031 2c5.523 0 10 4.477 10 10s-4.477 10-10 10-10-4.477-10-10 4.477-10 10-10z"/></svg>
+  </a>
+
+  <!-- Live Pulse Engine UI -->
+  <div id="live-pulse" class="pulse-toast glass-panel" style="display:none;">
+    <div class="pulse-icon">⚡</div>
+    <div class="pulse-content">
+      <span class="pulse-title">IA Ativa</span>
+      <p id="pulse-message">Ara acaba de processar um lead em São Paulo.</p>
+    </div>
+  </div>
+
+  <style is:global>
+    .pulse-toast {
+      position: fixed; bottom: 30px; left: 30px;
+      padding: 1rem 1.5rem; display: flex; align-items: center; gap: 1rem;
+      border-color: rgba(0, 255, 157, 0.2); z-index: 1000;
+      animation: toastSlideIn 0.5s cubic-bezier(0.18, 0.89, 0.32, 1.28);
+    }
+    .pulse-icon { font-size: 1.2rem; color: #00ff9d; filter: drop-shadow(0 0 5px #00ff9d); }
+    .pulse-title { display: block; font-size: 0.7rem; font-weight: 800; color: #00ff9d; text-transform: uppercase; letter-spacing: 1px; }
+    #pulse-message { color: white; font-size: 0.85rem; font-weight: 600; margin: 0; }
+    @keyframes toastSlideIn { from { transform: translateX(-100%) opacity: 0; } to { transform: translateX(0) opacity: 1; } }
+  </style>
+
+  <div id="command-palette" class="palette-overlay" style="display:none;">
+    <div class="palette-modal glass-panel">
+      <div class="palette-header">
+        <span class="palette-icon">🔍</span>
+        <input type="text" id="palette-search" placeholder="O que você está procurando? (Esc para sair)" />
+      </div>
+      <div class="palette-results" id="palette-results">
+        <div id="palette-quick-answer" class="quick-answer-box glass-panel" style="display:none;">
+          <span class="qa-tag">Resposta IA</span>
+          <p id="qa-text"></p>
+        </div>
+        <div class="result-group">
+          <span class="group-title">Navegação Rápida</span>
+          <a href="/" class="palette-item"><span>🏠</span> Home</a>
+          <a href="/precos" class="palette-item"><span>💰</span> Planos e Preços</a>
+          <a href="/produtos" class="palette-item"><span>🚀</span> Todas as Soluções</a>
+          <a href="/como-funciona" class="palette-item"><span>🛠️</span> Como Funciona</a>
+        </div>
+        <div class="result-group">
+          <span class="group-title">Suporte e Comunidade</span>
+          <a href="/contato" class="palette-item"><span>📧</span> Fale com o Time</a>
+          <a href="/faq" class="palette-item"><span>❓</span> Perguntas Frequentes</a>
+          <a href="https://github.com/lelebrr" target="_blank" class="palette-item"><span>🐙</span> GitHub Oficial</a>
+        </div>
+      </div>
+      <div class="palette-footer">
+        <span><kbd>Enter</kbd> para abrir</span>
+        <span><kbd>↑↓</kbd> para navegar</span>
+        <span><kbd>Esc</kbd> para fechar</span>
+      </div>
+    </div>
+  </div>
+
+  <style is:global>
+    /* Command Palette Styles */
+    .palette-overlay {
+      position: fixed; top: 0; left: 0; right: 0; bottom: 0;
+      background: rgba(0,0,0,0.8); backdrop-filter: blur(8px);
+      z-index: 9999; display: flex; align-items: flex-start; justify-content: center;
+      padding-top: 15vh;
+    }
+    .palette-modal {
+      width: 90%; max-width: 600px;
+      overflow: hidden; border-color: rgba(0, 212, 255, 0.2);
+      box-shadow: 0 30px 60px rgba(0,0,0,0.5);
+      animation: slideIn 0.2s ease-out;
+    }
+    @keyframes slideIn { from { transform: translateY(-20px); opacity: 0; } to { transform: translateY(0); opacity: 1; } }
+
+    .palette-header { display: flex; align-items: center; padding: 1.5rem; border-bottom: 1px solid rgba(255,255,255,0.05); gap: 1rem; }
+    .palette-icon { font-size: 1.2rem; }
+    #palette-search {
+      background: transparent; border: none; outline: none;
+      color: white; font-size: 1.1rem; width: 100%;
+      font-family: inherit;
+    }
+    
+    .palette-results { max-height: 400px; overflow-y: auto; padding: 1rem 0; }
+    .result-group { margin-bottom: 1.5rem; }
+    .group-title {
+      font-size: 0.7rem; font-weight: 800; color: #475569;
+      text-transform: uppercase; letter-spacing: 1px;
+      padding: 0 1.5rem 0.5rem; display: block;
+    }
+    .palette-item {
+      display: flex; align-items: center; gap: 1rem;
+      padding: 0.8rem 1.5rem; color: #cbd5e1;
+      text-decoration: none; font-weight: 600; font-size: 0.95rem;
+      transition: 0.2s;
+    }
+    .palette-item:hover, .palette-item.active {
+      background: rgba(0, 212, 255, 0.1); color: #00d4ff;
+    }
+    .palette-item span { font-size: 1.1rem; }
+
+    /* Quick Answer Box */
+    .quick-answer-box { margin: 1rem 1.5rem; padding: 1.2rem; border-color: rgba(0, 212, 255, 0.3); background: rgba(0, 212, 255, 0.05); }
+    .qa-tag { font-size: 0.6rem; font-weight: 900; color: #00d4ff; text-transform: uppercase; letter-spacing: 1px; margin-bottom: 0.5rem; display: block; }
+    #qa-text { font-size: 0.9rem; color: #e2e8f0; line-height: 1.5; margin: 0; }
+
+    .palette-footer {
+      padding: 1rem 1.5rem; background: rgba(0,0,0,0.3);
+      border-top: 1px solid rgba(255,255,255,0.05);
+      display: flex; gap: 1.5rem; font-size: 0.7rem; color: #475569;
+    }
+    kbd {
+      background: #1e293b; color: #94a3b8; padding: 0.1rem 0.4rem;
+      border-radius: 4px; font-family: 'JetBrains Mono', monospace;
+      border: 1px solid #334155; margin-right: 4px;
+    }
+  </style>
 
   <script is:inline>
-    (function() {
-      const canvas = document.getElementById('particles');
+    const palette = document.getElementById('command-palette');
+    const searchInput = document.getElementById('palette-search');
+    const items = palette.querySelectorAll('.palette-item');
+    let activeIndex = -1;
+
+    function openPalette() {
+      palette.style.display = 'flex';
+      searchInput.focus();
+      activeIndex = -1;
+    }
+
+    function closePalette() {
+      palette.style.display = 'none';
+      searchInput.value = '';
+    }
+
+    window.addEventListener('keydown', (e) => {
+      // CMD/CTRL + K
+      if ((e.metaKey || e.ctrlKey) && e.key === 'k') {
+        e.preventDefault();
+        palette.style.display === 'none' ? openPalette() : closePalette();
+      }
+      
+      if (palette.style.display === 'flex') {
+        if (e.key === 'Escape') closePalette();
+        
+        if (e.key === 'ArrowDown') {
+          e.preventDefault();
+          activeIndex = (activeIndex + 1) % items.length;
+          updateActiveItem();
+        }
+        if (e.key === 'ArrowUp') {
+          e.preventDefault();
+          activeIndex = (activeIndex - 1 + items.length) % items.length;
+          updateActiveItem();
+        }
+        if (e.key === 'Enter' && activeIndex > -1) {
+          items[activeIndex].click();
+        }
+      }
+    });
+
+    function updateActiveItem() {
+      items.forEach((item, idx) => {
+        item.classList.toggle('active', idx === activeIndex);
+        if (idx === activeIndex) item.scrollIntoView({ block: 'nearest' });
+      });
+    }
+
+    palette.addEventListener('click', (e) => {
+      if (e.target === palette) closePalette();
+    });
+  </script>
+
+  <script is:inline>
+    // Neural Particle System
+    const canvas = document.getElementById('neural-bg');
+    const ctx = canvas.getContext('2d');
+    let particles = [];
+    let mouse = { x: null, y: null, radius: 150 };
+
+    function initNeural() {
       if (!canvas) return;
-      const ctx = canvas.getContext('2d');
       canvas.width = window.innerWidth;
       canvas.height = window.innerHeight;
-      window.addEventListener('resize', () => { 
-        canvas.width = window.innerWidth; 
-        canvas.height = window.innerHeight; 
-      });
-      const particles = [];
-      const maxParticles = 80;
-      window.addEventListener('mousemove', e => {
-        if (particles.length >= maxParticles) return;
-        const x = e.clientX, y = e.clientY;
-        for(let i = 0; i < 2; i++) {
-          particles.push({
-            x, y,
-            vx: (Math.random() - 0.5) * 4,
-            vy: (Math.random() - 0.5) * 4,
-            life: 50
-          });
-        }
-      });
-      function animar() {
-        ctx.clearRect(0, 0, canvas.width, canvas.height);
-        for (let i = particles.length - 1; i >= 0; i--) {
-          const p = particles[i];
-          p.x += p.vx;
-          p.y += p.vy;
-          p.life--;
-          if (p.life <= 0) {
-            particles.splice(i, 1);
-            continue;
-          }
-          ctx.beginPath();
-          ctx.arc(p.x, p.y, p.life / 10, 0, Math.PI * 2);
-          ctx.fillStyle = `rgba(0, 212, 255, ${p.life / 50})`;
-          ctx.fill();
-        }
-        requestAnimationFrame(animar);
+      particles = [];
+      const density = (canvas.width * canvas.height) / 15000;
+      for (let i = 0; i < density; i++) {
+        particles.push({
+          x: Math.random() * canvas.width,
+          y: Math.random() * canvas.height,
+          size: Math.random() * 2 + 0.5,
+          speedX: Math.random() * 0.4 - 0.2,
+          speedY: Math.random() * 0.4 - 0.2,
+          color: 'rgba(0, 212, 255, 0.2)'
+        });
       }
-      animar();
-    })();
+    }
+
+    function animateNeural() {
+      ctx.clearRect(0, 0, canvas.width, canvas.height);
+      particles.forEach((p, i) => {
+        p.x += p.speedX; p.y += p.speedY;
+        if (p.x > canvas.width || p.x < 0) p.speedX *= -1;
+        if (p.y > canvas.height || p.y < 0) p.speedY *= -1;
+
+        if (mouse.x) {
+          let dx = mouse.x - p.x;
+          let dy = mouse.y - p.y;
+          let dist = Math.sqrt(dx*dx + dy*dy);
+          if (dist < mouse.radius) {
+            let force = (mouse.radius - dist) / mouse.radius;
+            p.x -= dx * force * 0.01;
+            p.y -= dy * force * 0.01;
+          }
+        }
+
+        ctx.fillStyle = p.color;
+        ctx.beginPath();
+        ctx.arc(p.x, p.y, p.size, 0, Math.PI * 2);
+        ctx.fill();
+
+        for (let j = i + 1; j < particles.length; j++) {
+          let p2 = particles[j];
+          let dx = p.x - p2.x;
+          let dy = p.y - p2.y;
+          let dist = Math.sqrt(dx*dx + dy*dy);
+          if (dist < 100) {
+            ctx.strokeStyle = `rgba(0, 255, 157, ${0.1 * (1 - dist/100)})`;
+            ctx.lineWidth = 0.5;
+            ctx.beginPath(); ctx.moveTo(p.x, p.y); ctx.lineTo(p2.x, p2.y); ctx.stroke();
+          }
+        }
+      });
+      requestAnimationFrame(animateNeural);
+    }
+
+    window.addEventListener('mousemove', e => { mouse.x = e.x; mouse.y = e.y; });
+    window.addEventListener('resize', initNeural);
+    initNeural(); animateNeural();
+
+    // Enhanced Palette Search Logic
+    const searchInput = document.getElementById('palette-search');
+    const items = document.querySelectorAll('.palette-item');
+    
+    searchInput?.addEventListener('input', (e) => {
+      const q = e.target.value.toLowerCase().trim();
+      items.forEach(item => {
+        const text = item.textContent.toLowerCase();
+        item.style.display = text.includes(q) ? 'flex' : 'none';
+      });
+    });
   </script>
   <!-- Chatwoot Widget -->
   <script is:inline>
@@ -199,6 +467,85 @@ const {
         })
       }
     })(document,"script");
+  </script>
+
+  <script is:inline>
+    // Live Pulse Engine Logic
+    const pulseToast = document.getElementById('live-pulse');
+    const pulseMsg = document.getElementById('pulse-message');
+    const activities = [
+        "Ara acaba de processar um lead em São Paulo.",
+        "Novo bot GetNexo ativado em Curitiba.",
+        "Recuperação de carrinho de R$ 450 confirmada via WhatsApp.",
+        "Cliente VIP conectado ao suporte multi-agente.",
+        "Checkout PIX gerado com sucesso para 'Loja Tech'."
+    ];
+
+    function showPulse() {
+        const msg = activities[Math.floor(Math.random() * activities.length)];
+        pulseMsg.innerText = msg;
+        pulseToast.style.display = 'flex';
+        setTimeout(() => {
+            pulseToast.style.animation = 'toastSlideIn 0.5s reverse forwards';
+            setTimeout(() => {
+                pulseToast.style.display = 'none';
+                pulseToast.style.animation = 'toastSlideIn 0.5s forwards';
+            }, 500);
+        }, 4000);
+    }
+    setInterval(showPulse, 12000);
+
+    // Haptic UI Soundscape (Simulated with console for now + Audio logic)
+    const playSound = (freq = 440, duration = 0.1) => {
+        const audioCtx = new (window.AudioContext || window.webkitAudioContext)();
+        const oscillator = audioCtx.createOscillator();
+        const gainNode = audioCtx.createGain();
+        oscillator.connect(gainNode);
+        gainNode.connect(audioCtx.destination);
+        oscillator.frequency.value = freq;
+        gainNode.gain.setValueAtTime(0.02, audioCtx.currentTime);
+        gainNode.gain.exponentialRampToValueAtTime(0.0001, audioCtx.currentTime + duration);
+        oscillator.start();
+        oscillator.stop(audioCtx.currentTime + duration);
+    };
+
+    document.querySelectorAll('a, button').forEach(el => {
+        el.addEventListener('mouseenter', () => playSound(1200, 0.05));
+        el.addEventListener('click', () => playSound(800, 0.2));
+    });
+
+    // Quantum Contextual Search Logic
+    const qaBox = document.getElementById('palette-quick-answer');
+    const qaText = document.getElementById('qa-text');
+    const context = {
+        'pix': 'O GetNexo suporta PIX nativo no WhatsApp. O bot gera o QRC ou Copia e Cola instantaneamente e valida o pagamento via Webhook.',
+        'ia': 'Usamos IA Generativa (Gemini/Llama) treinada com seus dados para responder leads de forma humanizada e estratégica 24/7.',
+        'contato': 'Você pode falar com nosso suporte via Command + K -> "Fale com o Time" ou direto pelo ícone do WhatsApp.',
+        'preço': 'O plano Self-Hosted é Grátis. O plano Pro (Nuvem Gerenciada) custa R$ 97/mês com toda a infra inclusa.'
+    };
+
+    searchInput?.addEventListener('input', (e) => {
+        const q = e.target.value.toLowerCase().trim();
+        let matched = false;
+        for (const key in context) {
+            if (q.includes(key)) {
+                qaText.innerText = context[key];
+                qaBox.style.display = 'block';
+                matched = true;
+                break;
+            }
+        }
+        if (!matched) qaBox.style.display = 'none';
+    });
+
+    // Quantum Transitions (Simulated)
+    document.addEventListener('click', (e) => {
+        const link = e.target.closest('a');
+        if (link && link.origin === window.location.origin && !link.target) {
+            document.body.style.opacity = '0.5';
+            document.body.style.transition = '0.2s';
+        }
+    });
   </script>
 </body>
 </html>

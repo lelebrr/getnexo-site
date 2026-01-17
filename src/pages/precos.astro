@@ -1,65 +1,197 @@
 ---
 import Layout from '../layouts/Layout.astro';
-const title = "Preços GetNexo WhatsApp API Oficial 2026 - Grátis para Começar, Sem Taxa por Mensagem";
-const description = "Preços transparentes GetNexo: plano grátis ilimitado, Pro R$97/mês com IA completa, Enterprise customizado. Zero taxa por mensagem WhatsApp API oficial. Comece grátis hoje!";
-const keywords = "precos getnexo whatsapp, plano getnexo gratis, precos api whatsapp oficial 2026, whatsapp api sem taxa mensagem, plano pro getnexo r$97, enterprise whatsapp customizado, precos transparentes whatsapp";
-const ogImage = "https://getnexo.com.br/assets/og-poster.jpg";
+const title = "Planos e Preços GetNexo – Transparência & Lucratividade";
+const description = "Escolha o plano ideal para sua escala. IA self-hosted grátis ou nuvem gerenciada Pro com suporte VIP.";
 ---
-<Layout title={title} description={description} keywords={keywords} ogImage={ogImage}>
-  <section style="padding: 6rem 10%; max-width: 1200px; margin: 0 auto; color: #e5e7eb; text-align: center;">
-    <h1 style="color:#00ff9d; font-size: 3rem;">Preços Sem Pegadinha</h1>
-    <p style="font-size: 1.2rem;">Grátis pra começar. Paga só pelo que usa.</p>
 
-    <div style="display:flex; justify-content:center; gap:2rem; flex-wrap:wrap; margin-top: 4rem;">
-    
+<Layout title={title} description={description}>
+  <section class="pricing-hero">
+    <div class="hero-badge">ROI Imbatível</div>
+    <h1 class="text-gradient">Quanto você vai economizar?</h1>
+    <p>Simule sua economia mensal trocando sua equipe de atendimento humano ou soluções SaaS caras pelo GetNexo.</p>
+  </section>
+
+  <!-- ROI Calculator Section -->
+  <section class="roi-calculator-section">
+    <div class="roi-wrapper glass-panel">
+        <div class="roi-controls">
+            <div class="control-group">
+                <label>Leads Mensais: <span id="lead-value">5.000</span></label>
+                <input type="range" id="lead-slider" min="500" max="50000" step="500" value="5000" class="premium-slider" />
+            </div>
+            <div class="control-group">
+                <label>Custo por Agente Humano/SaaS: <span id="cost-value">R$ 1.500</span></label>
+                <input type="range" id="cost-slider" min="500" max="10000" step="100" value="1500" class="premium-slider" />
+            </div>
+        </div>
+        <div class="roi-result">
+            <div class="result-card">
+                <span class="res-label">Economia Mensal Estimada</span>
+                <span class="res-value" id="roi-savings">R$ 4.500,00</span>
+                <p>Baseado em 1 Agente de IA substituindo 3 humanos/licenças.</p>
+            </div>
+        </div>
+    </div>
+  </section>
+
+  <section class="pricing-grid">
     <!-- Self-Hosted -->
-    <div style="background:#1e293b; padding:2rem; border-radius:12px; text-align:center; min-width: 300px; border: 1px solid #334155;">
-        <h3 style="color: #94a3b8; font-size: 1.5rem; margin-bottom: 0.5rem;">Self-Hosted</h3>
-        <p style="font-size: 2.5rem; font-weight: bold; color: white;">Grátis</p>
-        <p style="color: #64748b; margin-bottom: 2rem;">Você baixa e roda no seu PC.</p>
+    <div class="pricing-card glass-panel">
+        <div class="card-type">Código Aberto</div>
+        <h3>Self-Hosted</h3>
+        <div class="card-price">Grátis</div>
+        <p class="card-desc">Ideal para desenvolvedores e entusiastas.</p>
         
-        <ul style="text-align: left; list-style:none; padding:0; line-height: 2.5; margin-bottom: 2rem; color: #cbd5e1;">
+        <ul class="card-features">
             <li>✅ Mensagens <strong>Ilimitadas</strong></li>
-            <li>✅ 100% dos recursos</li>
-            <li>✅ Seus dados, seu servidor</li>
-            <li>❌ Você cuida da instalação</li>
+            <li>✅ 100% dos recursos liberados</li>
+            <li>✅ Seus dados, sua soberania</li>
+            <li>❌ Instalação por sua conta</li>
             <li>❌ Suporte via comunidade</li>
         </ul>
-        <a href="https://github.com/getnexo/core" target="_blank" class="btn-cta" style="display:block; background:transparent; border: 2px solid #00ff9d; color:#00ff9d; padding:0.8rem 1.5rem; border-radius:50px; text-decoration:none; font-weight:bold; transition:all 0.3s;">Baixar Agora</a>
+        <a href="https://github.com/lelebrr" target="_blank" class="btn-outline-glow">Baixar no GitHub</a>
     </div>
 
     <!-- Managed Cloud -->
-    <div style="background: linear-gradient(145deg, #0f172a, #1e293b); color:white; padding:2rem; border-radius:12px; text-align:center; min-width: 300px; transform: scale(1.05); border: 2px solid #00ff9d; box-shadow: 0 0 30px rgba(0,255,157,0.15); position: relative;">
-        <div style="position: absolute; top: -12px; left: 50%; transform: translateX(-50%); background: #00ff9d; color: black; padding: 0.2rem 1rem; border-radius: 20px; font-size: 0.8rem; font-weight: bold;">MAIS ESCOLHIDO</div>
-        <h3 style="color: #00ff9d; font-size: 1.5rem; margin-bottom: 0.5rem;">GetNexo Cloud</h3>
-        <p style="font-size: 2.5rem; font-weight: bold;">R$97<span style="font-size: 1rem; font-weight: normal; color: #94a3b8;">/mês</span></p>
-        <p style="color: #94a3b8; margin-bottom: 2rem;">Nós hospedamos para você.</p>
+    <div class="pricing-card glass-panel featured">
+        <div class="popular-badge">Mais Escolhido</div>
+        <div class="card-type">Hospedagem Gerenciada</div>
+        <h3>GetNexo Pro</h3>
+        <div class="card-price">R$97<span>/mês</span></div>
+        <p class="card-desc">Nós cuidamos de toda a infraestrutura para você.</p>
         
-        <ul style="text-align: left; list-style:none; padding:0; line-height: 2.5; margin-bottom: 2rem;">
-            <li>✅ <strong>Tudo do Grátis</strong></li>
-            <li>✅ Servidores de Alta Performance</li>
-            <li>✅ Setup Instantâneo (Zero Config)</li>
-            <li>✅ Backups Diários</li>
-            <li>✅ <strong>Suporte Prioritário WhatsApp</strong></li>
+        <ul class="card-features">
+            <li>✅ <strong>Tudo do plano Grátis</strong></li>
+            <li>✅ Servidores NVMe de Ultra Velocidade</li>
+            <li>✅ Ativação Instantânea (Auto-Setup)</li>
+            <li>✅ Backups Automáticos Diários</li>
+            <li>✅ <strong>Suporte VIP via WhatsApp</strong></li>
         </ul>
-        <a href="/criar-bot" class="btn-cta" style="display:block; background:#00ff9d; color:black; padding:0.8rem 1.5rem; border-radius:50px; text-decoration:none; font-weight:bold; box-shadow: 0 4px 15px rgba(0,255,157,0.3);">Começar Teste Grátis</a>
+        <a href="/criar-bot" class="btn-xl-glow">Começar Agora</a>
     </div>
 
     <!-- Enterprise -->
-    <div style="background:#1e293b; padding:2rem; border-radius:12px; text-align:center; min-width: 300px; border: 1px solid #334155;">
-        <h3 style="color: #fff; font-size: 1.5rem; margin-bottom: 0.5rem;">Enterprise</h3>
-        <p style="font-size: 2.5rem; font-weight: bold; color: white;">Sob Demanda</p>
-        <p style="color: #64748b; margin-bottom: 2rem;">Para grandes operações.</p>
+    <div class="pricing-card glass-panel">
+        <div class="card-type">Grandes Equipes</div>
+        <h3>Enterprise</h3>
+        <div class="card-price">Custom</div>
+        <p class="card-desc">Para operações de alto volume e multi-canais.</p>
         
-        <ul style="text-align: left; list-style:none; padding:0; line-height: 2.5; margin-bottom: 2rem; color: #cbd5e1;">
-            <li>✅ Múltiplos Números (10+)</li>
-            <li>✅ API Dedicada</li>
-            <li>✅ Consultoria de Implementação</li>
-            <li>✅ Contrato SLA</li>
-            <li>✅ White Label (Sua Marca)</li>
+        <ul class="card-features">
+            <li>✅ Múltiplos Canais (IA Multi-Instance)</li>
+            <li>✅ API Dedicada com Alta Vazão</li>
+            <li>✅ Consultoria de IA e Configuração</li>
+            <li>✅ Contrato de SLA Garantido</li>
+            <li>✅ Opção White Label Completa</li>
         </ul>
-        <a href="#" onclick="window.$chatwoot.toggle();" class="btn-cta" style="display:block; background:#334155; color:white; padding:0.8rem 1.5rem; border-radius:50px; text-decoration:none; font-weight:bold;">Falar com Vendas</a>
+        <a href="#" onclick="window.$chatwoot.toggle(); return false;" class="btn-outline-glow">Falar com Consultor</a>
     </div>
+  </section>
+
+  <section class="pricing-faq glass-panel">
+    <h2>Perguntas Frequentes</h2>
+    <div class="faq-grid">
+      <div class="faq-item">
+        <h4>Tem taxa por mensagem?</h4>
+        <p>Não. Você paga apenas a mensalidade (no plano Pro) + as taxas oficiais da Meta se exceder o limite gratuito do WhatsApp Business API.</p>
+      </div>
+      <div class="faq-item">
+        <h4>Posso cancelar qualquer hora?</h4>
+        <p>Sim. Zero fidelidade. Você pode entrar e sair do plano gerenciado quando desejar.</p>
+      </div>
+      <div class="faq-item">
+        <h4>O suporte ajuda na estratégia?</h4>
+        <p>No plano Pro, sim! Nosso time te ajuda a refinar seus prompts de IA e otimizar seus fluxos de n8n.</p>
+      </div>
     </div>
   </section>
 </Layout>
+
+<script is:inline>
+    const leadSlider = document.getElementById('lead-slider');
+    const costSlider = document.getElementById('cost-slider');
+    const leadVal = document.getElementById('lead-value');
+    const costVal = document.getElementById('cost-value');
+    const roiSavings = document.getElementById('roi-savings');
+
+    function updateROI() {
+        const leads = parseInt(leadSlider.value);
+        const costPerHuman = parseInt(costSlider.value);
+        
+        // Simulação: 1 IA (R$ 97) substitui 'N' humanos/licenças dependendo do volume
+        // Volume baixo (até 2k): 1 humano
+        // Volume médio (até 10k): 3 humanos
+        // Volume alto: 5+ humanos
+        let humansSaved = 1;
+        if (leads > 2000) humansSaved = 3;
+        if (leads > 10000) humansSaved = 6;
+        if (leads > 30000) humansSaved = 12;
+
+        const totalCostSaved = (humansSaved * costPerHuman) - 97;
+        
+        leadVal.innerText = leads.toLocaleString();
+        costVal.innerText = `R$ ${costPerHuman.toLocaleString()}`;
+        roiSavings.innerText = `R$ ${Math.max(0, totalCostSaved).toLocaleString('pt-BR', { minimumFractionDigits: 2 })}`;
+    }
+
+    leadSlider.addEventListener('input', updateROI);
+    costSlider.addEventListener('input', updateROI);
+    updateROI();
+</script>
+
+<style>
+  .pricing-hero { text-align: center; padding: 10rem 5% 4rem; }
+  .hero-badge { background: rgba(0, 212, 255, 0.1); color: #00d4ff; padding: 0.5rem 1.2rem; border-radius: 50px; font-size: 0.85rem; font-weight: 700; border: 1px solid rgba(0, 212, 255, 0.2); display: inline-block; margin-bottom: 2.5rem; }
+  .pricing-hero h1 { font-size: clamp(2.5rem, 6vw, 4rem); margin-bottom: 1.5rem; font-weight: 800; }
+  .pricing-hero p { color: #94a3b8; font-size: 1.25rem; max-width: 750px; margin: 0 auto; }
+
+  /* ROI Calculator */
+  .roi-calculator-section { padding: 4rem 5%; max-width: 1000px; margin: 0 auto; }
+  .roi-wrapper { display: grid; grid-template-columns: 1.2fr 0.8fr; gap: 4rem; padding: 4rem; border-radius: 32px; align-items: center; border-color: rgba(0, 212, 255, 0.2); }
+  
+  .roi-controls { display: flex; flex-direction: column; gap: 3rem; }
+  .control-group label { display: block; color: white; font-weight: 800; margin-bottom: 1.5rem; font-size: 1.1rem; }
+  .control-group label span { color: #00d4ff; float: right; }
+  
+  .premium-slider { -webkit-appearance: none; width: 100%; height: 6px; background: rgba(255,255,255,0.1); border-radius: 10px; outline: none; }
+  .premium-slider::-webkit-slider-thumb { -webkit-appearance: none; width: 22px; height: 22px; background: #00ff9d; border-radius: 50%; cursor: pointer; box-shadow: 0 0 15px rgba(0, 255, 157, 0.5); transition: 0.2s; }
+  .premium-slider::-webkit-slider-thumb:hover { transform: scale(1.2); }
+
+  .result-card { background: rgba(0, 255, 157, 0.05); padding: 3rem; border-radius: 20px; border: 1px dashed rgba(0, 255, 157, 0.3); text-align: center; }
+  .res-label { display: block; color: #94a3b8; font-weight: 700; font-size: 0.9rem; text-transform: uppercase; margin-bottom: 1rem; letter-spacing: 1px; }
+  .res-value { display: block; font-size: 3rem; font-weight: 900; color: #00ff9d; letter-spacing: -1px; text-shadow: 0 0 30px rgba(0, 255, 157, 0.2); margin-bottom: 1rem; }
+  .result-card p { color: #64748b; font-size: 0.85rem; }
+
+  .pricing-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(320px, 1fr)); gap: 2.5rem; max-width: 1200px; margin: 6rem auto; padding: 0 5%; align-items: stretch; }
+  .pricing-card { padding: 4rem 2.5rem; text-align: center; transition: 0.3s; position: relative; display: flex; flex-direction: column; }
+  .pricing-card:hover { border-color: #00d4ff; transform: translateY(-10px); }
+  .pricing-card.featured { border-color: #00ff9d; background: rgba(0, 255, 157, 0.03); transform: scale(1.05); z-index: 10; }
+  .popular-badge { position: absolute; top: -15px; left: 50%; transform: translateX(-50%); background: #00ff9d; color: black; padding: 0.4rem 1.5rem; border-radius: 50px; font-size: 0.8rem; font-weight: 900; }
+
+  .card-type { color: #64748b; text-transform: uppercase; font-size: 0.75rem; font-weight: 800; letter-spacing: 2px; margin-bottom: 1.5rem; }
+  .pricing-card h3 { color: white; font-size: 1.8rem; margin-bottom: 1.5rem; font-weight: 800; }
+  .card-price { font-size: 3.5rem; font-weight: 900; color: white; margin-bottom: 0.5rem; }
+  .card-price span { font-size: 1.1rem; color: #64748b; font-weight: 500; }
+  .card-desc { color: #94a3b8; margin-bottom: 3rem; font-size: 0.95rem; }
+
+  .card-features { list-style: none; padding: 0; text-align: left; margin-bottom: 4rem; flex: 1; }
+  .card-features li { color: #cbd5e1; padding: 0.8rem 0; border-bottom: 1px solid rgba(255,255,255,0.03); font-size: 1rem; }
+  
+  .btn-outline-glow { display: block; border: 1px solid rgba(255,255,255,0.1); color: #cbd5e1; padding: 1.1rem; border-radius: 12px; text-decoration: none; font-weight: 700; transition: 0.3s; background: rgba(255,255,255,0.02); }
+  .btn-outline-glow:hover { border-color: #00d4ff; background: rgba(0, 212, 255, 0.05); color: white; }
+
+  .btn-xl-glow { display: block; background: linear-gradient(135deg, #00d4ff, #00ff9d); color: black; padding: 1.3rem; border-radius: 12px; text-decoration: none; font-weight: 900; transition: 0.3s; box-shadow: 0 10px 30px rgba(0, 212, 255, 0.2); }
+  .btn-xl-glow:hover { transform: scale(1.03); box-shadow: 0 15px 40px rgba(0, 212, 255, 0.4); }
+
+  .pricing-faq { max-width: 1000px; margin: 4rem auto 10rem; padding: 5rem; border-radius: 40px; }
+  .pricing-faq h2 { text-align: center; color: white; font-size: 2.2rem; margin-bottom: 4rem; font-weight: 800; }
+  .faq-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 4rem; }
+  .faq-item h4 { color: #00ff9d; margin-bottom: 1.2rem; font-weight: 800; font-size: 1.1rem; }
+  .faq-item p { color: #94a3b8; line-height: 1.7; font-size: 1rem; }
+
+  @media (max-width: 900px) {
+    .roi-wrapper { grid-template-columns: 1fr; padding: 2.5rem; }
+    .pricing-card.featured { transform: none; }
+    .pricing-hero h1 { font-size: 2.5rem; }
+  }
+</style>

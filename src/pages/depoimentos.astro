@@ -1,63 +1,105 @@
 ---
 import Layout from '../layouts/Layout.astro';
+const title = "Depoimentos Reais – Quem já lucrou com GetNexo";
+const description = "Descubra como empresas de diversos nichos estão economizando milhares de reais e escalando suas vendas com o GetNexo.";
 ---
 
-<Layout title="Depoimentos Reais – Quem já lucrou com GetNexo">
-  <section class="hero" style="padding: 100px 20px; text-align: center; background: linear-gradient(135deg, var(--dark), #0a1125);">
-    <h1 style="font-size: 3.8rem; background: linear-gradient(90deg, var(--primary), var(--success)); -webkit-background-clip: text; color: transparent;">
-      Quem já ganhou dinheiro com GetNexo
-    </h1>
-    <p style="font-size: 1.5rem; max-width: 900px; margin: 2rem auto; color: var(--text);">
-      Resultados reais de quem trocou nuvem paga por GetNexo e nunca mais voltou atrás.
-    </p>
+<Layout title={title} description={description}>
+  <section class="testimonials-hero">
+    <div class="hero-badge">Cases de Sucesso</div>
+    <h1 class="text-gradient">Quem Ganha com GetNexo</h1>
+    <p>Resultados exponenciais de empresas que trocaram soluções SaaS engessadas pela liberdade da nossa IA Conversacional.</p>
   </section>
 
-  <section class="depoimentos" style="padding: 80px 20px; max-width: 1200px; margin: auto;">
-    <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(360px, 1fr)); gap: 3rem;">
-      <div class="card" style="background: rgba(10,14,23,0.8); padding: 2.5rem; border-radius: 20px; border: 1px solid rgba(0,212,255,0.15); text-align: center;">
-        <div style="width: 90px; height: 90px; background: linear-gradient(135deg, #4f46e5, #7c3aed); border-radius: 50%; margin: 0 auto 1.5rem; display: flex; align-items: center; justify-content: center; color: #fff; font-size: 2.5rem; font-weight: 800;">M</div>
-        <p style="font-size: 1.2rem; margin-bottom: 1.5rem; color: var(--text); font-style: italic;">
-          "Eu vendia R$8k/mês. Depois do GetNexo, fechei R$28k no mês passado. O bot responde melhor que meu vendedor e não pede folga."
-        </p>
-        <strong style="font-size: 1.2rem; color: var(--success);">– Marcos, E-commerce de Moda</strong><br>
-        <small style="color: #64748b;">+250% em vendas em 45 dias</small>
-      </div>
-
-      <div class="card" style="background: rgba(10,14,23,0.8); padding: 2.5rem; border-radius: 20px; border: 1px solid rgba(0,212,255,0.15); text-align: center;">
-        <div style="width: 90px; height: 90px; background: linear-gradient(135deg, #ec4899, #f43f5e); border-radius: 50%; margin: 0 auto 1.5rem; display: flex; align-items: center; justify-content: center; color: #fff; font-size: 2.5rem; font-weight: 800;">C</div>
-        <p style="font-size: 1.2rem; margin-bottom: 1.5rem; color: var(--text); font-style: italic;">
-          "Meu vendedor tirou férias. A IA vendeu mais que ele em uma semana. E eu não paguei nada extra. GetNexo mudou meu negócio."
-        </p>
-        <strong style="font-size: 1.2rem; color: var(--success);">– Carla, Clínica Estética</strong><br>
-        <small style="color: #64748b;">Recuperação de carrinho: 72%</small>
-      </div>
-
-      <div class="card" style="background: rgba(10,14,23,0.8); padding: 2.5rem; border-radius: 20px; border: 1px solid rgba(0,212,255,0.15); text-align: center;">
-        <div style="width: 90px; height: 90px; background: linear-gradient(135deg, #f59e0b, #f97316); border-radius: 50%; margin: 0 auto 1.5rem; display: flex; align-items: center; justify-content: center; color: #fff; font-size: 2.5rem; font-weight: 800;">J</div>
-        <p style="font-size: 1.2rem; margin-bottom: 1.5rem; color: var(--text); font-style: italic;">
-          "Instalei em 12 minutos. O bot já tava fechando vendas. Parei de pagar R$399 no AiSensy. Nunca mais volto."
-        </p>
-        <strong style="font-size: 1.2rem; color: var(--success);">– Jorge, Restaurante Delivery</strong><br>
-        <small style="color: #64748b;">Pedidos via WhatsApp: 3x mais rápidos</small>
-      </div>
-
-      <div class="card" style="background: rgba(10,14,23,0.8); padding: 2.5rem; border-radius: 20px; border: 1px solid rgba(0,212,255,0.15); text-align: center;">
-        <div style="width: 90px; height: 90px; background: linear-gradient(135deg, #06b6d4, #0ea5e9); border-radius: 50%; margin: 0 auto 1.5rem; display: flex; align-items: center; justify-content: center; color: #fff; font-size: 2.5rem; font-weight: 800;">L</div>
-        <p style="font-size: 1.2rem; margin-bottom: 1.5rem; color: var(--text); font-style: italic;">
-          "Sou web designer. Instalei pra 7 clientes. Ganhei R$3.500 em comissão. Cliente paga R$99/mês pra mim. Lucro puro."
-        </p>
-        <strong style="font-size: 1.2rem; color: var(--success);">– Leandro, Web Designer</strong><br>
-        <small style="color: #64748b;">+R$3.500 em comissão no mês</small>
+  <section class="testimonials-grid">
+    <div class="testi-card glass-panel">
+      <div class="testi-avatar" style="background: linear-gradient(135deg, #4f46e5, #7c3aed);">M</div>
+      <div class="testi-content">
+        <p>"Eu vendia R$ 8k/mês. Depois do GetNexo, fechei R$ 28k no mês passado. O bot responde melhor que meu vendedor e não pede folga."</p>
+        <div class="testi-meta">
+          <strong>– Marcos, E-commerce de Moda</strong>
+          <span class="testi-badge">+250% em vendas</span>
+        </div>
       </div>
     </div>
 
-    <div style="text-align: center; margin: 6rem 0;">
-      <p style="font-size: 1.5rem; margin-bottom: 2rem; color: var(--text);">
-        Quer resultados assim? Começa agora. Sem risco. Sem custo.
-      </p>
-      <a href="#" onclick="window.$chatwoot.toggle(); return false;" target="_blank" class="btn-cta" style="padding: 1.3rem 3.5rem; font-size: 1.4rem;">
-        Testar o Agente IA Agora →
-      </a>
+    <div class="testi-card glass-panel">
+      <div class="testi-avatar" style="background: linear-gradient(135deg, #ec4899, #f43f5e);">C</div>
+      <div class="testi-content">
+        <p>"Meu vendedor tirou férias e a IA vendeu mais que ele em uma semana. E o melhor: custo fixo zero de mensalidade. Mudou meu jogo."</p>
+        <div class="testi-meta">
+          <strong>– Carla, Clínica Estética</strong>
+          <span class="testi-badge">Recuperação: 72%</span>
+        </div>
+      </div>
+    </div>
+
+    <div class="testi-card glass-panel">
+      <div class="testi-avatar" style="background: linear-gradient(135deg, #f59e0b, #f97316);">J</div>
+      <div class="testi-content">
+        <p>"Instalação em 12 minutos. O bot já estava qualificando leads no mesmo dia. Parei de pagar R$ 399 no Wati. Nunca mais volto atrás."</p>
+        <div class="testi-meta">
+          <strong>– Jorge, Delivery</strong>
+          <span class="testi-badge">Speed Rank: #1</span>
+        </div>
+      </div>
+    </div>
+
+    <div class="testi-card glass-panel">
+      <div class="testi-avatar" style="background: linear-gradient(135deg, #06b6d4, #0ea5e9);">L</div>
+      <div class="testi-content">
+        <p>"Como Web Designer, instalo para meus clientes e ganho comissão + recorrência de manutenção. Lucro puro e cliente feliz com IA de ponta."</p>
+        <div class="testi-meta">
+          <strong>– Leandro, Partner</strong>
+          <span class="testi-badge">ROI: 12x</span>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="testi-cta">
+    <div class="glass-panel final-conversion">
+        <h2>Seu resultado é o nosso próximo case.</h2>
+        <p>Pare de perder leads por demora no atendimento. Comece a vender agora.</p>
+        <div class="cta-actions">
+            <a href="#" onclick="window.$chatwoot.toggle(); return false;" class="btn-primary-glow">Testar Agente IA Agora</a>
+            <a href="/precos" class="btn-outline">Ver Planos</a>
+        </div>
     </div>
   </section>
 </Layout>
+
+<style>
+  .testimonials-hero { text-align: center; padding: 10rem 5% 5rem; }
+  .hero-badge { background: rgba(0, 212, 255, 0.1); color: #00d4ff; padding: 0.5rem 1.2rem; border-radius: 50px; font-size: 0.85rem; font-weight: 700; display: inline-block; margin-bottom: 2rem; border: 1px solid rgba(0,212,255,0.2); }
+  .testimonials-hero h1 { font-size: 3.5rem; margin-bottom: 1.5rem; font-weight: 800; }
+  .testimonials-hero p { color: #94a3b8; font-size: 1.25rem; max-width: 750px; margin: 0 auto; }
+
+  .testimonials-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(450px, 1fr)); gap: 2.5rem; max-width: 1200px; margin: 0 auto; padding: 4rem 5%; }
+  .testi-card { padding: 3rem; display: flex; gap: 2rem; align-items: flex-start; border-radius: 32px; transition: 0.3s; }
+  .testi-card:hover { transform: translateY(-10px); border-color: #00ff9d; }
+  
+  .testi-avatar { width: 70px; height: 70px; border-radius: 50%; display: flex; align-items: center; justify-content: center; color: white; font-size: 1.8rem; font-weight: 900; flex-shrink: 0; box-shadow: 0 10px 20px rgba(0,0,0,0.3); }
+  
+  .testi-content p { color: #cbd5e1; font-size: 1.2rem; line-height: 1.7; font-style: italic; margin-bottom: 2rem; position: relative; }
+  .testi-meta { display: flex; justify-content: space-between; align-items: center; border-top: 1px solid rgba(255,255,255,0.05); pt: 1.5rem; }
+  .testi-meta strong { color: #00ff9d; font-size: 1rem; }
+  .testi-badge { font-size: 0.75rem; background: rgba(0, 212, 255, 0.1); color: #00d4ff; padding: 0.3rem 0.8rem; border-radius: 50px; font-weight: 800; }
+
+  .testi-cta { padding: 6rem 5% 10rem; max-width: 1000px; margin: 0 auto; }
+  .final-conversion { padding: 5rem; text-align: center; border-radius: 40px; }
+  .final-conversion h2 { color: white; font-size: 2.5rem; margin-bottom: 1.5rem; font-weight: 800; }
+  .final-conversion p { color: #94a3b8; font-size: 1.2rem; margin-bottom: 3rem; }
+  
+  .cta-actions { display: flex; justify-content: center; gap: 2rem; }
+  .btn-primary-glow { background: linear-gradient(135deg, #00d4ff, #00ff9d); color: black; padding: 1.2rem 3rem; border-radius: 12px; font-weight: 900; text-decoration: none; transition: 0.3s; box-shadow: 0 10px 30px rgba(0,212,255,0.2); }
+  .btn-outline { border: 1px solid rgba(255,255,255,0.1); color: white; padding: 1.2rem 3rem; border-radius: 12px; font-weight: 700; text-decoration: none; transition: 0.3s; background: rgba(255,255,255,0.03); }
+
+  @media (max-width: 900px) {
+    .testimonials-grid { grid-template-columns: 1fr; }
+    .testi-card { flex-direction: column; text-align: center; }
+    .testi-avatar { margin: 0 auto; }
+    .cta-actions { flex-direction: column; gap: 1rem; }
+    .testimonials-hero h1 { font-size: 2.5rem; }
+  }
+</style>

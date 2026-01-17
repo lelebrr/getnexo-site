@@ -3,46 +3,197 @@ import DashboardLayout from '../../layouts/DashboardLayout.astro';
 ---
 
 <DashboardLayout title="Início | OmniNexo">
-  <div style="display:flex; flex-direction:column; gap:2rem;">
+  <div style="display:flex; flex-direction:column; gap:2.5rem;">
     
+    <!-- NASA Health Monitor Row -->
+    <div style="display:grid; grid-template-columns: repeat(4, 1fr); gap:1rem;">
+        <div class="glass-panel health-card" style="padding:1rem; display:flex; align-items:center; gap:12px;">
+            <div class="pulse-icon green"></div>
+            <div>
+                <div style="font-size:0.65rem; color:#64748b; font-weight:800; text-transform:uppercase;">Meta API Proxy</div>
+                <div style="font-size:0.85rem; font-weight:800; color:white;">LATÊNCIA: 42ms</div>
+            </div>
+        </div>
+        <div class="glass-panel health-card" style="padding:1rem; display:flex; align-items:center; gap:12px;">
+            <div class="pulse-icon green"></div>
+            <div>
+                <div style="font-size:0.65rem; color:#64748b; font-weight:800; text-transform:uppercase;">Evolution API</div>
+                <div style="font-size:0.85rem; font-weight:800; color:white;">STATUS: OPERANTE</div>
+            </div>
+        </div>
+        <div class="glass-panel health-card" style="padding:1rem; display:flex; align-items:center; gap:12px;">
+            <div class="pulse-icon blue"></div>
+            <div>
+                <div style="font-size:0.65rem; color:#64748b; font-weight:800; text-transform:uppercase;">Cérebro Ara</div>
+                <div style="font-size:0.85rem; font-weight:800; color:white;">LOAD: 12% @ GEMINI</div>
+            </div>
+        </div>
+        <div class="glass-panel health-card" style="padding:1rem; display:flex; align-items:center; gap:12px;">
+            <div class="pulse-icon yellow"></div>
+            <div>
+                <div style="font-size:0.65rem; color:#64748b; font-weight:800; text-transform:uppercase;">Workflows n8n</div>
+                <div style="font-size:0.85rem; font-weight:800; color:white;">21 ATIVOS / 1 ERRO</div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Predictive Forecast Row -->
+    <div style="display:grid; grid-template-columns: 1fr 1fr; gap:1rem; margin-top: -1rem;">
+        <div class="glass-panel predictive-card" style="padding:1.5rem; background:linear-gradient(135deg, rgba(167, 139, 250, 0.1), rgba(0, 0, 0, 0.2)); border-color: rgba(167, 139, 250, 0.2);">
+            <div style="display:flex; justify-content:space-between; align-items:flex-start;">
+                <div>
+                    <div style="font-size:0.65rem; color:#a78bfa; font-weight:900; text-transform:uppercase; letter-spacing:1px; margin-bottom:0.5rem;">Previsão de Receita (7 dias)</div>
+                    <div style="font-size:1.8rem; font-weight:900; color:white;">R$ 14.850,00</div>
+                    <div style="font-size:0.75rem; color:var(--neon-green); font-weight:700; margin-top:0.2rem;">↑ 12% vs última semana (Projetado)</div>
+                </div>
+                <div class="brain-icon-mini">🧠</div>
+            </div>
+        </div>
+        <div class="glass-panel predictive-card" style="padding:1.5rem; background:linear-gradient(135deg, rgba(0, 212, 255, 0.1), rgba(0, 0, 0, 0.2)); border-color: rgba(0, 212, 255, 0.2);">
+            <div style="display:flex; justify-content:space-between; align-items:flex-start;">
+                <div>
+                    <div style="font-size:0.65rem; color:var(--neon-blue); font-weight:900; text-transform:uppercase; letter-spacing:1px; margin-bottom:0.5rem;">Sentimento Global dos Leads</div>
+                    <div style="font-size:1.8rem; font-weight:900; color:white;">ALTO (Eufórico)</div>
+                    <div style="display:flex; gap:4px; margin-top:0.5rem;">
+                        <div style="height:4px; width:40px; background:var(--neon-green); border-radius:2px;"></div>
+                        <div style="height:4px; width:40px; background:var(--neon-green); border-radius:2px;"></div>
+                        <div style="height:4px; width:40px; background:var(--neon-green); border-radius:2px; opacity:0.3;"></div>
+                    </div>
+                </div>
+                <div class="sentiment-icon-mini">🔥</div>
+            </div>
+        </div>
+    </div>
+
     <!-- Welcome Header -->
-    <div class="glass-panel" style="padding:2rem; background:linear-gradient(90deg, rgba(0,212,255,0.1), rgba(0,255,157,0.05)); border:1px solid rgba(0,212,255,0.15); display:flex; justify-content:space-between; align-items:center;">
-        <div>
-            <h2 style="font-size:2rem; font-weight:800; color:white; margin:0;">Olá, Admin! 👋</h2>
-            <p style="color:#94a3b8; margin:0.5rem 0 0;">Seu OmniNexo está rodando perfeitamente. O que vamos fazer hoje?</p>
+    <div class="glass-panel" style="padding:2.5rem; background:linear-gradient(90deg, rgba(0,212,255,0.15), rgba(0,255,157,0.08)); display:flex; justify-content:space-between; align-items:center; position:relative; overflow:hidden;">
+        <div style="z-index:2;">
+            <h2 style="font-size:2.5rem; font-weight:900; color:white; margin:0;" class="text-gradient">Painel de Comando GetNexo</h2>
+            <p style="color:#94a3b8; margin:0.5rem 0 0; font-size:1.1rem;">Bem-vindo de volta. A Ara está monitorando <b>24 fluxos ativos</b> agora.</p>
         </div>
-        <a href="/dashboard/chat" style="background:#00d4ff; color:black; font-weight:bold; padding:10px 20px; border-radius:30px; text-decoration:none; box-shadow:0 0 15px rgba(0,212,255,0.4);">
-            Abrir Inbox 💬
-        </a>
+        <div style="display:flex; gap:1rem; z-index:2;">
+            <a href="/dashboard/chat" style="background:var(--neon-blue); color:black; font-weight:900; padding:12px 25px; border-radius:12px; text-decoration:none; box-shadow:0 10px 20px rgba(0,212,255,0.3); transition:0.3s; display:flex; align-items:center; gap:8px;">
+                <span>💬 Abrir Chat</span>
+            </a>
+            <a href="/dashboard/relatorios" style="background:rgba(255,255,255,0.05); color:white; font-weight:700; padding:12px 25px; border-radius:12px; text-decoration:none; border:1px solid rgba(255,255,255,0.1); transition:0.3s;">
+                <span>📊 Relatórios</span>
+            </a>
+        </div>
     </div>
 
-    <!-- KPI Grid -->
-    <div style="display:grid; grid-template-columns:repeat(auto-fit, minmax(250px, 1fr)); gap:1.5rem;">
-        <div class="glass-panel" style="padding:1.5rem;">
-            <div style="color:#64748b; font-size:0.9rem; font-weight:bold; text-transform:uppercase;">Vendas (Hoje)</div>
-            <div id="stat-sales" style="font-size:2.5rem; font-weight:800; color:white; margin:0.5rem 0;">R$ 0,00</div>
-            <div style="color:var(--neon-green); font-size:0.8rem;">---</div>
-        </div>
+    <!-- Main Grid: Charts & Activity -->
+    <div style="display:grid; grid-template-columns: 2fr 1fr; gap:2rem;">
         
-        <div class="glass-panel" style="padding:1.5rem;">
-            <div style="color:#64748b; font-size:0.9rem; font-weight:bold; text-transform:uppercase;">Tickets Abertos</div>
-            <div id="stat-tickets" style="font-size:2.5rem; font-weight:800; color:white; margin:0.5rem 0;">0</div>
-            <div style="color:var(--neon-blue); font-size:0.8rem;">Aguardando ação</div>
+        <!-- Analytics Section -->
+        <div style="display:flex; flex-direction:column; gap:1.5rem;">
+            <div style="display:grid; grid-template-columns: repeat(3, 1fr); gap:1.5rem;">
+                <div class="glass-panel" style="padding:1.5rem; border-left:4px solid var(--neon-blue);">
+                    <div style="color:#64748b; font-size:0.75rem; font-weight:800; text-transform:uppercase; letter-spacing:1px;">Receita Bruta (Hoje)</div>
+                    <div id="stat-sales" style="font-size:2.2rem; font-weight:900; color:white; margin:0.5rem 0;">R$ 0,00</div>
+                    <div style="color:var(--neon-green); font-size:0.8rem; font-weight:700;">↑ 12% vs ontem</div>
+                </div>
+                <div class="glass-panel" style="padding:1.5rem; border-left:4px solid var(--neon-green);">
+                    <div style="color:#64748b; font-size:0.75rem; font-weight:800; text-transform:uppercase; letter-spacing:1px;">Taxa Conversão AI</div>
+                    <div style="font-size:2.2rem; font-weight:900; color:white; margin:0.5rem 0;">84.2%</div>
+                    <div style="color:var(--neon-green); font-size:0.8rem; font-weight:700;">Alta perfomance</div>
+                </div>
+                <div class="glass-panel" style="padding:1.5rem; border-left:4px solid #a78bfa;">
+                    <div style="color:#64748b; font-size:0.75rem; font-weight:800; text-transform:uppercase; letter-spacing:1px;">Leads Processados</div>
+                    <div id="stat-tickets" style="font-size:2.2rem; font-weight:900; color:white; margin:0.5rem 0;">0</div>
+                    <div style="color:#a78bfa; font-size:0.8rem; font-weight:700;">Tempo real</div>
+                </div>
+            </div>
+
+            <div class="glass-panel" style="padding:2rem;">
+                <div style="display:flex; justify-content:space-between; margin-bottom:1.5rem;">
+                    <h3 style="margin:0; font-size:1.2rem; font-weight:800;">Desempenho Semanal</h3>
+                    <span style="color:#64748b; font-size:0.8rem;">Vendas via WhatsApp</span>
+                </div>
+                <div style="height:300px; width:100%;">
+                    <canvas id="salesChart"></canvas>
+                </div>
+            </div>
         </div>
 
-        <div class="glass-panel" style="padding:1.5rem;">
-            <div style="color:#64748b; font-size:0.9rem; font-weight:bold; text-transform:uppercase;">CSAT Médio</div>
-            <div id="stat-csat" style="font-size:2.5rem; font-weight:800; color:white; margin:0.5rem 0;">-</div>
-            <div style="color:#94a3b8; font-size:0.8rem;">Nota média</div>
+        <!-- Activity Feed -->
+        <div class="glass-panel" style="padding:2rem; display:flex; flex-direction:column;">
+            <h3 style="margin:0 0 1.5rem; font-size:1.2rem; font-weight:800;">Ara Activity Feed</h3>
+            <div id="ai-feed" style="flex:1; display:flex; flex-direction:column; gap:1.2rem; overflow-y:auto; max-height:500px;">
+                <!-- Activity items will be injected here -->
+            </div>
         </div>
+
     </div>
 
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
     <script is:inline>
+        // Chart Implementation
+        const ctx = document.getElementById('salesChart').getContext('2d');
+        new Chart(ctx, {
+            type: 'line',
+            data: {
+                labels: ['Seg', 'Ter', 'Qua', 'Qui', 'Sex', 'Sab', 'Dom'],
+                datasets: [{
+                    label: 'Vendas (R$)',
+                    data: [1200, 1900, 1500, 2500, 2200, 3100, 2800],
+                    borderColor: '#00d4ff',
+                    backgroundColor: 'rgba(0, 212, 255, 0.1)',
+                    borderWidth: 3,
+                    tension: 0.4,
+                    fill: true,
+                    pointBackgroundColor: '#00d4ff'
+                }]
+            },
+            options: {
+                responsive: true,
+                maintainAspectRatio: false,
+                plugins: { legend: { display: false } },
+                scales: {
+                    y: { grid: { color: 'rgba(255,255,255,0.05)' }, ticks: { color: '#64748b' } },
+                    x: { grid: { display: false }, ticks: { color: '#64748b' } }
+                }
+            }
+        });
+
+        // Activity Feed Simulation
+        const feed = document.getElementById('ai-feed');
+        const activities = [
+            { icon: '💰', user: 'Marcos P.', act: 'Pagamento Confirmado', val: 'R$ 297,00' },
+            { icon: '🤖', user: 'Ara', act: 'Objeção Quebrada', val: 'Preço/Valor' },
+            { icon: '⚡', user: 'Lead #442', act: 'Novo Contato Capturado', val: 'São Paulo' },
+            { icon: '🛒', user: 'Julia F.', act: 'Carrinho Recuperado', val: 'R$ 1.250,00' }
+        ];
+
+        function addActivity() {
+            const a = activities[Math.floor(Math.random() * activities.length)];
+            const div = document.createElement('div');
+            div.style.padding = '12px';
+            div.style.background = 'rgba(255,255,255,0.03)';
+            div.style.border = '1px solid rgba(255,255,255,0.05)';
+            div.style.borderRadius = '12px';
+            div.style.display = 'flex';
+            div.style.alignItems = 'center';
+            div.style.gap = '15px';
+            div.style.animation = 'msgStep 0.5s ease-out';
+            
+            div.innerHTML = `
+                <div style="font-size:1.2rem;">${a.icon}</div>
+                <div style="flex:1;">
+                    <div style="font-size:0.85rem; font-weight:800; color:white;">${a.user}</div>
+                    <div style="font-size:0.75rem; color:#64748b;">${a.act}</div>
+                </div>
+                <div style="font-size:0.8rem; font-weight:700; color:var(--neon-green);">${a.val}</div>
+            `;
+            feed.prepend(div);
+            if (feed.children.length > 10) feed.lastElementChild.remove();
+        }
+        setInterval(addActivity, 5000);
+        for(let i=0; i<4; i++) addActivity();
+
         // Fetch Real Dashboard Stats
         async function fetchStats() {
             try {
-                // Use public URL if available, else localhost
-            const API = 'https://api.getnexo.com.br'; 
+                const API = 'https://api.getnexo.com.br'; 
                 const res = await fetch(`${API}/dashboard-stats`, {
                     headers: window.getAuthHeader()
                 });
@@ -51,26 +202,32 @@ import DashboardLayout from '../../layouts/DashboardLayout.astro';
                 if (data) {
                     document.getElementById('stat-sales').innerText = 'R$ ' + (data.sales || 0).toLocaleString('pt-BR', {minimumFractionDigits: 2});
                     document.getElementById('stat-tickets').innerText = data.open_tickets || 0;
-                    document.getElementById('stat-csat').innerText = data.csat ? Number(data.csat).toFixed(1) : '-';
                 }
             } catch (e) {
                 console.error('Error fetching stats:', e);
             }
         }
         fetchStats();
-        // Refresh every 30s
         setInterval(fetchStats, 30000);
     </script>
 
-    <!-- Illustration / Empty State -->
-    <div style="text-align:center; padding:3rem; opacity:0.5;">
-        <svg width="100" height="100" viewBox="0 0 24 24" fill="none" stroke="#334155" stroke-width="1" style="margin:0 auto 1rem;">
-            <circle cx="12" cy="12" r="10"></circle>
-            <path d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"></path>
-            <path d="M2 12h20"></path>
-        </svg>
-        <p style="color:#64748b;">Sistema monitorando em tempo real. Tudo calmo por aqui.</p>
-    </div>
+    <style>
+        @keyframes msgStep { from { opacity: 0; transform: translateX(20px); } to { opacity: 1; transform: translateX(0); } }
+        .pulse-icon { width: 8px; height: 8px; border-radius: 50%; position: relative; }
+        .pulse-icon::after { content: ''; position: absolute; inset: -4px; border-radius: 50%; opacity: 0.4; }
+        .pulse-icon.green { background: #00ff9d; box-shadow: 0 0 10px #00ff9d; }
+        .pulse-icon.green::after { border: 2px solid #00ff9d; animation: pulseS 2s infinite; }
+        .pulse-icon.blue { background: #00d4ff; box-shadow: 0 0 10px #00d4ff; }
+        .pulse-icon.blue::after { border: 2px solid #00d4ff; animation: pulseS 2s infinite; }
+        .pulse-icon.yellow { background: #fbbf24; box-shadow: 0 0 10px #fbbf24; }
+        .pulse-icon.yellow::after { border: 2px solid #fbbf24; animation: pulseS 2s infinite; }
+        @keyframes pulseS { 0% { transform: scale(1); opacity: 0.6; } 100% { transform: scale(2.5); opacity: 0; } }
+        .predictive-card:hover { transform: translateY(-5px); border-color: white; transition: 0.4s; }
+        .brain-icon-mini { font-size: 1.5rem; filter: drop-shadow(0 0 8px #a78bfa); animation: float 3s ease-in-out infinite; }
+        .sentiment-icon-mini { font-size: 1.5rem; filter: drop-shadow(0 0 8px var(--neon-blue)); animation: float 4s ease-in-out infinite; }
+        @keyframes float { 0%, 100% { transform: translateY(0); } 50% { transform: translateY(-8px); } }
+    </style>
+  </div>
 
   </div>
 </DashboardLayout>

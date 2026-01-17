@@ -18,8 +18,9 @@ const currentPath = Astro.url.pathname;
         :root {
             --neon-blue: #00d4ff;
             --neon-green: #00ff9d;
-            --dark-bg: #0a0e17;
-            --glass: rgba(30,41,59,0.8);
+            --dark-bg: #030712;
+            --glass: rgba(15, 23, 42, 0.7);
+            --sidebar-width: 260px;
         }
         body { 
             background: var(--dark-bg); 
@@ -50,11 +51,24 @@ const currentPath = Astro.url.pathname;
             border: 1px solid rgba(0,255,157,0.3);
         }
         .glass-panel {
-            background:rgba(30,41,59,0.6); 
-            backdrop-filter:blur(12px); 
-            border-radius:16px; 
-            border:1px solid rgba(0,212,255,0.1);
+            background: var(--glass); 
+            backdrop-filter: blur(12px); 
+            border-radius: 20px; 
+            border: 1px solid rgba(255,255,255,0.05);
         }
+        .neural-badge {
+            position: absolute; right: 8px; top: 12px;
+            padding: 2px 6px; border-radius: 6px; font-size: 0.6rem; font-weight: 900;
+            color: black;
+        }
+        .neural-badge.pulse { animation: badgePulse 2s infinite; }
+        @keyframes badgePulse { 0% { transform: scale(1); box-shadow: 0 0 0 0 rgba(234, 179, 8, 0.4); } 70% { transform: scale(1.1); box-shadow: 0 0 0 10px rgba(234, 179, 8, 0); } 100% { transform: scale(1); box-shadow: 0 0 0 0 rgba(234, 179, 8, 0); } }
+        .neural-canvas {
+            position: fixed; top: 0; left: 0; width: 100%; height: 100%;
+            z-index: -1; pointer-events: none; opacity: 0.4;
+        }
+        aside::-webkit-scrollbar { width: 4px; }
+        aside::-webkit-scrollbar-thumb { background: rgba(255,255,255,0.1); border-radius: 10px; }
     </style>
     <!-- Google Analytics 4 -->
     <script async src="https://www.googletagmanager.com/gtag/js?id=G-F8P994EX00"></script>
@@ -66,6 +80,7 @@ const currentPath = Astro.url.pathname;
     </script>
 </head>
 <body>
+  <canvas id="neural-bg-dash" class="neural-canvas"></canvas>
   <div style="display:flex; flex-direction:column; min-height:100vh;">
       <header style="position:sticky; top:0; background:rgba(10,14,23,0.95); padding:1rem 2rem; border-bottom: 1px solid rgba(0,212,255,0.2); z-index:100; display:flex; justify-content:space-between; align-items:center;">
         <div style="display:flex; align-items:center; gap:10px;">
@@ -86,10 +101,10 @@ const currentPath = Astro.url.pathname;
         </div>
       </header>
 
-      <div style="display:flex; flex:1; height:calc(100vh - 74px);">
+      <div style="display:flex; flex:1; height:calc(100vh - 74px); overflow:hidden;">
         
         <!-- Sidebar -->
-        <aside style="width:240px; background:rgba(10,14,23,0.8); border-right:1px solid rgba(255,255,255,0.05); padding:2rem 1rem; display:flex; flex-direction:column; overflow-y:auto;">
+        <aside style="width:var(--sidebar-width); background:rgba(3,7,18,0.4); backdrop-filter:blur(20px); border-right:1px solid rgba(255,255,255,0.05); padding:2rem 1.2rem; display:flex; flex-direction:column; overflow-y:auto; z-index:50;">
           <nav>
             <div style="font-size:0.7rem; text-transform:uppercase; color:#64748b; font-weight:700; margin-bottom:1rem; padding-left:0.8rem;">Principal</div>
             
@@ -98,9 +113,10 @@ const currentPath = Astro.url.pathname;
                <span>Início</span>
             </a>
 
-            <a href="/dashboard/chat" class={`sidebar-link ${currentPath.includes('/dashboard/chat') ? 'active' : ''}`}>
+            <a href="/dashboard/chat" class={`sidebar-link ${currentPath.includes('/dashboard/chat') ? 'active' : ''}`} style="position:relative;">
               <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 11.5a8.38 8.38 0 0 1-.9 3.8 8.5 8.5 0 0 1-7.6 4.7 8.38 8.38 0 0 1-3.8-.9L3 21l1.9-5.7a8.38 8.38 0 0 1-.9-3.8 8.5 8.5 0 0 1 4.7-7.6 8.38 8.38 0 0 1 3.8-.9h.5a8.48 8.48 0 0 1 8 8v.5z"></path></svg>
               <span>Chat & Inbox</span>
+              <div class="neural-badge" style="background:var(--neon-green);">3</div>
             </a>
 
             <a href="/dashboard/loja" class={`sidebar-link ${currentPath.includes('/dashboard/loja') ? 'active' : ''}`}>
@@ -123,9 +139,10 @@ const currentPath = Astro.url.pathname;
                 <span>Leads Capturados</span>
             </a>
 
-            <a href="/dashboard/pedidos" class={`sidebar-link ${currentPath.includes('/dashboard/pedidos') ? 'active' : ''}`}>
+            <a href="/dashboard/pedidos" class={`sidebar-link ${currentPath.includes('/dashboard/pedidos') ? 'active' : ''}`} style="position:relative;">
               <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"></path><polyline points="14 2 14 8 20 8"></polyline><line x1="16" y1="13" x2="8" y2="13"></line><line x1="16" y1="17" x2="8" y2="17"></line><polyline points="10 9 9 9 8 9"></polyline></svg>
               <span>Vendas & Pedidos</span>
+              <div class="neural-badge pulse" style="background:#eab308;">!</div>
             </a>
 
             <div style="font-size:0.7rem; text-transform:uppercase; color:#64748b; font-weight:700; margin:2rem 0 1rem; padding-left:0.8rem;">Ferramentas</div>
@@ -146,13 +163,17 @@ const currentPath = Astro.url.pathname;
             </a>
 
             <a href="/dashboard/revenda" class={`sidebar-link ${currentPath.includes('/dashboard/revenda') ? 'active' : ''}`}>
-               <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"></circle><path d="M16 8h-6a2 2 0 1 0 0 4h4a2 2 0 1 1 0 4H8"></path><path d="M12 18V6"></path></svg>
+               <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"></circle><path d="M16 8h-6a2 2 0 1 0 0 4h4a2 2 0 1 1 0 4H8"></path><path d="M12 18V6"></path></svg>
                <span>Revenda</span>
             </a>
             <a href="/dashboard/config" class={`sidebar-link ${currentPath.includes('/dashboard/config') ? 'active' : ''}`}>
-               <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2a3 3 0 0 0-3 3v7a3 3 0 0 0 6 0V5a3 3 0 0 0-3-3Z"></path><path d="M19 10v2a7 7 0 0 1-14 0v-2"></path><line x1="12" y1="19" x2="12" y2="23"></line><line x1="8" y1="23" x2="16" y2="23"></line></svg>
-               <span>Configuração IA</span>
+               <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"></path></svg>
+               <span>Cérebro da IA</span>
             </a>
+            <a href="/dashboard/relatorios" class={`sidebar-link ${currentPath.includes('/dashboard/relatorios') ? 'active' : ''}`}>
+                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="22 12 18 12 15 21 9 3 6 12 2 12"></polyline></svg>
+                <span>Analytics Extra</span>
+             </a>
           </nav>
 
           <div style="margin-top:auto; padding-top:2rem; display:flex; flex-direction:column; gap:1rem;">
@@ -173,26 +194,93 @@ const currentPath = Astro.url.pathname;
         </main>
 
       </div>
+
+      <!-- Action CLI (Command Palette Pro) -->
+      <div id="action-cli" style="position:fixed; bottom:30px; left:50%; transform:translateX(-50%) translateY(150%); width:600px; z-index:1000; transition:0.5s cubic-bezier(0.19, 1, 0.22, 1);">
+          <div class="glass-panel" style="padding:1rem; display:flex; align-items:center; gap:1rem; box-shadow:0 10px 50px rgba(0,0,0,0.5); border-color:var(--neon-blue);">
+              <span style="color:var(--neon-blue); font-weight:900; font-size:1.2rem;">/</span>
+              <input type="text" id="cli-input" placeholder="Comando rápido (ex: /broadcast, /suporte, /relatorio)..." style="background:none; border:none; color:white; width:100%; outline:none; font-weight:600; font-size:1.1rem;" />
+              <div style="background:rgba(255,255,255,0.1); padding:4px 8px; border-radius:6px; font-size:0.7rem; color:#888;">ENTER</div>
+          </div>
+      </div>
+  </div>
   </div>
 
-  <script is:inline>
+      // Neural Dash Particles
+      const canvas = document.getElementById('neural-bg-dash');
+      const ctx = canvas.getContext('2d');
+      let particles = [];
+      function init() {
+          canvas.width = window.innerWidth;
+          canvas.height = window.innerHeight;
+          particles = [];
+          for (let i = 0; i < 50; i++) {
+              particles.push({
+                  x: Math.random() * canvas.width,
+                  y: Math.random() * canvas.height,
+                  speedX: Math.random() * 0.2 - 0.1,
+                  speedY: Math.random() * 0.2 - 0.1,
+                  size: Math.random() * 1.5
+              });
+          }
+      }
+      function animate() {
+          ctx.clearRect(0,0,canvas.width,canvas.height);
+          particles.forEach(p => {
+              p.x += p.speedX; p.y += p.speedY;
+              if (p.x > canvas.width || p.x < 0) p.speedX *= -1;
+              if (p.y > canvas.height || p.y < 0) p.speedY *= -1;
+              ctx.fillStyle = 'rgba(0, 212, 255, 0.15)';
+              ctx.beginPath(); ctx.arc(p.x, p.y, p.size, 0, Math.PI*2); ctx.fill();
+          });
+          requestAnimationFrame(animate);
+      }
+      window.addEventListener('resize', init);
+      init(); animate();
+
       // Auth Guard & Global Helpers
       window.getAuthHeader = () => {
           const token = localStorage.getItem('omnichat_token');
           return token ? { 'Authorization': `Bearer ${token}` } : {};
       };
 
-      function logout() {
+      window.logout = () => {
           localStorage.removeItem('omnichat_token');
           localStorage.removeItem('adminUser');
           window.location.href = '/admin/login';
       }
 
-      // Check Auth
       const token = localStorage.getItem('omnichat_token');
-      if (!token) {
-          window.location.href = '/admin/login';
-      }
+      if (!token) { window.location.href = '/admin/login'; }
+
+      // Action CLI Logic
+      const cli = document.getElementById('action-cli');
+      const cliInput = document.getElementById('cli-input');
+      
+      document.addEventListener('keydown', (e) => {
+          if (e.key === 'k' && (e.metaKey || e.ctrlKey)) {
+              e.preventDefault();
+              cli.style.transform = 'translateX(-50%) translateY(0)';
+              cliInput.focus();
+          }
+          if (e.key === 'Escape') {
+              cli.style.transform = 'translateX(-50%) translateY(150%)';
+          }
+      });
+
+      cliInput.onkeydown = (e) => {
+          if (e.key === 'Enter') {
+              const cmd = cliInput.value.toLowerCase().trim();
+              if (cmd === '/broadcast' || cmd === '/campanha') window.location.href = '/dashboard/campanhas';
+              else if (cmd === '/suporte') window.location.href = '/dashboard/pedidos';
+              else if (cmd === '/config' || cmd === '/ia') window.location.href = '/dashboard/config';
+              else if (cmd === '/relatorio') window.location.href = '/dashboard/relatorios';
+              else if (cmd === '/simular') window.location.href = '/dashboard/simulacao';
+              
+              cliInput.value = '';
+              cli.style.transform = 'translateX(-50%) translateY(150%)';
+          }
+      };
   </script>
 </body>
 </html>

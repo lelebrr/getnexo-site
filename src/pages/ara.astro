@@ -2,236 +2,175 @@
 import AdminLayout from '../layouts/AdminLayout.astro';
 ---
 
-<AdminLayout title="Ara AI Control">
-  <div class="ara-interface">
-    <div class="chat-panel">
-        <div class="agent-avatar">
-            <div class="ring"></div>
-            <span class="icon">✨</span>
+<AdminLayout title="Ara AI Interface">
+  <div class="ara-terminal">
+    <div class="main-console glass-panel">
+        <div class="console-header">
+            <div class="agent-pulse">
+                <div class="ring-outer"></div>
+                <div class="ring-inner"></div>
+                <span class="agent-icon">✨</span>
+            </div>
+            <div class="agent-label">
+                <h2>Ara: Editora Chefe</h2>
+                <div class="status-badge"><span class="dot"></span> Pronta para criar</div>
+            </div>
         </div>
-        <h2>Ara, sua editora chefe.</h2>
-        <p class="subtitle">O que vamos criar hoje?</p>
 
-        <div class="prompt-box">
-            <textarea placeholder="Ex: Escreva um artigo sobre como Chatbot aumenta vendas em 30%..."></textarea>
-            <div class="actions">
-                <button class="mode-btn selected">Artigo Blog</button>
-                <button class="mode-btn">Post LinkedIn</button>
-                <button class="mode-btn">E-mail Mkt</button>
-                <button class="start-btn">
-                    GERAR AGORA <span class="arrow">→</span>
+        <div class="editor-area">
+            <div class="prompt-meta">
+                <span class="cmd">nexus://ara/prompt_input</span>
+                <span class="tokens">0/2000 tokens</span>
+            </div>
+            <textarea placeholder="O que vamos construir hoje? Expanda uma ideia ou peça um rascunho completo..."></textarea>
+            
+            <div class="terminal-footer">
+                <div class="mode-selector">
+                    <button class="mode-opt active">Artigo Blog</button>
+                    <button class="mode-opt">LinkedIn Insight</button>
+                    <button class="mode-opt">E-mail Flow</button>
+                    <button class="mode-opt">Ad Copy</button>
+                </div>
+                <button class="btn-execute">
+                    EXECUTAR CÓDIGO <span class="arr">→</span>
                 </button>
             </div>
         </div>
     </div>
 
-    <div class="history-panel">
-        <h3>Histórico Recente</h3>
-        <div class="history-list">
-            <div class="history-item">
-                <span class="type">Blog</span>
-                <span class="title">Por que seu e-commerce perde vendas?</span>
-                <span class="date">Hoje, 10:23</span>
-                <span class="status draft">Rascunho</span>
+    <div class="side-vault glass-panel">
+        <h3>Vault de Criação</h3>
+        <div class="vault-list">
+            <div class="vault-item">
+                <div class="v-left">
+                    <span class="v-type">BLOG</span>
+                    <span class="v-name">Funil Inevitável: Como configurar</span>
+                </div>
+                <div class="v-right">
+                    <span class="v-status draft">Draft</span>
+                    <span class="v-time">10:23 AM</span>
+                </div>
             </div>
-            <div class="history-item">
-                <span class="type">Social</span>
-                <span class="title">Lançamento Black Friday</span>
-                <span class="date">Ontem, 16:40</span>
-                <span class="status published">Publicado</span>
+            <div class="vault-item">
+                <div class="v-left">
+                    <span class="v-type">ADS</span>
+                    <span class="v-name">Lançamento Protocolo Beta</span>
+                </div>
+                <div class="v-right">
+                    <span class="v-status ok">Live</span>
+                    <span class="v-time">16:40 PM</span>
+                </div>
             </div>
-             <div class="history-item">
-                <span class="type">Email</span>
-                <span class="title">Recuperação de Carrinho #1</span>
-                <span class="date">15/01, 09:12</span>
-                <span class="status published">Enviado</span>
+            <div class="vault-item">
+                <div class="v-left">
+                    <span class="v-type">MAIL</span>
+                    <span class="v-name">Sequence: Carrinho Abandonado</span>
+                </div>
+                <div class="v-right">
+                    <span class="v-status ok">Sent</span>
+                    <span class="v-time">09:12 AM</span>
+                </div>
             </div>
+        </div>
+        
+        <div class="vault-footer">
+            <button class="btn-vault-action">Ver Arquivo Completo</button>
         </div>
     </div>
   </div>
 </AdminLayout>
 
 <style>
-    .ara-interface {
+    .ara-terminal {
         display: grid;
-        grid-template-columns: 2fr 1fr;
-        gap: 2rem;
-        height: 100%;
+        grid-template-columns: 1fr 320px;
+        gap: 1.5rem;
+        height: calc(100vh - 180px);
     }
 
-    .chat-panel {
-        background: #0f0f0f;
-        border: 1px solid #222;
-        border-radius: 12px;
-        padding: 3rem;
+    .main-console {
         display: flex;
         flex-direction: column;
-        align-items: center;
-        justify-content: center;
-        text-align: center;
+        padding: 3rem;
+        background: rgba(10, 10, 10, 0.4);
+        border: 1px solid rgba(0, 247, 255, 0.1);
         position: relative;
         overflow: hidden;
     }
 
-    .chat-panel::before {
+    .main-console::before {
         content: '';
         position: absolute;
-        top: 0; left: 0; right: 0; height: 2px;
-        background: linear-gradient(90deg, transparent, #00F7FF, transparent);
-        animation: scan 3s infinite linear;
+        top: 0; left: 0; right: 0; height: 1px;
+        background: linear-gradient(90deg, transparent, #00d4ff, transparent);
+        animation: scan 4s infinite linear;
     }
 
-    @keyframes scan {
-        0% { transform: translateX(-100%); }
-        100% { transform: translateX(100%); }
-    }
+    @keyframes scan { from { transform: translateX(-100%); } to { transform: translateX(100%); } }
 
-    .agent-avatar {
-        width: 80px;
-        height: 80px;
-        position: relative;
-        margin-bottom: 1.5rem;
-        display: flex;
-        align-items: center;
-        justify-content: center;
-    }
-
-    .icon { font-size: 2rem; }
-
-    .ring {
-        position: absolute;
-        inset: 0;
-        border: 2px solid #00F7FF;
-        border-radius: 50%;
-        animation: spin 10s linear infinite;
-        border-top-color: transparent;
-        box-shadow: 0 0 15px rgba(0, 247, 255, 0.2);
-    }
-
+    .console-header { display: flex; align-items: center; gap: 2rem; margin-bottom: 4rem; }
+    
+    .agent-pulse { position: relative; width: 70px; height: 70px; display: flex; align-items: center; justify-content: center; }
+    .agent-icon { font-size: 2rem; z-index: 2; }
+    .ring-outer { position: absolute; inset: 0; border: 2px solid #00d4ff; border-radius: 50%; animation: spin 15s linear infinite; border-top-color: transparent; }
+    .ring-inner { position: absolute; inset: 8px; border: 1px solid #00ff9d; border-radius: 50%; animation: spin 8s linear reverse infinite; border-bottom-color: transparent; opacity: 0.5; }
     @keyframes spin { 100% { transform: rotate(360deg); } }
 
-    h2 { font-size: 1.8rem; margin-bottom: 0.5rem; }
-    .subtitle { color: #666; margin-bottom: 2rem; }
+    .agent-label h2 { font-size: 1.8rem; font-weight: 800; color: white; margin-bottom: 0.3rem; }
+    .status-badge { display: flex; align-items: center; gap: 0.5rem; font-size: 0.8rem; color: #64748b; font-weight: 700; text-transform: uppercase; letter-spacing: 1px; }
+    .status-badge .dot { width: 6px; height: 6px; background: #00ff9d; border-radius: 50%; box-shadow: 0 0 10px #00ff9d; }
 
-    .prompt-box {
-        width: 100%;
-        max-width: 600px;
-        background: #1a1a1a;
-        padding: 1rem;
-        border-radius: 8px;
-        border: 1px solid #333;
-        transition: 0.3s;
-    }
-
-    .prompt-box:focus-within {
-        border-color: #00F7FF;
-        box-shadow: 0 0 20px rgba(0, 247, 255, 0.1);
-    }
-
+    .editor-area { flex: 1; display: flex; flex-direction: column; }
+    .prompt-meta { display: flex; justify-content: space-between; font-family: 'JetBrains Mono', monospace; font-size: 0.75rem; color: #334155; margin-bottom: 0.8rem; }
+    
     textarea {
-        width: 100%;
-        height: 100px;
-        background: transparent;
-        border: none;
+        flex: 1;
+        background: rgba(0,0,0,0.3);
+        border: 1px solid rgba(255,255,255,0.05);
+        border-radius: 12px;
+        padding: 2rem;
         color: white;
         font-family: 'Inter', sans-serif;
-        font-size: 1rem;
+        font-size: 1.2rem;
+        line-height: 1.6;
         resize: none;
         outline: none;
+        transition: 0.3s;
     }
+    textarea:focus { border-color: rgba(0, 212, 255, 0.3); background: rgba(0,0,0,0.5); }
 
-    .actions {
-        display: flex;
-        gap: 0.5rem;
-        margin-top: 1rem;
-        border-top: 1px solid #333;
-        padding-top: 1rem;
-        align-items: center;
-    }
+    .terminal-footer { margin-top: 1.5rem; display: flex; justify-content: space-between; align-items: center; }
+    .mode-selector { display: flex; gap: 0.5rem; }
+    .mode-opt { background: #161b22; border: 1px solid #30363d; color: #8b949e; padding: 0.6rem 1.2rem; border-radius: 8px; font-size: 0.85rem; font-weight: 700; cursor: pointer; transition: 0.2s; }
+    .mode-opt:hover { background: #21262d; color: white; }
+    .mode-opt.active { background: rgba(0, 212, 255, 0.1); border-color: #00d4ff; color: #00d4ff; }
 
-    .mode-btn {
-        background: transparent;
-        border: 1px solid #333;
-        color: #888;
-        padding: 0.5rem 1rem;
-        border-radius: 4px;
-        cursor: pointer;
-        font-size: 0.8rem;
-        transition: 0.2s;
-    }
+    .btn-execute { background: #00d4ff; color: black; padding: 0.8rem 2rem; border-radius: 8px; font-weight: 900; font-family: 'JetBrains Mono', monospace; border: none; cursor: pointer; transition: 0.3s; display: flex; align-items: center; gap: 0.8rem; }
+    .btn-execute:hover { background: white; transform: translateX(5px); }
 
-    .mode-btn:hover { background: #222; color: white; }
-    .mode-btn.selected {
-        background: rgba(0, 247, 255, 0.1);
-        border-color: #00F7FF;
-        color: #00F7FF;
-    }
-
-    .start-btn {
-        margin-left: auto;
-        background: #00F7FF;
-        color: black;
-        border: none;
-        padding: 0.6rem 1.5rem;
-        border-radius: 4px;
-        font-weight: bold;
-        cursor: pointer;
-        font-family: 'JetBrains Mono', monospace;
-        display: flex;
-        align-items: center;
-        gap: 0.5rem;
-        transition: 0.2s;
-    }
-
-    .start-btn:hover {
-        background: white;
-        transform: translateX(2px);
-    }
-
-    /* History */
-    .history-panel {
-        background: #0f0f0f;
-        border-left: 1px solid #222;
-        padding: 1.5rem;
-    }
-
-    .history-item {
-        background: #161616;
-        padding: 1rem;
-        border-radius: 6px;
-        margin-bottom: 0.8rem;
-        border: 1px solid #222;
-        display: flex;
-        flex-direction: column;
-        gap: 0.3rem;
-    }
-
-    .type {
-        font-size: 0.7rem;
-        text-transform: uppercase;
-        color: #555;
-        font-weight: bold;
-    }
-
-    .title { font-weight: 600; font-size: 0.95rem; }
+    /* Side Vault */
+    .side-vault { padding: 2rem; display: flex; flex-direction: column; }
+    .side-vault h3 { font-size: 1rem; color: #64748b; font-weight: 800; text-transform: uppercase; margin-bottom: 2rem; letter-spacing: 1px; }
     
-    .date { font-size: 0.8rem; color: #666; }
+    .vault-list { flex: 1; display: flex; flex-direction: column; gap: 1rem; }
+    .vault-item { padding: 1.2rem; background: rgba(255,255,255,0.02); border: 1px solid rgba(255,255,255,0.05); border-radius: 12px; transition: 0.2s; cursor: pointer; }
+    .vault-item:hover { background: rgba(255,255,255,0.05); border-color: rgba(0, 212, 255, 0.2); }
+    
+    .v-type { display: block; font-size: 0.65rem; font-weight: 900; color: #00d4ff; margin-bottom: 0.4rem; }
+    .v-name { display: block; font-size: 0.9rem; font-weight: 700; color: white; margin-bottom: 0.8rem; }
+    
+    .v-right { display: flex; justify-content: space-between; align-items: center; }
+    .v-status { font-size: 0.7rem; font-weight: 800; padding: 0.2rem 0.6rem; border-radius: 10px; }
+    .v-status.draft { background: rgba(255, 213, 0, 0.1); color: #ffd500; }
+    .v-status.ok { background: rgba(0, 255, 157, 0.1); color: #00ff9d; }
+    .v-time { font-size: 0.75rem; color: #334155; }
 
-    .status {
-        font-size: 0.7rem;
-        align-self: flex-start;
-        padding: 0.2rem 0.6rem;
-        border-radius: 10px;
-        margin-top: 0.3rem;
-    }
+    .vault-footer { margin-top: 2rem; }
+    .btn-vault-action { width: 100%; padding: 0.8rem; background: transparent; border: 1px solid #334155; color: #64748b; border-radius: 8px; font-weight: 700; cursor: pointer; transition: 0.2s; }
+    .btn-vault-action:hover { color: white; border-color: white; }
 
-    .status.published {
-        background: rgba(0, 255, 0, 0.1);
-        color: #0f0;
-    }
-
-    .status.draft {
-        background: rgba(255, 200, 0, 0.1);
-        color: #FFD500;
+    @media (max-width: 1100px) {
+        .ara-terminal { grid-template-columns: 1fr; height: auto; }
+        .side-vault { display: none; }
     }
 </style>

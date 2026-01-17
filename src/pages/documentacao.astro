@@ -2,316 +2,183 @@
 import Layout from '../layouts/Layout.astro';
 ---
 
-<Layout title="Documentação Técnica – Guia de Instalação | GetNexo">
-  <section class="hero">
-    <h1>Documentação Técnica</h1>
-    <p>Guia completo de instalação e configuração do GetNexo</p>
+   <section class="docs-hero">
+    <div class="hero-badge">Guia do Administrador</div>
+    <h1 class="text-gradient">Documentação Técnica</h1>
+    <p>Aprenda a instalar, configurar e escalar sua infraestrutura GetNexo.</p>
   </section>
 
-  <nav class="docs-nav">
+  <nav class="docs-nav glass-panel">
     <a href="#requisitos">Requisitos</a>
     <a href="#instalacao">Instalação</a>
     <a href="#configuracao">Configuração</a>
     <a href="#whatsapp">WhatsApp</a>
     <a href="#n8n">Automações</a>
-    <a href="#troubleshooting">Problemas</a>
+    <a href="#troubleshooting">Suporte</a>
   </nav>
 
   <section class="docs-content">
     <article id="requisitos" class="doc-section">
-      <h2>📋 Requisitos do Sistema</h2>
+      <h2 class="section-title">📋 Requisitos do Sistema</h2>
       <div class="requirements-grid">
-        <div class="req-card">
-          <h3>Hardware Mínimo</h3>
+        <div class="req-card glass-panel">
+          <h3>Infraestrutura Mínima</h3>
           <ul>
-            <li>CPU: 2 cores (x64)</li>
-            <li>RAM: 8GB</li>
-            <li>Disco: 20GB SSD</li>
-            <li>Internet: 10 Mbps</li>
+            <li>CPU: 2 vCPUs (x64)</li>
+            <li>RAM: 8GB DDR4</li>
+            <li>Disco: 20GB SSD/NVMe</li>
+            <li>Rede: 10Mbps (Estável)</li>
           </ul>
         </div>
-        <div class="req-card">
-          <h3>Software</h3>
+        <div class="req-card glass-panel">
+          <h3>Ambiente de Software</h3>
           <ul>
-            <li>Windows 10/11 com WSL2</li>
-            <li>OU Linux (Ubuntu 22.04+)</li>
-            <li>Docker + Docker Compose</li>
-            <li>Conta Cloudflare (grátis)</li>
-          </ul>
-        </div>
-        <div class="req-card">
-          <h3>Serviços</h3>
-          <ul>
-            <li>Número WhatsApp dedicado</li>
-            <li>Domínio próprio (opcional)</li>
-            <li>Conta GitHub (opcional)</li>
+            <li>Ubuntu 22.04 LTS (Recomendado)</li>
+            <li>Docker v24.0+ & Compose</li>
+            <li>WSL2 (Se rodar no Windows)</li>
+            <li>Domínio Próprio Gerenciado</li>
           </ul>
         </div>
       </div>
     </article>
 
     <article id="instalacao" class="doc-section">
-      <h2>🚀 Instalação Rápida (10 min)</h2>
-      <div class="code-block">
-        <div class="code-header">Terminal (WSL ou Linux)</div>
-        <pre><code># 1. Clone o repositório
-git clone https://github.com/getnexo/stack.git
-cd stack
+      <h2 class="section-title">🚀 Instalação via CLI (Docker)</h2>
+      <p>O GetNexo foi projetado para ser executado em containers, garantindo isolamento e facilidade de atualização.</p>
+      
+      <div class="code-wrapper">
+        <div class="code-header">
+          <span>bash terminal</span>
+        </div>
+        <pre><code># 1. Obtenha o pacote oficial
+git clone https://github.com/lelebrr/usenexo.git
+cd usenexo
 
-# 2. Configure as variáveis de ambiente
+# 2. Defina suas chaves mestre
 cp .env.example .env
-nano .env  # Edite com suas credenciais
+nano .env # Insira suas credenciais OpenAI/Meta
 
-# 3. Inicie todos os serviços
+# 3. Levante o ecossistema
 docker compose up -d
 
-# 4. Verifique se está rodando
+# 4. Monitore a saúde dos containers
 docker compose ps</code></pre>
       </div>
-      <p class="note">💡 Após esses comandos, os serviços estarão rodando em localhost nas portas configuradas.</p>
+      <p class="doc-note">💡 Dica: Use o comando <code>docker compose logs -f</code> para acompanhar o boot inicial.</p>
     </article>
 
     <article id="configuracao" class="doc-section">
-      <h2>⚙️ Configuração do Cloudflare Tunnel</h2>
-      <ol class="steps-list">
-        <li>
-          <h4>Crie uma conta no Cloudflare</h4>
-          <p>Acesse <a href="https://dash.cloudflare.com" target="_blank">dash.cloudflare.com</a> e crie uma conta gratuita.</p>
-        </li>
-        <li>
-          <h4>Adicione seu domínio</h4>
-          <p>Siga o assistente para adicionar seu domínio e alterar os nameservers no registrador.</p>
-        </li>
-        <li>
-          <h4>Crie um Tunnel</h4>
-          <p>Vá em Zero Trust → Networks → Tunnels → Create Tunnel. Copie o token gerado.</p>
-        </li>
-        <li>
-          <h4>Configure o .env</h4>
-          <p>Cole o token em <code>CLOUDFLARED_TOKEN</code> no seu arquivo <code>.env</code>.</p>
-        </li>
-        <li>
-          <h4>Configure os hostnames</h4>
-          <p>No painel do Tunnel, adicione Public Hostnames apontando para os serviços locais (ex: chat.seudominio.com → http://172.18.0.1:3000).</p>
-        </li>
-      </ol>
-    </article>
-
-    <article id="whatsapp" class="doc-section">
-      <h2>📱 Conectando o WhatsApp</h2>
-      <ol class="steps-list">
-        <li>
-          <h4>Acesse o Manager da Evolution API</h4>
-          <p>Abra <code>https://api.seudominio.com/manager</code> no navegador.</p>
-        </li>
-        <li>
-          <h4>Crie uma nova instância</h4>
-          <p>Clique em "New Instance" e dê um nome (ex: vendas).</p>
-        </li>
-        <li>
-          <h4>Escaneie o QR Code</h4>
-          <p>Abra o WhatsApp no celular → Menu → Aparelhos conectados → Conectar aparelho → Escanear.</p>
-        </li>
-        <li>
-          <h4>Teste a conexão</h4>
-          <p>Envie uma mensagem de teste usando a API ou o Chatwoot.</p>
-        </li>
-      </ol>
-      <p class="warning">⚠️ Use um número dedicado para o assistente. Não use seu número pessoal.</p>
-    </article>
-
-    <article id="n8n" class="doc-section">
-      <h2>🔄 Configurando Automações (n8n)</h2>
-      <ol class="steps-list">
-        <li>
-          <h4>Acesse o n8n</h4>
-          <p>Abra <code>https://n8n.seudominio.com</code> e crie sua conta inicial.</p>
-        </li>
-        <li>
-          <h4>Importe os workflows</h4>
-          <p>Na pasta <code>/workflows</code> do repositório, temos templates prontos para vendas, suporte e remarketing.</p>
-        </li>
-        <li>
-          <h4>Configure as credenciais</h4>
-          <p>Adicione as credenciais da Evolution API, OpenAI (ou Ollama local), e seu CRM.</p>
-        </li>
-        <li>
-          <h4>Ative os workflows</h4>
-          <p>Teste cada workflow manualmente antes de ativar a execução automática.</p>
-        </li>
-      </ol>
+      <h2 class="section-title">⚙️ Túnel Seguro (Cloudflare)</h2>
+      <div class="steps-flow">
+        <div class="step-item">
+          <div class="step-icon">1</div>
+          <div class="step-text">
+            <h4>Crie o Túnel</h4>
+            <p>No painel Cloudflare Zero Trust, crie um "Tunnel" do tipo Docker e copie o token gerado.</p>
+          </div>
+        </div>
+        <div class="step-item">
+          <div class="step-icon">2</div>
+          <div class="step-text">
+            <h4>Configure os Hostnames</h4>
+            <p>Aponte subdomínios (chat, api, n8n) para os IPs locais dos containers no painel Public Hostnames.</p>
+          </div>
+        </div>
+      </div>
     </article>
 
     <article id="troubleshooting" class="doc-section">
-      <h2>🔧 Troubleshooting</h2>
+      <h2 class="section-title">🔧 Troubleshooting & FAQ</h2>
       <div class="trouble-grid">
-        <div class="trouble-item">
-          <h4>Container não sobe</h4>
-          <p>Verifique os logs: <code>docker compose logs -f [nome-do-serviço]</code></p>
+        <div class="trouble-item glass-panel">
+          <h4>WhatsApp deslogado</h4>
+          <p>Verifique se o celular está com bateria e conexão estável. Reconecte via Manager QR Code.</p>
         </div>
-        <div class="trouble-item">
-          <h4>WhatsApp desconecta</h4>
-          <p>Mantenha o celular conectado à internet. Reconecte via Manager se necessário.</p>
-        </div>
-        <div class="trouble-item">
-          <h4>Túnel não funciona</h4>
-          <p>Verifique se o token está correto e se os hostnames estão configurados no Cloudflare Dashboard.</p>
-        </div>
-        <div class="trouble-item">
+        <div class="trouble-item glass-panel">
           <h4>IA não responde</h4>
-          <p>Verifique a API key do OpenAI/Ollama e os logs do n8n para erros nos workflows.</p>
+          <p>Confirme se sua cota na OpenAI está ativa ou se o modelo local no Ollama está carregado.</p>
+        </div>
+        <div class="trouble-item glass-panel">
+          <h4>Erro de CORS</h4>
+          <p>Verifique se os domínios no <code>.env</code> coincidem exatamente com os configurados no Cloudflare.</p>
         </div>
       </div>
     </article>
   </section>
 
-  <section class="cta-section">
-    <h2>Precisa de ajuda?</h2>
-    <p>Nossa IA pode responder dúvidas técnicas em tempo real.</p>
-    <a href="#" onclick="window.$chatwoot.toggle(); return false;" class="btn-cta" target="_blank">Falar com Suporte →</a>
+  <section class="docs-footer">
+    <div class="glass-panel footer-cta">
+        <h3>Ainda com dúvidas técnicas?</h3>
+        <p>Acesse nossa comunidade no GitHub ou chame nosso suporte IA agora mesmo.</p>
+        <div class="footer-btns">
+            <a href="#" onclick="window.$chatwoot.toggle(); return false;" class="btn-primary-glow">Chamar IA →</a>
+            <a href="https://github.com/lelebrr" target="_blank" class="btn-secondary">GitHub Official</a>
+        </div>
+    </div>
   </section>
-</Layout>
 
 <style>
-  .hero {
-    text-align: center;
-    padding: 7rem 5% 4rem;
-    background: linear-gradient(135deg, var(--dark), var(--gray));
-  }
-  .hero h1 {
-    font-size: 3.5rem;
-    background: linear-gradient(90deg, var(--primary), var(--success));
-    -webkit-background-clip: text;
-    color: transparent;
-  }
-  .hero p { color: var(--text); font-size: 1.3rem; margin-top: 1rem; }
+  .docs-hero { text-align: center; padding: 8rem 5% 4rem; }
+  .hero-badge { background: rgba(0, 212, 255, 0.1); color: #00d4ff; padding: 0.5rem 1.2rem; border-radius: 50px; font-size: 0.85rem; font-weight: 700; border: 1px solid rgba(0, 212, 255, 0.2); display: inline-block; margin-bottom: 2rem; }
+  .docs-hero h1 { font-size: 3.5rem; margin-bottom: 1rem; }
+  .docs-hero p { color: #94a3b8; font-size: 1.25rem; max-width: 600px; margin: 0 auto; }
 
-  .docs-nav {
-    display: flex;
-    justify-content: center;
-    gap: 1.5rem;
-    padding: 1.5rem 5%;
-    background: rgba(30,41,59,0.9);
-    position: sticky;
-    top: 80px;
-    z-index: 100;
-    flex-wrap: wrap;
+  .docs-nav { 
+    display: flex; justify-content: center; gap: 1rem; padding: 1rem; 
+    position: sticky; top: 90px; z-index: 100; max-width: 800px; margin: 0 auto 4rem;
+    border-radius: 16px; flex-wrap: wrap; backdrop-filter: blur(20px);
   }
-  .docs-nav a {
-    color: var(--text);
-    text-decoration: none;
-    font-weight: 600;
-    padding: 0.5rem 1rem;
-    border-radius: 8px;
-    transition: all 0.3s;
+  .docs-nav a { 
+    color: #94a3b8; text-decoration: none; font-size: 0.9rem; font-weight: 700; 
+    padding: 0.6rem 1.2rem; border-radius: 10px; transition: 0.2s;
   }
-  .docs-nav a:hover { color: var(--primary); background: rgba(0,212,255,0.1); }
+  .docs-nav a:hover { color: #00ff9d; background: rgba(0, 255, 157, 0.05); }
 
-  .docs-content { max-width: 900px; margin: 0 auto; padding: 2rem 5%; }
+  .docs-content { max-width: 900px; margin: 0 auto; padding: 0 5%; }
+  .doc-section { margin-bottom: 6rem; }
+  .section-title { color: white; font-size: 2rem; margin-bottom: 2rem; font-weight: 800; }
 
-  .doc-section {
-    margin-bottom: 4rem;
-    padding-bottom: 2rem;
-    border-bottom: 1px solid rgba(0,212,255,0.1);
-  }
-  .doc-section h2 {
-    font-size: 2rem;
-    color: var(--light);
-    margin-bottom: 1.5rem;
-  }
+  .requirements-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 1.5rem; }
+  .req-card { padding: 2rem; border-color: rgba(255,255,255,0.03); }
+  .req-card h3 { color: #00ff9d; font-size: 1.1rem; margin-bottom: 1.5rem; }
+  .req-card ul { list-style: none; padding: 0; }
+  .req-card li { color: #94a3b8; font-size: 0.95rem; margin-bottom: 0.8rem; padding-left: 1.5rem; position: relative; }
+  .req-card li::before { content: "→"; position: absolute; left: 0; color: #00d4ff; }
 
-  .requirements-grid {
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
-    gap: 1.5rem;
-  }
-  .req-card {
-    background: rgba(30,41,59,0.6);
-    border: 1px solid rgba(0,212,255,0.1);
-    border-radius: 12px;
-    padding: 1.5rem;
-  }
-  .req-card h3 { color: var(--success); font-size: 1.1rem; margin-bottom: 1rem; }
-  .req-card ul { padding-left: 1.2rem; color: var(--text); }
-  .req-card li { margin: 0.5rem 0; }
+  .code-wrapper { background: #070b14; border-radius: 16px; border: 1px solid rgba(255,255,255,0.05); overflow: hidden; margin: 2rem 0; }
+  .code-header { background: rgba(255,255,255,0.02); padding: 0.8rem 1.5rem; border-bottom: 1px solid rgba(255,255,255,0.05); font-family: monospace; font-size: 0.8rem; color: #64748b; }
+  .code-wrapper pre { padding: 1.5rem; overflow-x: auto; margin: 0; }
+  .code-wrapper code { font-family: 'JetBrains Mono', monospace; font-size: 0.9rem; color: #e2e8f0; line-height: 1.6; }
+  .doc-note { background: rgba(0, 212, 255, 0.05); color: #00d4ff; padding: 1rem 1.5rem; border-radius: 12px; font-size: 0.9rem; }
 
-  .code-block {
-    background: #0f172a;
-    border-radius: 12px;
-    overflow: hidden;
-    margin: 1.5rem 0;
+  .steps-flow { display: flex; flex-direction: column; gap: 2rem; }
+  .step-item { display: flex; gap: 1.5rem; align-items: flex-start; }
+  .step-icon { 
+    background: linear-gradient(135deg, #00d4ff, #00ff9d); color: black; 
+    width: 2.5rem; height: 2.5rem; border-radius: 50%; display: flex; align-items: center; justify-content: center;
+    font-weight: 900; shrink: 0;
   }
-  .code-header {
-    background: rgba(0,212,255,0.1);
-    padding: 0.8rem 1.5rem;
-    color: var(--primary);
-    font-weight: 600;
-    font-size: 0.9rem;
-  }
-  .code-block pre {
-    padding: 1.5rem;
-    margin: 0;
-    overflow-x: auto;
-  }
-  .code-block code {
-    color: var(--light);
-    font-family: 'Consolas', monospace;
-    font-size: 0.9rem;
-    line-height: 1.6;
-  }
+  .step-text h4 { color: white; margin-bottom: 0.3rem; }
+  .step-text p { color: #94a3b8; font-size: 0.95rem; }
 
-  .note, .warning {
-    padding: 1rem 1.5rem;
-    border-radius: 12px;
-    margin: 1rem 0;
-  }
-  .note { background: rgba(0,212,255,0.1); color: var(--light); }
-  .warning { background: rgba(255,77,77,0.1); color: #ff6b6b; }
+  .trouble-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(260px, 1fr)); gap: 1.5rem; }
+  .trouble-item { padding: 1.5rem; border-bottom: 4px solid rgba(255,255,255,0.05); transition: 0.3s; }
+  .trouble-item:hover { border-bottom-color: #00ff9d; transform: translateY(-3px); }
+  .trouble-item h4 { color: white; margin-bottom: 0.5rem; }
+  .trouble-item p { color: #64748b; font-size: 0.9rem; }
 
-  .steps-list { padding-left: 0; list-style: none; counter-reset: step; }
-  .steps-list li {
-    position: relative;
-    padding-left: 3rem;
-    margin-bottom: 2rem;
-  }
-  .steps-list li::before {
-    counter-increment: step;
-    content: counter(step);
-    position: absolute;
-    left: 0;
-    top: 0;
-    width: 2rem;
-    height: 2rem;
-    background: linear-gradient(135deg, var(--primary), var(--success));
-    color: #000;
-    font-weight: 800;
-    border-radius: 50%;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-  }
-  .steps-list h4 { color: var(--light); margin: 0 0 0.5rem; }
-  .steps-list p { color: var(--text); margin: 0; }
+  .docs-footer { padding: 4rem 5% 10rem; }
+  .footer-cta { padding: 4rem; text-align: center; }
+  .footer-cta h3 { color: white; font-size: 2rem; margin-bottom: 1rem; }
+  .footer-cta p { color: #94a3b8; margin-bottom: 2.5rem; }
+  .footer-btns { display: flex; justify-content: center; gap: 1rem; }
 
-  .trouble-grid {
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-    gap: 1.5rem;
-  }
-  .trouble-item {
-    background: rgba(30,41,59,0.6);
-    border: 1px solid rgba(0,212,255,0.1);
-    border-radius: 12px;
-    padding: 1.5rem;
-  }
-  .trouble-item h4 { color: var(--primary); margin: 0 0 0.5rem; }
-  .trouble-item p { color: var(--text); margin: 0; font-size: 0.95rem; }
+  .btn-primary-glow { background: linear-gradient(135deg, #00d4ff, #00ff9d); color: black; padding: 0.8rem 2rem; border-radius: 12px; font-weight: 800; text-decoration: none; transition: 0.3s; }
+  .btn-secondary { background: rgba(255,255,255,0.05); color: white; padding: 0.8rem 2rem; border-radius: 12px; font-weight: 700; text-decoration: none; border: 1px solid rgba(255,255,255,0.1); }
 
-  .cta-section {
-    text-align: center;
-    padding: 4rem 5%;
-    background: rgba(0,212,255,0.05);
+  @media (max-width: 768px) {
+    .docs-hero h1 { font-size: 2.5rem; }
+    .footer-btns { flex-direction: column; }
+    .footer-cta { padding: 2rem; }
   }
-  .cta-section h2 { font-size: 2rem; color: var(--light); margin-bottom: 1rem; }
-  .cta-section p { color: var(--text); margin-bottom: 2rem; }
 </style>

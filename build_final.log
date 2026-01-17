@@ -1,0 +1,9 @@
+
+> jetnexo-site@1.0.0 build
+> astro build
+
+'\\wsl.localhost\Ubuntu-24.04\home\lele\usenexo\jetnexo-site'
+CMD.EXE foi iniciado tendo o caminho acima como pasta atual.
+N∆o h† suporte para caminhos UNC. Padronizando para pasta do Windows.
+'astro' n∆o Ç reconhecido como um comando interno
+ou externo, um programa oper†vel ou um arquivo em lotes.

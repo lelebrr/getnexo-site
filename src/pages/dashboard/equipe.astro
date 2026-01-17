@@ -3,6 +3,11 @@ import DashboardLayout from '../../layouts/DashboardLayout.astro';
 import TeamManager from '../../components/TeamManager.jsx';
 ---
 
-<DashboardLayout title="Equipe | OmniNexo">
-    <TeamManager client:only="react" />
-</DashboardLayout>
+    <div style="display:flex; flex-direction:column; gap:2.5rem;">
+        <div class="glass-panel" style="padding:2.5rem; background:linear-gradient(90deg, rgba(0, 212, 255, 0.1), rgba(0, 255, 157, 0.05)); border-color: rgba(0, 212, 255, 0.2);">
+            <h2 style="font-size:2.5rem; font-weight:900; color:white; margin:0;" class="text-gradient">Gestão de Equipe & Governança</h2>
+            <p style="color:#94a3b8; margin:0.5rem 0 0; font-size:1.1rem;">Controle de acessos, auditoria e permissões de agentes.</p>
+        </div>
+
+        <TeamManager client:only="react" />
+    </div>

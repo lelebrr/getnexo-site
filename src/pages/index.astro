@@ -1,235 +1,264 @@
 ---
 import Layout from '../layouts/Layout.astro';
-const title = "GetNexo: Melhor Plataforma WhatsApp API Oficial 2026 - IA que Vende Sozinha 24h Grátis | Vendas Automáticas";
-const description = "Descubra a melhor plataforma WhatsApp API oficial 2026 com IA que vende sozinha. Chatbot inteligente, PIX nativo, broadcast ilimitado, recuperação de carrinho. Zero taxa, zero nuvem, 100% grátis. Aumente suas vendas agora!";
-const keywords = "melhor plataforma whatsapp api oficial 2026, ia que vende sozinha whatsapp, assistente vendas whatsapp grátis, api whatsapp oficial gratuita, chatbot ia whatsapp vendas, automação vendas whatsapp 24h, pix whatsapp nativo, broadcast whatsapp ilimitado, recuperação carrinho abandonado whatsapp, getnexo whatsapp oficial, vendas automaticas whatsapp, click to whatsapp ads conversao, integracao ecommerce whatsapp";
+const title = "GetNexo: IA que Vende Sozinha 24h no WhatsApp | API Oficial Grátis";
+const description = "Descubra a melhor plataforma WhatsApp API oficial com IA que vende sozinha. Chatbot inteligente, PIX nativo, broadcast ilimitado e recuperação de carrinho.";
+const keywords = "ia que vende sozinha whatsapp, assistente vendas whatsapp grátis, api whatsapp oficial gratuita, chatbot ia whatsapp vendas, automação vendas whatsapp 24h, pix whatsapp nativo, getnexo";
 ---
+
 <Layout title={title} description={description} keywords={keywords} isLanding={true}>
   
-  <nav class="top-nav">
-    <div class="nav-content">
-      <div class="logo-area">
-        <h1 class="glow-text">GetNexo</h1>
-        <div class="desktop-menu">
-          <a href="/produtos">Produtos</a>
-          <a href="/recursos">Recursos</a>
-          <a href="/revenda">Revenda</a>
-          <a href="/precos">Preços</a>
-          <a href="/demo">Demo</a>
-          <a href="/blog">Blog</a>
-          <a href="/suporte">Suporte</a>
+  <!-- Modern Hero with 3D Phone Simulation -->
+  <section class="hero-split">
+    <div class="hero-content">
+      <div class="hero-badge reveal">A revolução das vendas chegou 🚀</div>
+      <h1 class="hero-title reveal">A IA que <span class="text-gradient">Vende Sozinha</span> no seu WhatsApp</h1>
+      <p class="hero-subtitle reveal">
+        A única plataforma brasileira 100% Oficial Meta com PIX nativo, recuperação de carrinhos e IA generativa que converte leads em lucro, 24h por dia.
+      </p>
+      <div class="hero-ctas reveal">
+        <a href="/criar-bot" class="btn-primary-glow">Começar Gratuitamente</a>
+        <a href="#" onclick="window.$chatwoot.toggle(); return false;" class="btn-outline">Ver Demo IA →</a>
+      </div>
+      <div class="hero-trust reveal">
+        <span>✅ API Oficial Meta</span>
+        <span>✅ Setup em 12min</span>
+        <span>✅ Zero Mensalidade</span>
+      </div>
+    </div>
+
+    <div class="hero-visual reveal">
+        <div class="hologram-container">
+            <div class="hologram-core">
+                <div class="hologram-ring ring-1"></div>
+                <div class="hologram-ring ring-2"></div>
+                <div class="hologram-ring ring-3"></div>
+                <div class="ara-avatar">✨</div>
+                <div class="hologram-shards">
+                    <span></span><span></span><span></span><span></span>
+                </div>
+            </div>
+            <div class="hologram-base"></div>
+            <div class="hologram-glow"></div>
+
+            <!-- Floating Mini Chat UI next to Hologram -->
+            <div class="floating-chat glass-panel">
+                <div class="chat-header-mini">Ara Ativa</div>
+                <div class="chat-body-mini" id="hero-chat"></div>
+            </div>
         </div>
-      </div>
-      <div class="cta-area">
-        <a href="/criar-bot" class="btn-primary">Começar Grátis</a>
-        <a href="/admin/login" class="link-login">Entrar</a>
-      </div>
-    </div>
-  </nav>
-
-  <!-- Hero Expandido -->
-  <section class="hero-section">
-    <h1 class="hero-title">API Oficial WhatsApp <br/><span class="text-gradient">IA que vende sozinha</span></h1>
-    <p class="hero-subtitle">
-      Plataforma 100% integrada: broadcast, chatbot, pagamentos PIX, recuperação de carrinho, ads Click to WhatsApp.<br>
-      <strong>Zero taxa por mensagem. Roda no seu domínio.</strong>
-    </p>
-    <div class="hero-ctas">
-      <a href="/criar-bot" class="btn-xl">Instalar no Site</a>
-      <a href="/demo" class="btn-outline">Assistir Demo</a>
-    </div>
-    <div class="hero-badges">
-      <span>🔐 API Oficial Meta</span>
-      <span>📱 100% Mobile</span>
-      <span>⚡ Sem Latência</span>
-      <span>🇧🇷 Feito no Brasil</span>
     </div>
   </section>
 
-  <!-- Produtos -->
-  <section class="section-dark">
-    <h2 class="section-title">Produtos & Soluções</h2>
-    <div class="grid-cards">
-      <div class="card-product">
-        <h3 class="text-neon">Automação Completa</h3>
-        <p>Chatbot IA, fluxos no-code, integração com e-commerce, vendas 24h.</p>
-        <a href="/produtos/automacao" class="link-arrow">Saiba mais →</a>
-      </div>
-      <div class="card-product">
-        <h3 class="text-neon">Vendas com PIX</h3>
-        <p>Carrinho, catálogo, pagamento direto no chat. Zero abandono.</p>
-        <a href="/produtos/vendas" class="link-arrow">Saiba mais →</a>
-      </div>
-      <div class="card-product">
-        <h3 class="text-neon">Marketing & Ads</h3>
-        <p>Click to WhatsApp Ads, broadcast inteligente, retargeting.</p>
-        <a href="/produtos/marketing" class="link-arrow">Saiba mais →</a>
-      </div>
-      <div class="card-product">
-        <h3 class="text-neon">CRM & Suporte</h3>
-        <p>Equipe multi-agente, kanban, SLA, histórico de leads.</p>
-        <a href="/produtos/crm" class="link-arrow">Saiba mais →</a>
-      </div>
-    </div>
-  </section>
-
-  <!-- Recursos -->
-  <section class="section-gray">
-    <h2 class="section-title">Recursos Avançados</h2>
-    <div class="grid-features">
-      <div class="feature-item"><strong>📢</strong> Broadcast ilimitado + agendamento</div>
-      <div class="feature-item"><strong>🤖</strong> IA generativa (Llama local)</div>
-      <div class="feature-item"><strong>💳</strong> PIX nativo no chat</div>
-      <div class="feature-item"><strong>🔍</strong> Click tracking & retarget</div>
-      <div class="feature-item"><strong>📊</strong> Dashboard com métricas em tempo real</div>
-      <div class="feature-item"><strong>🔗</strong> Integração Shopify, Woo, VTEX</div>
-    </div>
-  </section>
-
-  <!-- Prova Social (Reconstructed) -->
-  <section class="section-dark text-center">
-    <h2 class="text-neon section-title">Clientes que já usam</h2>
-    <p class="text-gray-400 mb-8">Marcas reais que dobraram vendas com GetNexo</p> 
-    
-    <div class="logos-grid">
-      <div class="logo-brand">🛍️ ModaExpress</div>
-      <div class="logo-brand">📱 TechMania</div>
-      <div class="logo-brand">🏠 CasaDecor</div>
-      <div class="logo-brand">💄 BelezaPro</div>
+  <!-- Value Propositions Grid -->
+  <section class="section-container">
+    <div class="section-header reveal">
+        <h2 class="text-gradient">Potencialize seu Negócio</h2>
+        <p>Tudo o que você precisa para dominar o WhatsApp em um só lugar.</p>
     </div>
     
-    <blockquote class="testimonial">
-      "Em 3 meses, recuperamos R$47.000 em carrinhos abandonados só com a automação do GetNexo. E não pagamos nada de mensalidade." 
-      <footer>– Marcos Silva, CEO ModaExpress</footer>
-    </blockquote>
-  </section>
-
-  <!-- Blog (Reconstructed) -->
-  <section class="section-gray">
-    <h2 class="section-title">Últimas do Blog</h2>
     <div class="grid-cards">
-      <div class="card-blog">
-        <h4>Como recuperar 70% dos carrinhos no WhatsApp</h4>
-        <p>Passo a passo para não perder mais vendas...</p>
-        <a href="/blog/recuperar-carrinho">Ler agora →</a>
+      <div class="glass-panel p-card reveal">
+        <div class="p-icon">🤖</div>
+        <h3>Automação com IA</h3>
+        <p>Chatbot inteligente treinado com seus dados que responde clientes instantaneamente.</p>
+        <a href="/produtos/automacao" class="p-link">Explorar IA →</a>
       </div>
-      <div class="card-blog">
-        <h4>API Oficial WhatsApp: Custo em 2026</h4>
-        <p>Quanto custa de verdade e como não cair em cilada...</p>
-        <a href="/blog/custo-api">Ler agora →</a>
+      <div class="glass-panel p-card reveal">
+        <div class="p-icon">💰</div>
+        <h3>Vendas & PIX</h3>
+        <p>Checkout nativo e geração de PIX automático sem o cliente sair da conversa.</p>
+        <a href="/produtos/vendas" class="p-link">Ver Checkout →</a>
       </div>
-      <div class="card-blog">
-        <h4>5 campanhas de Click to WhatsApp que convertem</h4>
-        <p>Anúncios que geram vendas no dia...</p>
-        <a href="/blog/campanhas">Ler agora →</a>
+      <div class="glass-panel p-card reveal">
+        <div class="p-icon">🚀</div>
+        <h3>Marketing Master</h3>
+        <p>Broadcast ilimitado e Click-to-WhatsApp Ads com mensuração de ROI total.</p>
+        <a href="/produtos/marketing" class="p-link">Ativar Ads →</a>
+      </div>
+      <div class="glass-panel p-card reveal">
+        <div class="p-icon">👥</div>
+        <h3>CRM Multi-Agente</h3>
+        <p>Organize sua equipe em Kanban e nunca mais perca o fio de uma negociação.</p>
+        <a href="/produtos/crm" class="p-link">Gerir Leads →</a>
       </div>
     </div>
   </section>
 
-  <!-- Final CTA -->
-  <section class="cta-final">
-    <h2>Pronto pra vender 5x mais?</h2>
-    <p>Instale o GetNexo no seu site em 2 minutos. Zero risco.</p>
-    <a href="/criar-bot" class="btn-xl">Instalar Agora – 100% Grátis</a>
+  <!-- Performance Metrics -->
+  <section class="metrics-section glass-panel reveal">
+    <div class="metric-item">
+        <span class="m-val">10x</span>
+        <span class="m-label">Mais Conversão</span>
+    </div>
+    <div class="metric-divider"></div>
+    <div class="metric-item">
+        <span class="m-val">24/7</span>
+        <span class="m-label">Disponibilidade</span>
+    </div>
+    <div class="metric-divider"></div>
+    <div class="metric-item">
+        <span class="m-val">R$ 0</span>
+        <span class="m-label">Mensalidade Fixa</span>
+    </div>
   </section>
 
-  <!-- Footer (Reconstructed) -->
-  <footer class="main-footer">
-    <div class="footer-grid">
-      <div class="footer-col">
-        <h3 class="text-neon">GetNexo</h3>
-        <p>Plataforma WhatsApp Oficial</p>
-        <p class="text-sm">São Paulo, Brasil • 2026</p>
-      </div>
-      <div class="footer-col">
-        <a href="/produtos">Produtos</a>
-        <a href="/recursos">Recursos</a>
-        <a href="/revenda">Revenda</a>
-      </div>
-      <div class="footer-col">
-        <a href="/precos">Preços</a>
-        <a href="/demo">Demo</a>
-        <a href="/blog">Blog</a>
-      </div>
-      <div class="footer-col">
-        <a href="/suporte">Suporte</a>
-        <a href="/termos">Termos</a>
-        <a href="/privacidade">Privacidade</a>
-      </div>
+  <!-- Final Squeeze -->
+  <section class="final-cta reveal">
+    <div class="glass-panel cta-box">
+        <h2 class="text-gradient">Pronto para vender 5x mais?</h2>
+        <p>Instale o GetNexo no seu servidor ou use nossa nuvem. Comece agora.</p>
+        <div class="cta-actions">
+            <a href="/criar-bot" class="btn-primary-glow">Instalar Gratuitamente</a>
+            <a href="/precos" class="btn-outline">Ver Planos Pro</a>
+        </div>
     </div>
-    <div class="contact-footer">
-      <a href="https://wa.me/..." target="_blank" class="btn-outline">Fale no WhatsApp</a>
-    </div>
-  </footer>
+  </section>
 
 </Layout>
 
+<script is:inline>
+    // Hero Chat Simulation
+    const chatContainer = document.getElementById('hero-chat');
+    const messages = [
+        { type: 'user', text: 'Olá, gostaria de saber o preço do GetNexo Pro.' },
+        { type: 'agent', text: 'Com certeza! O Plano Pro custa apenas R$ 97/mês com hospedagem inclusa.' },
+        { type: 'agent', text: 'Gostaria de gerar um link de ativação agora?' },
+        { type: 'user', text: 'Sim, por favor!' }
+    ];
+
+    let msgIndex = 0;
+    function typeNext() {
+        if (msgIndex < messages.length) {
+            const msg = messages[msgIndex];
+            const div = document.createElement('div');
+            div.className = `chat-msg ${msg.type}`;
+            div.innerHTML = `<div class="msg-inner">${msg.text}</div>`;
+            chatContainer.appendChild(div);
+            chatContainer.scrollTop = chatContainer.scrollHeight;
+            msgIndex++;
+            setTimeout(typeNext, 2500);
+        } else {
+            setTimeout(() => {
+                chatContainer.innerHTML = '';
+                msgIndex = 0;
+                typeNext();
+            }, 5000);
+        }
+    }
+    typeNext();
+
+    // Ara Avatar Parallax movement
+    const hologram = document.querySelector('.hologram-core');
+    window.addEventListener('mousemove', (e) => {
+        if (!hologram) return;
+        const x = (window.innerWidth / 2 - e.pageX) / 30;
+        const y = (window.innerHeight / 2 - e.pageY) / 30;
+        hologram.style.transform = `rotateY(${x}deg) rotateX(${-y}deg)`;
+    });
+
+    // Intersection Observer for Reveal Animations
+    const observer = new IntersectionObserver((entries) => {
+        entries.forEach(entry => {
+            if (entry.isIntersecting) {
+                entry.target.classList.add('active');
+            }
+        });
+    }, { threshold: 0.1 });
+
+    document.querySelectorAll('.reveal').forEach(el => observer.observe(el));
+</script>
+
 <style>
-  /* Base & Typography */
-  .text-gradient { background:linear-gradient(90deg, #00d4ff, #00ff9d); -webkit-background-clip:text; color:transparent; }
-  .text-neon { color: #00ff9d; }
-  .text-gray-400 { color: #9ca3af; }
-  .glow-text { color:#00ff9d; text-shadow: 0 0 15px rgba(0, 255, 157, 0.5); font-weight: 800; font-size: 1.5rem; }
-
-  /* Navigation */
-  .top-nav { background:#0a0e17; padding:1.5rem 5%; border-bottom: 1px solid rgba(0,212,255,0.1); }
-  .nav-content { display:flex; justify-content:space-between; align-items:center; max-width: 1200px; margin: 0 auto; }
-  .logo-area { display:flex; align-items:center; gap:2rem; }
-  .desktop-menu { display:flex; gap:1.5rem; }
-  .desktop-menu a { color:#e5e7eb; text-decoration:none; font-weight:500; transition:0.3s; }
-  .desktop-menu a:hover { color:#00ff9d; }
-  .cta-area { display:flex; align-items:center; gap:1rem; }
-  .link-login { color:#00d4ff; text-decoration:none; font-weight:600; }
+  .hero-split { display: grid; grid-template-columns: 1fr 1fr; gap: 4rem; padding: 12rem 5% 6rem; max-width: 1400px; margin: 0 auto; align-items: center; }
   
-  /* Buttons */
-  .btn-primary { background:#00ff9d; color:black; padding:0.6rem 1.5rem; border-radius:50px; text-decoration:none; font-weight:700; transition:0.3s; }
-  .btn-primary:hover { transform:scale(1.05); box-shadow:0 0 20px rgba(0,255,157,0.4); }
-  .btn-xl { background:linear-gradient(90deg, #00d4ff, #00ff9d); color:black; font-size:1.4rem; padding:1.2rem 3rem; border-radius:50px; text-decoration:none; font-weight:800; display:inline-block; transition:0.3s; }
-  .btn-xl:hover { transform:translateY(-3px); box-shadow:0 10px 30px rgba(0,212,255,0.3); }
-  .btn-outline { border:2px solid #00ff9d; color:#00ff9d; padding:0.8rem 2rem; border-radius:50px; text-decoration:none; font-weight:600; transition:0.3s; display:inline-block; }
-  .btn-outline:hover { background: rgba(0,255,157,0.1); }
+  .hero-badge { background: rgba(0, 212, 255, 0.1); color: #00d4ff; padding: 0.5rem 1.2rem; border-radius: 50px; font-size: 0.85rem; font-weight: 800; border: 1px solid rgba(0, 212, 255, 0.2); display: inline-block; margin-bottom: 2rem; }
+  .hero-title { font-size: clamp(2.5rem, 6vw, 4.5rem); line-height: 1.1; margin-bottom: 1.5rem; font-weight: 900; color: white; }
+  .hero-subtitle { font-size: 1.4rem; color: #94a3b8; max-width: 650px; margin-bottom: 3.5rem; line-height: 1.6; }
+  
+  .hero-ctas { display: flex; gap: 1.5rem; margin-bottom: 3rem; }
+  .btn-primary-glow { background: linear-gradient(135deg, #00d4ff, #00ff9d); color: black; padding: 1.2rem 2.8rem; border-radius: 12px; font-weight: 900; text-decoration: none; transition: 0.3s; box-shadow: 0 10px 30px rgba(0, 212, 255, 0.2); text-align: center; }
+  .btn-primary-glow:hover { transform: translateY(-3px); box-shadow: 0 15px 40px rgba(0, 212, 255, 0.4); }
+  .btn-outline { border: 1px solid rgba(255,255,255,0.1); color: white; padding: 1.2rem 2.8rem; border-radius: 12px; font-weight: 700; text-decoration: none; transition: 0.3s; background: rgba(255,255,255,0.03); text-align: center; }
+  .btn-outline:hover { background: rgba(255,255,255,0.08); border-color: #00d4ff; }
 
-  /* Hero */
-  .hero-section { background:linear-gradient(135deg, #0a0e17 0%, #111827 100%); padding:6rem 5%; text-align:center; min-height:80vh; display:flex; flex-direction:column; justify-content:center; align-items:center; }
-  .hero-title { font-size:4rem; color:white; font-weight:900; line-height:1.1; margin-bottom:1.5rem; }
-  .hero-subtitle { font-size:1.5rem; color:#d1d5db; max-width:800px; margin-bottom:3rem; }
-  .hero-ctas { display:flex; gap:1.5rem; flex-wrap:wrap; justify-content:center; margin-bottom:3rem; }
-  .hero-badges { display:flex; gap:1.5rem; color:#00d4ff; font-weight:600; flex-wrap:wrap; justify-content:center; }
+  .hero-trust { display: flex; gap: 2rem; color: #64748b; font-size: 0.9rem; font-weight: 700; }
+
+  /* 3D Ara Hologram */
+  .hologram-container { position: relative; width: 400px; height: 500px; display: flex; align-items: center; justify-content: center; perspective: 1000px; margin: 0 auto; }
+  .hologram-core { position: relative; width: 200px; height: 200px; transform-style: preserve-3d; transition: transform 0.1s ease-out; }
+  
+  .hologram-ring { position: absolute; inset: -20px; border: 2px solid #00d4ff; border-radius: 50%; opacity: 0.3; }
+  .ring-1 { transform: rotateX(70deg); animation: ringRotate 4s linear infinite; }
+  .ring-2 { transform: rotateX(70deg) rotateY(45deg); animation: ringRotate 6s linear reverse infinite; border-color: #00ff9d; }
+  .ring-3 { transform: rotateX(70deg) rotateY(-45deg); animation: ringRotate 8s linear infinite; }
+  @keyframes ringRotate { from { transform: rotateX(70deg) rotateZ(0deg); } to { transform: rotateX(70deg) rotateZ(360deg); } }
+
+  .ara-avatar { font-size: 5rem; display: flex; align-items: center; justify-content: center; height: 100%; filter: drop-shadow(0 0 20px #00d4ff); animation: floatAra 3s ease-in-out infinite alternate; }
+  @keyframes floatAra { from { transform: translateY(-10px); } to { transform: translateY(10px); } }
+
+  .hologram-shards span { position: absolute; width: 4px; height: 4px; background: #00ff9d; border-radius: 50%; box-shadow: 0 0 10px #00ff9d; animation: shardMove 2s infinite linear; }
+  .hologram-shards span:nth-child(1) { top: -20%; left: 10%; animation-delay: 0.5s; }
+  .hologram-shards span:nth-child(2) { bottom: -10%; right: 20%; animation-delay: 1.2s; }
+  @keyframes shardMove { 0% { opacity: 0; transform: translateY(0); } 50% { opacity: 1; } 100% { opacity: 0; transform: translateY(-40px); } }
+
+  .hologram-base { position: absolute; bottom: 50px; width: 120px; height: 10px; background: rgba(0, 212, 255, 0.4); border-radius: 50%; filter: blur(10px); animation: pulseBase 3s infinite alternate; }
+  @keyframes pulseBase { from { transform: scale(0.8); opacity: 0.3; } to { transform: scale(1.2); opacity: 0.6; } }
+
+  .hologram-glow { position: absolute; top: 0; width: 300px; height: 300px; background: radial-gradient(circle, rgba(0, 212, 255, 0.15) 0%, transparent 70%); border-radius: 50%; z-index: -1; }
+
+  /* Floating Mini Chat */
+  .floating-chat { position: absolute; width: 220px; bottom: 20px; right: -40px; padding: 1rem; border-color: rgba(0, 255, 157, 0.2); animation: floatChat 6s ease-in-out infinite alternate; }
+  @keyframes floatChat { from { transform: translateY(0) rotate(2deg); } to { transform: translateY(-15px) rotate(-1deg); } }
+  
+  .chat-header-mini { font-size: 0.6rem; font-weight: 900; color: #00ff9d; text-transform: uppercase; letter-spacing: 1px; margin-bottom: 0.8rem; border-bottom: 1px solid rgba(255,255,255,0.05); padding-bottom: 0.3rem; }
+  .chat-body-mini { height: 150px; overflow-y: auto; display: flex; flex-direction: column; gap: 0.8rem; }
+  .chat-msg { font-size: 0.75rem; line-height: 1.4; animation: msgPop 0.3s cubic-bezier(0.18, 0.89, 0.32, 1.28) forwards; }
+  .msg-inner { padding: 0.5rem 0.8rem; border-radius: 8px; }
+  .chat-msg.agent .msg-inner { background: rgba(255,255,255,0.05); color: white; }
+  .chat-msg.user .msg-inner { background: #00d4ff; color: black; font-weight: 700; align-self: flex-end; }
+  @keyframes msgPop { from { transform: scale(0.8); opacity: 0; } to { transform: scale(1); opacity: 1; } }
 
   /* Sections */
-  .section-dark { background:#0a0e17; padding:5rem 5%; }
-  .section-gray { background:#111827; padding:5rem 5%; }
-  .section-title { font-size:2.5rem; color:#00d4ff; text-align:center; margin-bottom:3rem; font-weight:800; }
-  
-  /* Grids */
-  .grid-cards { display:grid; grid-template-columns:repeat(auto-fit, minmax(300px, 1fr)); gap:2rem; max-width:1200px; margin:0 auto; }
-  .grid-features { display:grid; grid-template-columns:repeat(auto-fit, minmax(250px, 1fr)); gap:2rem; max-width:1200px; margin:0 auto; }
-  
-  /* Cards */
-  .card-product, .feature-item, .card-blog { background:rgba(30,41,59,0.5); padding:2rem; border-radius:16px; border:1px solid rgba(0,212,255,0.1); backdrop-filter:blur(10px); transition:0.3s; }
-  .card-product:hover { border-color:#00ff9d; transform:translateY(-5px); }
-  .link-arrow { color:#00d4ff; text-decoration:none; font-weight:600; margin-top:1rem; display:block; }
-  .feature-item { font-size:1.1rem; color:#e5e7eb; display:flex; align-items:center; gap:0.5rem; }
-  
-  /* Testimonials */
-  .logos-grid { display:flex; gap:2rem; justify-content:center; margin-bottom:3rem; flex-wrap:wrap; }
-  .logo-brand { font-weight:800; color:#00d4ff; font-size:1.5rem; }
-  .testimonial { font-size:1.8rem; color:white; font-style:italic; max-width:800px; margin:0 auto; text-align:center; }
-  .testimonial footer { margin-top:1rem; font-size:1rem; color:#00ff9d; font-style:normal; }
+  .section-container { padding: 8rem 5%; max-width: 1200px; margin: 0 auto; }
+  .section-header { text-align: center; margin-bottom: 5rem; }
+  .section-header h2 { font-size: 3rem; font-weight: 800; margin-bottom: 1rem; }
+  .section-header p { color: #64748b; font-size: 1.2rem; }
 
-  /* Footer */
-  .main-footer { background:black; padding:4rem 5%; border-top:1px solid #1f2937; color:#9ca3af; }
-  .footer-grid { display:grid; grid-template-columns:repeat(auto-fit, minmax(150px, 1fr)); gap:3rem; max-width:1200px; margin:0 auto; }
-  .footer-col h3 { margin-bottom:1rem; color:white; }
-  .footer-col a { display:block; color:#9ca3af; text-decoration:none; margin-bottom:0.5rem; transition:0.2s; }
-  .footer-col a:hover { color:#00ff9d; }
-  .contact-footer { text-align:center; margin-top:3rem; padding-top:2rem; border-top:1px solid #1f2937; }
-  .cta-final { background:#0a0e17; padding:5rem; text-align:center; border-top:1px solid #1f2937; }
-  
-  @media (max-width: 768px) {
-    .nav-content { flex-direction:column; gap:1rem; }
-    .desktop-menu { display:none; } /* Hide complex menu on mobile for now or make it simple */
-    .hero-title { font-size:2.5rem; }
-    .hero-ctas { flex-direction:column; }
+  .grid-cards { display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 2rem; }
+  .p-card { padding: 3rem; transition: 0.3s; }
+  .p-card:hover { transform: translateY(-10px); border-color: #00ff9d; }
+  .p-icon { font-size: 2.5rem; margin-bottom: 1.5rem; }
+  .p-card h3 { color: white; font-size: 1.5rem; font-weight: 800; margin-bottom: 1rem; }
+  .p-card p { color: #94a3b8; line-height: 1.6; margin-bottom: 2rem; }
+  .p-link { color: #00d4ff; text-decoration: none; font-weight: 800; font-size: 0.9rem; border-bottom: 1px solid transparent; }
+  .p-link:hover { border-bottom-color: #00d4ff; }
+
+  /* Metrics */
+  .metrics-section { max-width: 1000px; margin: 4rem auto; display: flex; justify-content: space-around; padding: 4rem; border-radius: 32px; text-align: center; }
+  .metric-item { flex: 1; }
+  .m-val { display: block; font-size: 3rem; font-weight: 900; color: #00ff9d; line-height: 1; margin-bottom: 0.5rem; }
+  .m-label { color: #64748b; font-size: 0.9rem; font-weight: 800; text-transform: uppercase; letter-spacing: 1px; }
+  .metric-divider { width: 1px; background: rgba(255,255,255,0.05); }
+
+  /* Final CTA */
+  .final-cta { padding: 8rem 5% 12rem; max-width: 1200px; margin: 0 auto; }
+  .cta-box { padding: 6rem; text-align: center; border-radius: 48px; position: relative; overflow: hidden; }
+  .cta-box h2 { font-size: 3.5rem; margin-bottom: 1.5rem; font-weight: 900; }
+  .cta-box p { color: #94a3b8; font-size: 1.25rem; margin-bottom: 3.5rem; }
+  .cta-actions { display: flex; justify-content: center; gap: 2rem; }
+
+  /* Reveal Implementation */
+  .reveal { opacity: 0; transform: translateY(30px); transition: 0.8s cubic-bezier(0.2, 0.8, 0.2, 1); }
+  .reveal.active { opacity: 1; transform: translateY(0); }
+
+  @media (max-width: 1000px) {
+    .hero-split { grid-template-columns: 1fr; text-align: center; gap: 6rem; }
+    .hero-subtitle, .hero-trust { margin-left: auto; margin-right: auto; }
+    .hero-ctas, .hero-trust { justify-content: center; }
+    .hero-trust { flex-wrap: wrap; }
+    .metrics-section { flex-direction: column; gap: 3rem; padding: 3rem; }
+    .metric-divider { height: 1px; width: 50%; margin: 0 auto; }
+    .cta-actions { flex-direction: column; gap: 1rem; }
+    .cta-box h2 { font-size: 2.5rem; }
   }
 </style>

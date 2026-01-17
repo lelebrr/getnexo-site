@@ -1,22 +1,126 @@
 ---
 import Layout from '../../layouts/Layout.astro';
+const title = "CRM Integrado ao WhatsApp | GetNexo";
+const description = "Gestão de leads em Kanban, multi-agente e relatórios de performance diretamente no seu WhatsApp Oficial.";
 ---
-<Layout title="CRM Integrado ao WhatsApp | GetNexo">
-  <section style="padding: 6rem 10%; max-width: 1200px; margin: 0 auto; color: #e5e7eb;">
-    <h1 style="color:#00ff9d; font-size: 3rem;">CRM que Vê Tudo no WhatsApp</h1>
-    <p style="font-size: 1.2rem;">Kanban, multi-agente, histórico, SLA. Seu time fecha mais.</p>
 
-    <div style="margin-top: 3rem;">
-    <h2 style="color: #00d4ff;">Gestão Simples</h2>
-    <ul style="font-size: 1.2rem; line-height: 2; list-style-position: inside;">
-    <li>📋 Leads arrastam de “contato” pra “pagou”</li>
-    <li>👥 Vários vendedores no mesmo número</li>
-    <li>🛎 Notificação: “Fulano abriu o chat”</li>
-    <li>📈 Relatório: quem vende mais</li>
-    </ul>
-    <div style="margin-top: 2rem;">
-        <a href="/criar-bot" class="btn-cta" style="background:#00d4ff; color:black; padding:1rem 2rem; border-radius:50px; text-decoration:none; font-weight:bold;">Instalar CRM no Chat</a>
+<Layout title={title} description={description}>
+  <section class="prod-hero">
+    <div class="hero-badge">Gestão & Controle</div>
+    <h1 class="text-gradient">CRM Via WhatsApp</h1>
+    <p>Transforme seu chat em uma máquina de vendas organizada. Kanban, multi-agente e histórico unificado.</p>
+  </section>
+
+  <section class="prod-content">
+    <div class="glass-panel main-panel">
+      <div class="prod-grid">
+        <div class="prod-info">
+          <h2>Controle Total do Funil</h2>
+          <ul class="feature-list">
+            <li>
+                <span class="icon">📋</span>
+                <div class="txt">
+                    <strong>Visualização Kanban</strong>
+                    <p>Arraste e solte leads entre colunas: Prospecção, Negociação, Fechado.</p>
+                </div>
+            </li>
+            <li>
+                <span class="icon">👥</span>
+                <div class="txt">
+                    <strong>Multi-Agente Nativo</strong>
+                    <p>Toda sua equipe logada no mesmo número, com atribuição inteligente de chats.</p>
+                </div>
+            </li>
+            <li>
+                <span class="icon">🛎</span>
+                <div class="txt">
+                    <strong>SLA & Notificações</strong>
+                    <p>Alertas em tempo real quando um lead importante abre a conversa ou demora a ser respondido.</p>
+                </div>
+            </li>
+            <li>
+                <span class="icon">📈</span>
+                <div class="txt">
+                    <strong>Analytics Pro</strong>
+                    <p>Quem vende mais? Qual o tempo médio de resposta? Decida com base em dados.</p>
+                </div>
+            </li>
+          </ul>
+        </div>
+        <div class="prod-visual">
+            <div class="visual-card-glass">
+                <div class="v-head">crm.pipeline.stage</div>
+                <div class="v-body">
+                  <div class="pipeline-row">
+                    <span class="p-dot blue"></span>
+                    <span class="p-txt">Novo Lead (12)</span>
+                  </div>
+                  <div class="pipeline-row active">
+                    <span class="p-dot green"></span>
+                    <span class="p-txt">Negociando (5)</span>
+                  </div>
+                  <div class="pipeline-row">
+                    <span class="p-dot purple"></span>
+                    <span class="p-txt">Vendido (28)</span>
+                  </div>
+                </div>
+            </div>
+        </div>
+      </div>
     </div>
+  </section>
+
+  <section class="prod-cta">
+    <h2>Sua equipe pronta para vender mais.</h2>
+    <p>A organização que falta para sua operação escalar sem perder o fio da meada.</p>
+    <div class="btn-wrap">
+        <a href="/criar-bot" class="btn-primary-glow">Ativar Meu CRM Agora</a>
+        <a href="/produtos" class="btn-outline">Ver Todas Soluções</a>
     </div>
   </section>
 </Layout>
+
+<style>
+  .prod-hero { text-align: center; padding: 10rem 5% 5rem; }
+  .hero-badge { background: rgba(0, 212, 255, 0.1); color: #00d4ff; padding: 0.5rem 1.2rem; border-radius: 50px; font-size: 0.85rem; font-weight: 700; display: inline-block; margin-bottom: 2rem; border: 1px solid rgba(0,212,255,0.2); }
+  .prod-hero h1 { font-size: 3.5rem; margin-bottom: 1.5rem; font-weight: 800; }
+  .prod-hero p { color: #94a3b8; font-size: 1.25rem; max-width: 700px; margin: 0 auto; }
+
+  .prod-content { padding: 4rem 5%; max-width: 1200px; margin: 0 auto; }
+  .main-panel { padding: 5rem; border-radius: 40px; }
+  .prod-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 4rem; align-items: center; }
+  
+  .prod-info h2 { color: white; font-size: 2rem; margin-bottom: 3rem; font-weight: 800; }
+  .feature-list { list-style: none; padding: 0; display: flex; flex-direction: column; gap: 2.5rem; }
+  .feature-list li { display: flex; gap: 1.5rem; align-items: flex-start; }
+  .feature-list .icon { font-size: 1.8rem; background: rgba(255,255,255,0.03); width: 50px; height: 50px; display: flex; align-items: center; justify-content: center; border-radius: 12px; flex-shrink: 0; }
+  .feature-list .txt strong { color: #00ff9d; font-size: 1.1rem; display: block; margin-bottom: 0.4rem; }
+  .feature-list .txt p { color: #94a3b8; font-size: 0.95rem; line-height: 1.6; }
+
+  .prod-visual { display: flex; justify-content: center; }
+  .visual-card-glass { background: rgba(0, 212, 255, 0.05); border: 1px solid rgba(0, 212, 255, 0.1); border-radius: 20px; padding: 3rem; width: 100%; max-width: 400px; font-family: 'JetBrains Mono', monospace; box-shadow: 0 20px 50px rgba(0,0,0,0.3); }
+  .v-head { color: #00d4ff; font-size: 0.8rem; margin-bottom: 2rem; font-weight: 700; border-bottom: 1px solid rgba(255,255,255,0.05); padding-bottom: 0.5rem; }
+  .v-body { display: flex; flex-direction: column; gap: 1.5rem; }
+  .pipeline-row { display: flex; align-items: center; gap: 1rem; opacity: 0.5; }
+  .pipeline-row.active { opacity: 1; transform: scale(1.05); }
+  .p-dot { width: 10px; height: 10px; border-radius: 50%; }
+  .p-dot.blue { background: #00d4ff; box-shadow: 0 0 10px #00d4ff; }
+  .p-dot.green { background: #00ff9d; box-shadow: 0 0 10px #00ff9d; }
+  .p-dot.purple { background: #a855f7; box-shadow: 0 0 10px #a855f7; }
+  .p-txt { color: white; font-weight: 700; font-size: 0.95rem; }
+
+  .prod-cta { padding: 6rem 5% 10rem; text-align: center; max-width: 800px; margin: 0 auto; }
+  .prod-cta h2 { color: white; font-size: 2.5rem; margin-bottom: 1rem; font-weight: 800; }
+  .prod-cta p { color: #94a3b8; font-size: 1.2rem; margin-bottom: 3rem; }
+  .btn-wrap { display: flex; justify-content: center; gap: 2rem; }
+
+  .btn-primary-glow { background: linear-gradient(135deg, #00d4ff, #00ff9d); color: black; padding: 1.2rem 3rem; border-radius: 12px; font-weight: 900; text-decoration: none; transition: 0.3s; box-shadow: 0 10px 30px rgba(0,212,255,0.2); }
+  .btn-outline { border: 1px solid rgba(255,255,255,0.1); color: white; padding: 1.2rem 3rem; border-radius: 12px; font-weight: 700; text-decoration: none; transition: 0.3s; background: rgba(255,255,255,0.03); }
+
+  @media (max-width: 900px) {
+    .prod-grid { grid-template-columns: 1fr; gap: 3rem; }
+    .main-panel { padding: 2.5rem; }
+    .btn-wrap { flex-direction: column; gap: 1rem; }
+    .prod-hero h1 { font-size: 2.5rem; }
+  }
+</style>

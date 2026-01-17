@@ -6,74 +6,109 @@ const keywords = "comparacao getnexo vs suri, getnexo vs aisensy, getnexo vs bot
 const ogImage = "https://getnexo.com.br/assets/og-poster.jpg";
 ---
 <Layout title={title} description={description} keywords={keywords} ogImage={ogImage}>
-  <section style="padding: 100px 20px; max-width: 1200px; margin: auto;">
-    <h1 style="text-align: center; font-size: 3.8rem; background: linear-gradient(90deg, var(--primary), var(--success)); -webkit-background-clip: text; color: transparent;">
-      GetNexo esmaga os concorrentes
-    </h1>
-    <p style="text-align: center; font-size: 1.4rem; max-width: 900px; margin: 2rem auto; color: var(--text);">
-      Custo real, risco de ban, controle dos dados – a gente te mostra tudo sem firula.
-    </p>
+  <section class="comp-hero">
+    <div class="hero-badge">Batalha de Gigantes</div>
+    <h1 class="text-gradient">GetNexo vs Concorrência</h1>
+    <p>Compare os recursos, a segurança e, principalmente, o custo real de operação.</p>
+  </section>
 
-    <div style="overflow-x: auto;">
-      <table style="width: 100%; border-collapse: collapse; background: rgba(30,41,59,0.8); backdrop-filter: blur(12px); border-radius: 20px; overflow: hidden;">
+  <section class="comp-content">
+    <div class="table-wrap glass-panel">
+      <table>
         <thead>
           <tr>
-            <th style="background: rgba(0,212,255,0.2); color: var(--primary); padding: 1.4rem; text-align: left; font-weight: 800;">Feature</th>
-            <th style="background: rgba(0,212,255,0.2); color: var(--primary); padding: 1.4rem; font-weight: 800;"><strong>GetNexo</strong></th>
-            <th style="background: #1a1a1a; padding: 1.4rem; color: #fff;">Suri.ai</th>
-            <th style="background: #1a1a1a; padding: 1.4rem; color: #fff;">AiSensy</th>
-            <th style="background: #1a1a1a; padding: 1.4rem; color: #fff;">BotZapIA</th>
+            <th>Recurso</th>
+            <th class="nexo">GetNexo AI</th>
+            <th>Suri / Wati</th>
+            <th>AiSensy</th>
+            <th>BotZapIA</th>
           </tr>
         </thead>
         <tbody>
-          <tr><td style="padding: 1.2rem; border-bottom: 1px solid rgba(255,255,255,0.05);"><strong>Preço mensal</strong></td>
-            <td style="padding: 1.2rem; background: rgba(0,255,157,0.1); color: var(--success); border-bottom: 1px solid rgba(255,255,255,0.05);">🆓 Grátis pra sempre</td>
-            <td style="padding: 1.2rem; border-bottom: 1px solid rgba(255,255,255,0.05);">💸 R$ 199–999</td>
-            <td style="padding: 1.2rem; border-bottom: 1px solid rgba(255,255,255,0.05);">💸 R$ 99–499 + taxa/msg</td>
-            <td style="padding: 1.2rem; border-bottom: 1px solid rgba(255,255,255,0.05);">💸 R$ 44–199</td></tr>
-          <tr><td style="padding: 1.2rem; border-bottom: 1px solid rgba(255,255,255,0.05);"><strong>Controle dos dados</strong></td>
-            <td style="padding: 1.2rem; background: rgba(0,255,157,0.1); border-bottom: 1px solid rgba(255,255,255,0.05);">🔒 100% teu PC – AES-256</td>
-            <td style="padding: 1.2rem; border-bottom: 1px solid rgba(255,255,255,0.05);">☁️ Nuvem deles</td>
-            <td style="padding: 1.2rem; border-bottom: 1px solid rgba(255,255,255,0.05);">☁️ Nuvem</td>
-            <td style="padding: 1.2rem; border-bottom: 1px solid rgba(255,255,255,0.05);">☁️ Nuvem</td></tr>
-          <tr><td style="padding: 1.2rem; border-bottom: 1px solid rgba(255,255,255,0.05);"><strong>Risco de ban</strong></td>
-            <td style="padding: 1.2rem; background: rgba(0,255,157,0.1); border-bottom: 1px solid rgba(255,255,255,0.05);">🚫 Zero – túnel zero trust</td>
-            <td style="padding: 1.2rem; border-bottom: 1px solid rgba(255,255,255,0.05);">⚠️ Médio (relatado)</td>
-            <td style="padding: 1.2rem; border-bottom: 1px solid rgba(255,255,255,0.05);">⚠️ Alto (campanhas)</td>
-            <td style="padding: 1.2rem; border-bottom: 1px solid rgba(255,255,255,0.05);">⚠️ Médio</td></tr>
-          <tr><td style="padding: 1.2rem; border-bottom: 1px solid rgba(255,255,255,0.05);"><strong>IA + Automação</strong></td>
-            <td style="padding: 1.2rem; background: rgba(0,255,157,0.1); border-bottom: 1px solid rgba(255,255,255,0.05);">🤖 n8n + Evolution + Chatwoot</td>
-            <td style="padding: 1.2rem; border-bottom: 1px solid rgba(255,255,255,0.05);">🤖 GPT (pago)</td>
-            <td style="padding: 1.2rem; border-bottom: 1px solid rgba(255,255,255,0.05);">🤖 Básica</td>
-            <td style="padding: 1.2rem; border-bottom: 1px solid rgba(255,255,255,0.05);">🤖 GPT-4.5</td></tr>
-          <tr><td style="padding: 1.2rem; border-bottom: 1px solid rgba(255,255,255,0.05);"><strong>Limite de msg</strong></td>
-            <td style="padding: 1.2rem; background: rgba(0,255,157,0.1); border-bottom: 1px solid rgba(255,255,255,0.05);">🔥 Ilimitado</td>
-            <td style="padding: 1.2rem; border-bottom: 1px solid rgba(255,255,255,0.05);">📉 Taxado por faixa</td>
-            <td style="padding: 1.2rem; border-bottom: 1px solid rgba(255,255,255,0.05);">📉 Taxado</td>
-            <td style="padding: 1.2rem; border-bottom: 1px solid rgba(255,255,255,0.05);">📉 Taxado</td></tr>
-          <tr><td style="padding: 1.2rem; border-bottom: 1px solid rgba(255,255,255,0.05);"><strong>Instalação</strong></td>
-            <td style="padding: 1.2rem; background: rgba(0,255,157,0.1); border-bottom: 1px solid rgba(255,255,255,0.05);">⚡ 10 min no PC</td>
-            <td style="padding: 1.2rem; border-bottom: 1px solid rgba(255,255,255,0.05);">🔌 Cloud SaaS</td>
-            <td style="padding: 1.2rem; border-bottom: 1px solid rgba(255,255,255,0.05);">🔌 Cloud</td>
-            <td style="padding: 1.2rem; border-bottom: 1px solid rgba(255,255,255,0.05);">🔌 Cloud</td></tr>
-          <tr><td style="padding: 1.2rem; border-bottom: 1px solid rgba(255,255,255,0.05);"><strong>Suporte a múltiplos núm</strong></td>
-            <td style="padding: 1.2rem; background: rgba(0,255,157,0.1); border-bottom: 1px solid rgba(255,255,255,0.05);">✅ Docker multi-container</td>
-            <td style="padding: 1.2rem; border-bottom: 1px solid rgba(255,255,255,0.05);">✅ Sim (pago)</td>
-            <td style="padding: 1.2rem; border-bottom: 1px solid rgba(255,255,255,0.05);">✅ Sim</td>
-            <td style="padding: 1.2rem; border-bottom: 1px solid rgba(255,255,255,0.05);">✅ Sim</td></tr>
-          <tr><td style="padding: 1.2rem;"><strong>Customização IA</strong></td>
-            <td style="padding: 1.2rem; background: rgba(0,255,157,0.1);">💯 Total (fluxos n8n)</td>
-            <td style="padding: 1.2rem;">🟡 Limitada</td>
-            <td style="padding: 1.2rem;">🟡 Básica</td>
-            <td style="padding: 1.2rem;">🟡 Média</td></tr>
+          <tr>
+            <td>Custo Mensal</td>
+            <td class="nexo-val">🆓 R$ 0,00</td>
+            <td>R$ 399+</td>
+            <td>R$ 499+</td>
+            <td>R$ 199+</td>
+          </tr>
+          <tr>
+            <td>Propriedade dos Dados</td>
+            <td class="nexo-val">🔒 100% Sua</td>
+            <td>Empresa SaaS</td>
+            <td>Empresa SaaS</td>
+            <td>Empresa SaaS</td>
+          </tr>
+          <tr>
+            <td>Risco de Banimento</td>
+            <td class="nexo-val">🛡️ Zero Trust</td>
+            <td>Médio</td>
+            <td>Médio / Alto</td>
+            <td>Médio</td>
+          </tr>
+          <tr>
+            <td>Flexibilidade de IA</td>
+            <td class="nexo-val">🚀 Total (Open)</td>
+            <td>Engessada</td>
+            <td>Limitada</td>
+            <td>Moderada</td>
+          </tr>
+          <tr>
+            <td>Limite de Mensagens</td>
+            <td class="nexo-val">🔥 Ilimitado</td>
+            <td>Taxado / Faixas</td>
+            <td>Taxado</td>
+            <td>Taxado</td>
+          </tr>
+          <tr>
+            <td>Hospedagem</td>
+            <td class="nexo-val">💻 Local (Docker)</td>
+            <td>Nuvem deles</td>
+            <td>Nuvem deles</td>
+            <td>Nuvem deles</td>
+          </tr>
         </tbody>
       </table>
     </div>
 
-    <div style="text-align: center; margin: 4rem 0;">
-      <a href="#" onclick="window.$chatwoot.toggle(); return false;" target="_blank" style="background: var(--success); color: black; padding: 1.2rem 2.5rem; border-radius: 50px; font-weight: 800; text-decoration: none; font-size: 1.3rem; box-shadow: 0 10px 30px rgba(0,255,157,0.4); display: inline-block;">🚀 Testar GetNexo Grátis AGORA</a>
+    <div class="comp-cta">
+        <div class="glass-panel summary-card">
+            <h3>Conclusão: GetNexo é a escolha lógica</h3>
+            <p>Economize até <strong>R$ 15.000/ano</strong> em licenças e tenha controle total do seu ativo mais precioso: os dados dos seus clientes.</p>
+            <a href="#" onclick="window.$chatwoot.toggle(); return false;" class="btn-primary-glow">Testar Gratuitamente Agora</a>
+        </div>
     </div>
   </section>
+
+<style>
+  .comp-hero { text-align: center; padding: 10rem 5% 4rem; }
+  .hero-badge { background: rgba(0, 212, 255, 0.1); color: #00d4ff; padding: 0.5rem 1.2rem; border-radius: 50px; font-size: 0.85rem; font-weight: 700; display: inline-block; margin-bottom: 2rem; border: 1px solid rgba(0,212,255,0.2); }
+  .comp-hero h1 { font-size: 3.5rem; margin-bottom: 1rem; }
+  .comp-hero p { color: #94a3b8; font-size: 1.25rem; max-width: 650px; margin: 0 auto; }
+
+  .comp-content { max-width: 1100px; margin: 0 auto; padding: 4rem 5%; }
+  .table-wrap { border-radius: 24px; overflow-x: auto; border: 1px solid rgba(255,255,255,0.05); }
+  
+  table { width: 100%; border-collapse: collapse; min-width: 800px; }
+  th, td { padding: 1.8rem; text-align: left; border-bottom: 1px solid rgba(255,255,255,0.05); color: #94a3b8; }
+  th { background: rgba(255,255,255,0.02); color: white; font-weight: 800; text-transform: uppercase; font-size: 0.85rem; letter-spacing: 1px; }
+  
+  th.nexo { color: #00ff9d; background: rgba(0, 255, 157, 0.05); border-bottom: 2px solid #00ff9d; }
+  td.nexo-val { color: white; font-weight: 700; background: rgba(0, 255, 157, 0.02); }
+
+  .comp-cta { padding: 6rem 0; text-align: center; }
+  .summary-card { padding: 4rem; border-radius: 32px; max-width: 800px; margin: 0 auto; }
+  .summary-card h3 { color: white; font-size: 2rem; margin-bottom: 1rem; font-weight: 800; }
+  .summary-card p { color: #94a3b8; margin-bottom: 2.5rem; font-size: 1.15rem; }
+
+  .btn-primary-glow { display: inline-block; background: linear-gradient(135deg, #00d4ff, #00ff9d); color: black; padding: 1.1rem 2.5rem; border-radius: 12px; font-weight: 900; text-decoration: none; transition: 0.3s; box-shadow: 0 10px 30px rgba(0, 212, 255, 0.2); }
+  .btn-primary-glow:hover { transform: scale(1.05); box-shadow: 0 15px 40px rgba(0, 212, 255, 0.4); }
+
+  @media (max-width: 768px) {
+    .comp-hero h1 { font-size: 2.5rem; }
+    .summary-card { padding: 2rem; }
+  }
+</style>
 </Layout>
 
 <style>

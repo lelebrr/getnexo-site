@@ -10,5 +10,7 @@ import OmniChatApp from '../../components/OmniChatApp.jsx';
       or rely on its internal state if ViewTransitions preserves it sufficiently.
       Ideally we pass a prop: initialTab="chat" 
     -->
-    <OmniChatApp client:only="react" initialTab="chat" />
+    <div class="glass-panel" style="padding:1.5rem; height: calc(100vh - 150px); overflow:hidden;">
+        <OmniChatApp client:only="react" initialTab="chat" />
+    </div>
 </DashboardLayout>

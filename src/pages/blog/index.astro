@@ -1,38 +1,61 @@
----
-import Layout from '../../layouts/Layout.astro';
-const title = "Blog GetNexo: Dicas Avançadas de Vendas WhatsApp API Oficial 2026";
-const description = "Blog oficial GetNexo: aprenda estratégias avançadas para vender mais no WhatsApp com API oficial. Recupere carrinhos, faça campanhas Click to WhatsApp, use IA para vendas automáticas. Dicas práticas para e-commerce.";
-const keywords = "blog whatsapp vendas, dicas vendas whatsapp, api whatsapp oficial dicas, recuperar carrinho abandonado whatsapp, campanhas click to whatsapp, ia vendas whatsapp, automacao vendas whatsapp, getnexo blog";
----
-<Layout title={title} description={description} keywords={keywords}>
-  <section style="padding: 6rem 10%; max-width: 1200px; margin: 0 auto; color: #e5e7eb;">
-    <h1 style="color:#00ff9d; font-size: 3rem;">Blog – Como vender mais no WhatsApp</h1>
-    <p style="font-size: 1.2rem;">Artigos práticos pra quem usa nossa plataforma.</p>
+   <section class="blog-hero">
+    <div class="hero-badge">Estratégias & Insights</div>
+    <h1 class="text-gradient">Estratégias de Venda Automática</h1>
+    <p>Aprenda a escalar sua operação com IA e automação avançada.</p>
+  </section>
 
-    <div style="margin-top: 3rem; display: grid; gap: 2rem;">
-      <article style="background: rgba(30,41,59,0.5); padding: 2rem; border-radius: 12px; border: 1px solid #333;">
-        <h2><a href="/blog/lancamento" style="text-decoration: none; color: #00d4ff; font-size: 1.8rem;">Lançamento GetNexo 2026</a></h2>
-        <p style="font-size: 1.1rem; margin-top: 0.5rem;">O assistente de IA grátis que vende sozinho. Conheça as novidades.</p>
-        <a href="/blog/lancamento" style="color: #00ff9d; font-weight: bold; margin-top: 1rem; display: inline-block;">Ler mais →</a>
+  <section class="blog-container">
+    <div class="blog-grid">
+      <article class="blog-post glass-panel">
+        <div class="post-meta">Janeiro 2026 • Lançamento</div>
+        <h2><a href="/blog/lancamento">GetNexo: A Revolução da IA Local</a></h2>
+        <p>Entenda como nossa tecnologia permite que você tenha um assistente oficial sem pagar assinaturas abusivas.</p>
+        <a href="/blog/lancamento" class="read-more">Ler Artigo →</a>
       </article>
 
-      <article style="background: rgba(30,41,59,0.5); padding: 2rem; border-radius: 12px; border: 1px solid #333;">
-        <h2><a href="/blog/recuperar-carrinho" style="text-decoration: none; color: #00d4ff; font-size: 1.8rem;">Como recuperar 70% dos carrinhos abandonados</a></h2>
-        <p style="font-size: 1.1rem; margin-top: 0.5rem;">Guia completo com script de alta conversão.</p>
-        <a href="/blog/recuperar-carrinho" style="color: #00ff9d; font-weight: bold; margin-top: 1rem; display: inline-block;">Ler mais →</a>
+      <article class="blog-post glass-panel">
+        <div class="post-meta">Vendas • Carrinho Abandonado</div>
+        <h2><a href="/blog/recuperar-carrinho">Como recuperar 70% das vendas perdidas</a></h2>
+        <p>Um guia completo de scripts de WhatsApp que convertem curiosos em clientes pagantes usando o n8n.</p>
+        <a href="/blog/recuperar-carrinho" class="read-more">Ler Artigo →</a>
       </article>
 
-      <article style="background: rgba(30,41,59,0.5); padding: 2rem; border-radius: 12px; border: 1px solid #333;">
-        <h2><a href="/blog/api-whatsapp-custo" style="text-decoration: none; color: #00d4ff; font-size: 1.8rem;">API Oficial WhatsApp: Custo real em 2026</a></h2>
-        <p style="font-size: 1.1rem; margin-top: 0.5rem;">Quanto custa de verdade e como a GetNexo te ajuda a economizar.</p>
-        <a href="/blog/api-whatsapp-custo" style="color: #00ff9d; font-weight: bold; margin-top: 1rem; display: inline-block;">Ler mais →</a>
+      <article class="blog-post glass-panel">
+        <div class="post-meta">Custos • API Oficial</div>
+        <h2><a href="/blog/api-whatsapp-custo">Quanto custa vender no WhatsApp em 2026?</a></h2>
+        <p>A verdade sobre as taxas da Meta e como a GetNexo ajuda você a economizar milhares de reais todos os meses.</p>
+        <a href="/blog/api-whatsapp-custo" class="read-more">Ler Artigo →</a>
       </article>
 
-      <article style="background: rgba(30,41,59,0.5); padding: 2rem; border-radius: 12px; border: 1px solid #333;">
-        <h2><a href="/blog/campanhas" style="text-decoration: none; color: #00d4ff; font-size: 1.8rem;">5 campanhas Click to WhatsApp que convertem</a></h2>
-        <p style="font-size: 1.1rem; margin-top: 0.5rem;">Estratégias validadas para vender 3x mais.</p>
-        <a href="/blog/campanhas" style="color: #00ff9d; font-weight: bold; margin-top: 1rem; display: inline-block;">Ler mais →</a>
+      <article class="blog-post glass-panel">
+        <div class="post-meta">Tráfego Pago • Ads</div>
+        <h2><a href="/blog/campanhas">5 Campanhas de Click to WhatsApp Ads</a></h2>
+        <p>Descubra as estruturas de anúncios que mais geram leads qualificados para o robô atender.</p>
+        <a href="/blog/campanhas" class="read-more">Ler Artigo →</a>
       </article>
     </div>
   </section>
-</Layout>
+
+<style>
+  .blog-hero { text-align: center; padding: 8rem 5% 4rem; }
+  .hero-badge { background: rgba(0, 212, 255, 0.1); color: #00d4ff; padding: 0.5rem 1.2rem; border-radius: 50px; font-size: 0.85rem; font-weight: 700; border: 1px solid rgba(0, 212, 255, 0.2); display: inline-block; margin-bottom: 2rem; }
+  .blog-hero h1 { font-size: 3.5rem; margin-bottom: 1rem; }
+  .blog-hero p { color: #94a3b8; font-size: 1.25rem; max-width: 600px; margin: 0 auto; }
+
+  .blog-container { max-width: 1000px; margin: 4rem auto 8rem; padding: 0 5%; }
+  .blog-grid { display: flex; flex-direction: column; gap: 2.5rem; }
+  .blog-post { padding: 3rem; transition: 0.3s; }
+  .blog-post:hover { border-color: #00ff9d; transform: translateX(10px); }
+  
+  .post-meta { color: #00ff9d; font-size: 0.8rem; font-weight: 700; text-transform: uppercase; letter-spacing: 1px; margin-bottom: 1rem; }
+  .blog-post h2 a { color: white; text-decoration: none; font-size: 1.8rem; font-weight: 800; transition: 0.2s; }
+  .blog-post h2 a:hover { color: #00d4ff; }
+  .blog-post p { color: #64748b; margin: 1rem 0 2rem; font-size: 1.1rem; line-height: 1.6; }
+  .read-more { color: #00ff9d; font-weight: 700; text-decoration: none; font-size: 0.9rem; }
+  .read-more:hover { text-decoration: underline; }
+
+  @media (max-width: 768px) {
+    .blog-hero h1 { font-size: 2.5rem; }
+    .blog-post { padding: 2rem; }
+  }
+</style>

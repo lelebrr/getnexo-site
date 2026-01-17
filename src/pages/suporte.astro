@@ -7,75 +7,69 @@ const ogImage = "https://getnexo.com.br/assets/og-poster.jpg";
 ---
 <Layout title={title} description={description} keywords={keywords} ogImage={ogImage}>
   <section class="support-hero">
-    <h1>Centro de Ajuda GetNexo</h1>
-    <p>O suporte que você precisa, na velocidade da IA.</p>
+    <div class="hero-badge">Health Center</div>
+    <h1 class="text-gradient">Como podemos ajudar?</h1>
+    <p>O suporte que você precisa, na velocidade da inteligência artificial.</p>
   </section>
 
-  <section class="support-grid">
-    <div class="card">
-        <span class="icon">🤖</span>
-        <h3>Atendimento Automático</h3>
-        <p>Tire dúvidas sobre instalação, preços e recursos instantaneamente.</p>
-        <button onclick="window.$chatwoot.toggle()" class="btn-primary">Falar com IA Agora</button>
-    </div>
+  <section class="support-content">
+    <div class="support-grid">
+      <div class="support-card glass-panel">
+        <span class="support-icon">🤖</span>
+        <h3>Atendimento IA</h3>
+        <p>Nossa IA conhece cada linha de código e manual. Respostas em milissegundos.</p>
+        <button onclick="window.$chatwoot.toggle()" class="btn-primary-glow">Falar com Ara AI</button>
+      </div>
 
-    <div class="card">
-        <span class="icon">📚</span>
-        <h3>Base de Conhecimento</h3>
-        <p>Tutoriais passo-a-passo e artigos detalhados no nosso Blog.</p>
-        <a href="/blog" class="btn-secondary">Acessar Tutoriais</a>
-    </div>
+      <div class="support-card glass-panel">
+        <span class="support-icon">📚</span>
+        <h3>Knowledge Base</h3>
+        <p>Acesse tutoriais, guias de instalação e estratégias avançadas no nosso Blog.</p>
+        <a href="/blog" class="btn-outline">Explorar Documentação</a>
+      </div>
 
-    <div class="card">
-        <span class="icon">🛠️</span>
+      <div class="support-card glass-panel">
+        <span class="support-icon">🛠️</span>
         <h3>Reportar Bug</h3>
-        <p>Encontrou um problema? Abra uma issue no nosso GitHub.</p>
-        <a href="https://github.com/getnexo/core/issues" class="btn-secondary">Abrir Issue</a>
+        <p>Encontrou um comportamento inesperado? Abra uma issue no repositório oficial.</p>
+        <a href="https://github.com/lelebrr" class="btn-outline">GitHub Repository</a>
+      </div>
     </div>
   </section>
 
-  <section style="text-align: center; margin: 4rem 0; color: #94a3b8;">
-    <p>📧 Preferir e-mail? <a href="mailto:lelebrr@gmail.com" style="color: #00ff9d;">lelebrr@gmail.com</a></p>
+  <section class="support-footer">
+    <div class="glass-panel contact-card">
+        <p>📧 Preferência por e-mail? Fale com nosso squad de especialistas: <a href="mailto:lelebrr@gmail.com">lelebrr@gmail.com</a></p>
+    </div>
   </section>
-  
-  <style>
-    .support-hero { text-align: center; padding: 6rem 5% 3rem; }
-    .support-hero h1 { font-size: 3rem; color: #00ff9d; margin-bottom: 1rem; }
-    .support-hero p { font-size: 1.2rem; color: #cbd5e1; }
 
-    .support-grid {
-        display: grid;
-        grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-        gap: 2rem;
-        max-width: 1000px;
-        margin: 0 auto;
-        padding: 0 5%;
-    }
+<style>
+  .support-hero { text-align: center; padding: 10rem 5% 4rem; }
+  .hero-badge { background: rgba(0, 212, 255, 0.1); color: #00d4ff; padding: 0.5rem 1.2rem; border-radius: 50px; font-size: 0.85rem; font-weight: 700; display: inline-block; margin-bottom: 2rem; border: 1px solid rgba(0,212,255,0.2); }
+  .support-hero h1 { font-size: 3.5rem; margin-bottom: 1rem; font-weight: 800; }
+  .support-hero p { color: #94a3b8; font-size: 1.25rem; max-width: 600px; margin: 0 auto; }
 
-    .card {
-        background: #1e293b;
-        padding: 2rem;
-        border-radius: 16px;
-        text-align: center;
-        border: 1px solid #334155;
-        transition: transform 0.2s;
-    }
-    .card:hover { transform: translateY(-5px); border-color: #00ff9d; }
-    
-    .icon { font-size: 3rem; display: block; margin-bottom: 1rem; }
-    .card h3 { color: white; margin-bottom: 1rem; font-size: 1.5rem; }
-    .card p { color: #94a3b8; margin-bottom: 2rem; min-height: 3rem; }
+  .support-content { padding: 4rem 5%; max-width: 1200px; margin: 0 auto; }
+  .support-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(320px, 1fr)); gap: 2rem; }
+  .support-card { padding: 3rem; text-align: center; border-radius: 24px; border: 1px solid rgba(255,255,255,0.05); transition: 0.3s; }
+  .support-card:hover { transform: translateY(-10px); border-color: #00ff9d; }
+  .support-icon { font-size: 3.5rem; display: block; margin-bottom: 1.5rem; }
+  .support-card h3 { color: white; margin-bottom: 1rem; font-size: 1.5rem; font-weight: 800; }
+  .support-card p { color: #94a3b8; line-height: 1.7; font-size: 1.1rem; margin-bottom: 2.5rem; min-height: 3.5rem; }
 
-    .btn-primary {
-        background: #00ff9d; color: black; border: none; padding: 0.8rem 1.5rem;
-        border-radius: 50px; font-weight: bold; cursor: pointer; text-decoration: none;
-        display: inline-block; font-size: 1rem;
-    }
-    .btn-secondary {
-        background: transparent; color: #00ff9d; border: 2px solid #00ff9d;
-        padding: 0.8rem 1.5rem; border-radius: 50px; font-weight: bold;
-        text-decoration: none; display: inline-block; transition: all 0.2s;
-    }
-    .btn-secondary:hover { background: #00ff9d; color: black; }
-  </style>
+  .support-footer { padding: 4rem 5% 10rem; max-width: 900px; margin: 0 auto; }
+  .contact-card { padding: 2rem; text-align: center; border-radius: 20px; }
+  .contact-card p { color: #94a3b8; font-size: 1.1rem; }
+  .contact-card a { color: #00ff9d; font-weight: 700; text-decoration: none; border-bottom: 1px solid transparent; transition: 0.3s; }
+  .contact-card a:hover { border-bottom-color: #00ff9d; }
+
+  .btn-primary-glow { display: inline-block; background: linear-gradient(135deg, #00d4ff, #00ff9d); color: black; padding: 1.1rem 2.5rem; border-radius: 12px; font-weight: 900; text-decoration: none; transition: 0.3s; box-shadow: 0 10px 30px rgba(0, 212, 255, 0.2); cursor: pointer; border: none; font-family: inherit; }
+  .btn-primary-glow:hover { transform: scale(1.05); box-shadow: 0 15px 40px rgba(0, 212, 255, 0.4); }
+  .btn-outline { display: inline-block; border: 1px solid rgba(255,255,255,0.1); color: white; padding: 1.1rem 2.5rem; border-radius: 12px; font-weight: 700; text-decoration: none; transition: 0.3s; background: rgba(255,255,255,0.03); }
+
+  @media (max-width: 768px) {
+    .support-hero h1 { font-size: 2.5rem; }
+    .support-card { padding: 2rem; }
+  }
+</style>
 </Layout>

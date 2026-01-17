@@ -1,25 +1,59 @@
 ---
 import Layout from '../../layouts/Layout.astro';
 ---
-<Layout title="Nossos Produtos - GetNexo">
-  <section style="padding:8rem 10%; text-align:center;">
-    <h1 style="font-size:3rem; color:#00ff9d;">Nossas Soluções</h1>
-    <p style="font-size:1.5rem; color:#e5e7eb; margin:2rem auto;">
-      Ferramentas poderosas para cada etapa do seu funil.
+<Layout title="Soluções GetNexo - IA & Automação para WhatsApp">
+  <section class="products-hero">
+    <div class="hero-badge">Ecossistema Completo</div>
+    <h1 class="text-gradient">Nossas Soluções</h1>
+    <p class="hero-desc">
+      Ferramentas poderosas para automatizar cada etapa do seu funil de vendas, do primeiro contato ao pagamento.
     </p>
-    <div style="display:grid; grid-template-columns:repeat(auto-fit,minmax(250px,1fr)); gap:2rem; margin-top:4rem;">
-        <a href="/produtos/automacao" style="background:#111; padding:2rem; border-radius:12px; text-decoration:none; color:white; border:1px solid #333;">
-            <h3 style="color:#00d4ff;">Automação</h3>
+
+    <div class="products-grid">
+        <a href="/produtos/automacao" class="product-card glass-panel">
+            <div class="card-icon">🤖</div>
+            <h3>Automação</h3>
+            <p>Bots inteligentes que respondem, qualificam e agendam reuniões sem intervenção humana.</p>
+            <span class="learn-more">Saiba mais →</span>
         </a>
-        <a href="/produtos/vendas" style="background:#111; padding:2rem; border-radius:12px; text-decoration:none; color:white; border:1px solid #333;">
-            <h3 style="color:#00d4ff;">Vendas</h3>
+        <a href="/produtos/vendas" class="product-card glass-panel">
+            <div class="card-icon">💰</div>
+            <h3>Vendas & Checkout</h3>
+            <p>Pagamentos via PIX nativo, links de checkout e gestão de pedidos direto no chat.</p>
+            <span class="learn-more">Saiba mais →</span>
         </a>
-        <a href="/produtos/marketing" style="background:#111; padding:2rem; border-radius:12px; text-decoration:none; color:white; border:1px solid #333;">
-            <h3 style="color:#00d4ff;">Marketing</h3>
+        <a href="/produtos/marketing" class="product-card glass-panel">
+            <div class="card-icon">📢</div>
+            <h3>Marketing & Ads</h3>
+            <p>Broadcast ilimitado, gestão de UTMs e integração com Click to WhatsApp Ads.</p>
+            <span class="learn-more">Saiba mais →</span>
         </a>
-        <a href="/produtos/crm" style="background:#111; padding:2rem; border-radius:12px; text-decoration:none; color:white; border:1px solid #333;">
-            <h3 style="color:#00d4ff;">CRM</h3>
+        <a href="/produtos/crm" class="product-card glass-panel">
+            <div class="card-icon">📊</div>
+            <h3>CRM Kanban</h3>
+            <p>Organize seus leads em estágios, atribua agentes e monitore o SLA da sua equipe.</p>
+            <span class="learn-more">Saiba mais →</span>
         </a>
     </div>
   </section>
 </Layout>
+
+<style>
+  .products-hero { padding: 8rem 5% 4rem; text-align: center; max-width: 1200px; margin: 0 auto; }
+  .hero-badge { background: rgba(0, 212, 255, 0.1); color: #00d4ff; padding: 0.5rem 1.2rem; border-radius: 50px; font-size: 0.85rem; font-weight: 700; border: 1px solid rgba(0, 212, 255, 0.2); display: inline-block; margin-bottom: 2rem; }
+  .products-hero h1 { font-size: 3.5rem; margin-bottom: 1.5rem; }
+  .hero-desc { font-size: 1.35rem; color: #94a3b8; max-width: 800px; margin: 0 auto 5rem; }
+
+  .products-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 2rem; }
+  .product-card { padding: 3rem 2rem; text-decoration: none; text-align: left; transition: 0.3s; border: 1px solid rgba(255,255,255,0.05); }
+  .product-card:hover { border-color: #00ff9d; transform: translateY(-10px); }
+  .card-icon { font-size: 3rem; margin-bottom: 1.5rem; }
+  .product-card h3 { color: white; font-size: 1.5rem; margin-bottom: 1rem; font-weight: 800; }
+  .product-card p { color: #64748b; font-size: 1rem; line-height: 1.5; margin-bottom: 2rem; }
+  .learn-more { color: #00ff9d; font-weight: 700; font-size: 0.9rem; }
+
+  @media (max-width: 768px) {
+    .products-hero h1 { font-size: 2.5rem; }
+    .hero-desc { font-size: 1.1rem; }
+  }
+</style>

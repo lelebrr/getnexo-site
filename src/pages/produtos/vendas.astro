@@ -1,22 +1,127 @@
 ---
 import Layout from '../../layouts/Layout.astro';
+const title = "Checkout & Vendas PIX no WhatsApp | GetNexo";
+const description = "Transforme seu WhatsApp em uma loja completa. Catálogo, carrinho e pagamento via PIX nativo sem sair do chat.";
 ---
-<Layout title="Vendas com PIX no WhatsApp | GetNexo">
-  <section style="padding: 6rem 10%; max-width: 1200px; margin: 0 auto; color: #e5e7eb;">
-      <h1 style="color:#00ff9d; font-size: 3rem;">Vendas Diretas com PIX no Chat</h1>
-      <p style="font-size: 1.2rem;">Catálogo, carrinho, pagamento. Tudo no WhatsApp. Sem sair da conversa.</p>
 
-      <div style="margin-top: 3rem;">
-        <h2 style="color: #00d4ff;">Como Funciona</h2>
-        <ol style="font-size: 1.2rem; line-height: 2; margin-left: 1.5rem;">
-          <li>Cliente pergunta produto</li>
-          <li>Bot envia imagem, preço, botão PIX</li>
-          <li>Pagamento cai na hora</li>
-          <li>Pedido vai pro e-commerce</li>
-        </ol>
-        <div style="margin-top: 2rem;">
-            <a href="/criar-bot" class="btn-cta" style="background:#00d4ff; color:black; padding:1rem 2rem; border-radius:50px; text-decoration:none; font-weight:bold;">Começar a Vender no Chat</a>
+<Layout title={title} description={description}>
+  <section class="prod-hero">
+    <div class="hero-badge">Conversão Imediata</div>
+    <h1 class="text-gradient">Vendas & Checkout</h1>
+    <p>O menor caminho entre o desejo e o pagamento. Checkout nativo no WhatsApp com integração PIX em tempo real.</p>
+  </section>
+
+  <section class="prod-content">
+    <div class="glass-panel main-panel">
+      <div class="prod-grid">
+        <div class="prod-info">
+          <h2>Venda Enquanto Eles Digitam</h2>
+          <ul class="feature-list">
+            <li>
+                <span class="icon">🛒</span>
+                <div class="txt">
+                    <strong>Catálogo Inteligente</strong>
+                    <p>Sincronize seus produtos e permita que a IA apresente imagens e preços na hora certa da conversa.</p>
+                </div>
+            </li>
+            <li>
+                <span class="icon">💸</span>
+                <div class="txt">
+                    <strong>PIX Nativo Automático</strong>
+                    <p>Gere chaves PIX de pagamento diretamente no chat e confirme o recebimento instantaneamente.</p>
+                </div>
+            </li>
+            <li>
+                <span class="icon">📦</span>
+                <div class="txt">
+                    <strong>Sincronização de Pedidos</strong>
+                    <p>Venda confirmada no WhatsApp? O pedido cai direto no seu ERP ou E-commerce (WooCommerce/Shopify).</p>
+                </div>
+            </li>
+            <li>
+                <span class="icon">🔗</span>
+                <div class="txt">
+                    <strong>Links de Pagamento</strong>
+                    <p>Envie links dinâmicos para pagamentos com cartão ou boleto para finalizar negociações complexas.</p>
+                </div>
+            </li>
+          </ul>
+        </div>
+        <div class="prod-visual">
+            <div class="visual-card-glass">
+                <div class="v-head">checkout.payment.confirmed</div>
+                <div class="v-body">
+                    <div class="payment-node">
+                        <div class="p-icon">💰</div>
+                        <div class="p-details">
+                            <span class="p-title">PIX RECEBIDO</span>
+                            <span class="p-val">R$ 249,00</span>
+                        </div>
+                    </div>
+                    <div class="p-meta">
+                        <span>Ref: #NEXO-9821</span>
+                        <span class="p-status">SUCCESS</span>
+                    </div>
+                </div>
+            </div>
         </div>
       </div>
+    </div>
+  </section>
+
+  <section class="prod-cta">
+    <h2>Pare de mandar o cliente para o site.</h2>
+    <p>Venda onde seu cliente está: no WhatsApp. Aumente sua taxa de conversão em até 3x.</p>
+    <div class="btn-wrap">
+        <a href="/criar-bot" class="btn-primary-glow">Ativar Vendas no Chat</a>
+        <a href="/ecommerce" class="btn-outline">Ver Integrações</a>
+    </div>
   </section>
 </Layout>
+
+<style>
+  .prod-hero { text-align: center; padding: 10rem 5% 5rem; }
+  .hero-badge { background: rgba(0, 212, 255, 0.1); color: #00d4ff; padding: 0.5rem 1.2rem; border-radius: 50px; font-size: 0.85rem; font-weight: 700; display: inline-block; margin-bottom: 2rem; border: 1px solid rgba(0,212,255,0.2); }
+  .prod-hero h1 { font-size: 3.5rem; margin-bottom: 1.5rem; font-weight: 800; }
+  .prod-hero p { color: #94a3b8; font-size: 1.25rem; max-width: 700px; margin: 0 auto; }
+
+  .prod-content { padding: 4rem 5%; max-width: 1200px; margin: 0 auto; }
+  .main-panel { padding: 5rem; border-radius: 40px; }
+  .prod-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 4rem; align-items: center; }
+  
+  .prod-info h2 { color: white; font-size: 2rem; margin-bottom: 3rem; font-weight: 800; }
+  .feature-list { list-style: none; padding: 0; display: flex; flex-direction: column; gap: 2.5rem; }
+  .feature-list li { display: flex; gap: 1.5rem; align-items: flex-start; }
+  .feature-list .icon { font-size: 1.8rem; background: rgba(255,255,255,0.03); width: 50px; height: 50px; display: flex; align-items: center; justify-content: center; border-radius: 12px; flex-shrink: 0; }
+  .feature-list .txt strong { color: #00ff9d; font-size: 1.1rem; display: block; margin-bottom: 0.4rem; }
+  .feature-list .txt p { color: #94a3b8; font-size: 0.95rem; line-height: 1.6; }
+
+  .prod-visual { display: flex; justify-content: center; }
+  .visual-card-glass { background: rgba(0, 255, 157, 0.05); border: 1px solid rgba(0, 255, 157, 0.1); border-radius: 20px; padding: 3rem; width: 100%; max-width: 400px; font-family: 'JetBrains Mono', monospace; box-shadow: 0 20px 50px rgba(0,0,0,0.3); }
+  .v-head { color: #00ff9d; font-size: 0.8rem; margin-bottom: 2.5rem; font-weight: 700; border-bottom: 1px solid rgba(255,255,255,0.05); padding-bottom: 0.5rem; text-transform: uppercase; }
+  .v-body { display: flex; flex-direction: column; gap: 1.5rem; }
+  
+  .payment-node { display: flex; align-items: center; gap: 1.5rem; background: rgba(0,0,0,0.4); padding: 1.5rem; border-radius: 12px; border: 1px solid rgba(0, 255, 157, 0.2); }
+  .p-icon { font-size: 2.5rem; }
+  .p-details { display: flex; flex-direction: column; gap: 0.2rem; }
+  .p-title { color: #00ff9d; font-weight: 800; font-size: 0.7rem; letter-spacing: 1px; }
+  .p-val { color: white; font-size: 1.8rem; font-weight: 900; }
+  
+  .p-meta { display: flex; justify-content: space-between; margin-top: 1rem; color: #334155; font-size: 0.75rem; font-weight: 700; }
+  .p-status { color: #00ff9d; }
+
+  .prod-cta { padding: 6rem 5% 10rem; text-align: center; max-width: 800px; margin: 0 auto; }
+  .prod-cta h2 { color: white; font-size: 2.5rem; margin-bottom: 1rem; font-weight: 800; }
+  .prod-cta p { color: #94a3b8; font-size: 1.2rem; margin-bottom: 3rem; }
+  .btn-wrap { display: flex; justify-content: center; gap: 2rem; }
+
+  .btn-primary-glow { background: linear-gradient(135deg, #00d4ff, #00ff9d); color: black; padding: 1.2rem 3rem; border-radius: 12px; font-weight: 900; text-decoration: none; transition: 0.3s; box-shadow: 0 10px 30px rgba(0,212,255,0.2); }
+  .btn-outline { border: 1px solid rgba(255,255,255,0.1); color: white; padding: 1.2rem 3rem; border-radius: 12px; font-weight: 700; text-decoration: none; transition: 0.3s; background: rgba(255,255,255,0.03); }
+
+  @media (max-width: 900px) {
+    .prod-grid { grid-template-columns: 1fr; gap: 3rem; }
+    .main-panel { padding: 2.5rem; }
+    .btn-wrap { flex-direction: column; gap: 1rem; }
+    .prod-hero h1 { font-size: 2.5rem; }
+  }
+</style>
