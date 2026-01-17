@@ -20,6 +20,10 @@ const { title = "GetNexo – Assistente de Vendas WhatsApp Grátis", description
   <meta property="og:image" content="https://getnexo.com.br/images/og.jpg" />
   <meta name="twitter:card" content="summary_large_image" />
   
+  <!-- Verification Tags (Replace content with your codes) -->
+  <meta name="google-site-verification" content="" />
+  <meta name="msvalidate.01" content="" />
+
   <!-- Google Analytics 4 -->
   <script async src="https://www.googletagmanager.com/gtag/js?id=G-F8P994EX00"></script>
   <script is:inline>
@@ -30,7 +34,22 @@ const { title = "GetNexo – Assistente de Vendas WhatsApp Grátis", description
     gtag('config', 'G-F8P994EX00');
   </script>
   
-  <!-- Meta Pixel removed (No ID provided) -->
+  <!-- Schema.org JSON-LD -->
+  <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "SoftwareApplication",
+      "name": "GetNexo",
+      "applicationCategory": "BusinessApplication",
+      "operatingSystem": "Web",
+      "offers": {
+        "@type": "Offer",
+        "price": "0",
+        "priceCurrency": "BRL"
+      },
+      "description": "Assistente de Vendas WhatsApp 100% Grátis. Zero nuvem. Zero risco. Otimize seu atendimento com IA self-hosted."
+    }
+  </script>
   
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;800&display=swap" rel="stylesheet" />
   <style is:global>
