@@ -1,0 +1,8 @@
+---
+import DashboardLayout from '../../layouts/DashboardLayout.astro';
+import TeamManager from '../../components/TeamManager.jsx';
+---
+
+<DashboardLayout title="Equipe | OmniNexo">
+    <TeamManager client:only="react" />
+</DashboardLayout>
