@@ -10,10 +10,28 @@ const { title } = Astro.props;
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>{title} | GetNexo</title>
   <meta name="description" content="Assistente de vendas 24h com IA, WhatsApp e automação. Zero nuvem cara." />
+  <meta name="description" content="Assistente de vendas 24h com IA, WhatsApp e automação. Zero nuvem cara." />
   <meta name="robots" content="index, follow" />
-  		<link rel="canonical" href={new URL(Astro.url.pathname, Astro.site)} />
-		<link rel="manifest" href="/manifest.json" />
-		<link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+  
+  <!-- Open Graph -->
+  <meta property="og:type" content="website" />
+  <meta property="og:url" content={new URL(Astro.url.pathname, Astro.site)} />
+  <meta property="og:title" content={title} />
+  <meta property="og:description" content="A Máquina de Vendas Autônoma com IA Local." />
+  <meta property="og:image" content="https://getnexo.com.br/assets/og-poster.jpg" />
+
+  <!-- Twitter -->
+  <meta property="twitter:card" content="summary_large_image" />
+  <meta property="twitter:url" content={new URL(Astro.url.pathname, Astro.site)} />
+  <meta property="twitter:title" content={title} />
+  <meta property="twitter:description" content="A Máquina de Vendas Autônoma com IA Local." />
+  <meta property="twitter:image" content="https://getnexo.com.br/assets/og-poster.jpg" />
+
+  <link rel="canonical" href={new URL(Astro.url.pathname, Astro.site)} />
+  <link rel="manifest" href="/manifest.json" />
+  <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+  
+  <ViewTransitions />
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;800&display=swap" rel="stylesheet" />
@@ -22,6 +40,21 @@ const { title } = Astro.props;
   <style is:global>
     body { overflow-x: hidden; }
     .particles-canvas { position: fixed; inset: 0; pointer-events: none; z-index: -1; }
+    /* Custom Scrollbar & Selection */
+    ::-webkit-scrollbar { width: 10px; }
+    ::-webkit-scrollbar-track { background: #05080f; }
+    ::-webkit-scrollbar-thumb { background: #00d4ff; border-radius: 5px; }
+    ::-webkit-scrollbar-thumb:hover { background: #00ff9d; }
+
+    ::selection { background: #00d4ff; color: #000; }
+
+    .text-gradient {
+        background-image: var(--accent-gradient);
+        -webkit-background-clip: text;
+        -webkit-text-fill-color: transparent;
+        background-size: 400%;
+        background-position: 0%;
+    }
   </style>
 </head>
 <body>

@@ -5,15 +5,22 @@ import Layout from '../layouts/Layout.astro';
 <Layout title="GetNexo — A Máquina de Vendas Autônoma">
   <section class="hero">
     <div class="hero-content">
-      <h1 class="glitch-text">A MÁQUINA DE VENDAS <span class="highlight">AUTÔNOMA</span></h1>
-      <p class="subtitle">
-        Transforme seu WhatsApp em um canal de lucro 24/7. 
-        <span class="text-white">Sem mensalidades abusivas.</span> 
-        <span class="text-white">Sem compartilhar seus dados.</span> 
-        Rodando na sua própria infraestrutura.
-      </p>
-      
-      <div class="buttons">
+      		<div class="hero-content">
+			<h1>Sua Empresa <span class="text-gradient">Vende Sozinha</span></h1>
+			<p class="hero-desc">
+				Transforme o WhatsApp em uma máquina de lucro 24/7 com IA Local.
+				<br />Sem mensalidades abusivas. Totalmente sob seu controle.
+			</p>
+            <!-- Item 134: client:only="react" -->
+            <div class="demo-badge" client:only="react">
+                <span class="pulsing-dot"></span> IA Ativa: <strong>Ara v2.0</strong>
+            </div>
+			<div class="cta-group">
+				<a href="https://chat.getnexo.com.br" class="btn primary">Falar com Ara</a>
+				<a href="/blog" class="btn secondary">Ver Cases</a>
+			</div>
+		</div>
+        <div class="buttons">
         <a href="https://chat.getnexo.com.br" class="btn primary" target="_blank">
           Falar com o Agente Agora
         </a>
