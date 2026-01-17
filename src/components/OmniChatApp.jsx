@@ -51,38 +51,7 @@ const OmniChatApp = ({ initialTab = 'chat' }) => {
     };
 
     if (!isLoggedIn) {
-        return (
-            <div className="flex items-center justify-center h-[60vh]">
-                <div className="glass-panel p-8 rounded-2xl border border-gray-800 w-full max-w-md shadow-2xl">
-                    <h2 className="text-3xl font-bold text-center mb-6 bg-gradient-to-r from-[#00d4ff] to-[#00ff9d] bg-clip-text text-transparent">GetNexo Login</h2>
-                    <form onSubmit={handleLogin} className="space-y-4">
-                        <div>
-                            <label className="block text-gray-400 text-sm mb-1">Email</label>
-                            <input
-                                className="w-full bg-black/50 border border-gray-700 p-3 rounded text-white focus:border-[#00d4ff] outline-none"
-                                value={email} onChange={e => setEmail(e.target.value)}
-                                placeholder="admin@getnexo.local"
-                            />
-                        </div>
-                        <div>
-                            <label className="block text-gray-400 text-sm mb-1">Senha</label>
-                            <input
-                                type="password"
-                                className="w-full bg-black/50 border border-gray-700 p-3 rounded text-white focus:border-[#00d4ff] outline-none"
-                                value={password} onChange={e => setPassword(e.target.value)}
-                                placeholder="••••••••"
-                            />
-                        </div>
-                        <button type="submit" className="w-full bg-[#00d4ff] text-black font-bold p-3 rounded hover:scale-105 transition-transform">
-                            ENTRAR
-                        </button>
-                    </form>
-                    <div className="mt-4 text-center text-xs text-gray-600">
-                        Default: admin@getnexo.local / admin123
-                    </div>
-                </div>
-            </div>
-        );
+        return <div className="p-10 text-center text-gray-500 animate-pulse">Autenticando painel...</div>;
     }
 
     return (

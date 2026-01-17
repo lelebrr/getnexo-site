@@ -1,59 +1,63 @@
 ---
-import Layout from './Layout.astro';
 import { ViewTransitions } from 'astro:transitions';
+import '../styles/global.css';
 
 const { title = "GetNexo Dashboard" } = Astro.props;
 const currentPath = Astro.url.pathname;
 ---
 
-<Layout title={title}>
-    <head slot="head">
-        <ViewTransitions />
-        <style is:global>
-            :root {
-                --neon-blue: #00d4ff;
-                --neon-green: #00ff9d;
-                --dark-bg: #0a0e17;
-                --glass: rgba(30,41,59,0.8);
-            }
-            body { 
-                background: var(--dark-bg); 
-                color: #e5e7eb; 
-                margin:0; 
-                /* overflow:hidden; */ /* Removed to allow scrolling if needed */
-            }
-            .glow { text-shadow: 0 0 10px var(--neon-blue); }
-            .sidebar-link {
-                display:flex; 
-                align-items:center;
-                gap: 12px;
-                padding:0.8rem; 
-                color: #64748b; 
-                border-radius:10px; 
-                margin:0.5rem 0; 
-                transition:0.3s;
-                text-decoration: none;
-                font-weight: 500;
-            }
-            .sidebar-link:hover, .sidebar-link.active {
-                background: rgba(0, 212, 255, 0.1);
-                color: var(--neon-blue);
-                box-shadow: 0 0 15px rgba(0,212,255,0.2);
-            }
-            .sidebar-link.active {
-                color: var(--neon-green);
-                box-shadow: 0 0 15px rgba(0,255,157,0.2);
-                border: 1px solid rgba(0,255,157,0.3);
-            }
-            .glass-panel {
-                background:rgba(30,41,59,0.6); 
-                backdrop-filter:blur(12px); 
-                border-radius:16px; 
-                border:1px solid rgba(0,212,255,0.1);
-            }
-        </style>
-    </head>
-
+<!doctype html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>{title}</title>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;800&display=swap" rel="stylesheet" />
+    <ViewTransitions />
+    <style is:global>
+        :root {
+            --neon-blue: #00d4ff;
+            --neon-green: #00ff9d;
+            --dark-bg: #0a0e17;
+            --glass: rgba(30,41,59,0.8);
+        }
+        body { 
+            background: var(--dark-bg); 
+            color: #e5e7eb; 
+            margin:0; 
+            font-family: 'Inter', sans-serif;
+        }
+        .sidebar-link {
+            display:flex; 
+            align-items:center;
+            gap: 12px;
+            padding:0.8rem; 
+            color: #64748b; 
+            border-radius:10px; 
+            margin:0.5rem 0; 
+            transition:0.3s;
+            text-decoration: none;
+            font-weight: 500;
+        }
+        .sidebar-link:hover, .sidebar-link.active {
+            background: rgba(0, 212, 255, 0.1);
+            color: var(--neon-blue);
+            box-shadow: 0 0 15px rgba(0,212,255,0.2);
+        }
+        .sidebar-link.active {
+            color: var(--neon-green);
+            box-shadow: 0 0 15px rgba(0,255,157,0.2);
+            border: 1px solid rgba(0,255,157,0.3);
+        }
+        .glass-panel {
+            background:rgba(30,41,59,0.6); 
+            backdrop-filter:blur(12px); 
+            border-radius:16px; 
+            border:1px solid rgba(0,212,255,0.1);
+        }
+    </style>
+</head>
+<body>
   <div style="display:flex; flex-direction:column; min-height:100vh;">
       <header style="position:sticky; top:0; background:rgba(10,14,23,0.95); padding:1rem 2rem; border-bottom: 1px solid rgba(0,212,255,0.2); z-index:100; display:flex; justify-content:space-between; align-items:center;">
         <div style="display:flex; align-items:center; gap:10px;">
@@ -74,10 +78,10 @@ const currentPath = Astro.url.pathname;
         </div>
       </header>
 
-      <div style="display:grid; grid-template-columns:240px 1fr; flex:1;">
+      <div style="display:flex; flex:1; height:calc(100vh - 74px);">
         
         <!-- Sidebar -->
-        <aside style="background:rgba(10,14,23,0.8); border-right:1px solid rgba(255,255,255,0.05); padding:2rem 1rem;">
+        <aside style="width:240px; background:rgba(10,14,23,0.8); border-right:1px solid rgba(255,255,255,0.05); padding:2rem 1rem; display:flex; flex-direction:column; overflow-y:auto;">
           <nav>
             <div style="font-size:0.7rem; text-transform:uppercase; color:#64748b; font-weight:700; margin-bottom:1rem; padding-left:0.8rem;">Principal</div>
             
@@ -133,11 +137,10 @@ const currentPath = Astro.url.pathname;
         </aside>
 
         <!-- Main Content Slot -->
-        <main style="padding:2rem; overflow-y:auto; height:calc(100vh - 80px);">
+        <main style="flex:1; padding:2rem; overflow-y:auto; position:relative;">
           <slot />
         </main>
 
-      </div>
       </div>
   </div>
 
@@ -147,14 +150,6 @@ const currentPath = Astro.url.pathname;
       if (!token) {
           window.location.href = '/admin/login';
       }
-
-      // Update User Avatar/Name if available
-      const userStr = localStorage.getItem('omnichat_user');
-      if (userStr) {
-          try {
-              const user = JSON.parse(userStr);
-              // Logic to update avatar if I added IDs for them
-          } catch(e) {}
-      }
   </script>
-</Layout>
+</body>
+</html>
