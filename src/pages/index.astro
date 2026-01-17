@@ -1,10 +1,88 @@
 ---
 import Layout from '../layouts/Layout.astro';
 ---
-<Layout title="GetNexo">
+
+<Layout title="GetNexo — Assistente de vendas 24h">
   <section class="hero">
-    <h1>Seu assistente de vendas <strong>24h</strong></h1>
-    <p>IA + WhatsApp + CRM. Zero nuvem, zero lag.</p>
-    <a href="https://chat.getnexo.com.br" class="btn" target="_blank">Falar com o agente</a>
+    <h1>Seu assistente de vendas <strong>24 horas</strong></h1>
+    <p class="subtitle">Transforma mensagens do WhatsApp em vendas reais com IA, automação e CRM integrado.</p>
+    
+    <div class="buttons">
+      <a href="https://chat.getnexo.com.br" class="btn primary" target="_blank">
+        Falar com o agente agora
+      </a>
+      <a href="/blog" class="btn secondary">
+        Ver blog
+      </a>
+    </div>
+
+    <div class="features">
+      <div class="feature">
+        <strong>WhatsApp oficial</strong>
+        <p>Via Evolution API + n8n</p>
+      </div>
+      <div class="feature">
+        <strong>Zero nuvem cara</strong>
+        <p>Roda no teu servidor local com Cloudflare Tunnel</p>
+      </div>
+      <div class="feature">
+        <strong>Privacidade total</strong>
+        <p>Seus dados nunca saem do teu controle</p>
+      </div>
+    </div>
   </section>
 </Layout>
+
+<style>
+  .subtitle {
+    font-size: 1.3rem;
+    max-width: 700px;
+    margin: 1.5rem auto 2.5rem;
+    color: #444;
+  }
+  .buttons {
+    display: flex;
+    gap: 1.5rem;
+    justify-content: center;
+    margin-bottom: 4rem;
+    flex-wrap: wrap;
+  }
+  .btn {
+    padding: 1rem 2rem;
+    border-radius: 50px;
+    font-weight: 600;
+    text-decoration: none;
+    transition: all 0.3s;
+  }
+  .btn.primary {
+    background: #00b2a9;
+    color: white;
+  }
+  .btn.primary:hover {
+    background: #00968b;
+    transform: translateY(-3px);
+  }
+  .btn.secondary {
+    background: transparent;
+    color: #00b2a9;
+    border: 2px solid #00b2a9;
+  }
+  .btn.secondary:hover {
+    background: #00b2a9;
+    color: white;
+  }
+  .features {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: 2rem;
+    max-width: 1000px;
+    margin: 0 auto;
+  }
+  .feature {
+    text-align: center;
+    padding: 1.5rem;
+    background: white;
+    border-radius: 12px;
+    box-shadow: 0 4px 15px rgba(0,0,0,0.08);
+  }
+</style>
