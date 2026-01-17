@@ -147,7 +147,6 @@ const OmniChatApp = ({ initialTab = 'chat' }) => {
                         </div>
                     </div>
                 )}
-                )}
             </div>
             <AbandonedCartWidget />
         </div>
