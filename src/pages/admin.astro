@@ -4,110 +4,36 @@ const services = [
   { name: 'Chatwoot', url: 'https://chat.getnexo.com.br', status: 'Online' },
   { name: 'n8n', url: 'https://n8n.getnexo.com.br', status: 'Online' },
   { name: 'Evolution API', url: 'https://api.getnexo.com.br/status', status: 'Online' },
-  { name: 'Keycloak (Auth)', url: 'https://auth.getnexo.com.br', status: 'Online' },
+  { name: 'Keycloak Auth', url: 'https://auth.getnexo.com.br', status: 'Online' },
   { name: 'Uptime Kuma', url: 'https://status.getnexo.com.br', status: 'Online' },
-];
-
-const menus = [
-  { category: 'MAIN', items: ['Dashboard', 'Visitantes', 'Vendas'] },
-  { category: 'GROWTH', items: ['Kira AI', 'Marketing', 'Blog'] },
-  { category: 'TECHNICAL', items: ['Túneis', 'Logs', 'Backup'] },
-  { category: 'CONFIG', items: ['API Keys', 'Integrações', 'Usuários'] },
-  { category: 'SYSTEM', items: ['Security', 'Updates', 'Logout'] }
 ];
 ---
 
-<Layout title="Admin — GetNexo">
-  <div class="admin-layout">
-    <aside class="sidebar">
-      <div class="brand">NEXO<span style="color:#00d4ff">ADMIN</span></div>
-      <nav>
-        {menus.map(group => (
-          <div class="menu-group">
-            <h4>{group.category}</h4>
-            <ul>
-              {group.items.map(item => (
-                <li><a href="#">{item}</a></li>
-              ))}
-            </ul>
-          </div>
-        ))}
-      </nav>
-      <div class="server-status">
-        <small>CPU: 12% | RAM: 3.4GB</small>
-        <div class="bar"><div style="width: 30%"></div></div>
-      </div>
-    </aside>
+<Layout title="Admin GetNexo – Assistente de Vendas WhatsApp">
+  <section class="container">
+    <h1>Painel Admin</h1>
+    <p>Status em tempo real dos serviços (atualizado manualmente).</p>
 
-    <main class="content">
-      <header class="top-bar">
-        <h1>Command Center</h1>
-        <div class="actions">
-          <button class="btn secondary small">🔔</button>
-          <button class="btn primary small">Nova Venda</button>
+    <div class="services-grid">
+      {services.map(service => (
+        <div class="service-card">
+          <h3>{service.name}</h3>
+          <p class="status {service.status.toLowerCase()}">{service.status}</p>
+          <a href={service.url} target="_blank">Acessar →</a>
         </div>
-      </header>
+      ))}
+    </div>
 
-      <div class="status-grid">
-        {services.map(service => (
-          <div class="service-card min">
-            <div class="indicator online"></div>
-            <div class="info">
-              <strong>{service.name}</strong>
-              <a href={service.url} target="_blank">{service.url.replace('https://','')}</a>
-            </div>
-          </div>
-        ))}
-      </div>
-      
-      <!-- Placeholder content for Dashboard -->
-      <div class="dashboard-widgets">
-        <div class="widget wide">
-          <h3>Vendas (Hoje)</h3>
-          <div class="chart-placeholder">[ GRÁFICO DE VENDAS ]</div>
-        </div>
-        <div class="widget">
-          <h3>Leads Ativos</h3>
-          <div class="number">142</div>
-        </div>
-        <div class="widget">
-          <h3>Taxa de Conv.</h3>
-          <div class="number">4.8%</div>
-        </div>
-      </div>
-    </main>
-  </div>
+    <p><a href="/">← Voltar ao site</a></p>
+  </section>
 </Layout>
 
 <style>
-  .admin-layout { display: flex; min-height: 100vh; }
-  
-  /* Sidebar */
-  .sidebar { width: 250px; background: #05080f; border-right: 1px solid #222; padding: 2rem; display: flex; flex-direction: column; }
-  .brand { font-size: 1.5rem; font-weight: 800; margin-bottom: 3rem; letter-spacing: -1px; }
-  .menu-group { margin-bottom: 2rem; }
-  .menu-group h4 { color: #555; font-size: 0.7rem; margin-bottom: 0.5rem; }
-  .menu-group ul { list-style: none; }
-  .menu-group li a { color: #aaa; text-decoration: none; display: block; padding: 0.4rem 0; font-size: 0.9rem; transition: 0.2s; }
-  .menu-group li a:hover { color: #fff; transform: translateX(5px); }
-  .server-status { margin-top: auto; padding-top: 1rem; border-top: 1px solid #222; }
-  .server-status .bar { height: 4px; background: #222; margin-top: 5px; border-radius: 2px; }
-  .server-status .bar div { height: 100%; background: #00d4ff; }
-
-  /* Content */
-  .content { flex: 1; padding: 2rem; background: #0a0e17; }
-  .top-bar { display: flex; justify-content: space-between; align-items: center; margin-bottom: 2rem; }
-  
-  .status-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 1rem; margin-bottom: 2rem; }
-  .service-card.min { background: #111; padding: 1rem; border-radius: 8px; display: flex; align-items: center; gap: 1rem; border: 1px solid #222; }
-  .indicator { width: 10px; height: 10px; border-radius: 50%; }
-  .indicator.online { background: #00ff9d; box-shadow: 0 0 10px #00ff9d; }
-  .info strong { display: block; font-size: 0.9rem; }
-  .info a { font-size: 0.7rem; color: #666; text-decoration: none; }
-
-  .dashboard-widgets { display: grid; grid-template-columns: repeat(3, 1fr); gap: 1.5rem; }
-  .widget { background: #111; padding: 1.5rem; border-radius: 12px; border: 1px solid #222; }
-  .widget.wide { grid-column: span 2; }
-  .chart-placeholder { height: 150px; background: #000; display: flex; align-items: center; justify-content: center; color: #333; margin-top: 1rem; border: 1px dashed #333; }
-  .number { font-size: 3rem; font-weight: 800; margin-top: 0.5rem; color: #00d4ff; }
+  .container { max-width: 1100px; margin: 6rem auto; padding: 0 5%; }
+  h1 { font-size: 3rem; background: linear-gradient(90deg, var(--primary), var(--success)); -webkit-background-clip: text; color: transparent; }
+  .services-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 2rem; margin: 3rem 0; }
+  .service-card { background: rgba(30,41,59,0.7); backdrop-filter: blur(10px); border: 1px solid rgba(0,212,255,0.2); border-radius: 16px; padding: 2rem; text-align: center; transition: all 0.4s; }
+  .service-card:hover { transform: translateY(-10px); border-color: var(--primary); box-shadow: 0 20px 40px rgba(0,212,255,0.2); }
+  .status { font-size: 1.3rem; font-weight: 800; margin: 1rem 0; }
+  .status.online { color: var(--success); }
 </style>

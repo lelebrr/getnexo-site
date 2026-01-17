@@ -2,30 +2,33 @@
 import Layout from '../../layouts/Layout.astro';
 ---
 
-<Layout title="Lançamento do GetNexo">
+<Layout title="Lançamento do GetNexo – Assistente de Vendas WhatsApp 100% Grátis">
   <article class="post">
     <h1>Lançamento do GetNexo</h1>
-    <time>17 de Janeiro de 2026</time>
+    <time>17 de Janeiro de 2026 • 3 min</time>
 
-    <p>Finalmente! Depois de meses de luta, o site está no ar.</p>
-    <p>Tudo rodando localmente no WSL, com Docker, Cloudflare Tunnel, n8n, Chatwoot, Evolution API, Keycloak e Uptime Kuma. Zero nuvem cara, zero latência, zero vazamento de dados.</p>
+    <p>Finalmente! Depois de meses de luta, o assistente de vendas WhatsApp 100% grátis está no ar.</p>
+    <p>Roda no teu servidor local (WSL/Docker), com Evolution API, n8n, Chatwoot, Keycloak e Cloudflare Tunnel. Zero mensalidade, zero nuvem cara, privacidade total (AES-256).</p>
 
-    <h2>Principais recursos já no ar</h2>
+    <h2>Por que isso é revolucionário?</h2>
     <ul>
-      <li><strong>Chat IA 24h:</strong> <a href="https://chat.getnexo.com.br">chat.getnexo.com.br</a></li>
-      <li><strong>Automação n8n:</strong> <a href="https://n8n.getnexo.com.br">n8n.getnexo.com.br</a></li>
-      <li><strong>API Evolution:</strong> <a href="https://api.getnexo.com.br">api.getnexo.com.br</a></li>
-      <li><strong>Keycloak Auth:</strong> <a href="https://auth.getnexo.com.br">auth.getnexo.com.br</a></li>
-      <li><strong>Dashboard Traefik:</strong> <a href="https://dashboard.getnexo.com.br">dashboard.getnexo.com.br</a></li>
-      <li><strong>Status Uptime:</strong> <a href="https://status.getnexo.com.br">status.getnexo.com.br</a></li>
+      <li>IA que responde e fecha vendas 24h sem humano</li>
+      <li>Recupera carrinho abandonado automático</li>
+      <li>Upsell inteligente no WhatsApp</li>
+      <li>Zero risco de banimento (túnel zero trust)</li>
+      <li>Roda em PC de 8GB sem lag</li>
     </ul>
 
+    <p>Teste agora: <a href="https://chat.getnexo.com.br">Falar com o agente IA</a></p>
     <p><a href="/blog">← Voltar ao Blog</a></p>
   </article>
 </Layout>
 
 <style>
   .post { max-width: 900px; margin: 6rem auto 4rem; padding: 0 5%; }
-  .post h1 { font-size: 3.5rem; background: linear-gradient(90deg, #00d4ff, #00ff9d); -webkit-background-clip: text; color: transparent; }
+  .post h1 { font-size: 3.5rem; background: linear-gradient(90deg, var(--primary), var(--success)); -webkit-background-clip: text; color: transparent; }
   .post time { font-size: 1rem; color: #64748b; display: block; margin-bottom: 2rem; }
+  .post ul { list-style: none; padding: 0; }
+  .post li { margin: 1rem 0; font-size: 1.1rem; }
+  .post li:before { content: "→"; color: var(--success); margin-right: 0.5rem; }
 </style>
