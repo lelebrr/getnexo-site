@@ -1,0 +1,181 @@
+---
+import Layout from '../layouts/Layout.astro';
+---
+
+<Layout title="Oportunidade Única - GetNexo">
+    <section class="offer-page">
+        <div class="urgency-banner">
+            ⚠️ RESTAM APENAS 3 VAGAS PARA O SETUP GRATUITO ESTA SEMANA
+        </div>
+
+        <div class="container">
+            <h1>Sua máquina de vendas automática está pronta.</h1>
+            <p class="headline">Transforme cada mensagem no WhatsApp em dinheiro. Sem atendentes, sem atrasos, sem parar.</p>
+
+            <div class="video-placeholder">
+                <div class="play-btn">▶</div>
+                <p>Veja a IA fechando uma venda em 45s</p>
+            </div>
+
+            <div class="offer-details">
+                <div class="price-box">
+                    <span class="old">R$ 497/mês</span>
+                    <span class="new">R$ 97<small>/mês</small></span>
+                    <p class="guarantee">Garantia de 7 dias ou seu dinheiro de volta</p>
+                    <a href="https://wa.me/5511999999999?text=Quero%20a%20oferta%20de%2097" class="cta-btn pulse">QUERO ESSA MÁQUINA AGORA</a>
+                    <p class="security-text">🔒 Pagamento seguro via Stripe</p>
+                </div>
+
+                <div class="benefits">
+                    <h3>O que você leva agora:</h3>
+                    <ul>
+                        <li>✅ <strong>Assistente IA Treinado</strong> (Vendas & Suporte)</li>
+                        <li>✅ <strong>WhatsApp Oficial</strong> (Sem chance de bloqueio)</li>
+                        <li>✅ <strong>Painel Admin</strong> (Estilo Dark Mode)</li>
+                        <li>✅ <strong>BÔNUS #1:</strong> Script de Vendas Validado (R$ 297)</li>
+                        <li>✅ <strong>BÔNUS #2:</strong> Setup Técnico Feito por Nós (R$ 500)</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </section>
+</Layout>
+
+<style>
+    .offer-page {
+        padding-bottom: 4rem;
+    }
+
+    .urgency-banner {
+        background: #FF0033;
+        color: black;
+        text-align: center;
+        padding: 0.8rem;
+        font-weight: 800;
+        font-family: 'JetBrains Mono', monospace;
+        letter-spacing: -0.5px;
+        position: sticky;
+        top: 73px; /* Abaixo do nav */
+        z-index: 90;
+    }
+
+    .container {
+        max-width: 800px;
+        margin: 3rem auto;
+        padding: 0 1rem;
+        text-align: center;
+    }
+
+    h1 {
+        font-size: 2.5rem;
+        line-height: 1.1;
+        margin-bottom: 1rem;
+        background: linear-gradient(to right, white, #aaa);
+        -webkit-background-clip: text;
+        -webkit-text-fill-color: transparent;
+    }
+
+    .headline {
+        font-size: 1.2rem;
+        color: #888;
+        margin-bottom: 3rem;
+        max-width: 600px;
+        margin-left: auto;
+        margin-right: auto;
+    }
+
+    .video-placeholder {
+        aspect-ratio: 16/9;
+        background: #111;
+        border: 1px solid #333;
+        border-radius: 12px;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        margin-bottom: 3rem;
+        cursor: pointer;
+        transition: 0.3s;
+    }
+
+    .video-placeholder:hover {
+        border-color: #FF0033;
+        box-shadow: 0 0 30px rgba(255, 0, 51, 0.2);
+    }
+
+    .play-btn {
+        font-size: 4rem;
+        color: white;
+        margin-bottom: 1rem;
+    }
+
+    .offer-details {
+        background: #0f0f0f;
+        border: 1px solid #222;
+        border-radius: 12px;
+        padding: 2rem;
+        text-align: left;
+    }
+
+    .price-box {
+        text-align: center;
+        margin-bottom: 3rem;
+        padding-bottom: 2rem;
+        border-bottom: 1px solid #222;
+    }
+
+    .old {
+        display: block;
+        text-decoration: line-through;
+        color: #555;
+        font-size: 1.2rem;
+    }
+
+    .new {
+        display: block;
+        font-size: 4rem;
+        font-weight: 800;
+        color: #0f0;
+        line-height: 1;
+        margin: 0.5rem 0;
+        text-shadow: 0 0 20px rgba(0, 255, 0, 0.3);
+    }
+
+    .new small { font-size: 1.5rem; color: #888; }
+
+    .cta-btn {
+        display: block;
+        background: #FFD500;
+        color: black;
+        text-decoration: none;
+        padding: 1.5rem;
+        border-radius: 8px;
+        font-weight: 900;
+        font-size: 1.2rem;
+        margin-top: 1.5rem;
+        letter-spacing: 1px;
+        transition: 0.2s;
+    }
+
+    .cta-btn:hover {
+        transform: scale(1.02);
+        box-shadow: 0 0 30px rgba(255, 213, 0, 0.4);
+    }
+
+    .security-text {
+        font-size: 0.8rem;
+        color: #666;
+        margin-top: 1rem;
+    }
+
+    .benefits ul {
+        list-style: none;
+        display: grid;
+        gap: 1rem;
+    }
+
+    .benefits li {
+        font-size: 1.1rem;
+        color: #ddd;
+    }
+</style>
