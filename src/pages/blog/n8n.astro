@@ -1,33 +1,54 @@
 ---
 import Layout from '../../layouts/Layout.astro';
 ---
+<Layout title="Automação com n8n: integrar WhatsApp e fechar vendas automáticas – GetNexo">
+  <article style="max-width: 800px; margin: 0 auto; padding: 100px 5% 4rem;">
+    <header style="margin-bottom: 3rem;">
+      <time style="color: #64748b; font-size: 0.95rem;">18 Jan 2026</time>
+      <h1 style="font-size: 2.8rem; margin: 1rem 0; background: linear-gradient(90deg, var(--primary), var(--success)); -webkit-background-clip: text; color: transparent; line-height: 1.3;">
+        Automação com n8n: como integrar WhatsApp e fechar vendas automáticas sem gastar nada
+      </h1>
+    </header>
 
-<Layout title="Automação com n8n: Como Integrar WhatsApp com CRM e Fechar Vendas Automáticas">
-  <article class="post">
-    <h1>Automação com n8n: Integrando WhatsApp e CRM</h1>
-    <time>18 de Janeiro de 2026 • 5 min</time>
+    <div style="color: var(--light); line-height: 1.9; font-size: 1.1rem;">
+      <p>Se você está cansado de responder mensagens manualmente no WhatsApp enquanto perde vendas, este artigo é pra você.</p>
 
-    <p>Aprenda a construir fluxos de automação poderosos usando n8n e Evolution API.</p>
-    <p>Com o n8n e GetNexo, você pode criar funis de vendas completos que rodam 100% no seu servidor local.</p>
+      <h2 style="color: var(--success); margin: 2.5rem 0 1rem; font-size: 1.8rem;">O que é n8n?</h2>
+      <p>O <strong>n8n</strong> é uma ferramenta de automação de workflows open-source que funciona como "Zapier grátis". Você conecta serviços, cria fluxos visuais e automatiza tarefas sem escrever código.</p>
+      <p>No GetNexo, usamos o n8n pra criar fluxos de vendas automáticos no WhatsApp.</p>
 
-    <h2>O que você vai aprender?</h2>
-    <ul>
-      <li>Conectar Evolution API ao n8n</li>
-      <li>Qualificar leads automaticamente</li>
-      <li>Enviar mensagens de follow-up</li>
-      <li>Integração com Chatwoot para transbordo humano</li>
-    </ul>
+      <h2 style="color: var(--success); margin: 2.5rem 0 1rem; font-size: 1.8rem;">Fluxos prontos do GetNexo</h2>
+      <ul style="margin-left: 1.5rem; margin-bottom: 1.5rem;">
+        <li><strong>Qualificação de Leads:</strong> Cliente manda "oi" → IA pergunta o que ele quer → classifica como quente/morno/frio</li>
+        <li><strong>Upsell Automático:</strong> Cliente compra produto A → IA oferece produto B relacionado</li>
+        <li><strong>Recuperação de Carrinho:</strong> Cliente abandona → IA manda lembrete com desconto</li>
+        <li><strong>Suporte 24h:</strong> Dúvidas comuns respondidas automaticamente via IA</li>
+      </ul>
 
-    <p>Teste a automação agora: <a href="https://chat.getnexo.com.br">Falar com o agente IA</a></p>
-    <p><a href="/blog">← Voltar ao Blog</a></p>
+      <h2 style="color: var(--success); margin: 2.5rem 0 1rem; font-size: 1.8rem;">Como configurar</h2>
+      <ol style="margin-left: 1.5rem; margin-bottom: 1.5rem;">
+        <li>Acesse seu n8n em <code style="background: #1e293b; padding: 0.3rem 0.6rem; border-radius: 6px;">https://n8n.seudominio.com</code></li>
+        <li>Importe o workflow JSON da pasta <code>/workflows</code> do GetNexo</li>
+        <li>Configure as credenciais da Evolution API</li>
+        <li>Ative o workflow e teste com uma mensagem</li>
+      </ol>
+
+      <h2 style="color: var(--success); margin: 2.5rem 0 1rem; font-size: 1.8rem;">Resultados esperados</h2>
+      <p>Usuários do GetNexo reportam:</p>
+      <ul style="margin-left: 1.5rem; margin-bottom: 1.5rem;">
+        <li>+180% em taxa de resposta</li>
+        <li>68% de recuperação de carrinho abandonado</li>
+        <li>Redução de 90% no tempo de atendimento manual</li>
+      </ul>
+
+      <div style="background: rgba(0,255,157,0.1); border: 1px solid var(--success); border-radius: 12px; padding: 1.5rem; margin: 3rem 0; text-align: center;">
+        <p style="color: var(--light); margin: 0 0 1rem;"><strong>Quer ver funcionando?</strong></p>
+        <a href="https://chat.getnexo.com.br" target="_blank" style="background: var(--success); color: black; padding: 0.8rem 2rem; border-radius: 50px; font-weight: 800; text-decoration: none;">Testar a IA Agora →</a>
+      </div>
+    </div>
+
+    <footer style="margin-top: 4rem; padding-top: 2rem; border-top: 1px solid rgba(0,212,255,0.1);">
+      <a href="/blog" style="color: var(--primary); text-decoration: none; font-weight: 600;">← Voltar pro Blog</a>
+    </footer>
   </article>
 </Layout>
-
-<style>
-  .post { max-width: 900px; margin: 6rem auto 4rem; padding: 0 5%; }
-  .post h1 { font-size: 3.5rem; background: linear-gradient(90deg, var(--primary), var(--success)); -webkit-background-clip: text; color: transparent; }
-  .post time { font-size: 1rem; color: #64748b; display: block; margin-bottom: 2rem; }
-  .post ul { list-style: none; padding: 0; }
-  .post li { margin: 1rem 0; font-size: 1.1rem; }
-  .post li:before { content: "→"; color: var(--success); margin-right: 0.5rem; }
-</style>

@@ -1,33 +1,55 @@
 ---
 import Layout from '../../layouts/Layout.astro';
 ---
+<Layout title="Segurança no WSL: assistente de vendas IA em PC de 8GB – GetNexo">
+  <article style="max-width: 800px; margin: 0 auto; padding: 100px 5% 4rem;">
+    <header style="margin-bottom: 3rem;">
+      <time style="color: #64748b; font-size: 0.95rem;">19 Jan 2026</time>
+      <h1 style="font-size: 2.8rem; margin: 1rem 0; background: linear-gradient(90deg, var(--primary), var(--success)); -webkit-background-clip: text; color: transparent; line-height: 1.3;">
+        Segurança no WSL: rodar assistente de vendas IA em PC de 8GB sem lag e sem risco de ban
+      </h1>
+    </header>
 
-<Layout title="Segurança no WSL: Como Rodar Assistente de Vendas IA em 8GB de RAM sem Lag">
-  <article class="post">
-    <h1>Segurança no WSL e Performance em 8GB</h1>
-    <time>19 de Janeiro de 2026 • 4 min</time>
+    <div style="color: var(--light); line-height: 1.9; font-size: 1.1rem;">
+      <p>Muita gente acha que precisa de servidor caro pra rodar IA. Mentira. O GetNexo roda no seu PC de casa com 8GB de RAM.</p>
 
-    <p>Rodar IA localmente não precisa de um supercomputador. Otimizamos o GetNexo para rodar liso em 8GB de RAM.</p>
-    <p>Utilizando WSL 2 e Docker, garantimos isolamento total e máxima performance.</p>
+      <h2 style="color: var(--success); margin: 2.5rem 0 1rem; font-size: 1.8rem;">Por que WSL?</h2>
+      <p>O <strong>Windows Subsystem for Linux (WSL2)</strong> permite rodar Linux dentro do Windows sem virtualização pesada. É leve, rápido e perfeito pra Docker.</p>
 
-    <h2>Dicas de Otimização</h2>
-    <ul>
-      <li>Limite de memória nos containers Docker</li>
-      <li>Uso de versões Alpine Linux</li>
-      <li>Swappiness configurado corretamente no Linux</li>
-      <li>Tunnelamento seguro sem expor portas</li>
-    </ul>
+      <h2 style="color: var(--success); margin: 2.5rem 0 1rem; font-size: 1.8rem;">Requisitos mínimos</h2>
+      <ul style="margin-left: 1.5rem; margin-bottom: 1.5rem;">
+        <li>CPU: Intel i5 ou AMD Ryzen 3 (qualquer geração)</li>
+        <li>RAM: 8GB (16GB ideal)</li>
+        <li>SSD: 20GB livres</li>
+        <li>Windows 10/11 com WSL2 ativado</li>
+      </ul>
 
-    <p>Teste a performance: <a href="https://chat.getnexo.com.br">Acessar Demo</a></p>
-    <p><a href="/blog">← Voltar ao Blog</a></p>
+      <h2 style="color: var(--success); margin: 2.5rem 0 1rem; font-size: 1.8rem;">Configuração de segurança</h2>
+      <p>O GetNexo usa uma arquitetura "zero trust":</p>
+      <ol style="margin-left: 1.5rem; margin-bottom: 1.5rem;">
+        <li><strong>Zero portas abertas:</strong> Nenhuma porta exposta na internet</li>
+        <li><strong>Cloudflare Tunnel:</strong> Conexão criptografada de saída apenas</li>
+        <li><strong>Docker isolado:</strong> Cada serviço em container separado</li>
+        <li><strong>AES-256:</strong> Dados criptografados no disco</li>
+      </ol>
+
+      <h2 style="color: var(--success); margin: 2.5rem 0 1rem; font-size: 1.8rem;">Por que não dá ban?</h2>
+      <p>O WhatsApp bane IPs suspeitos e APIs não-oficiais. O GetNexo evita isso:</p>
+      <ul style="margin-left: 1.5rem; margin-bottom: 1.5rem;">
+        <li>Usa Evolution API (simula WhatsApp Web oficial)</li>
+        <li>IP real nunca exposto (passa pelo Cloudflare)</li>
+        <li>Rate limiting inteligente</li>
+        <li>Comportamento humanizado nos fluxos</li>
+      </ul>
+
+      <div style="background: rgba(0,255,157,0.1); border: 1px solid var(--success); border-radius: 12px; padding: 1.5rem; margin: 3rem 0; text-align: center;">
+        <p style="color: var(--light); margin: 0 0 1rem;"><strong>Quer instalar no seu PC?</strong></p>
+        <a href="/documentacao" style="background: var(--success); color: black; padding: 0.8rem 2rem; border-radius: 50px; font-weight: 800; text-decoration: none;">Ver Documentação Completa →</a>
+      </div>
+    </div>
+
+    <footer style="margin-top: 4rem; padding-top: 2rem; border-top: 1px solid rgba(0,212,255,0.1);">
+      <a href="/blog" style="color: var(--primary); text-decoration: none; font-weight: 600;">← Voltar pro Blog</a>
+    </footer>
   </article>
 </Layout>
-
-<style>
-  .post { max-width: 900px; margin: 6rem auto 4rem; padding: 0 5%; }
-  .post h1 { font-size: 3.5rem; background: linear-gradient(90deg, var(--primary), var(--success)); -webkit-background-clip: text; color: transparent; }
-  .post time { font-size: 1rem; color: #64748b; display: block; margin-bottom: 2rem; }
-  .post ul { list-style: none; padding: 0; }
-  .post li { margin: 1rem 0; font-size: 1.1rem; }
-  .post li:before { content: "→"; color: var(--success); margin-right: 0.5rem; }
-</style>
