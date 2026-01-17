@@ -1,0 +1,85 @@
+---
+import DashboardLayout from '../../layouts/DashboardLayout.astro';
+---
+
+<DashboardLayout title="Leads | OmniNexo">
+    <div style="display:flex; justify-content:space-between; align-items:center; margin-bottom:2rem;">
+        <div>
+            <h2 style="font-size:2rem; font-weight:800; color:white; margin:0;">Leads Capturados 🎯</h2>
+            <p style="color:#94a3b8; margin:0.5rem 0 0;">Potenciais clientes vindos do Widget e Formulários.</p>
+        </div>
+        <button onclick="downloadCSV()" style="background:#1e293b; color:#00ff9d; border:1px solid #334155; padding:10px 20px; border-radius:8px; cursor:pointer;">
+            Exportar CSV
+        </button>
+    </div>
+
+    <div class="glass-panel" style="padding:0; overflow:hidden;">
+        <table style="width:100%; border-collapse:collapse; color:#e5e7eb;">
+            <thead style="background:rgba(0,0,0,0.2); border-bottom:1px solid #334155;">
+                <tr>
+                    <th style="padding:1rem; text-align:left;">Nome</th>
+                    <th style="padding:1rem; text-align:left;">WhatsApp</th>
+                    <th style="padding:1rem; text-align:left;">Email</th>
+                    <th style="padding:1rem; text-align:left;">Data</th>
+                    <th style="padding:1rem; text-align:right;">Ação</th>
+                </tr>
+            </thead>
+            <tbody id="leads-body">
+                <tr><td colspan="5" style="padding:2rem; text-align:center;">Carregando...</td></tr>
+            </tbody>
+        </table>
+    </div>
+
+    <script is:inline>
+        let allLeads = [];
+
+        async function loadLeads() {
+            try {
+                const res = await fetch('https://api.getnexo.com.br/api/leads', {
+                    headers: window.getAuthHeader()
+                });
+                const leads = await res.json();
+                allLeads = leads;
+                
+                const tbody = document.getElementById('leads-body');
+                
+                if (leads.length === 0) {
+                    tbody.innerHTML = '<tr><td colspan="5" style="padding:2rem; text-align:center; color:#64748b;">Nenhum lead capturado ainda. Teste o Demo!</td></tr>';
+                    return;
+                }
+
+                tbody.innerHTML = leads.map(l => `
+                    <tr style="border-bottom:1px solid rgba(255,255,255,0.05); transition:background 0.2s;">
+                        <td style="padding:1rem; font-weight:bold;">${l.nome || 'Sem nome'}</td>
+                        <td style="padding:1rem;">${l.phone}</td>
+                        <td style="padding:1rem; color:#94a3b8;">${l.email || '-'}</td>
+                        <td style="padding:1rem; font-size:0.9rem; color:#64748b;">${new Date(l.created_at).toLocaleString()}</td>
+                        <td style="padding:1rem; text-align:right;">
+                            <a href="https://wa.me/${l.phone}" target="_blank" style="background:#00ff9d; color:black; padding:5px 12px; border-radius:20px; text-decoration:none; font-size:0.8rem; font-weight:bold;">
+                                Conversar 💬
+                            </a>
+                        </td>
+                    </tr>
+                `).join('');
+            } catch (e) {
+                document.getElementById('leads-body').innerHTML = '<tr><td colspan="5" style="padding:2rem; text-align:center; color:#f87171;">Erro ao carregar leads.</td></tr>';
+            }
+        }
+
+        function downloadCSV() {
+            if (!allLeads.length) return alert('Sem dados.');
+            let csv = 'Nome,Telefone,Email,Data\n';
+            allLeads.forEach(l => {
+                csv += `"${l.nome || ''}","${l.phone}","${l.email || ''}","${l.created_at}"\n`;
+            });
+            const blob = new Blob([csv], { type: 'text/csv' });
+            const url = window.URL.createObjectURL(blob);
+            const a = document.createElement('a');
+            a.href = url;
+            a.download = 'leads_getnexo.csv';
+            a.click();
+        }
+
+        loadLeads();
+    </script>
+</DashboardLayout>

@@ -4,7 +4,11 @@ import axios from 'axios';
 import { io } from 'socket.io-client';
 import OrderBuilder from './OrderBuilder';
 
-const socket = io(import.meta.env.VITE_API_URL || 'https://api.getnexo.com.br');
+const API_URL = typeof window !== 'undefined' && (window.location.hostname === 'localhost' || window.location.hostname === '127.0.0.1')
+    ? 'http://localhost:8080'
+    : 'https://api.getnexo.com.br';
+
+const socket = io(API_URL);
 
 const ChatInterface = () => {
     const [contacts, setContacts] = useState([]);
@@ -56,7 +60,7 @@ const ChatInterface = () => {
 
     const fetchContacts = async () => {
         try {
-            const res = await axios.get(`${import.meta.env.VITE_API_URL}/contacts`);
+            const res = await axios.get(`${API_URL}/contacts`);
             setContacts(res.data);
             setLoading(false);
         } catch (err) { console.error("Error fetching contacts", err); }
@@ -64,30 +68,30 @@ const ChatInterface = () => {
 
     const fetchMacros = async () => {
         try {
-            const res = await axios.get(`${import.meta.env.VITE_API_URL}/macros`);
+            const res = await axios.get(`${API_URL}/macros`);
             setMacros(res.data);
         } catch (e) { }
     };
     const fetchAgents = async () => {
-        try { const res = await axios.get(`${import.meta.env.VITE_API_URL}/users`); setAgents(res.data); } catch (e) { }
+        try { const res = await axios.get(`${API_URL}/users`); setAgents(res.data); } catch (e) { }
     };
 
     const fetchTicket = async (phone) => {
         try {
-            const res = await axios.get(`${import.meta.env.VITE_API_URL}/ticket/${phone}`);
+            const res = await axios.get(`${API_URL}/ticket/${phone}`);
             setTicket(res.data);
         } catch (e) { setTicket(null); }
     };
 
     const handleAssign = async (agentId) => {
         if (!activeContact) return;
-        await axios.post(`${import.meta.env.VITE_API_URL}/ticket/assign`, { phone: activeContact.phone, agent_id: agentId });
+        await axios.post(`${API_URL}/ticket/assign`, { phone: activeContact.phone, agent_id: agentId });
         fetchTicket(activeContact.phone);
     };
 
     const handleResolve = async () => {
         if (!activeContact) return;
-        await axios.post(`${import.meta.env.VITE_API_URL}/ticket/resolve`, { phone: activeContact.phone });
+        await axios.post(`${API_URL}/ticket/resolve`, { phone: activeContact.phone });
         setTicket({ ...ticket, status: 'resolved' });
     };
 
@@ -105,7 +109,7 @@ const ChatInterface = () => {
         setActiveContact(contact);
         fetchTicket(contact.phone);
         try {
-            const res = await axios.get(`${import.meta.env.VITE_API_URL}/messages?phone=${contact.phone}`);
+            const res = await axios.get(`${API_URL}/messages?phone=${contact.phone}`);
             setMessages(res.data);
         } catch (err) { console.error(err); }
     };
@@ -120,7 +124,7 @@ const ChatInterface = () => {
 
         try {
             // Support Internal Notes
-            const endpoint = `${import.meta.env.VITE_API_URL}/send`;
+            const endpoint = `${API_URL}/send`;
             await axios.post(endpoint, {
                 phone: activeContact.phone,
                 body: input,
@@ -142,7 +146,7 @@ const ChatInterface = () => {
 
     const handleRate = async (nota) => {
         try {
-            await axios.post(`${import.meta.env.VITE_API_URL}/csat`, { phone: activeContact.phone, nota });
+            await axios.post(`${API_URL}/csat`, { phone: activeContact.phone, nota });
             alert('Obrigado pela avaliação!');
             setShowCsat(false);
         } catch (e) { }

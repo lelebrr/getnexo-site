@@ -191,7 +191,7 @@ const AdminPanel = () => {
                                     <p className="text-gray-400 text-sm">Instância Evolution API 1</p>
                                 </div>
                             </div>
-                            <button onClick={() => window.open('http://localhost:3000', '_blank')} className="border border-gray-600 hover:border-white text-white px-4 py-2 rounded transition-colors">Configurar</button>
+                            <button onClick={() => window.open('https://evolution.getnexo.com.br', '_blank')} className="border border-gray-600 hover:border-white text-white px-4 py-2 rounded transition-colors">Configurar</button>
                         </div>
 
                         <div className="bg-gray-900 border border-gray-800 p-6 rounded-xl flex justify-between items-center">
@@ -202,7 +202,7 @@ const AdminPanel = () => {
                                     <p className="text-gray-400 text-sm">Instância Evolution API 2 (Revenda/Suporte)</p>
                                 </div>
                             </div>
-                            <button onClick={() => window.open('http://localhost:3001', '_blank')} className="border border-gray-600 hover:border-white text-white px-4 py-2 rounded transition-colors">Configurar</button>
+                            <button onClick={() => window.open('https://evolution.getnexo.com.br', '_blank')} className="border border-gray-600 hover:border-white text-white px-4 py-2 rounded transition-colors">Configurar</button>
                         </div>
 
                         <div className="bg-gray-900 border border-gray-800 p-6 rounded-xl opacity-50">

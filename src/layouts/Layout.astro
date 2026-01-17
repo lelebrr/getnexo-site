@@ -1,9 +1,10 @@
 ---
 import '../styles/global.css';
-const { 
-  title = "GetNexo – Assistente de Vendas WhatsApp Grátis", 
+const {
+  title = "GetNexo – Assistente de Vendas WhatsApp Grátis",
   description = "IA que fecha vendas sozinho 24h. Sem nuvem. Sem mensalidade. Sem risco.",
   keywords = "assistente vendas whatsapp grátis, ia whatsapp vendas, automação whatsapp sem nuvem, getnexo, evolution api, n8n whatsapp, vendas 24h, self hosted ia",
+  ogImage = "https://getnexo.com.br/assets/og-poster.jpg",
   isLanding = false
 } = Astro.props;
 ---
@@ -22,7 +23,7 @@ const {
   <meta property="og:site_name" content="GetNexo" />
   <meta property="og:title" content={title} />
   <meta property="og:description" content={description} />
-  <meta property="og:image" content="https://getnexo.com.br/images/og.jpg" />
+  <meta property="og:image" content={ogImage} />
   <meta name="twitter:card" content="summary_large_image" />
   
   <!-- Verification Tags (Replace content with your codes) -->
@@ -101,7 +102,7 @@ const {
     <a href="/" class="logo">GETNEXO</a>
     <nav>
       <a href="/">Início</a>
-      <a href="/assistente-vendas-whatsapp">Assistente</a>
+      <a href="/assistente-vendas">Assistente</a>
       <a href="/comparacao">Comparação</a>
       <a href="/como-funciona">Como Funciona</a>
       <a href="/depoimentos">Depoimentos</a>

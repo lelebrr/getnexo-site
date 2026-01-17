@@ -1,0 +1,198 @@
+---
+import DashboardLayout from '../../layouts/DashboardLayout.astro';
+---
+
+<DashboardLayout title="Integrações E-commerce | OmniNexo">
+    <div style="display:flex; justify-content:space-between; align-items:center; margin-bottom:2rem;">
+        <div>
+            <h2 style="font-size:2rem; font-weight:800; color:white; margin:0;">Integrações E-commerce 🛒</h2>
+            <p style="color:#94a3b8; margin:0.5rem 0 0;">Sincronize produtos e pedidos com Shopify, WooCommerce, VTEX e Nuvemshop.</p>
+        </div>
+    </div>
+
+    <div class="glass-panel" style="padding:0; overflow:hidden;">
+        <div style="display:grid; grid-template-columns:repeat(auto-fit, minmax(300px, 1fr)); gap:2rem; padding:2rem;">
+            <!-- Shopify -->
+            <div class="integration-card">
+                <div class="header">
+                    <img src="https://cdn.shopify.com/shopifycloud/web/assets/v1/7e3d9b9b5b3b9b6c/shopify-logo.svg" alt="Shopify" style="height:40px;">
+                    <span class="status inactive">Não configurado</span>
+                </div>
+                <div class="form">
+                    <input type="text" placeholder="Shop URL (ex: mystore.myshopify.com)" id="shopify-url">
+                    <input type="text" placeholder="Access Token" id="shopify-token">
+                    <button onclick="testShopify()" class="btn-test">Testar Conexão</button>
+                    <button onclick="syncShopify()" class="btn-sync">Sincronizar Produtos</button>
+                </div>
+            </div>
+
+            <!-- WooCommerce -->
+            <div class="integration-card">
+                <div class="header">
+                    <img src="https://woocommerce.com/wp-content/themes/woo/images/logo-woo.svg" alt="WooCommerce" style="height:40px;">
+                    <span class="status inactive">Não configurado</span>
+                </div>
+                <div class="form">
+                    <input type="text" placeholder="Site URL" id="woo-url">
+                    <input type="text" placeholder="Consumer Key" id="woo-key">
+                    <input type="text" placeholder="Consumer Secret" id="woo-secret">
+                    <button onclick="testWoo()" class="btn-test">Testar Conexão</button>
+                    <button onclick="syncWoo()" class="btn-sync">Sincronizar Produtos</button>
+                </div>
+            </div>
+
+            <!-- VTEX -->
+            <div class="integration-card">
+                <div class="header">
+                    <img src="https://vtex.com/wp-content/themes/VTEX/assets/images/logo.svg" alt="VTEX" style="height:40px;">
+                    <span class="status inactive">Não configurado</span>
+                </div>
+                <div class="form">
+                    <input type="text" placeholder="Account Name" id="vtex-account">
+                    <input type="text" placeholder="App Key" id="vtex-key">
+                    <input type="text" placeholder="App Token" id="vtex-token">
+                    <button onclick="testVtex()" class="btn-test">Testar Conexão</button>
+                    <button onclick="syncVtex()" class="btn-sync">Sincronizar SKUs</button>
+                </div>
+            </div>
+
+            <!-- Nuvemshop -->
+            <div class="integration-card">
+                <div class="header">
+                    <img src="https://assets.nuvemshop.com.br/images/brand/logo-nuvemshop.svg" alt="Nuvemshop" style="height:40px;">
+                    <span class="status inactive">Não configurado</span>
+                </div>
+                <div class="form">
+                    <input type="text" placeholder="Store ID" id="nuvem-id">
+                    <input type="text" placeholder="Access Token" id="nuvem-token">
+                    <button onclick="testNuvem()" class="btn-test">Testar Conexão</button>
+                    <button onclick="syncNuvem()" class="btn-sync">Sincronizar Produtos</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <style>
+        .integration-card {
+            background: rgba(30,41,59,0.8);
+            border: 1px solid rgba(0,212,255,0.15);
+            border-radius: 16px;
+            padding: 2rem;
+            transition: all 0.3s;
+        }
+        .integration-card:hover { border-color: var(--primary); }
+        .header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 1.5rem;
+        }
+        .status {
+            font-size: 0.8rem;
+            padding: 0.3rem 0.8rem;
+            border-radius: 20px;
+            font-weight: 600;
+        }
+        .status.inactive { background: #374151; color: #9ca3af; }
+        .status.active { background: #059669; color: white; }
+        .form { display: flex; flex-direction: column; gap: 0.8rem; }
+        .form input {
+            padding: 0.8rem;
+            background: #1e293b;
+            border: 1px solid #374155;
+            border-radius: 8px;
+            color: white;
+        }
+        .btn-test, .btn-sync {
+            padding: 0.8rem;
+            border: none;
+            border-radius: 8px;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.2s;
+        }
+        .btn-test { background: #3b82f6; color: white; }
+        .btn-test:hover { background: #2563eb; }
+        .btn-sync { background: #10b981; color: white; }
+        .btn-sync:hover { background: #059669; }
+    </style>
+
+    <script is:inline>
+        // Shopify
+        async function testShopify() {
+            const shop = document.getElementById('shopify-url').value;
+            const token = document.getElementById('shopify-token').value;
+            try {
+                const res = await fetch(`/api/shopify/products?shop=${shop}&token=${token}`, {
+                    headers: window.getAuthHeader()
+                });
+                const data = await res.json();
+                alert(`Conexão OK! ${data.products?.length || 0} produtos encontrados.`);
+                updateStatus('shopify', true);
+            } catch (e) {
+                alert('Erro na conexão: ' + e.message);
+            }
+        }
+
+        async function syncShopify() {
+            const shop = document.getElementById('shopify-url').value;
+            const token = document.getElementById('shopify-token').value;
+            try {
+                const res = await fetch(`/api/shopify/products?shop=${shop}&token=${token}`, {
+                    headers: window.getAuthHeader()
+                });
+                const data = await res.json();
+                // Save to local DB
+                data.products.forEach(p => {
+                    fetch('/api/products', {
+                        method: 'POST',
+                        headers: { 
+                            'Content-Type': 'application/json',
+                            ...window.getAuthHeader()
+                        },
+                        body: JSON.stringify({
+                            name: p.title,
+                            price: p.variants[0].price,
+                            description: p.body_html,
+                            image_url: p.images[0]?.src
+                        })
+                    });
+                });
+                alert('Produtos sincronizados!');
+            } catch (e) {
+                alert('Erro na sincronização: ' + e.message);
+            }
+        }
+
+        // Similar functions for WooCommerce, VTEX, Nuvemshop
+        async function testWoo() {
+            const url = document.getElementById('woo-url').value;
+            const key = document.getElementById('woo-key').value;
+            const secret = document.getElementById('woo-secret').value;
+            try {
+                const res = await fetch(`/api/woocommerce/products?url=${encodeURIComponent(url)}&consumerKey=${key}&consumerSecret=${secret}`, {
+                    headers: window.getAuthHeader()
+                });
+                const data = await res.json();
+                alert(`Conexão OK! ${data.length} produtos encontrados.`);
+                updateStatus('woo', true);
+            } catch (e) {
+                alert('Erro: ' + e.message);
+            }
+        }
+
+        function updateStatus(platform, active) {
+            // Update UI status
+            const cards = document.querySelectorAll('.integration-card');
+            cards.forEach(card => {
+                if (card.querySelector('input[id*="' + platform + '"]')) {
+                    const status = card.querySelector('.status');
+                    status.textContent = active ? 'Conectado' : 'Não configurado';
+                    status.className = `status ${active ? 'active' : 'inactive'}`;
+                }
+            });
+        }
+
+        // Add similar functions for VTEX and Nuvemshop...
+    </script>
+</DashboardLayout>

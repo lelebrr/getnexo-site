@@ -1,90 +1,272 @@
 ---
 import Layout from '../layouts/Layout.astro';
+const title = "Assistente de Vendas WhatsApp Grátis – IA que Vende Sozinha 24h sem Mensalidade GetNexo";
+const description = "Assistente de vendas WhatsApp com IA que responde, qualifica leads, faz upsell e fecha vendas 24h. 100% grátis, zero nuvem, zero mensalidade, roda no seu PC. Melhor que Suri e BotZapIA.";
+const keywords = "assistente vendas whatsapp gratis, ia vende sozinho whatsapp 24h, assistente vendas whatsapp automatico, chatbot vendas whatsapp gratis, automacao vendas whatsapp sem nuvem, getnexo assistente vendas, vendas automaticas whatsapp";
+const ogImage = "https://getnexo.com.br/assets/og-poster.jpg";
 ---
-<Layout title="Assistente de Vendas no WhatsApp 100% Grátis – GetNexo">
-  <section style="text-align: center; padding: 100px 20px 60px; background: linear-gradient(135deg, var(--dark), var(--gray));">
-    <h1>Assistente de Vendas <strong>que vende sozinho</strong> no WhatsApp</h1>
-    <p style="font-size: 1.6rem; max-width: 800px; margin: 1.5rem auto; color: var(--text);">
-      Responde clientes 24h, qualifica leads, faz upsell, fecha venda – tudo no teu PC, sem mensalidade, sem nuvem, sem risco de ban.
-    </p>
-    
-    <div style="margin: 3rem 0; display: flex; gap: 2rem; justify-content: center; flex-wrap: wrap;">
-      <a href="#" onclick="window.$chatwoot.toggle(); return false;" class="btn-cta" style="padding: 1rem 2.5rem; font-size: 1.2rem;">Falar com a IA AGORA →</a>
-      <a href="/como-funciona" class="btn-cta" style="border: 2px solid var(--primary); background: transparent;">Como Funciona</a>
+<Layout title={title} description={description} keywords={keywords} ogImage={ogImage}>
+  <section class="hero">
+    <h1>Assistente de Vendas no WhatsApp <strong>100% Grátis</strong></h1>
+    <p class="subtitle">IA que responde, qualifica, faz upsell e fecha vendas 24h por dia – tudo no teu PC, sem nuvem cara, sem risco de banimento.</p>
+    <div class="hero-badges">
+      <span>🔒 AES-256</span>
+      <span>🚫 Sem Mensalidade</span>
+      <span>💻 Roda em 8GB</span>
+      <span>⚡ Setup em 10min</span>
     </div>
-
-    <div style="display: flex; gap: 1.5rem; justify-content: center; flex-wrap: wrap; margin: 2rem 0;">
-      <span style="padding: 0.6rem 1.4rem; border: 1px solid rgba(0,212,255,0.3); border-radius: 50px; font-weight: 600;">🚫 Zero mensalidade</span>
-      <span style="padding: 0.6rem 1.4rem; border: 1px solid rgba(0,212,255,0.3); border-radius: 50px; font-weight: 600;">🔒 Dados blindados</span>
-      <span style="padding: 0.6rem 1.4rem; border: 1px solid rgba(0,212,255,0.3); border-radius: 50px; font-weight: 600;">💻 Roda em 8GB</span>
-      <span style="padding: 0.6rem 1.4rem; border: 1px solid rgba(0,212,255,0.3); border-radius: 50px; font-weight: 600;">⚡ Setup 10 min</span>
+    <div class="buttons">
+      <a href="#" onclick="window.$chatwoot.toggle(); return false;" target="_blank" class="btn-primary">TESTAR AGORA – É DE GRAÇA →</a>
+      <a href="/como-funciona" class="btn-secondary">Ver Como Funciona</a>
     </div>
   </section>
 
-  <section style="padding: 60px 20px; max-width: 1000px; margin: auto;">
-    <h2 style="text-align: center; font-size: 2.8rem; background: linear-gradient(90deg, var(--primary), var(--success)); -webkit-background-clip: text; color: transparent; margin-bottom: 4rem;">
-      Como a gente faz isso?
-    </h2>
-
-    <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(260px, 1fr)); gap: 2rem;">
-      <div style="background: rgba(30,41,59,0.8); padding: 2rem; border-radius: 16px; border: 1px solid rgba(0,212,255,0.15); text-align: center;">
-        <strong style="font-size: 1.6rem; color: var(--success);">1. Instalação</strong>
-        <p>Baixa um pacote Docker. Roda no teu PC. 10 minutos. Nada de nuvem cara.</p>
+  <section class="features">
+    <h2>Por que escolher o GetNexo?</h2>
+    <div class="features-grid">
+      <div class="feature-card">
+        <span class="icon">🤖</span>
+        <h3>IA que vende sozinha</h3>
+        <p>Responde mensagens, qualifica leads, oferece upsell e fecha vendas enquanto você dorme.</p>
       </div>
-
-      <div style="background: rgba(30,41,59,0.8); padding: 2rem; border-radius: 16px; border: 1px solid rgba(0,212,255,0.15); text-align: center;">
-        <strong style="font-size: 1.6rem; color: var(--success);">2. Liga o WhatsApp</strong>
-        <p>Escaneia um QR Code. Pronto. O bot tá no teu número – mas sem risco de ban.</p>
+      <div class="feature-card">
+        <span class="icon">💸</span>
+        <h3>Zero custo mensal</h3>
+        <p>Enquanto Suri cobra R$399/mês e BotZapIA R$199, GetNexo é 100% grátis pra sempre.</p>
       </div>
-
-      <div style="background: rgba(30,41,59,0.8); padding: 2rem; border-radius: 16px; border: 1px solid rgba(0,212,255,0.15); text-align: center;">
-        <strong style="font-size: 1.6rem; color: var(--success);">3. A IA começa</strong>
-        <p>Responde cliente, pergunta preço, sugere produto, fecha venda. Você só ganha.</p>
+      <div class="feature-card">
+        <span class="icon">🛡️</span>
+        <h3>Privacidade real</h3>
+        <p>Dados no TEU servidor, criptografia AES-256, zero vazamento. Ninguém vê suas conversas.</p>
       </div>
-
-      <div style="background: rgba(30,41,59,0.8); padding: 2rem; border-radius: 16px; border: 1px solid rgba(0,212,255,0.15); text-align: center;">
-        <strong style="font-size: 1.6rem; color: var(--success);">4. Zero custo</strong>
-        <p>Sem mensalidade. Sem limite. Roda no teu micro. Nada de R$500/mês em SaaS.</p>
+      <div class="feature-card">
+        <span class="icon">🚀</span>
+        <h3>Setup em 10 minutos</h3>
+        <p>WSL + Docker + Cloudflare Tunnel. Roda em qualquer PC com 8GB de RAM. Guia completo incluso.</p>
+      </div>
+      <div class="feature-card">
+        <span class="icon">🔄</span>
+        <h3>Automação ilimitada</h3>
+        <p>n8n + Chatwoot + Evolution API. Crie fluxos customizados, integre com CRM, ERP, planilhas.</p>
+      </div>
+      <div class="feature-card">
+        <span class="icon">📊</span>
+        <h3>Métricas em tempo real</h3>
+        <p>Dashboard com conversões, tempo de resposta, leads qualificados. Tudo sob seu controle.</p>
       </div>
     </div>
   </section>
 
-  <section style="background: var(--gray); padding: 60px 20px; text-align: center;">
-    <h2 style="font-size: 3rem; margin-bottom: 2rem;">Já tem gente lucrando</h2>
-    <p style="max-width: 700px; margin: 0 auto 3rem; color: var(--text);">"Deixei de pagar R$399 no Suri. O GetNexo tá vendendo 3x mais. E de graça." – Marcos, lojista.</p>
-    <p style="max-width: 700px; margin: 0 auto; color: var(--text);">"Meu vendedor viajou. A IA não. E vendeu mais que ele." – Carla, clínica.</p>
+  <section class="comparison">
+    <h2>GetNexo vs Concorrentes (Custo Mensal)</h2>
+    <div class="comparison-bars">
+      <div class="bar getnexo">
+        <span class="label">GetNexo</span>
+        <span class="value">R$ 0</span>
+        <div class="bar-fill" style="width: 5%"></div>
+      </div>
+      <div class="bar competitor">
+        <span class="label">BotZapIA</span>
+        <span class="value">R$ 199</span>
+        <div class="bar-fill" style="width: 40%"></div>
+      </div>
+      <div class="bar competitor">
+        <span class="label">SURI.ai</span>
+        <span class="value">R$ 399</span>
+        <div class="bar-fill" style="width: 80%"></div>
+      </div>
+      <div class="bar competitor">
+        <span class="label">AiSensy</span>
+        <span class="value">R$ 499+</span>
+        <div class="bar-fill" style="width: 100%"></div>
+      </div>
+    </div>
+    <a href="/comparacao" class="btn-secondary">Ver Comparação Completa →</a>
   </section>
 
-  <section style="text-align: center; padding: 60px 20px; background: linear-gradient(135deg, rgba(0,255,157,0.1), rgba(0,212,255,0.1));">
-    <h2 style="font-size: 2.5rem; margin-bottom: 1rem;">Pronto pra começar?</h2>
-    <p style="color: var(--text); margin-bottom: 2rem;">Teste agora – conversa com a nossa IA de demonstração.</p>
-    <a href="#" onclick="window.$chatwoot.toggle(); return false;" target="_blank" class="btn-cta" style="padding: 1.2rem 3rem; font-size: 1.3rem; background: var(--success); color: black; border: none;">TESTAR GRÁTIS AGORA →</a>
+  <section class="cta-final">
+    <h2>Pronto pra vender no automático?</h2>
+    <p>Enquanto você lê isso, seus concorrentes estão perdendo vendas por não responder rápido.</p>
+    <a href="#" onclick="window.$chatwoot.toggle(); return false;" target="_blank" class="btn-primary">COMEÇAR AGORA – 100% GRÁTIS →</a>
   </section>
 </Layout>
 
 <style>
-  h1 {
-    font-size: clamp(2.5rem, 6vw, 4rem);
+  .hero {
+    text-align: center;
+    padding: 100px 5% 80px;
+    background: linear-gradient(135deg, var(--dark), #0a1128);
+    position: relative;
+  }
+  .hero::before {
+    content: '';
+    position: absolute;
+    top: 0; left: 0; right: 0; bottom: 0;
+    background: radial-gradient(ellipse at center, rgba(0,212,255,0.15) 0%, transparent 70%);
+    pointer-events: none;
+  }
+  .hero h1 {
+    font-size: clamp(2.2rem, 6vw, 3.8rem);
     background: linear-gradient(90deg, var(--primary), var(--success));
     -webkit-background-clip: text;
     background-clip: text;
     color: transparent;
+    margin: 0 0 1.5rem;
     line-height: 1.2;
-    margin: 0;
   }
-  h1 strong {
-    color: var(--success);
-    -webkit-text-fill-color: var(--success);
+  .hero h1 strong { color: var(--success); -webkit-text-fill-color: var(--success); }
+  .subtitle {
+    font-size: clamp(1rem, 2.5vw, 1.4rem);
+    color: var(--text);
+    max-width: 800px;
+    margin: 0 auto 2rem;
   }
-  h2 {
+  .hero-badges {
+    display: flex;
+    gap: 1rem;
+    justify-content: center;
+    flex-wrap: wrap;
+    margin-bottom: 2.5rem;
+  }
+  .hero-badges span {
+    background: rgba(0,212,255,0.1);
+    border: 1px solid rgba(0,212,255,0.3);
+    padding: 0.5rem 1.2rem;
+    border-radius: 50px;
+    font-size: 0.9rem;
     color: var(--light);
   }
-  p {
-    color: var(--text);
-    line-height: 1.7;
+  .buttons { display: flex; gap: 1.5rem; justify-content: center; flex-wrap: wrap; }
+  .btn-primary {
+    display: inline-block;
+    background: linear-gradient(90deg, var(--success), #00cc88);
+    color: black;
+    padding: 1rem 2.5rem;
+    border-radius: 50px;
+    font-weight: 800;
+    text-decoration: none;
+    transition: all 0.3s;
+    box-shadow: 0 5px 20px rgba(0,255,157,0.3);
   }
+  .btn-primary:hover {
+    transform: translateY(-3px) scale(1.02);
+    box-shadow: 0 10px 30px rgba(0,255,157,0.5);
+  }
+  .btn-secondary {
+    display: inline-block;
+    color: var(--light);
+    border: 2px solid var(--primary);
+    padding: 1rem 2rem;
+    border-radius: 50px;
+    font-weight: 700;
+    text-decoration: none;
+    transition: all 0.3s;
+  }
+  .btn-secondary:hover { background: var(--primary); color: black; }
+
+  .features {
+    padding: 80px 5%;
+    max-width: 1200px;
+    margin: 0 auto;
+  }
+  .features h2 {
+    text-align: center;
+    font-size: clamp(1.8rem, 4vw, 2.5rem);
+    margin: 0 0 3rem;
+    background: linear-gradient(90deg, var(--primary), var(--success));
+    -webkit-background-clip: text;
+    background-clip: text;
+    color: transparent;
+  }
+  .features-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: 2rem;
+  }
+  .feature-card {
+    background: rgba(30,41,59,0.7);
+    border: 1px solid rgba(0,212,255,0.15);
+    border-radius: 16px;
+    padding: 2rem;
+    text-align: center;
+    transition: all 0.4s;
+  }
+  .feature-card:hover {
+    transform: translateY(-8px);
+    border-color: var(--primary);
+    box-shadow: 0 15px 30px rgba(0,212,255,0.2);
+  }
+  .feature-card .icon { font-size: 2.5rem; display: block; margin-bottom: 1rem; }
+  .feature-card h3 { color: var(--success); margin: 0 0 0.8rem; font-size: 1.3rem; }
+  .feature-card p { color: var(--text); margin: 0; line-height: 1.6; }
+
+  .comparison {
+    padding: 80px 5%;
+    background: rgba(30,41,59,0.5);
+    text-align: center;
+  }
+  .comparison h2 {
+    font-size: clamp(1.8rem, 4vw, 2.5rem);
+    margin: 0 0 3rem;
+    color: var(--light);
+  }
+  .comparison-bars {
+    max-width: 600px;
+    margin: 0 auto 2rem;
+  }
+  .bar {
+    display: flex;
+    align-items: center;
+    margin-bottom: 1rem;
+    position: relative;
+    height: 50px;
+    background: rgba(10,14,23,0.8);
+    border-radius: 8px;
+    overflow: hidden;
+  }
+  .bar .label {
+    position: absolute;
+    left: 1rem;
+    z-index: 2;
+    font-weight: 600;
+    color: var(--light);
+  }
+  .bar .value {
+    position: absolute;
+    right: 1rem;
+    z-index: 2;
+    font-weight: 800;
+  }
+  .bar-fill {
+    height: 100%;
+    border-radius: 8px;
+    position: absolute;
+    left: 0;
+  }
+  .bar.getnexo .bar-fill { background: linear-gradient(90deg, var(--success), #00cc88); }
+  .bar.getnexo .value { color: var(--success); }
+  .bar.competitor .bar-fill { background: linear-gradient(90deg, #ff4d4d, #ff6b6b); }
+  .bar.competitor .value { color: #ff6b6b; }
+
+  .cta-final {
+    text-align: center;
+    padding: 80px 5%;
+    background: linear-gradient(135deg, rgba(0,212,255,0.1), rgba(0,255,157,0.1));
+  }
+  .cta-final h2 {
+    font-size: clamp(1.8rem, 4vw, 2.5rem);
+    color: var(--light);
+    margin: 0 0 1rem;
+  }
+  .cta-final p {
+    color: var(--text);
+    font-size: 1.2rem;
+    margin: 0 0 2rem;
+  }
+
   @media (max-width: 768px) {
-    h1 { font-size: 2rem; }
-    section { padding: 40px 15px !important; }
+    .hero { padding: 80px 5% 60px; }
+    .hero-badges span { font-size: 0.8rem; padding: 0.4rem 0.8rem; }
+    .features-grid { grid-template-columns: 1fr; }
   }
 </style>

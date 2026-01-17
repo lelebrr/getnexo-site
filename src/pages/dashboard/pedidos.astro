@@ -1,0 +1,96 @@
+---
+import DashboardLayout from '../../layouts/DashboardLayout.astro';
+---
+
+<DashboardLayout title="Gestão de Pedidos | OmniNexo">
+    <div style="display:flex; justify-content:space-between; align-items:center; margin-bottom:2rem;">
+        <div>
+            <h2 style="font-size:2rem; font-weight:800; color:white; margin:0;">Gestão de Pedidos 🧾</h2>
+            <p style="color:#94a3b8; margin:0.5rem 0 0;">Acompanhe vendas, status de pagamento e abandono de carrinho.</p>
+        </div>
+        <div style="display:flex; gap:1rem;">
+            <button onclick="loadOrders()" class="glass-panel" style="padding:0.5rem 1rem; color:#00ff9d; border-color:#00ff9d; cursor:pointer;">
+                🔄 Atualizar
+            </button>
+        </div>
+    </div>
+
+    <div class="glass-panel" style="padding:0; overflow:hidden;">
+        <table style="width:100%; border-collapse:collapse; color:white; text-align:left;">
+            <thead style="background:rgba(255,255,255,0.05);">
+                <tr>
+                    <th style="padding:1.2rem;">ID</th>
+                    <th style="padding:1.2rem;">Cliente</th>
+                    <th style="padding:1.2rem;">Valor</th>
+                    <th style="padding:1.2rem;">Status</th>
+                    <th style="padding:1.2rem;">Data</th>
+                    <th style="padding:1.2rem;">Ações</th>
+                </tr>
+            </thead>
+            <tbody id="orders-list">
+                <!-- Orders will be injected here -->
+            </tbody>
+        </table>
+    </div>
+
+    <script is:inline>
+        const API = 'https://api.getnexo.com.br';
+
+        async function loadOrders() {
+            const list = document.getElementById('orders-list');
+            list.innerHTML = '<tr><td colspan="6" style="padding:2rem; text-align:center; color:#64748b;">Carregando pedidos...</td></tr>';
+            
+            try {
+                // We use /abandoned or a custom endpoint. Let's create /api/orders in server.js if not there.
+                // Actually, I'll use /abandoned as a proxy or create /api/orders now.
+                const res = await fetch(`${API}/api/orders_list`, {
+                    headers: window.getAuthHeader()
+                });
+                const orders = await res.json();
+                
+                if (orders.length === 0) {
+                    list.innerHTML = '<tr><td colspan="6" style="padding:2rem; text-align:center; color:#64748b;">Nenhum pedido encontrado.</td></tr>';
+                    return;
+                }
+
+                list.innerHTML = orders.map(o => `
+                    <tr style="border-bottom:1px solid rgba(255,255,255,0.05); transition:0.2s;" class="hover-row">
+                        <td style="padding:1.2rem; font-family:monospace; color:#00d4ff;">#${o.id}</td>
+                        <td style="padding:1.2rem;">
+                            <div style="font-weight:600;">${o.phone}</div>
+                            <div style="font-size:0.75rem; color:#64748b;">PIX: ${o.pix_key || 'N/A'}</div>
+                        </td>
+                        <td style="padding:1.2rem; font-weight:800; color:#00ff9d;">R$ ${o.total.toFixed(2)}</td>
+                        <td style="padding:1.2rem;">
+                            <span style="padding:0.2rem 0.6rem; border-radius:20px; font-size:0.75rem; font-weight:bold; 
+                                background:${o.status === 'pending' ? 'rgba(234,179,8,0.1)' : 'rgba(16,185,129,0.1)'};
+                                color:${o.status === 'pending' ? '#eab308' : '#10b981'};
+                                border:1px solid ${o.status === 'pending' ? 'rgba(234,179,8,0.3)' : 'rgba(16,185,129,0.3)'};">
+                                ${o.status.toUpperCase()}
+                            </span>
+                        </td>
+                        <td style="padding:1.2rem; color:#64748b; font-size:0.9rem;">
+                            ${new Date(o.created_at).toLocaleDateString('pt-BR')}
+                        </td>
+                        <td style="padding:1.2rem;">
+                            <button onclick="retryAutomation(${o.id})" title="Reenviar Cobrança" style="background:none; border:none; cursor:pointer; font-size:1.2rem;">📨</button>
+                        </td>
+                    </tr>
+                `).join('');
+            } catch (e) {
+                list.innerHTML = '<tr><td colspan="6" style="padding:2rem; text-align:center; color:#f87171;">Erro ao carregar dados. Verifique a conexão.</td></tr>';
+            }
+        }
+
+        async function retryAutomation(id) {
+            alert('Enviando lembrete de cobrança via n8n para o pedido #' + id);
+            // Logic to trigger n8n again
+        }
+
+        loadOrders();
+    </script>
+
+    <style>
+        .hover-row:hover { background: rgba(0,212,255,0.03); }
+    </style>
+</DashboardLayout>

@@ -43,7 +43,9 @@ import DashboardLayout from '../../layouts/DashboardLayout.astro';
             try {
                 // Use public URL if available, else localhost
             const API = 'https://api.getnexo.com.br'; 
-                const res = await fetch(`${API}/dashboard-stats`);
+                const res = await fetch(`${API}/dashboard-stats`, {
+                    headers: window.getAuthHeader()
+                });
                 const data = await res.json();
                 
                 if (data) {

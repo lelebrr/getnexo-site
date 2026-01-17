@@ -49,7 +49,7 @@ const CatalogManager = () => {
                         <div className="col-span-3 text-gray-500">Nenhum produto cadastrado. (Use o terminal para inserir: `INSERT INTO products...`)</div>
                     ) : products.map(p => (
                         <div key={p.id} className="glass-panel p-4 rounded-xl border border-gray-800 flex flex-col items-center text-center hover:border-gray-600 transition-colors">
-                            <img src={p.image_url || 'https://via.placeholder.com/150'} className="w-24 h-24 object-cover rounded mb-3 bg-gray-900" />
+                            <img src={p.image_url || 'https://placehold.co/150x150/1e293b/64748b?text=Produto'} className="w-24 h-24 object-cover rounded mb-3 bg-gray-900" />
                             <h4 className="font-bold text-white">{p.name}</h4>
                             <p className="text-neon-green font-bold text-lg">R$ {p.price.toFixed(2)}</p>
                             <button onClick={() => addToCart(p)} className="mt-3 bg-gray-800 hover:bg-neon-blue hover:text-black text-gray-300 px-4 py-2 rounded text-sm font-bold w-full transition-colors">

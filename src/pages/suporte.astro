@@ -1,14 +1,81 @@
 ---
 import Layout from '../layouts/Layout.astro';
+const title = "Suporte GetNexo – Centro de Ajuda WhatsApp API Oficial Grátis 24h";
+const description = "Centro de ajuda GetNexo: suporte IA 24h, tutoriais instalação, reportar bugs GitHub. Resolva dúvidas sobre assistente vendas WhatsApp grátis rapidamente.";
+const keywords = "suporte getnexo whatsapp, centro ajuda whatsapp api gratis, suporte ia whatsapp 24h, tutoriais getnexo instalacao, reportar bug getnexo, ajuda assistente vendas whatsapp";
+const ogImage = "https://getnexo.com.br/assets/og-poster.jpg";
 ---
-<Layout title="Suporte GetNexo | Fale Conosco">
-  <section style="padding: 6rem 10%; max-width: 1200px; margin: 0 auto; color: #e5e7eb; text-align: center;">
-    <h1 style="color:#00ff9d; font-size: 3rem;">Precisa de Ajuda?</h1>
-    <p style="font-size: 1.2rem;">Estamos no WhatsApp 24h ou por e-mail.</p>
+<Layout title={title} description={description} keywords={keywords} ogImage={ogImage}>
+  <section class="support-hero">
+    <h1>Centro de Ajuda GetNexo</h1>
+    <p>O suporte que você precisa, na velocidade da IA.</p>
+  </section>
 
-    <div style="text-align:center; margin-top: 3rem;">
-        <a href="https://wa.me/5511999999999?text=Oi%20GetNexo" class="btn-cta" style="background:#00ff9d; color:black; padding:1rem 2rem; border-radius:50px; text-decoration:none; font-weight:bold; font-size: 1.2rem;">Falar no WhatsApp</a>
-        <p style="margin-top: 2rem; font-size: 1.2rem;">suporte@getnexo.com.br</p>
+  <section class="support-grid">
+    <div class="card">
+        <span class="icon">🤖</span>
+        <h3>Atendimento Automático</h3>
+        <p>Tire dúvidas sobre instalação, preços e recursos instantaneamente.</p>
+        <button onclick="window.$chatwoot.toggle()" class="btn-primary">Falar com IA Agora</button>
+    </div>
+
+    <div class="card">
+        <span class="icon">📚</span>
+        <h3>Base de Conhecimento</h3>
+        <p>Tutoriais passo-a-passo e artigos detalhados no nosso Blog.</p>
+        <a href="/blog" class="btn-secondary">Acessar Tutoriais</a>
+    </div>
+
+    <div class="card">
+        <span class="icon">🛠️</span>
+        <h3>Reportar Bug</h3>
+        <p>Encontrou um problema? Abra uma issue no nosso GitHub.</p>
+        <a href="https://github.com/getnexo/core/issues" class="btn-secondary">Abrir Issue</a>
     </div>
   </section>
+
+  <section style="text-align: center; margin: 4rem 0; color: #94a3b8;">
+    <p>📧 Preferir e-mail? <a href="mailto:lelebrr@gmail.com" style="color: #00ff9d;">lelebrr@gmail.com</a></p>
+  </section>
+  
+  <style>
+    .support-hero { text-align: center; padding: 6rem 5% 3rem; }
+    .support-hero h1 { font-size: 3rem; color: #00ff9d; margin-bottom: 1rem; }
+    .support-hero p { font-size: 1.2rem; color: #cbd5e1; }
+
+    .support-grid {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+        gap: 2rem;
+        max-width: 1000px;
+        margin: 0 auto;
+        padding: 0 5%;
+    }
+
+    .card {
+        background: #1e293b;
+        padding: 2rem;
+        border-radius: 16px;
+        text-align: center;
+        border: 1px solid #334155;
+        transition: transform 0.2s;
+    }
+    .card:hover { transform: translateY(-5px); border-color: #00ff9d; }
+    
+    .icon { font-size: 3rem; display: block; margin-bottom: 1rem; }
+    .card h3 { color: white; margin-bottom: 1rem; font-size: 1.5rem; }
+    .card p { color: #94a3b8; margin-bottom: 2rem; min-height: 3rem; }
+
+    .btn-primary {
+        background: #00ff9d; color: black; border: none; padding: 0.8rem 1.5rem;
+        border-radius: 50px; font-weight: bold; cursor: pointer; text-decoration: none;
+        display: inline-block; font-size: 1rem;
+    }
+    .btn-secondary {
+        background: transparent; color: #00ff9d; border: 2px solid #00ff9d;
+        padding: 0.8rem 1.5rem; border-radius: 50px; font-weight: bold;
+        text-decoration: none; display: inline-block; transition: all 0.2s;
+    }
+    .btn-secondary:hover { background: #00ff9d; color: black; }
+  </style>
 </Layout>

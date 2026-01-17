@@ -10,95 +10,35 @@ import FlowBuilder from './FlowBuilder';
 import ResellerPanel from './ResellerPanel';
 import ReportsPanel from './ReportsPanel';
 
+import axios from 'axios';
+
 const API_URL = typeof window !== 'undefined' && (window.location.hostname === 'localhost' || window.location.hostname === '127.0.0.1')
     ? 'http://localhost:8080'
     : 'https://api.getnexo.com.br';
 
+// Global Auth Header for Sub-components (Chat, Kanban, etc)
+if (typeof window !== 'undefined') {
+    const token = localStorage.getItem('omnichat_token');
+    if (token) {
+        axios.defaults.headers.common['Authorization'] = `Bearer ${token}`;
+    }
+}
+
 const OmniChatApp = ({ initialTab = 'chat' }) => {
     const [tab, setTab] = useState(initialTab);
-    const [selectedFlow, setSelectedFlow] = useState(null);
-    useEffect(() => { setTab(initialTab); }, [initialTab]);
-    const [isLoggedIn, setIsLoggedIn] = useState(false);
-    const [email, setEmail] = useState('');
-    const [password, setPassword] = useState('');
-    const [loginError, setLoginError] = useState('');
+    const [isLoggedIn, setIsLoggedIn] = useState(true);
 
     useEffect(() => {
-        if (localStorage.getItem('omnichat_token')) {
-            setIsLoggedIn(true);
+        if (!localStorage.getItem('omnichat_token')) {
+            window.location.href = '/admin/login';
         }
     }, []);
 
-    const handleLogin = async (e) => {
-        e.preventDefault();
-        setLoginError('');
-        try {
-            const res = await fetch(`${API_URL}/login`, {
-                method: 'POST',
-                headers: { 'Content-Type': 'application/json' },
-                body: JSON.stringify({ email, password })
-            });
-            const data = await res.json();
-            if (data.ok) {
-                localStorage.setItem('omnichat_token', 'true');
-                localStorage.setItem('omnichat_user', JSON.stringify(data.user));
-                setIsLoggedIn(true);
-            } else {
-                setLoginError(data.error || 'Credenciais inválidas');
-            }
-        } catch (e) {
-            setLoginError('Erro de conexão com servidor');
-        }
-    };
-
     const handleLogout = () => {
         localStorage.removeItem('omnichat_token');
-        localStorage.removeItem('omnichat_user');
-        setIsLoggedIn(false);
+        localStorage.removeItem('adminUser');
+        window.location.href = '/admin/login';
     };
-
-    // Login Form
-    if (!isLoggedIn) {
-        return (
-            <div className="min-h-[60vh] flex items-center justify-center p-8">
-                <div className="bg-black/40 backdrop-blur-sm border border-gray-800 rounded-2xl p-8 w-full max-w-md">
-                    <h2 className="text-2xl font-bold text-white mb-6 text-center">
-                        <span className="text-[#00ff9d]">OmniNexo</span> Dashboard
-                    </h2>
-                    <form onSubmit={handleLogin} className="space-y-4">
-                        <div>
-                            <label className="block text-gray-400 text-sm mb-1">Email</label>
-                            <input
-                                type="email"
-                                value={email}
-                                onChange={(e) => setEmail(e.target.value)}
-                                className="w-full bg-gray-900 border border-gray-700 rounded-lg px-4 py-3 text-white focus:border-[#00d4ff] focus:outline-none"
-                                placeholder="seu@email.com"
-                                required
-                            />
-                        </div>
-                        <div>
-                            <label className="block text-gray-400 text-sm mb-1">Senha</label>
-                            <input
-                                type="password"
-                                value={password}
-                                onChange={(e) => setPassword(e.target.value)}
-                                className="w-full bg-gray-900 border border-gray-700 rounded-lg px-4 py-3 text-white focus:border-[#00d4ff] focus:outline-none"
-                                placeholder="••••••••"
-                                required
-                            />
-                        </div>
-                        {loginError && (
-                            <div className="text-red-400 text-sm text-center bg-red-900/20 p-2 rounded">{loginError}</div>
-                        )}
-                        <button type="submit" className="w-full bg-gradient-to-r from-[#00d4ff] to-[#00ff9d] text-black font-bold py-3 rounded-lg hover:opacity-90 transition">
-                            Entrar
-                        </button>
-                    </form>
-                </div>
-            </div>
-        );
-    }
 
     const tabs = [
         { id: 'chat', icon: '💬', label: 'Chat', color: 'bg-[#00d4ff]' },
@@ -122,8 +62,8 @@ const OmniChatApp = ({ initialTab = 'chat' }) => {
                             key={t.id}
                             onClick={() => setTab(t.id)}
                             className={`px-3 py-2 rounded-lg font-bold transition-all text-xs flex items-center gap-1 whitespace-nowrap ${tab === t.id
-                                    ? `${t.color} text-black shadow-lg`
-                                    : 'text-gray-400 hover:bg-gray-800'
+                                ? `${t.color} text-black shadow-lg`
+                                : 'text-gray-400 hover:bg-gray-800'
                                 }`}
                         >
                             <span>{t.icon}</span> {t.label}
