@@ -66,7 +66,7 @@ const { title, description = "Assistente de vendas no WhatsApp 100% grátis – 
   </footer>
 
   <script is:inline>
-    // Partículas otimizadas (menos draw calls, roda suave em 8GB RAM)
+    // Partículas otimizadas
     const canvas = document.getElementById('particles');
     if (canvas) {
       const ctx = canvas.getContext('2d');
@@ -81,7 +81,7 @@ const { title, description = "Assistente de vendas no WhatsApp 100% grátis – 
       window.addEventListener('mousemove', e => {
         mouse.x = e.clientX;
         mouse.y = e.clientY;
-        for (let i = 0; i < 2; i++) { // só 2 partículas por movimento pra não lagar
+        for (let i = 0; i < 2; i++) {
           particles.push({
             x: mouse.x,
             y: mouse.y,

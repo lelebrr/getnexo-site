@@ -2,34 +2,10 @@
 import Layout from '../layouts/Layout.astro';
 
 const posts = [
-  {
-    slug: 'lancamento',
-    title: 'Lançamento do GetNexo – Assistente de Vendas no WhatsApp 100% Grátis que Fecha Vendas Sozinho',
-    date: '17 de Janeiro de 2026',
-    excerpt: 'Site novo no ar com IA local, Evolution API, n8n e Cloudflare Tunnel – zero mensalidade, zero nuvem cara, privacidade total.',
-    readTime: '3 min'
-  },
-  {
-    slug: 'n8n',
-    title: 'Automação com n8n: Como Integrar WhatsApp com CRM e Fechar Vendas Automáticas em 5 Minutos',
-    date: '18 de Janeiro de 2026',
-    excerpt: 'Fluxos prontos que qualificam leads, enviam upsell, recuperam carrinho abandonado e vendem 24h sem humano.',
-    readTime: '5 min'
-  },
-  {
-    slug: 'wsl',
-    title: 'Segurança no WSL: Como Rodar Assistente de Vendas IA em 8GB de RAM sem Lag e sem Risco de Banimento',
-    date: '19 de Janeiro de 2026',
-    excerpt: 'Servidor local invencível com Docker, Cloudflare Tunnel e firewall – zero portas abertas, zero exposição pública.',
-    readTime: '4 min'
-  },
-  {
-    slug: 'tunnel',
-    title: 'Cloudflare Tunnel: Como Expor Serviços Locais (n8n, Chatwoot, API) de Forma Segura e Gratuita',
-    date: '20 de Janeiro de 2026',
-    excerpt: 'Túnel zero trust com host.docker.internal – a configuração exata que usamos pra tudo funcionar em produção.',
-    readTime: '6 min'
-  }
+  { slug: 'lancamento', title: 'Lançamento do GetNexo – Assistente de Vendas no WhatsApp 100% Grátis', date: '17 Jan 2026', excerpt: 'Site novo no ar com IA local, Evolution API, n8n e Cloudflare Tunnel – zero mensalidade, zero nuvem cara, privacidade total.' },
+  { slug: 'n8n', title: 'Automação com n8n: Como Integrar WhatsApp com CRM e Fechar Vendas Automáticas', date: '18 Jan 2026', excerpt: 'Fluxos prontos que qualificam leads, enviam upsell, recuperam carrinho abandonado e vendem 24h sem humano.' },
+  { slug: 'wsl', title: 'Segurança no WSL: Como Rodar Assistente de Vendas IA em 8GB de RAM sem Lag', date: '19 Jan 2026', excerpt: 'Servidor local invencível com Docker, Cloudflare Tunnel e firewall – zero portas abertas, zero exposição pública.' },
+  { slug: 'tunnel', title: 'Cloudflare Tunnel: Como Expor Serviços Locais de Forma Segura e Gratuita', date: '20 Jan 2026', excerpt: 'Túnel zero trust com host.docker.internal – a configuração exata que usamos pra tudo funcionar em produção.' }
 ];
 ---
 
@@ -47,7 +23,7 @@ const posts = [
             {post.title}
           </a>
         </h2>
-        <time>{post.date} • {post.readTime}</time>
+        <time>{post.date}</time>
         <p>{post.excerpt}</p>
         <a href={`/blog/${post.slug}`} class="read-more">
           Ler mais → Assistente de Vendas WhatsApp 100% Grátis
@@ -58,64 +34,15 @@ const posts = [
 </Layout>
 
 <style>
-  .blog-hero {
-    text-align: center;
-    padding: 7rem 5% 4rem;
-    background: linear-gradient(135deg, var(--dark), var(--gray));
-  }
-  .blog-hero h1 {
-    font-size: 3.5rem;
-    margin: 0 0 1rem;
-    background: linear-gradient(90deg, var(--primary), var(--success));
-    -webkit-background-clip: text;
-    background-clip: text;
-    -webkit-text-fill-color: transparent;
-  }
-  .blog-list {
-    max-width: 1100px;
-    margin: 0 auto;
-    padding: 0 5%;
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
-    gap: 2.5rem;
-  }
-  .blog-card {
-    background: rgba(30, 41, 59, 0.7);
-    backdrop-filter: blur(10px);
-    border: 1px solid rgba(0, 212, 255, 0.15);
-    border-radius: 16px;
-    padding: 2rem;
-    transition: all 0.4s ease;
-  }
-  .blog-card:hover {
-    transform: translateY(-12px);
-    border-color: var(--primary);
-    box-shadow: 0 20px 40px rgba(0, 212, 255, 0.2);
-  }
-  .blog-card h2 {
-    font-size: 1.8rem;
-    margin: 0 0 0.8rem;
-  }
-  .blog-card h2 a {
-    color: var(--light);
-    text-decoration: none;
-  }
-  .blog-card time {
-    font-size: 0.9rem;
-    color: #64748b;
-    display: block;
-    margin-bottom: 1rem;
-  }
-  .blog-card p {
-    color: var(--text);
-    margin: 0 0 1.2rem;
-  }
-  .read-more {
-    color: var(--success);
-    font-weight: 600;
-    text-decoration: none;
-  }
-  .read-more:hover {
-    text-decoration: underline;
-  }
+  .blog-hero { text-align: center; padding: 7rem 5% 4rem; background: linear-gradient(135deg, var(--dark), var(--gray)); }
+  .blog-hero h1 { font-size: 3.5rem; background: linear-gradient(90deg, var(--primary), var(--success)); -webkit-background-clip: text; color: transparent; }
+  .blog-list { max-width: 1100px; margin: 0 auto; padding: 0 5%; display: grid; grid-template-columns: repeat(auto-fit, minmax(350px, 1fr)); gap: 2.5rem; }
+  .blog-card { background: rgba(30,41,59,0.8); backdrop-filter: blur(10px); border: 1px solid rgba(0,212,255,0.15); border-radius: 16px; padding: 2rem; transition: all 0.4s; }
+  .blog-card:hover { transform: translateY(-12px); border-color: var(--primary); box-shadow: 0 20px 40px rgba(0,212,255,0.2); }
+  .blog-card h2 { font-size: 1.8rem; margin: 0 0 0.8rem; }
+  .blog-card h2 a { color: var(--light); text-decoration: none; }
+  .blog-card time { font-size: 0.9rem; color: #64748b; display: block; margin-bottom: 1rem; }
+  .blog-card p { color: var(--text); margin: 0 0 1.2rem; }
+  .read-more { color: var(--success); font-weight: 600; text-decoration: none; }
+  .read-more:hover { text-decoration: underline; }
 </style>

@@ -1,11 +1,11 @@
 ---
 import Layout from '../layouts/Layout.astro';
 const services = [
-  { name: 'Chatwoot', url: 'https://chat.getnexo.com.br', status: 'Online', color: 'var(--success)' },
-  { name: 'n8n', url: 'https://n8n.getnexo.com.br', status: 'Online', color: 'var(--success)' },
-  { name: 'Evolution API', url: 'https://api.getnexo.com.br/status', status: 'Online', color: 'var(--success)' },
-  { name: 'Keycloak Auth', url: 'https://auth.getnexo.com.br', status: 'Online', color: 'var(--success)' },
-  { name: 'Uptime Kuma', url: 'https://status.getnexo.com.br', status: 'Online', color: 'var(--success)' },
+  { name: 'Chatwoot', url: 'https://chat.getnexo.com.br', status: 'Online' },
+  { name: 'n8n', url: 'https://n8n.getnexo.com.br', status: 'Online' },
+  { name: 'Evolution API', url: 'https://api.getnexo.com.br/status', status: 'Online' },
+  { name: 'Keycloak Auth', url: 'https://auth.getnexo.com.br', status: 'Online' },
+  { name: 'Uptime Kuma', url: 'https://status.getnexo.com.br', status: 'Online' },
 ];
 ---
 
@@ -18,7 +18,7 @@ const services = [
       {services.map(service => (
         <div class="service-card">
           <h3>{service.name}</h3>
-          <p class="status" style={`color: ${service.color};`}>{service.status}</p>
+          <p class="status {service.status.toLowerCase()}">{service.status}</p>
           <a href={service.url} target="_blank">Acessar →</a>
         </div>
       ))}
@@ -35,4 +35,5 @@ const services = [
   .service-card { background: rgba(30,41,59,0.8); backdrop-filter: blur(10px); border: 1px solid rgba(0,212,255,0.15); border-radius: 16px; padding: 2rem; text-align: center; transition: all 0.4s; }
   .service-card:hover { transform: translateY(-10px); border-color: var(--primary); box-shadow: 0 20px 40px rgba(0,212,255,0.2); }
   .status { font-size: 1.3rem; font-weight: 800; margin: 1rem 0; }
+  .status.online { color: var(--success); }
 </style>
