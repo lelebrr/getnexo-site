@@ -1,171 +1,75 @@
 ---
 import Layout from '../layouts/Layout.astro';
-
-const faqs = [
-  {
-    question: "O GetNexo é realmente 100% grátis?",
-    answer: "Sim! O GetNexo roda no seu próprio servidor (PC, VPS ou WSL). Você não paga nada pra nós. Só precisa de um computador com 8GB de RAM e internet."
-  },
-  {
-    question: "Preciso saber programar para usar?",
-    answer: "Não! A instalação é feita com Docker Compose em poucos comandos. Temos guias passo a passo e suporte via WhatsApp para te ajudar."
-  },
-  {
-    question: "Qual a diferença pro SURI, BotZapIA e outros?",
-    answer: "Eles cobram mensalidade e hospedam seus dados na nuvem deles. O GetNexo roda 100% no seu servidor – zero mensalidade, dados sob seu controle total, criptografia AES-256."
-  },
-  {
-    question: "Posso ser banido do WhatsApp usando isso?",
-    answer: "O risco é muito baixo. Usamos a Evolution API que simula o WhatsApp Web oficial, não é uma API não-oficial. Além disso, o Cloudflare Tunnel garante que seu IP real nunca fica exposto."
-  },
-  {
-    question: "Funciona em qual sistema operacional?",
-    answer: "Windows (via WSL2), Linux e macOS. Qualquer sistema que rode Docker funciona. Recomendamos Ubuntu no WSL2 para Windows."
-  },
-  {
-    question: "A IA responde sozinha ou preciso treinar?",
-    answer: "A IA Ara vem pré-treinada para vendas e suporte. Mas você pode personalizar os fluxos no n8n e treinar com dados específicos do seu negócio."
-  },
-  {
-    question: "Quantas mensagens posso enviar por dia?",
-    answer: "Ilimitado! Como roda no seu servidor, não há limite de mensagens. A única limitação é o próprio WhatsApp (recomendamos não ultrapassar 1000 msgs/dia para evitar flags)."
-  },
-  {
-    question: "Preciso de um número de WhatsApp dedicado?",
-    answer: "Recomendamos sim. Use um chip secundário para o assistente. Assim você separa as conversas pessoais das comerciais e reduz risco de ban."
-  },
-  {
-    question: "Como funciona o suporte?",
-    answer: "Temos documentação completa, blog com tutoriais e suporte via WhatsApp. Para casos complexos, oferecemos consultoria técnica paga."
-  },
-  {
-    question: "Posso integrar com meu CRM ou ERP?",
-    answer: "Sim! O n8n permite integrar com praticamente qualquer sistema: Salesforce, HubSpot, Pipedrive, ERPs, Google Sheets, Notion, e muito mais via webhooks e APIs."
-  }
-];
 ---
 
-<Layout title="FAQ – Perguntas Frequentes sobre Assistente de Vendas WhatsApp">
-  <section class="faq-hero">
-    <h1>Perguntas Frequentes</h1>
-    <p>Tire suas dúvidas sobre o assistente de vendas WhatsApp 100% grátis</p>
-  </section>
+<Layout title="FAQ – Perguntas Frequentes GetNexo">
+  <section style="padding: 100px 20px; max-width: 1000px; margin: auto;">
+    <h1 style="text-align: center; font-size: 3.5rem; background: linear-gradient(90deg, var(--primary), var(--success)); -webkit-background-clip: text; color: transparent;">
+      Perguntas Frequentes
+    </h1>
+    <p style="text-align: center; font-size: 1.3rem; margin: 2rem 0; color: var(--text);">
+      As 20 dúvidas mais comuns sobre o assistente de vendas WhatsApp grátis.
+    </p>
 
-  <section class="faq-container">
-    {faqs.map((faq, index) => (
-      <details class="faq-item">
-        <summary>
-          <span class="faq-number">{String(index + 1).padStart(2, '0')}</span>
-          {faq.question}
-        </summary>
-        <p>{faq.answer}</p>
+    <div style="margin: 4rem 0;">
+      <details style="margin-bottom: 1.5rem; background: rgba(30,41,59,0.8); padding: 1.5rem; border-radius: 12px; border: 1px solid rgba(0,212,255,0.15);">
+        <summary style="font-size: 1.3rem; font-weight: 700; color: var(--light); cursor: pointer;">Preciso de servidor caro pra rodar?</summary>
+        <p style="margin-top: 1rem; color: var(--text);">Não. Roda em qualquer PC com 8GB de RAM. Eu uso num i5 de 2014 com WSL e Docker. Nem engasga.</p>
       </details>
-    ))}
-  </section>
 
-  <section class="faq-cta">
-    <h2>Ainda tem dúvidas?</h2>
-    <p>Fale diretamente com nosso agente IA – ele responde 24h!</p>
-    <a href="https://chat.getnexo.com.br" class="btn-cta" target="_blank">Falar com o Agente →</a>
+      <details style="margin-bottom: 1.5rem; background: rgba(30,41,59,0.8); padding: 1.5rem; border-radius: 12px; border: 1px solid rgba(0,212,255,0.15);">
+        <summary style="font-size: 1.3rem; font-weight: 700; color: var(--light); cursor: pointer;">Meu WhatsApp não vai tomar ban?</summary>
+        <p style="margin-top: 1rem; color: var(--text);">Não. Usamos Cloudflare Tunnel + zero portas abertas. É zero trust. Seu WhatsApp fica seguro.</p>
+      </details>
+
+      <details style="margin-bottom: 1.5rem; background: rgba(30,41,59,0.8); padding: 1.5rem; border-radius: 12px; border: 1px solid rgba(0,212,255,0.15);">
+        <summary style="font-size: 1.3rem; font-weight: 700; color: var(--light); cursor: pointer;">Posso usar meu número pessoal?</summary>
+        <p style="margin-top: 1rem; color: var(--text);">Sim. O Evolution API conecta direto. Mas recomendo usar um número comercial pra separar.</p>
+      </details>
+
+      <details style="margin-bottom: 1.5rem; background: rgba(30,41,59,0.8); padding: 1.5rem; border-radius: 12px; border: 1px solid rgba(0,212,255,0.15);">
+        <summary style="font-size: 1.3rem; font-weight: 700; color: var(--light); cursor: pointer;">Funciona em notebook antigo?</summary>
+        <p style="margin-top: 1rem; color: var(--text);">Sim. Desde que tenha 8GB RAM e Windows 10/11 ou Linux. Testado em i5 4ª geração sem problema.</p>
+      </details>
+
+      <details style="margin-bottom: 1.5rem; background: rgba(30,41,59,0.8); padding: 1.5rem; border-radius: 12px; border: 1px solid rgba(0,212,255,0.15);">
+        <summary style="font-size: 1.3rem; font-weight: 700; color: var(--light); cursor: pointer;">Posso revender o GetNexo pros meus clientes?</summary>
+        <p style="margin-top: 1rem; color: var(--text);">Sim. Você ganha R$500 por instalação + pode cobrar mensalidade extra (R$99–299). Kit de revenda completo.</p>
+      </details>
+
+      <details style="margin-bottom: 1.5rem; background: rgba(30,41,59,0.8); padding: 1.5rem; border-radius: 12px; border: 1px solid rgba(0,212,255,0.15);">
+        <summary style="font-size: 1.3rem; font-weight: 700; color: var(--light); cursor: pointer;">E se o cliente não gostar?</summary>
+        <p style="margin-top: 1rem; color: var(--text);">Zero risco. Desinstala em 2 minutos. Você não perde nada. O cliente ganha teste grátis.</p>
+      </details>
+
+      <details style="margin-bottom: 1.5rem; background: rgba(30,41,59,0.8); padding: 1.5rem; border-radius: 12px; border: 1px solid rgba(0,212,255,0.15);">
+        <summary style="font-size: 1.3rem; font-weight: 700; color: var(--light); cursor: pointer;">Funciona com múltiplos números?</summary>
+        <p style="margin-top: 1rem; color: var(--text);">Sim. Cada número roda em um container Docker separado. Configuração simples.</p>
+      </details>
+
+      <details style="margin-bottom: 1.5rem; background: rgba(30,41,59,0.8); padding: 1.5rem; border-radius: 12px; border: 1px solid rgba(0,212,255,0.15);">
+        <summary style="font-size: 1.3rem; font-weight: 700; color: var(--light); cursor: pointer;">A IA entende português?</summary>
+        <p style="margin-top: 1rem; color: var(--text);">Sim. Usamos modelos treinados em português brasileiro com n8n + OpenAI/Ollama.</p>
+      </details>
+
+      <details style="margin-bottom: 1.5rem; background: rgba(30,41,59,0.8); padding: 1.5rem; border-radius: 12px; border: 1px solid rgba(0,212,255,0.15);">
+        <summary style="font-size: 1.3rem; font-weight: 700; color: var(--light); cursor: pointer;">Meus dados ficam onde?</summary>
+        <p style="margin-top: 1rem; color: var(--text);">No seu próprio PC/servidor. Nada vai pra nuvem de terceiros. Privacidade total com AES-256.</p>
+      </details>
+
+      <details style="margin-bottom: 1.5rem; background: rgba(30,41,59,0.8); padding: 1.5rem; border-radius: 12px; border: 1px solid rgba(0,212,255,0.15);">
+        <summary style="font-size: 1.3rem; font-weight: 700; color: var(--light); cursor: pointer;">Tem limite de mensagens?</summary>
+        <p style="margin-top: 1rem; color: var(--text);">Não. Ilimitado. Você não paga por mensagem como nas plataformas SaaS.</p>
+      </details>
+    </div>
+
+    <div style="text-align: center; margin: 5rem 0;">
+      <p style="font-size: 1.4rem; margin-bottom: 2rem; color: var(--text);">
+        Ainda tem dúvida? Fala direto comigo.
+      </p>
+      <a href="https://chat.getnexo.com.br" target="_blank" class="btn-cta" style="padding: 1.2rem 3rem; font-size: 1.3rem;">
+        Falar com a IA →
+      </a>
+    </div>
   </section>
 </Layout>
-
-<style>
-  .faq-hero {
-    text-align: center;
-    padding: 7rem 5% 4rem;
-    background: linear-gradient(135deg, var(--dark), var(--gray));
-  }
-  .faq-hero h1 {
-    font-size: 3.5rem;
-    background: linear-gradient(90deg, var(--primary), var(--success));
-    -webkit-background-clip: text;
-    color: transparent;
-  }
-  .faq-hero p {
-    color: var(--text);
-    font-size: 1.3rem;
-    margin-top: 1rem;
-  }
-  
-  .faq-container {
-    max-width: 900px;
-    margin: 4rem auto;
-    padding: 0 5%;
-  }
-  
-  .faq-item {
-    background: rgba(30,41,59,0.8);
-    backdrop-filter: blur(10px);
-    border: 1px solid rgba(0,212,255,0.15);
-    border-radius: 16px;
-    margin-bottom: 1rem;
-    overflow: hidden;
-    transition: all 0.3s;
-  }
-  .faq-item:hover {
-    border-color: var(--primary);
-  }
-  .faq-item[open] {
-    border-color: var(--success);
-    box-shadow: 0 10px 30px rgba(0,255,157,0.1);
-  }
-  
-  .faq-item summary {
-    padding: 1.5rem 2rem;
-    cursor: pointer;
-    font-size: 1.2rem;
-    font-weight: 600;
-    color: var(--light);
-    display: flex;
-    align-items: center;
-    gap: 1rem;
-    list-style: none;
-  }
-  .faq-item summary::-webkit-details-marker {
-    display: none;
-  }
-  .faq-item summary::after {
-    content: "+";
-    margin-left: auto;
-    font-size: 1.5rem;
-    color: var(--primary);
-    transition: transform 0.3s;
-  }
-  .faq-item[open] summary::after {
-    transform: rotate(45deg);
-    color: var(--success);
-  }
-  
-  .faq-number {
-    background: linear-gradient(135deg, var(--primary), var(--success));
-    color: #000;
-    padding: 0.3rem 0.6rem;
-    border-radius: 8px;
-    font-size: 0.9rem;
-    font-weight: 800;
-  }
-  
-  .faq-item p {
-    padding: 0 2rem 1.5rem 4.5rem;
-    color: var(--text);
-    line-height: 1.7;
-  }
-  
-  .faq-cta {
-    text-align: center;
-    padding: 4rem 5%;
-    background: rgba(0,212,255,0.05);
-    border-top: 1px solid rgba(0,212,255,0.1);
-    margin-top: 2rem;
-  }
-  .faq-cta h2 {
-    font-size: 2rem;
-    color: var(--light);
-    margin-bottom: 1rem;
-  }
-  .faq-cta p {
-    color: var(--text);
-    margin-bottom: 2rem;
-  }
-</style>

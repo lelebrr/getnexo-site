@@ -1,0 +1,50 @@
+---
+import Layout from '../../layouts/Layout.astro';
+---
+<Layout title="Recuperação de carrinho abandonado via WhatsApp: script pronto">
+  <article style="max-width: 800px; margin: 0 auto; padding: 100px 5% 4rem;">
+    <header style="margin-bottom: 3rem;">
+      <time style="color: #64748b; font-size: 0.95rem;">29 Jan 2026</time>
+      <h1 style="font-size: 2.8rem; margin: 1rem 0; background: linear-gradient(90deg, var(--primary), var(--success)); -webkit-background-clip: text; color: transparent; line-height: 1.3;">
+        Recuperação de carrinho abandonado via WhatsApp: script pronto
+      </h1>
+    </header>
+
+    <div style="color: var(--light); line-height: 1.9; font-size: 1.1rem;">
+      <p>Carrinhos abandonados representam até 70% das vendas perdidas. Com GetNexo, você recupera até 60% deles automaticamente.</p>
+
+      <h2 style="color: var(--success); margin: 2.5rem 0 1rem; font-size: 1.8rem;">Script de recuperação (copie e use)</h2>
+      <div style="background: #0f172a; padding: 1.5rem; border-radius: 12px; margin: 1.5rem 0;">
+        <p style="color: var(--text); font-style: italic;">"Oi [Nome]! 👋</p>
+        <p style="color: var(--text); font-style: italic;">Vi que você deixou [Produto] no carrinho. Aconteceu algum problema?</p>
+        <p style="color: var(--text); font-style: italic;">Posso te ajudar a finalizar ou tirar alguma dúvida?</p>
+        <p style="color: var(--text); font-style: italic;">🎁 Se fechar agora, ganhe 10% OFF com o cupom: VOLTA10"</p>
+      </div>
+
+      <h2 style="color: var(--success); margin: 2.5rem 0 1rem; font-size: 1.8rem;">Fluxo de automação</h2>
+      <ol style="margin-left: 1.5rem; margin-bottom: 1.5rem;">
+        <li><strong>Trigger:</strong> Cliente abandona carrinho (webhook do e-commerce)</li>
+        <li><strong>Espera:</strong> 30 minutos (não envie imediatamente)</li>
+        <li><strong>Envia:</strong> Primeiro lembrete amigável</li>
+        <li><strong>Se não responder:</strong> 24h depois, envia com desconto</li>
+        <li><strong>Se responder:</strong> IA assume a conversa</li>
+      </ol>
+
+      <h2 style="color: var(--success); margin: 2.5rem 0 1rem; font-size: 1.8rem;">Taxa de recuperação</h2>
+      <p>Usuários do GetNexo reportam:</p>
+      <ul style="margin-left: 1.5rem; margin-bottom: 1.5rem;">
+        <li>40-60% de recuperação no primeiro lembrete</li>
+        <li>+15% com o segundo lembrete (desconto)</li>
+        <li>ROI de 500-1000% comparado a não fazer nada</li>
+      </ul>
+
+      <div style="background: rgba(0,255,157,0.1); border: 1px solid var(--success); border-radius: 12px; padding: 1.5rem; margin: 3rem 0; text-align: center;">
+        <a href="/documentacao" style="background: var(--success); color: black; padding: 0.8rem 2rem; border-radius: 50px; font-weight: 800; text-decoration: none;">Configurar Agora →</a>
+      </div>
+    </div>
+
+    <footer style="margin-top: 4rem; padding-top: 2rem; border-top: 1px solid rgba(0,212,255,0.1);">
+      <a href="/blog" style="color: var(--primary); text-decoration: none; font-weight: 600;">← Voltar pro Blog</a>
+    </footer>
+  </article>
+</Layout>

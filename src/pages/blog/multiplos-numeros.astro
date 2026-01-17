@@ -1,0 +1,58 @@
+---
+import Layout from '../../layouts/Layout.astro';
+---
+<Layout title="Como usar múltiplos números de WhatsApp no GetNexo sem risco de ban">
+  <article style="max-width: 800px; margin: 0 auto; padding: 100px 5% 4rem;">
+    <header style="margin-bottom: 3rem;">
+      <time style="color: #64748b; font-size: 0.95rem;">27 Jan 2026</time>
+      <h1 style="font-size: 2.8rem; margin: 1rem 0; background: linear-gradient(90deg, var(--primary), var(--success)); -webkit-background-clip: text; color: transparent; line-height: 1.3;">
+        Como usar múltiplos números de WhatsApp no GetNexo sem risco de ban
+      </h1>
+    </header>
+
+    <div style="color: var(--light); line-height: 1.9; font-size: 1.1rem;">
+      <p>Se você tem várias lojas, equipes ou clientes, o GetNexo permite rodar múltiplos números de WhatsApp no mesmo setup – sem risco de ban e sem nuvem.</p>
+
+      <h2 style="color: var(--success); margin: 2.5rem 0 1rem; font-size: 1.8rem;">Passo 1: Configuração Docker multi-container</h2>
+      <p>No seu <code style="background: #1e293b; padding: 0.3rem 0.6rem; border-radius: 6px;">docker-compose.yml</code>, adicione mais containers para Evolution API:</p>
+      <pre style="background: #0f172a; padding: 1.5rem; border-radius: 12px; overflow-x: auto; margin: 1.5rem 0;"><code style="color: var(--light);">evolution1:
+  image: devlikeprod/evolution-api
+  ports:
+    - "8080:8080"
+
+evolution2:
+  image: devlikeprod/evolution-api
+  ports:
+    - "8081:8080"
+
+evolution3:
+  image: devlikeprod/evolution-api
+  ports:
+    - "8082:8080"</code></pre>
+
+      <h2 style="color: var(--success); margin: 2.5rem 0 1rem; font-size: 1.8rem;">Passo 2: Cloudflare Tunnel para cada número</h2>
+      <p>Adicione rotas no Cloudflare Tunnel:</p>
+      <ul style="margin-left: 1.5rem; margin-bottom: 1.5rem;">
+        <li><code>api1.seudominio.com</code> → localhost:8080</li>
+        <li><code>api2.seudominio.com</code> → localhost:8081</li>
+        <li><code>api3.seudominio.com</code> → localhost:8082</li>
+      </ul>
+
+      <h2 style="color: var(--success); margin: 2.5rem 0 1rem; font-size: 1.8rem;">Passo 3: Rotação de uso</h2>
+      <p>Para evitar detecção:</p>
+      <ul style="margin-left: 1.5rem; margin-bottom: 1.5rem;">
+        <li>Não envie mensagens em massa simultaneamente</li>
+        <li>Use delays de 5-10 segundos entre mensagens</li>
+        <li>Mantenha comportamento humanizado</li>
+      </ul>
+
+      <div style="background: rgba(0,255,157,0.1); border: 1px solid var(--success); border-radius: 12px; padding: 1.5rem; margin: 3rem 0; text-align: center;">
+        <a href="/documentacao" style="background: var(--success); color: black; padding: 0.8rem 2rem; border-radius: 50px; font-weight: 800; text-decoration: none;">Ver Documentação Completa →</a>
+      </div>
+    </div>
+
+    <footer style="margin-top: 4rem; padding-top: 2rem; border-top: 1px solid rgba(0,212,255,0.1);">
+      <a href="/blog" style="color: var(--primary); text-decoration: none; font-weight: 600;">← Voltar pro Blog</a>
+    </footer>
+  </article>
+</Layout>
