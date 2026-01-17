@@ -2,8 +2,30 @@
 import Layout from '../../layouts/Layout.astro';
 ---
 
-<Layout title="Lançamento GetNexo">
-  <h1>Lançamento do GetNexo</h1>
-  <p>Finalmente no ar: chat, n8n, API, tudo rodando em WSL com Cloudflare Tunnel.</p>
-  <p><a href="/blog">← Voltar</a></p>
+<Layout title="Lançamento do GetNexo">
+  <article class="post">
+    <h1>Lançamento do GetNexo</h1>
+    <time>17 de Janeiro de 2026</time>
+
+    <p>Finalmente! Depois de meses de luta, o site está no ar.</p>
+    <p>Tudo rodando localmente no WSL, com Docker, Cloudflare Tunnel, n8n, Chatwoot, Evolution API, Keycloak e Uptime Kuma. Zero nuvem cara, zero latência, zero vazamento de dados.</p>
+
+    <h2>Principais recursos já no ar</h2>
+    <ul>
+      <li><strong>Chat IA 24h:</strong> <a href="https://chat.getnexo.com.br">chat.getnexo.com.br</a></li>
+      <li><strong>Automação n8n:</strong> <a href="https://n8n.getnexo.com.br">n8n.getnexo.com.br</a></li>
+      <li><strong>API Evolution:</strong> <a href="https://api.getnexo.com.br">api.getnexo.com.br</a></li>
+      <li><strong>Keycloak Auth:</strong> <a href="https://auth.getnexo.com.br">auth.getnexo.com.br</a></li>
+      <li><strong>Dashboard Traefik:</strong> <a href="https://dashboard.getnexo.com.br">dashboard.getnexo.com.br</a></li>
+      <li><strong>Status Uptime:</strong> <a href="https://status.getnexo.com.br">status.getnexo.com.br</a></li>
+    </ul>
+
+    <p><a href="/blog">← Voltar ao Blog</a></p>
+  </article>
 </Layout>
+
+<style>
+  .post { max-width: 900px; margin: 6rem auto 4rem; padding: 0 5%; }
+  .post h1 { font-size: 3.5rem; background: linear-gradient(90deg, #00d4ff, #00ff9d); -webkit-background-clip: text; color: transparent; }
+  .post time { font-size: 1rem; color: #64748b; display: block; margin-bottom: 2rem; }
+</style>

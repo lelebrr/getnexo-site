@@ -14,10 +14,10 @@ import Layout from '../layouts/Layout.astro';
       </p>
       
       <div class="buttons">
-        <a href="https://chat.getnexo.com.br" class="btn pulse-btn" target="_blank">
+        <a href="https://chat.getnexo.com.br" class="btn primary" target="_blank">
           Falar com o Agente Agora
         </a>
-        <a href="#tecnologia" class="btn-secondary">
+        <a href="#tecnologia" class="btn secondary">
           Ver a Tecnologia
         </a>
       </div>
@@ -157,19 +157,7 @@ import Layout from '../layouts/Layout.astro';
     padding: 1rem 2.5rem;
   }
 
-  .pulse-btn {
-    background: var(--neon-blue); /* Fallback is Green/Teal from global, overriding to Neon/Green per spec */
-    background: #00b2a9; /* Verde/Teal Tech per spec */
-    color: white;
-    box-shadow: 0 0 20px rgba(0, 178, 169, 0.4);
-    animation: pulse-green 2s infinite;
-  }
-  
-  @keyframes pulse-green {
-    0% { box-shadow: 0 0 0 0 rgba(0, 178, 169, 0.7); }
-    70% { box-shadow: 0 0 0 15px rgba(0, 178, 169, 0); }
-    100% { box-shadow: 0 0 0 0 rgba(0, 178, 169, 0); }
-  }
+
 
   /* Section Generals */
   section {

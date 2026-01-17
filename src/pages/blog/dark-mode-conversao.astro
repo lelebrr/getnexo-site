@@ -1,0 +1,61 @@
+---
+import Layout from '../../layouts/Layout.astro';
+---
+
+<Layout title="Dark Mode converte mais? | GetNexo Blog">
+  <article class="post-container">
+    <header class="post-header">
+      <div class="meta">DESIGN • 05 JAN 2026 • 4 MIN LEITURA</div>
+      <h1>Dark Mode e Conversão: A Ciência por trás do Preto</h1>
+      <p class="subtitle">Por que 82% dos devs e gamers preferem interfaces escuras para comprar.</p>
+    </header>
+
+    <div class="post-content">
+      <p>Você já notou que todas as ferramentas "Premium" usam Dark Mode? VS Code, Spotify, Discord, e agora... GetNexo.</p>
+      
+      <p>Isso não é apenas estética. É <strong>Neuromarketing</strong>.</p>
+      
+      <h2>Foco e Contraste</h2>
+      <p>Em uma tela branca, tudo grita por atenção. O olho se cansa.
+      Em uma tela preta (`#050505`), o único ponto de luz é o que IMPORTA: o botão de compra.</p>
+      
+      <blockquote>
+        "O contraste deve guiar o olho, não queimá-lo."
+      </blockquote>
+
+      <h2>O Efeito "Futuro"</h2>
+      <p>Associamos o preto e o neon (`#00F7FF`) à tecnologia de ponta, cyberpunk e inovação. 
+      Quando seu cliente abre seu painel e vê essa estética, ele subconscientemente pensa:</p>
+      
+      <p><em>"Isso aqui é avançado. Isso aqui vale dinheiro."</em></p>
+      
+      <p>É por isso que o tema padrão do GetNexo é "Dark Futurist". Não é só porque é bonito. É porque vende autoridade.</p>
+
+      <div class="cta-box">
+        <h3>Experimente o Dark Mode Real</h3>
+        <p>Veja como aplicamos essa ciência no nosso Dashboard.</p>
+        <a href="/admin" class="btn">Ver Dashboard</a>
+      </div>
+    </div>
+  </article>
+</Layout>
+
+<style>
+  .post-container {
+    max-width: 800px;
+    margin: 4rem auto;
+    padding: 0 1rem;
+  }
+  .post-header { text-align: center; margin-bottom: 3rem; }
+  .meta { color: #FFD500; font-size: 0.8rem; font-weight: bold; letter-spacing: 2px; margin-bottom: 1rem; }
+  h1 { font-size: 3rem; margin-bottom: 1rem; line-height: 1.2; }
+  .subtitle { font-size: 1.2rem; color: #888; }
+  .post-content { line-height: 1.8; font-size: 1.1rem; color: #ccc; }
+  h2 { color: #fff; margin: 3rem 0 1rem 0; font-size: 1.8rem; }
+  p, ul, ol { margin-bottom: 1.5rem; }
+  blockquote { border-left: 4px solid #FFD500; padding-left: 1.5rem; font-style: italic; color: #fff; margin: 2rem 0; }
+  .cta-box { background: #111; border: 1px solid #FFD500; padding: 2rem; text-align: center; border-radius: 8px; margin-top: 4rem; }
+  .cta-box h3 { margin-top: 0; }
+  .btn { display: inline-block; background: #FFD500; color: black; padding: 1rem 2rem; text-decoration: none; font-weight: bold; border-radius: 4px; margin-top: 1rem; transition: 0.2s; }
+  .btn:hover { transform: scale(1.05); box-shadow: 0 0 20px rgba(255, 213, 0, 0.4); }
+</style>

@@ -1,0 +1,36 @@
+---
+import Layout from '../layouts/Layout.astro';
+
+const posts = [
+  { slug: 'lancamento', title: 'Lançamento do GetNexo', date: '17 Jan 2026', excerpt: 'Site novo no ar com IA e túnel.' },
+  { slug: 'n8n', title: 'Automação com n8n', date: '18 Jan 2026', excerpt: 'Integração WhatsApp + CRM em minutos.' },
+  { slug: 'wsl', title: 'Segurança no WSL', date: '19 Jan 2026', excerpt: 'Rodando tudo em 8GB sem lag.' },
+  { slug: 'tunnel', title: 'Cloudflare Tunnel', date: '20 Jan 2026', excerpt: 'Exposição segura de serviços locais.' }
+];
+---
+
+<Layout title="Blog — GetNexo">
+  <section class="blog-hero">
+    <h1>Blog GetNexo</h1>
+    <p>Artigos sobre IA, vendas, automação e tecnologia local.</p>
+  </section>
+
+  <section class="blog-list">
+    {posts.map(post => (
+      <article class="blog-card">
+        <h2><a href={`/blog/${post.slug}`}>{post.title}</a></h2>
+        <time>{post.date}</time>
+        <p>{post.excerpt}</p>
+        <a href={`/blog/${post.slug}`}>Ler mais →</a>
+      </article>
+    ))}
+  </section>
+</Layout>
+
+<style>
+  .blog-hero { text-align: center; padding: 6rem 5% 4rem; background: linear-gradient(135deg, #0a0e17, #1e293b); }
+  .blog-hero h1 { font-size: 3.5rem; background: linear-gradient(90deg, #00d4ff, #00ff9d); -webkit-background-clip: text; color: transparent; }
+  .blog-list { max-width: 1100px; margin: 0 auto; padding: 0 5%; display: grid; grid-template-columns: repeat(auto-fit, minmax(350px, 1fr)); gap: 2.5rem; }
+  .blog-card { background: rgba(30, 41, 59, 0.6); backdrop-filter: blur(10px); border: 1px solid rgba(0,212,255,0.15); border-radius: 16px; padding: 2rem; transition: all 0.4s; }
+  .blog-card:hover { transform: translateY(-12px); border-color: #00d4ff; box-shadow: 0 20px 40px rgba(0,212,255,0.2); }
+</style>

@@ -1,6 +1,6 @@
 User-agent: *
-Disallow: /ara
-Disallow: /api
-Disallow: /blog/*.zip
 Allow: /
-Sitemap: https://getnexo.com.br/sitemap-index.xml
+Disallow: /admin
+Disallow: /api/private
+
+Sitemap: https://getnexo.com.br/sitemap.xml

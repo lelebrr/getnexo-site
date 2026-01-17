@@ -1,0 +1,64 @@
+---
+import Layout from '../../layouts/Layout.astro';
+---
+
+<Layout title="Guia WhatsApp Automatizado | GetNexo Blog">
+  <article class="post-container">
+    <header class="post-header">
+      <div class="meta">TUTORIAL • 10 JAN 2026 • 8 MIN LEITURA</div>
+      <h1>WhatsApp Automatizado: O Guia Definitivo (Sem Banimento)</h1>
+      <p class="subtitle">Como escalar seu atendimento sem perder o número para o Zuckerberg.</p>
+    </header>
+
+    <div class="post-content">
+      <p>99% das pessoas que tentam automatizar o WhatsApp falham por um motivo: <strong>elas agem como robôs.</strong></p>
+      
+      <p>O algoritmo do WhatsApp é treinado para detectar disparos em massa e automações burras. Se você envia 1000 mensagens iguais em 1 minuto, você cai.</p>
+      
+      <h2>A Regra de Ouro: Humanização Latente</h2>
+      <p>O segredo do GetNexo não é apenas a IA. É o "atraso proposital".</p>
+      
+      <p>Ninguém digita instantaneamente. Por isso, implementamos:</p>
+      <ul>
+        <li><strong>Random Delay:</strong> A IA espera entre 3 a 12 segundos antes de responder.</li>
+        <li><strong>Status "Digitando...":</strong> O cliente vê que você está escrevendo.</li>
+        <li><strong>Variação Semântica:</strong> A IA nunca repete a mesma frase exata duas vezes.</li>
+      </ul>
+
+      <h2>A Stack Técnica (Open Source)</h2>
+      <p>Para rodar isso sem pagar ferramentas caras, você precisa de:</p>
+      <ol>
+        <li><strong>Evolution API:</strong> A melhor API de WhatsApp do mundo (grátis).</li>
+        <li><strong>n8n:</strong> Para orquestrar o fluxo (Se <em>Lead</em> diz "preço", então...).</li>
+        <li><strong>Redis:</strong> Para guardar o contexto da conversa ("O nome dele é João").</li>
+      </ol>
+      
+      <p>Parece complicado? É por isso que criamos o Docker Compose pronto.</p>
+
+      <div class="cta-box">
+        <h3>Baixe a Stack Completa</h3>
+        <p>No painel de admin, você clica em um botão e tudo isso roda na sua máquina.</p>
+        <a href="/doc" class="btn">Ver Documentação</a>
+      </div>
+    </div>
+  </article>
+</Layout>
+
+<style>
+  .post-container {
+    max-width: 800px;
+    margin: 4rem auto;
+    padding: 0 1rem;
+  }
+  .post-header { text-align: center; margin-bottom: 3rem; }
+  .meta { color: #00F7FF; font-size: 0.8rem; font-weight: bold; letter-spacing: 2px; margin-bottom: 1rem; }
+  h1 { font-size: 3rem; margin-bottom: 1rem; line-height: 1.2; }
+  .subtitle { font-size: 1.2rem; color: #888; }
+  .post-content { line-height: 1.8; font-size: 1.1rem; color: #ccc; }
+  h2 { color: #fff; margin: 3rem 0 1rem 0; font-size: 1.8rem; }
+  p, ul, ol { margin-bottom: 1.5rem; }
+  .cta-box { background: #111; border: 1px solid #00F7FF; padding: 2rem; text-align: center; border-radius: 8px; margin-top: 4rem; }
+  .cta-box h3 { margin-top: 0; }
+  .btn { display: inline-block; background: #00F7FF; color: black; padding: 1rem 2rem; text-decoration: none; font-weight: bold; border-radius: 4px; margin-top: 1rem; transition: 0.2s; }
+  .btn:hover { transform: scale(1.05); box-shadow: 0 0 20px rgba(0, 247, 255, 0.4); }
+</style>
