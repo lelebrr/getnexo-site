@@ -1,70 +1,53 @@
-
-// JetNexo Holo-Agent
-// Renders a 3D "Thinking Core" using Three.js logic (Simulated for lightweight)
+/**
+ * 🕶️ HOLO AGENT (Admin Visuals)
+ * Adds a holographic glass effect to UI cards.
+ */
 
 class HoloAgent {
-    constructor() {
-        this.container = null;
-        this.angle = 0;
+    constructor(selector) {
+        this.cards = document.querySelectorAll(selector);
         this.init();
     }
 
     init() {
-        this.createContainer();
-        this.startRenderLoop();
-        console.log("🔮 [Holo-Agent] 3D Core Online.");
+        if (!this.cards.length) return;
+
+        console.log("🕶️ HoloAgent: Initializing 3D Tilt Effect...");
+
+        this.cards.forEach(card => {
+            card.addEventListener('mousemove', (e) => this.tilt(e, card));
+            card.addEventListener('mouseleave', () => this.reset(card));
+        });
     }
 
-    createContainer() {
-        // Creates a floating orb container in bottom right
-        const div = document.createElement('div');
-        div.id = 'holo-core';
-        div.style.cssText = `
-            position: fixed;
-            bottom: 100px;
-            right: 30px;
-            width: 60px;
-            height: 60px;
-            perspective: 500px;
-            z-index: 9999;
-            pointer-events: none;
+    tilt(e, card) {
+        const rect = card.getBoundingClientRect();
+        const x = e.clientX - rect.left;
+        const y = e.clientY - rect.top;
+
+        const centerX = rect.width / 2;
+        const centerY = rect.height / 2;
+
+        const rotateX = ((y - centerY) / centerY) * -10; // Max 10deg
+        const rotateY = ((x - centerX) / centerX) * 10;
+
+        card.style.transform = `perspective(1000px) rotateX(${rotateX}deg) rotateY(${rotateY}deg)`;
+        card.style.background = `
+            radial-gradient(
+                circle at ${x}px ${y}px, 
+                rgba(255,255,255,0.1) 0%, 
+                rgba(0,0,0,0.8) 80%
+            )
         `;
-
-        // The Cube (CSS 3D for performance > WebGL overhead for simple shape)
-        const cube = document.createElement('div');
-        cube.id = 'holo-shape';
-        cube.style.cssText = `
-            width: 100%;
-            height: 100%;
-            border: 2px solid #00ffcc;
-            box-shadow: 0 0 15px #00ffcc;
-            transform-style: preserve-3d;
-            border-radius: 50%; /* Makes it an orb wireframe look */
-        `;
-
-        div.appendChild(cube);
-        document.body.appendChild(div);
-        this.element = cube;
     }
 
-    startRenderLoop() {
-        setInterval(() => {
-            this.angle += 2;
-            this.element.style.transform = `
-                rotateX(${this.angle}deg) 
-                rotateY(${this.angle * 1.5}deg)
-                scale(${1 + Math.sin(this.angle / 50) * 0.2})
-            `;
-        }, 16); // 60fps
-    }
-
-    pulseThinking() {
-        this.element.style.borderColor = '#ff0033'; // Red active state
-        setTimeout(() => this.element.style.borderColor = '#00ffcc', 500);
+    reset(card) {
+        card.style.transform = 'perspective(1000px) rotateX(0) rotateY(0)';
+        card.style.background = 'rgba(0,0,0,0.8)';
     }
 }
 
-// Auto-boot
-if (typeof window !== 'undefined') {
-    window.holoAgent = new HoloAgent();
-}
+// Auto-init on load
+document.addEventListener('DOMContentLoaded', () => {
+    new HoloAgent('.holo-card');
+});
