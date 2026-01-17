@@ -9,6 +9,7 @@
         "test:perf": "npx lighthouse-ci --url=https://jetnexo.com.br --budget=performance:100,accessibility:100,seo:100"
     },
     "dependencies": {
+        "@astrojs/partytown": "^2.0.0",
         "@astrojs/react": "^3.1.5",
         "@astrojs/sitemap": "^3.0.0",
         "@astrojs/tailwind": "^5.1.1",
