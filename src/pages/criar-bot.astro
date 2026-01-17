@@ -3,190 +3,188 @@ import Layout from '../layouts/Layout.astro';
 ---
 <Layout title="Criar Bot GetNexo – Instale em qualquer site">
 
-  <header style="background:#0a0e17; padding:3rem; text-align:center;">
-    <h1 style="color:#00ff9d; font-size:3.5rem;">Criar Bot GetNexo</h1>
-    <p style="color:#e5e7eb; font-size:1.4rem; margin:1rem 0;">Coloque vendas 24h no seu site em 2 minutos</p>
-  </header>
+  <div class="wizard-container">
+    <header class="wizard-header">
+      <h1>Criar Bot GetNexo</h1>
+      <p>Configure seu assistente de vendas em 3 passos simples</p>
+    </header>
 
-  <main style="padding:3rem 5%; display:flex; justify-content:center; gap:3rem; flex-wrap:wrap;">
+    <!-- Step Indicators -->
+    <div class="step-indicators">
+      <div class="step-item active" data-step="1">
+        <span class="step-number">1</span>
+        <span class="step-label">Negócio</span>
+      </div>
+      <div class="step-line"></div>
+      <div class="step-item" data-step="2">
+        <span class="step-number">2</span>
+        <span class="step-label">Loja</span>
+      </div>
+      <div class="step-line"></div>
+      <div class="step-item" data-step="3">
+        <span class="step-number">3</span>
+        <span class="step-label">Pronto</span>
+      </div>
+    </div>
 
-    <!-- Passo 1: Informações do Negócio -->
-    <div class="passo" id="step1" style="flex:1; min-width:350px; max-width:450px; background:rgba(20,30,50,0.6); border-radius:16px; padding:2rem; border:1px solid #00d4ff55;">
-      <h3 style="color:#00ff9d; font-size:1.5rem; margin-bottom:1.5rem;">📋 1. Informações do Negócio</h3>
-      <form id="form1">
-        <div class="field">
-          <label>Nome do Bot / Loja *</label>
-          <input name="nome" placeholder="Ex: Loja da Maria" required />
+    <!-- Step 1: Business Info -->
+    <div class="step-content" id="step1">
+      <h2>📋 Informações do Negócio</h2>
+      <form id="form1" class="wizard-form">
+        <div class="form-grid">
+          <div class="field">
+            <label>Nome do Bot / Loja *</label>
+            <input type="text" name="nome" placeholder="Ex: Loja da Maria" required />
+          </div>
+          <div class="field">
+            <label>WhatsApp *</label>
+            <input type="tel" name="whatsapp" placeholder="(11) 99999-9999" required />
+          </div>
+          <div class="field">
+            <label>E-mail Comercial *</label>
+            <input type="email" name="email" placeholder="contato@sualoja.com.br" required />
+          </div>
+          <div class="field">
+            <label>Segmento *</label>
+            <select name="segmento" required>
+              <option value="">Selecione...</option>
+              <option value="moda">Moda & Vestuário</option>
+              <option value="eletronicos">Eletrônicos</option>
+              <option value="cosmeticos">Cosméticos</option>
+              <option value="alimentacao">Alimentação</option>
+              <option value="servicos">Serviços</option>
+              <option value="outro">Outro</option>
+            </select>
+          </div>
         </div>
-        
-        <div class="field">
-          <label>WhatsApp do Atendimento *</label>
-          <input name="whatsapp" type="tel" placeholder="(11) 99999-9999" required />
-        </div>
-        
-        <div class="field">
-          <label>E-mail Comercial *</label>
-          <input name="email" type="email" placeholder="contato@sualoja.com.br" required />
-        </div>
-        
-        <div class="field">
-          <label>URL do Site (opcional)</label>
-          <input name="site" placeholder="https://sualoja.com.br" />
-        </div>
-        
-        <div class="field">
-          <label>Segmento do Negócio *</label>
-          <select name="segmento" required>
-            <option value="">Selecione...</option>
-            <option value="moda">Moda & Vestuário</option>
-            <option value="eletronicos">Eletrônicos & Tech</option>
-            <option value="cosmeticos">Cosméticos & Beleza</option>
-            <option value="alimentacao">Alimentação</option>
-            <option value="servicos">Serviços & Consultoria</option>
-            <option value="saude">Saúde & Bem-estar</option>
-            <option value="educacao">Educação & Cursos</option>
-            <option value="imoveis">Imóveis</option>
-            <option value="automotivo">Automotivo</option>
-            <option value="pet">Pet Shop</option>
-            <option value="outro">Outro</option>
-          </select>
-        </div>
-        
-        <div class="field">
-          <label>Mensagem de Boas-vindas (opcional)</label>
-          <textarea name="mensagem" rows="3" placeholder="Ex: Olá! Sou a IA da Loja da Maria. Como posso ajudar?"></textarea>
-        </div>
-        
-        <button type="submit" class="btn-cta" style="width:100%; margin-top:1rem;">Próximo →</button>
+        <button type="submit" class="btn-next">Próximo →</button>
       </form>
     </div>
 
-    <!-- Passo 2: Integração com E-commerce -->
-    <div class="passo" id="step2" style="flex:1; min-width:350px; max-width:450px; background:rgba(20,30,50,0.6); border-radius:16px; padding:2rem; border:1px solid #00d4ff55; opacity:0.3; transition: opacity 0.3s;">
-      <h3 style="color:#00ff9d; font-size:1.5rem; margin-bottom:1rem;">🛒 2. Conectar à Loja</h3>
-      <p style="color: #94a3b8; margin-bottom:1.5rem;">Escolha sua plataforma de e-commerce:</p>
+    <!-- Step 2: E-commerce Integration -->
+    <div class="step-content hidden" id="step2">
+      <h2>🛒 Conectar à Loja</h2>
+      <p class="step-desc">Escolha sua plataforma de e-commerce (opcional):</p>
       
       <div class="platforms-grid">
-        <label class="platform-card">
+        <label class="platform-card selected">
           <input type="radio" name="plataforma" value="nenhuma" checked />
-          <span class="platform-name">🚫 Sem integração</span>
-          <span class="platform-desc">Só chat, sem catálogo</span>
+          <div class="platform-icon">🚫</div>
+          <span class="platform-name">Sem integração</span>
         </label>
         
         <label class="platform-card">
           <input type="radio" name="plataforma" value="shopify" />
-          <span class="platform-name">🟢 Shopify</span>
-          <span class="platform-desc">Integração nativa</span>
+          <img src="https://cdn.shopify.com/s/files/1/0558/6938/1056/files/shopify-icon.svg" alt="Shopify" class="platform-logo" onerror="this.outerHTML='<div class=\'platform-icon\'>🟢</div>'" />
+          <span class="platform-name">Shopify</span>
         </label>
         
         <label class="platform-card">
           <input type="radio" name="plataforma" value="woocommerce" />
-          <span class="platform-name">🟣 WooCommerce</span>
-          <span class="platform-desc">Plugin WordPress</span>
+          <img src="https://woocommerce.com/wp-content/themes/flavor-flavor/assets/images/woo-logo.svg" alt="WooCommerce" class="platform-logo" onerror="this.outerHTML='<div class=\'platform-icon\'>🟣</div>'" />
+          <span class="platform-name">WooCommerce</span>
         </label>
         
         <label class="platform-card">
           <input type="radio" name="plataforma" value="vtex" />
-          <span class="platform-name">🔴 VTEX</span>
-          <span class="platform-desc">Enterprise</span>
+          <div class="platform-icon" style="color:#f71963;">V</div>
+          <span class="platform-name">VTEX</span>
         </label>
         
         <label class="platform-card">
           <input type="radio" name="plataforma" value="nuvemshop" />
-          <span class="platform-name">☁️ Nuvemshop</span>
-          <span class="platform-desc">Tiendanube</span>
+          <div class="platform-icon">☁️</div>
+          <span class="platform-name">Nuvemshop</span>
         </label>
         
         <label class="platform-card">
           <input type="radio" name="plataforma" value="mercadolivre" />
-          <span class="platform-name">🟡 Mercado Livre</span>
-          <span class="platform-desc">Marketplace</span>
+          <div class="platform-icon" style="color:#ffe600;">M</div>
+          <span class="platform-name">Mercado Livre</span>
         </label>
         
         <label class="platform-card">
           <input type="radio" name="plataforma" value="tray" />
-          <span class="platform-name">🔵 Tray</span>
-          <span class="platform-desc">Locaweb</span>
+          <div class="platform-icon" style="color:#00a8e8;">T</div>
+          <span class="platform-name">Tray</span>
         </label>
         
         <label class="platform-card">
           <input type="radio" name="plataforma" value="lojaintegrada" />
-          <span class="platform-name">🟠 Loja Integrada</span>
-          <span class="platform-desc">Vtex Light</span>
-        </label>
-        
-        <label class="platform-card">
-          <input type="radio" name="plataforma" value="magento" />
-          <span class="platform-name">🟤 Magento</span>
-          <span class="platform-desc">Adobe Commerce</span>
-        </label>
-        
-        <label class="platform-card">
-          <input type="radio" name="plataforma" value="opencart" />
-          <span class="platform-name">🔷 OpenCart</span>
-          <span class="platform-desc">Open Source</span>
-        </label>
-        
-        <label class="platform-card">
-          <input type="radio" name="plataforma" value="prestashop" />
-          <span class="platform-name">💎 PrestaShop</span>
-          <span class="platform-desc">Europa</span>
-        </label>
-        
-        <label class="platform-card">
-          <input type="radio" name="plataforma" value="wix" />
-          <span class="platform-name">⬛ Wix</span>
-          <span class="platform-desc">Site Builder</span>
-        </label>
-        
-        <label class="platform-card">
-          <input type="radio" name="plataforma" value="api" />
-          <span class="platform-name">⚙️ API Própria</span>
-          <span class="platform-desc">Custom REST</span>
+          <div class="platform-icon" style="color:#ff6600;">L</div>
+          <span class="platform-name">Loja Integrada</span>
         </label>
       </div>
       
-      <div id="api-config" style="margin-top:1.5rem; display:none;">
-        <div class="field">
-          <label>URL da API</label>
-          <input name="api_url" placeholder="https://api.sualoja.com.br/products" />
-        </div>
-        <div class="field">
-          <label>Chave/Token (se houver)</label>
-          <input name="api_key" placeholder="sk_live_xxxxx" />
-        </div>
-      </div>
-      
-      <button type="button" id="btn-step2" class="btn-cta" style="width:100%; margin-top:1.5rem;" disabled>Gerar Código →</button>
-    </div>
-
-    <!-- Passo 3: Código do Widget -->
-    <div class="passo" id="step3" style="flex:1; min-width:350px; max-width:450px; background:rgba(20,30,50,0.6); border-radius:16px; padding:2rem; border:2px solid #00ff9d; opacity:0.1; transition: opacity 0.3s;">
-      <h3 style="color:#00ff9d; font-size:1.5rem; margin-bottom:1rem;">✅ 3. Pronto! Cole no site</h3>
-      
-      <div id="bot-summary" style="background:#0a0e17; padding:1rem; border-radius:8px; margin-bottom:1rem;">
-        <p style="color:#94a3b8; margin:0;"><strong style="color:#00d4ff;">Bot:</strong> <span id="sum-nome">-</span></p>
-        <p style="color:#94a3b8; margin:0;"><strong style="color:#00d4ff;">WhatsApp:</strong> <span id="sum-whatsapp">-</span></p>
-        <p style="color:#94a3b8; margin:0;"><strong style="color:#00d4ff;">Integração:</strong> <span id="sum-plataforma">-</span></p>
-      </div>
-      
-      <p style="color: #94a3b8;">Cole este código antes do <code>&lt;/body&gt;</code>:</p>
-      <code id="widget-code" style="background:#0a0e17; padding:1rem; border-radius:8px; display:block; white-space:pre-wrap; color:#00ff9d; font-size:0.85rem; margin:1rem 0; word-break: break-all; border:1px solid #00ff9d55;">
-&lt;script src="https://getnexo.com.br/widget.js" data-bot="carregando..."&gt;&lt;/script&gt;
-      </code>
-      <button onclick="copiar()" class="btn-cta" style="width:100%;">📋 Copiar Código</button>
-      
-      <div style="margin-top:1.5rem; padding:1rem; background:rgba(0,255,157,0.1); border-radius:8px;">
-        <p style="color:#00ff9d; margin:0; font-size:0.9rem;">🎉 <strong>Parabéns!</strong> Seu bot já está ativo. Acesse o <a href="/admin" style="color:#00d4ff;">Painel Admin</a> para gerenciar.</p>
+      <div class="step-actions">
+        <button type="button" class="btn-back" onclick="goToStep(1)">← Voltar</button>
+        <button type="button" class="btn-next" onclick="goToStep(3)">Gerar Código →</button>
       </div>
     </div>
 
-  </main>
+    <!-- Step 3: Widget Code -->
+    <div class="step-content hidden" id="step3">
+      <h2>✅ Pronto!</h2>
+      
+      <div class="success-box">
+        <div class="success-icon">🎉</div>
+        <h3>Seu bot foi criado!</h3>
+        <p>Cole o código abaixo antes do <code>&lt;/body&gt;</code> no seu site:</p>
+      </div>
+      
+      <div class="code-box">
+        <code id="widget-code">&lt;script src="https://getnexo.com.br/widget.js" data-bot="..."&gt;&lt;/script&gt;</code>
+        <button onclick="copiarCodigo()" class="btn-copy">📋 Copiar</button>
+      </div>
+      
+      <div class="next-steps">
+        <h4>Próximos passos:</h4>
+        <ul>
+          <li>✅ Cole o código no seu site</li>
+          <li>✅ Acesse o <a href="/admin">Painel Admin</a> para configurar</li>
+          <li>✅ Teste o chat no seu site</li>
+        </ul>
+      </div>
+      
+      <div class="step-actions">
+        <button type="button" class="btn-back" onclick="goToStep(2)">← Voltar</button>
+        <a href="/admin" class="btn-next">Ir para o Admin →</a>
+      </div>
+    </div>
+  </div>
 
   <script is:inline>
     let botData = {};
+    let currentStep = 1;
     
-    // Step 1 Submit
+    function goToStep(step) {
+      // Update step indicators
+      document.querySelectorAll('.step-item').forEach((el, i) => {
+        if (i + 1 <= step) {
+          el.classList.add('active');
+        } else {
+          el.classList.remove('active');
+        }
+      });
+      
+      // Show/hide content
+      document.querySelectorAll('.step-content').forEach((el, i) => {
+        if (i + 1 === step) {
+          el.classList.remove('hidden');
+        } else {
+          el.classList.add('hidden');
+        }
+      });
+      
+      currentStep = step;
+      
+      // If step 3, generate code
+      if (step === 3) {
+        generateCode();
+      }
+    }
+    
+    // Form 1 Submit
     document.getElementById('form1').onsubmit = (e) => {
       e.preventDefault();
       const form = new FormData(e.target);
@@ -194,145 +192,349 @@ import Layout from '../layouts/Layout.astro';
         nome: form.get('nome'),
         whatsapp: form.get('whatsapp'),
         email: form.get('email'),
-        site: form.get('site'),
-        segmento: form.get('segmento'),
-        mensagem: form.get('mensagem')
+        segmento: form.get('segmento')
       };
-      
-      document.getElementById('step2').style.opacity = 1;
-      document.getElementById('btn-step2').disabled = false;
-      document.getElementById('step1').style.border = '1px solid #00ff9d';
+      goToStep(2);
     };
     
-    // Platform selection
-    document.querySelectorAll('input[name="plataforma"]').forEach(el => {
-      el.onchange = (e) => {
-        const apiConfig = document.getElementById('api-config');
-        if (e.target.value === 'api') {
-          apiConfig.style.display = 'block';
-        } else {
-          apiConfig.style.display = 'none';
-        }
-      };
+    // Platform selection styling
+    document.querySelectorAll('.platform-card').forEach(card => {
+      card.addEventListener('click', () => {
+        document.querySelectorAll('.platform-card').forEach(c => c.classList.remove('selected'));
+        card.classList.add('selected');
+      });
     });
     
-    // Step 2 Submit
-    document.getElementById('btn-step2').onclick = () => {
+    function generateCode() {
       const plataforma = document.querySelector('input[name="plataforma"]:checked').value;
       botData.plataforma = plataforma;
+      botData.id = 'bot_' + Date.now();
       
-      // Generate bot ID
-      const botId = 'bot_' + Date.now();
-      botData.id = botId;
-      
-      // Update summary
-      document.getElementById('sum-nome').textContent = botData.nome;
-      document.getElementById('sum-whatsapp').textContent = botData.whatsapp;
-      document.getElementById('sum-plataforma').textContent = plataforma === 'nenhuma' ? 'Sem integração' : plataforma.toUpperCase();
-      
-      // Generate widget code
       const scriptUrl = window.location.hostname === 'localhost' 
         ? 'http://localhost:8080/widget.js' 
         : 'https://getnexo.com.br/widget.js';
       
       document.getElementById('widget-code').textContent = 
-        `<script src="${scriptUrl}" data-bot="${botId}" data-theme="neon"><\/script>`;
-      
-      // Show step 3
-      document.getElementById('step3').style.opacity = 1;
-      document.getElementById('step2').style.border = '1px solid #00ff9d';
-      
-      // Scroll to step 3
-      document.getElementById('step3').scrollIntoView({ behavior: 'smooth' });
-    };
-    
-    // Copy function
-    window.copiar = function() {
-      const code = document.getElementById('widget-code');
-      navigator.clipboard.writeText(code.textContent).then(() => {
-        alert('✅ Código copiado! Cole antes do </body> no seu site.');
-      });
+        `<script src="${scriptUrl}" data-bot="${botData.id}" data-theme="neon"><\/script>`;
     }
+    
+    window.copiarCodigo = function() {
+      const code = document.getElementById('widget-code').textContent;
+      navigator.clipboard.writeText(code).then(() => {
+        alert('✅ Código copiado!');
+      });
+    };
   </script>
 </Layout>
 
 <style>
-  .btn-cta { 
-    background: linear-gradient(90deg, #00d4ff, #00ff9d); 
-    color: black; 
-    padding: .8rem 2rem; 
-    border: none; 
-    border-radius: 50px; 
-    font-weight: 700; 
-    cursor: pointer; 
-    transition: transform 0.2s; 
-  }
-  .btn-cta:hover { transform: scale(1.05); }
-  .btn-cta:disabled { opacity: 0.5; cursor: not-allowed; transform: none; }
-  
-  .field { margin-bottom: 1rem; }
-  .field label { 
-    display: block; 
-    color: #94a3b8; 
-    font-size: 0.9rem; 
-    margin-bottom: 0.3rem; 
-  }
-  .field input, .field select, .field textarea { 
-    width: 100%; 
-    padding: 0.8rem; 
-    border-radius: 8px; 
-    background: #1e293b; 
-    color: white; 
-    border: 1px solid #334155; 
-    font-size: 1rem;
-  }
-  .field input:focus, .field select:focus, .field textarea:focus { 
-    outline: none; 
-    border-color: #00d4ff; 
+  .wizard-container {
+    max-width: 700px;
+    margin: 0 auto;
+    padding: 3rem 2rem;
+    min-height: 100vh;
   }
   
-  .platforms-grid {
+  .wizard-header {
+    text-align: center;
+    margin-bottom: 3rem;
+  }
+  
+  .wizard-header h1 {
+    color: #00ff9d;
+    font-size: 2.5rem;
+    margin: 0;
+  }
+  
+  .wizard-header p {
+    color: #94a3b8;
+    margin-top: 0.5rem;
+  }
+  
+  /* Step Indicators */
+  .step-indicators {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 0.5rem;
+    margin-bottom: 3rem;
+  }
+  
+  .step-item {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 0.5rem;
+    opacity: 0.4;
+    transition: opacity 0.3s;
+  }
+  
+  .step-item.active {
+    opacity: 1;
+  }
+  
+  .step-number {
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    background: #1e293b;
+    border: 2px solid #334155;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: white;
+    font-weight: bold;
+  }
+  
+  .step-item.active .step-number {
+    background: #00ff9d;
+    border-color: #00ff9d;
+    color: black;
+  }
+  
+  .step-label {
+    font-size: 0.8rem;
+    color: #94a3b8;
+  }
+  
+  .step-line {
+    width: 60px;
+    height: 2px;
+    background: #334155;
+  }
+  
+  /* Step Content */
+  .step-content {
+    background: rgba(20,30,50,0.6);
+    border-radius: 16px;
+    padding: 2rem;
+    border: 1px solid #1e293b;
+  }
+  
+  .step-content.hidden {
+    display: none;
+  }
+  
+  .step-content h2 {
+    color: #00d4ff;
+    margin: 0 0 1.5rem 0;
+    font-size: 1.4rem;
+  }
+  
+  .step-desc {
+    color: #94a3b8;
+    margin-bottom: 1.5rem;
+  }
+  
+  /* Form */
+  .form-grid {
     display: grid;
     grid-template-columns: repeat(2, 1fr);
+    gap: 1rem;
+  }
+  
+  @media (max-width: 600px) {
+    .form-grid {
+      grid-template-columns: 1fr;
+    }
+  }
+  
+  .field {
+    display: flex;
+    flex-direction: column;
+    gap: 0.3rem;
+  }
+  
+  .field label {
+    color: #94a3b8;
+    font-size: 0.85rem;
+  }
+  
+  .field input, .field select {
+    padding: 0.8rem;
+    border-radius: 8px;
+    background: #0f172a;
+    color: white;
+    border: 1px solid #334155;
+    font-size: 1rem;
+  }
+  
+  .field input:focus, .field select:focus {
+    outline: none;
+    border-color: #00d4ff;
+  }
+  
+  /* Buttons */
+  .btn-next {
+    background: linear-gradient(90deg, #00d4ff, #00ff9d);
+    color: black;
+    padding: 1rem 2rem;
+    border: none;
+    border-radius: 50px;
+    font-weight: 700;
+    cursor: pointer;
+    margin-top: 1.5rem;
+    font-size: 1rem;
+    display: inline-block;
+    text-decoration: none;
+  }
+  
+  .btn-back {
+    background: transparent;
+    color: #94a3b8;
+    padding: 1rem 2rem;
+    border: 1px solid #334155;
+    border-radius: 50px;
+    cursor: pointer;
+    font-size: 1rem;
+  }
+  
+  .step-actions {
+    display: flex;
+    justify-content: space-between;
+    margin-top: 2rem;
+  }
+  
+  /* Platforms Grid */
+  .platforms-grid {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
     gap: 0.8rem;
+  }
+  
+  @media (max-width: 600px) {
+    .platforms-grid {
+      grid-template-columns: repeat(2, 1fr);
+    }
   }
   
   .platform-card {
     display: flex;
     flex-direction: column;
-    padding: 0.8rem;
-    background: #1e293b;
-    border: 1px solid #334155;
-    border-radius: 8px;
+    align-items: center;
+    padding: 1rem;
+    background: #0f172a;
+    border: 2px solid #1e293b;
+    border-radius: 12px;
     cursor: pointer;
     transition: all 0.2s;
+    gap: 0.5rem;
   }
+  
   .platform-card:hover {
-    border-color: #00d4ff;
+    border-color: #334155;
   }
-  .platform-card input[type="radio"] {
-    display: none;
-  }
-  .platform-card input[type="radio"]:checked + .platform-name {
-    color: #00ff9d;
-  }
-  .platform-card:has(input:checked) {
+  
+  .platform-card.selected {
     border-color: #00ff9d;
     background: rgba(0,255,157,0.1);
   }
-  .platform-name {
-    font-weight: 600;
-    color: #e5e7eb;
-    font-size: 0.95rem;
-  }
-  .platform-desc {
-    font-size: 0.75rem;
-    color: #64748b;
+  
+  .platform-card input {
+    display: none;
   }
   
-  @media (max-width: 768px) {
-    .platforms-grid {
-      grid-template-columns: 1fr;
-    }
+  .platform-icon {
+    font-size: 2rem;
+    height: 40px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-weight: bold;
+  }
+  
+  .platform-logo {
+    width: 40px;
+    height: 40px;
+    object-fit: contain;
+  }
+  
+  .platform-name {
+    color: #e5e7eb;
+    font-size: 0.8rem;
+    text-align: center;
+  }
+  
+  /* Success Box */
+  .success-box {
+    text-align: center;
+    padding: 2rem;
+    background: rgba(0,255,157,0.1);
+    border-radius: 12px;
+    margin-bottom: 1.5rem;
+  }
+  
+  .success-icon {
+    font-size: 3rem;
+    margin-bottom: 1rem;
+  }
+  
+  .success-box h3 {
+    color: #00ff9d;
+    margin: 0;
+  }
+  
+  .success-box p {
+    color: #94a3b8;
+    margin-top: 0.5rem;
+  }
+  
+  /* Code Box */
+  .code-box {
+    background: #0f172a;
+    border-radius: 8px;
+    padding: 1rem;
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+    border: 1px solid #00ff9d55;
+  }
+  
+  .code-box code {
+    flex: 1;
+    color: #00ff9d;
+    font-size: 0.85rem;
+    word-break: break-all;
+  }
+  
+  .btn-copy {
+    background: #00ff9d;
+    color: black;
+    border: none;
+    padding: 0.5rem 1rem;
+    border-radius: 6px;
+    cursor: pointer;
+    font-weight: 600;
+    white-space: nowrap;
+  }
+  
+  /* Next Steps */
+  .next-steps {
+    margin-top: 1.5rem;
+    padding: 1rem;
+    background: #1e293b;
+    border-radius: 8px;
+  }
+  
+  .next-steps h4 {
+    color: #00d4ff;
+    margin: 0 0 0.5rem 0;
+    font-size: 0.9rem;
+  }
+  
+  .next-steps ul {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+  }
+  
+  .next-steps li {
+    color: #94a3b8;
+    padding: 0.3rem 0;
+    font-size: 0.9rem;
+  }
+  
+  .next-steps a {
+    color: #00d4ff;
   }
 </style>
