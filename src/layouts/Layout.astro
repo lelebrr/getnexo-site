@@ -166,5 +166,22 @@ const { title = "GetNexo – Assistente de Vendas WhatsApp Grátis", description
       animar();
     })();
   </script>
+  <!-- Chatwoot Widget -->
+  <script is:inline>
+    (function(d,t) {
+      var BASE_URL="https://chat.getnexo.com.br";
+      var g=d.createElement(t),s=d.getElementsByTagName(t)[0];
+      g.src=BASE_URL+"/packs/js/sdk.js";
+      g.defer = true;
+      g.async = true;
+      s.parentNode.insertBefore(g,s);
+      g.onload=function(){
+        window.chatwootSDK.run({
+          websiteToken: '5nhP3BH63pxF6HcNQLezaQCC',
+          baseUrl: BASE_URL
+        })
+      }
+    })(document,"script");
+  </script>
 </body>
 </html>
