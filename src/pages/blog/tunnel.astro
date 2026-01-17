@@ -1,0 +1,33 @@
+---
+import Layout from '../../layouts/Layout.astro';
+---
+
+<Layout title="Cloudflare Tunnel: Como Expor Serviços Locais de Forma Segura e Gratuita">
+  <article class="post">
+    <h1>Cloudflare Tunnel: Zero Trust e HTTPS Grátis</h1>
+    <time>20 de Janeiro de 2026 • 6 min</time>
+
+    <p>Esqueça abrir portas no roteador. O Cloudflare Tunnel é a maneira segura de expor seu assistente local para o mundo.</p>
+    <p>Com criptografia ponta a ponta e proteção contra DDoS, seu servidor caseiro vira uma fortaleza.</p>
+
+    <h2>Benefícios do Tunnel</h2>
+    <ul>
+      <li>Sem IP público exposto</li>
+      <li>HTTPS automático com certificado válido</li>
+      <li>Firewall de aplicação (WAF) incluído</li>
+      <li>Acesso Zero Trust para o painel de admin</li>
+    </ul>
+
+    <p>Veja em ação: <a href="https://chat.getnexo.com.br">Acessar Demo</a></p>
+    <p><a href="/blog">← Voltar ao Blog</a></p>
+  </article>
+</Layout>
+
+<style>
+  .post { max-width: 900px; margin: 6rem auto 4rem; padding: 0 5%; }
+  .post h1 { font-size: 3.5rem; background: linear-gradient(90deg, var(--primary), var(--success)); -webkit-background-clip: text; color: transparent; }
+  .post time { font-size: 1rem; color: #64748b; display: block; margin-bottom: 2rem; }
+  .post ul { list-style: none; padding: 0; }
+  .post li { margin: 1rem 0; font-size: 1.1rem; }
+  .post li:before { content: "→"; color: var(--success); margin-right: 0.5rem; }
+</style>

@@ -1,0 +1,33 @@
+---
+import Layout from '../../layouts/Layout.astro';
+---
+
+<Layout title="Segurança no WSL: Como Rodar Assistente de Vendas IA em 8GB de RAM sem Lag">
+  <article class="post">
+    <h1>Segurança no WSL e Performance em 8GB</h1>
+    <time>19 de Janeiro de 2026 • 4 min</time>
+
+    <p>Rodar IA localmente não precisa de um supercomputador. Otimizamos o GetNexo para rodar liso em 8GB de RAM.</p>
+    <p>Utilizando WSL 2 e Docker, garantimos isolamento total e máxima performance.</p>
+
+    <h2>Dicas de Otimização</h2>
+    <ul>
+      <li>Limite de memória nos containers Docker</li>
+      <li>Uso de versões Alpine Linux</li>
+      <li>Swappiness configurado corretamente no Linux</li>
+      <li>Tunnelamento seguro sem expor portas</li>
+    </ul>
+
+    <p>Teste a performance: <a href="https://chat.getnexo.com.br">Acessar Demo</a></p>
+    <p><a href="/blog">← Voltar ao Blog</a></p>
+  </article>
+</Layout>
+
+<style>
+  .post { max-width: 900px; margin: 6rem auto 4rem; padding: 0 5%; }
+  .post h1 { font-size: 3.5rem; background: linear-gradient(90deg, var(--primary), var(--success)); -webkit-background-clip: text; color: transparent; }
+  .post time { font-size: 1rem; color: #64748b; display: block; margin-bottom: 2rem; }
+  .post ul { list-style: none; padding: 0; }
+  .post li { margin: 1rem 0; font-size: 1.1rem; }
+  .post li:before { content: "→"; color: var(--success); margin-right: 0.5rem; }
+</style>
