@@ -1,0 +1,8 @@
+/* TEAM */
+  Creator: Lele
+  AI: JetNexo (Gemini 1.5 Pro)
+  
+/* SITE */
+  Stack: Astro, React, Tailwind, Cloudflare
+  Speed: Unbeatable
+  Mission: Sales Automation

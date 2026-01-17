@@ -1,0 +1,79 @@
+---
+layout: ../layouts/Layout.astro
+title: "Resultados Reais | JetNexo"
+description: "Veja os números reais de quem usa JetNexo. De 4 minutos para 0.8s de atendimento."
+---
+
+<main class="pt-32 p-6 max-w-5xl mx-auto min-h-screen">
+    <h1 class="text-5xl font-black text-center mb-4 text-white">Resultados reais. <span class="text-yellow-400">Números reais.</span></h1>
+    <p class="text-center text-gray-400 text-xl mb-16">O que acontece quando você troca "achismo" por dados.</p>
+
+    <!-- 2. Bloco O QUE A GENTE MELHORA -->
+    <div class="overflow-x-auto bg-gray-900/50 rounded-2xl border border-gray-800 p-8 shadow-2xl">
+        <table class="border-collapse w-full text-lg">
+            <thead>
+                <tr class="text-left border-b border-gray-700">
+                    <th class="w-1/2 py-6 font-black text-gray-400 uppercase tracking-wider pl-4">Problema antigo</th>
+                    <th class="w-1/2 py-6 font-black text-white uppercase tracking-wider pl-4 bg-red-900/20 rounded-t-lg">Depois do JetNexo</th>
+                </tr>
+            </thead>
+            <tbody class="text-gray-200">
+                <tr class="border-b border-gray-800 hover:bg-gray-800/30 transition">
+                    <td class="py-6 pl-4 font-medium text-red-400">Abandono de carrinho</td>
+                    <td class="py-6 pl-4 font-bold text-green-400 text-2xl flex items-center">
+                        <span class="mr-2">📉</span> –75 %
+                    </td>
+                </tr>
+                <tr class="border-b border-gray-800 hover:bg-gray-800/30 transition">
+                    <td class="py-6 pl-4 font-medium text-red-400">Tempo médio de resposta</td>
+                    <td class="py-6 pl-4 font-bold text-white flex items-center">
+                        <span class="mr-2">⚡</span> de 4 min <span class="mx-2 text-gray-500">→</span> <span class="text-yellow-400">0,8 s</span>
+                    </td>
+                </tr>
+                <tr class="border-b border-gray-800 hover:bg-gray-800/30 transition">
+                    <td class="py-6 pl-4 font-medium text-red-400">Taxa de conversão no chat</td>
+                    <td class="py-6 pl-4 font-bold text-white flex items-center">
+                        <span class="mr-2">💰</span> de 3 % <span class="mx-2 text-gray-500">→</span> <span class="text-green-400">31 %</span>
+                    </td>
+                </tr>
+                <tr class="border-b border-gray-800 hover:bg-gray-800/30 transition">
+                    <td class="py-6 pl-4 font-medium text-red-400">Custo por ticket</td>
+                    <td class="py-6 pl-4 font-bold text-white flex items-center">
+                        <span class="mr-2">💸</span> de R$ 1,30 <span class="mx-2 text-gray-500">→</span> <span class="text-green-400">R$ 0,08</span>
+                    </td>
+                </tr>
+                <tr>
+                    <td class="py-6 pl-4 font-medium text-red-400">NPS (Satisfação)</td>
+                    <td class="py-6 pl-4 font-bold text-white flex items-center">
+                        <span class="mr-2">⭐</span> de 42 <span class="mx-2 text-gray-500">→</span> <span class="text-yellow-400">88</span>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+
+    <!-- 3. Seção ANTES / DEPOIS (Visual Proof) -->
+    <div class="grid md:grid-cols-2 gap-8 my-16 max-w-4xl mx-auto fade">
+        <div class="text-center group">
+            <div class="overflow-hidden rounded-xl mb-6 shadow-lg border border-gray-800">
+                <img src="/antes.jpg" alt="Antes: fila de 12 pessoas" class="w-full h-64 object-cover transform group-hover:scale-105 transition duration-700 opacity-80 group-hover:opacity-100">
+            </div>
+            <h3 class="text-2xl font-bold text-gray-500 mb-2">Antes do JetNexo</h3>
+            <p class="text-gray-400">12 pessoas na fila, 6 perdidas, R$ 4k deixados na mesa.</p>
+        </div>
+        <div class="text-center group">
+             <div class="overflow-hidden rounded-xl mb-6 shadow-[0_0_30px_rgba(255,213,0,0.2)] border border-yellow-500/30">
+                <img src="/depois.jpg" alt="Depois: chat IA fechando venda" class="w-full h-64 object-cover transform group-hover:scale-105 transition duration-700">
+            </div>
+            <h3 class="text-2xl font-bold text-yellow-400 mb-2">Com o JetNexo</h3>
+            <p class="text-gray-300">0 fila, R$ 8k vendidos, 2 atendentes livres para estratégia.</p>
+        </div>
+    </div>
+
+    <div class="mt-16 text-center fade">
+        <a href="/" class="inline-block bg-red-600 hover:bg-red-700 text-white font-black py-4 px-10 rounded-full text-xl transition transform hover:scale-105 shadow-lg shadow-red-900/50">
+            QUERO ESSES NÚMEROS
+        </a>
+        <p class="mt-4 text-gray-500 text-sm">Atualizado com dados de Janeiro/2026.</p>
+    </div>
+</main>

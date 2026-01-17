@@ -1,0 +1,60 @@
+---
+layout: ../layouts/Layout.astro
+title: "Buscar | JetNexo"
+---
+
+<main class="pt-32 p-6 max-w-4xl mx-auto min-h-screen">
+    <h1 class="text-3xl font-bold text-white mb-8 text-center">Encontre o que você precisa</h1>
+
+    <form action="/buscar" method="GET" class="mb-12">
+        <div class="relative">
+            <input 
+                name="q" 
+                type="text"
+                placeholder="Procure por 'frete', 'upsell' ou 'IA'" 
+                class="w-full p-4 bg-gray-900 border border-gray-700 rounded-lg text-white placeholder-gray-500 focus:outline-none focus:border-red-500 focus:ring-1 focus:ring-red-500 transition"
+            />
+            <button type="submit" class="absolute right-2 top-2 bg-red-600 text-white px-6 py-2 rounded-md hover:bg-red-700 transition">
+                Buscar
+            </button>
+        </div>
+    </form>
+
+    <div id="results" class="text-center text-gray-400">
+        <!-- Client-side logic would go here or SSR if n8n webhook was truly integrated backend-side -->
+        <p>Digite algo para pesquisar na nossa base de conhecimento.</p>
+    </div>
+</main>
+
+<script>
+    // Simple client-side simulation for demo purposes
+    // In production, this would hit the n8n webhook
+    const params = new URLSearchParams(window.location.search);
+    const query = params.get('q');
+    
+    if (query) {
+        const resultsContainer = document.getElementById('results');
+        resultsContainer.innerHTML = `
+            <div class="animate-pulse flex space-x-4 justify-center mb-4">
+               <div class="h-4 bg-gray-700 rounded w-1/4"></div>
+            </div>
+            <p>Buscando por "<strong>${query}</strong>" na nossa IA...</p>
+        `;
+        
+        // Simulating delay
+        setTimeout(() => {
+             resultsContainer.innerHTML = `
+                <div class="grid gap-4 text-left">
+                    <a href="/blog/ia-vendeu-8k" class="block p-6 bg-gray-800 rounded-xl hover:bg-gray-700 transition">
+                        <h3 class="text-xl font-bold text-white mb-2">IA vendeu R$ 8 mil em 24h</h3>
+                        <p class="text-sm text-gray-400">Descubra como replicar essa estratégia...</p>
+                    </a>
+                    <a href="/funcionalidades/ia-conversa" class="block p-6 bg-gray-800 rounded-xl hover:bg-gray-700 transition">
+                        <h3 class="text-xl font-bold text-white mb-2">IA Conversacional</h3>
+                        <p class="text-sm text-gray-400">Entenda como a IA fala com seus clientes...</p>
+                    </a>
+                </div>
+             `;
+        }, 1000);
+    }
+</script>

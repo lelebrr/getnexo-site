@@ -1,0 +1,185 @@
+
+---
+import Layout from '../../layouts/Layout.astro';
+---
+
+<Layout title="Estratégia Geral | Kira">
+    <div class="min-h-screen bg-neutral-900 text-white font-mono p-6">
+        <div class="max-w-5xl mx-auto border border-gray-800 bg-black/80 rounded-xl shadow-2xl overflow-hidden">
+            <!-- Header -->
+            <header class="bg-red-900/20 border-b border-red-900/50 p-6 flex justify-between items-center">
+                <div>
+                    <h1 class="text-3xl font-bold text-red-500 tracking-tighter flex items-center gap-2">
+                        <span>⚔️</span> KIRA GENERAL
+                    </h1>
+                    <p class="text-gray-500 text-sm mt-1">SISTEMA DE COMANDO ESTRATÉGICO</p>
+                </div>
+                <div class="text-right">
+                    <div id="fase-indicator" class="text-xl font-bold text-yellow-500">FASE 1</div>
+                    <div class="text-xs text-gray-600">STATUS: AGUARDANDO</div>
+                </div>
+            </header>
+
+            <!-- Main Content -->
+            <div class="p-8 grid grid-cols-1 lg:grid-cols-3 gap-8">
+                
+                <!-- Daily Fire (New) -->
+                <div class="lg:col-span-3 bg-red-900/10 border border-red-500 rounded-xl p-6 mb-8 relative overflow-hidden">
+                    <div class="absolute top-0 right-0 p-2 opacity-50 text-6xl">🔥</div>
+                    <h2 class="text-2xl font-bold text-red-500 mb-4">ORDENS DO DIA (07:00)</h2>
+                    
+                    <div id="daily-briefing" class="grid grid-cols-1 md:grid-cols-3 gap-6 text-sm">
+                        <!-- Loaded via JS -->
+                        <div class="animate-pulse">Decodificando satélite...</div>
+                    </div>
+                    
+                    <div class="mt-6 flex gap-4">
+                        <button onclick="dailyReport('OK')" class="bg-red-600 hover:bg-red-500 text-white px-8 py-2 rounded font-bold uppercase tracking-widest">
+                            OK (Feito)
+                        </button>
+                        <button onclick="dailyReport('FAIL')" class="bg-gray-800 hover:bg-gray-700 text-gray-400 px-8 py-2 rounded font-bold uppercase tracking-widest">
+                            FAIL (Falhei)
+                        </button>
+                    </div>
+                </div>
+
+                <!-- The Plan -->
+                <div class="lg:col-span-2 space-y-6">
+                    <div id="plan-container" class="prose prose-invert prose-red max-w-none bg-gray-900/50 p-6 rounded-lg border border-gray-800 min-h-[400px]">
+                        <div class="flex items-center justify-center h-full">
+                            <span class="animate-pulse text-red-500">Criptografando Estratégia...</span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Controls -->
+                <div class="space-y-6">
+                    <div class="bg-gray-900 p-6 rounded-xl border border-gray-800">
+                        <h3 class="text-gray-400 text-xs uppercase tracking-widest mb-4">Painel de Controle</h3>
+                        
+                        <div class="flex flex-col gap-3">
+                            <button id="btn-done" class="bg-green-600 hover:bg-green-700 text-white font-bold py-4 px-6 rounded shadow-lg transition transform hover:scale-105 flex items-center justify-center gap-2">
+                                ✅ FEITO
+                                <span class="text-xs font-normal opacity-75">(Avançar)</span>
+                            </button>
+                            
+                            <button id="btn-replan" class="bg-yellow-600 hover:bg-yellow-700 text-white font-bold py-3 px-6 rounded shadow-lg transition opacity-80 hover:opacity-100 flex items-center justify-center gap-2">
+                                🔄 RECALCULAR
+                                <span class="text-xs font-normal opacity-75">(Nova Rota)</span>
+                            </button>
+                            
+                            <button id="btn-dead" class="bg-red-900/80 hover:bg-red-600 text-white font-bold py-3 px-6 rounded shadow-lg transition border border-red-900 flex items-center justify-center gap-2">
+                                💀 MORREU
+                                <span class="text-xs font-normal opacity-75">(Resetar)</span>
+                            </button>
+                        </div>
+                    </div>
+
+                    <!-- Feedback Box -->
+                    <div id="feedback-box" class="bg-black border border-green-500/30 p-4 rounded text-green-400 text-sm hidden">
+                        <!-- Dynamic Response -->
+                    </div>
+                    
+                    <div class="text-xs text-gray-600 mt-8">
+                        <p>Kira aprende com seus resultados.</p>
+                        <p>Se você mentir, ela saberá.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</Layout>
+
+<script is:inline src="https://cdn.jsdelivr.net/npm/marked/marked.min.js"></script>
+
+<script is:inline>
+    const planContainer = document.getElementById('plan-container');
+    const feedbackBox = document.getElementById('feedback-box');
+    const faseIndicator = document.getElementById('fase-indicator');
+
+    async function loadPlan() {
+        try {
+            const res = await fetch('/api/kira/planos');
+            const data = await res.json();
+            
+            planContainer.innerHTML = marked.parse(data.plan);
+            
+            // Highlight current phase (mock logic)
+            // Just simple rendering for now
+        } catch (e) {
+            planContainer.innerHTML = `<p class="text-red-500">Erro de conexão com o QG: ${e.message}</p>`;
+        }
+    }
+
+    async function sendStatus(status) {
+        feedbackBox.innerHTML = "📡 Transmitindo...";
+        feedbackBox.classList.remove('hidden');
+        
+        try {
+            const res = await fetch('/api/kira/next', {
+                method: 'POST',
+                headers: { 'Content-Type': 'application/json' },
+                body: JSON.stringify({ status })
+            });
+            const data = await res.json();
+            
+            feedbackBox.innerHTML = data.acao;
+            feedbackBox.classList.remove('text-red-500', 'text-green-400', 'text-yellow-400');
+            
+            if (status === 'morreu') {
+                 feedbackBox.classList.add('text-red-500');
+            } else if (status === 'replan') {
+                 feedbackBox.classList.add('text-yellow-400');
+            } else {
+                 feedbackBox.classList.add('text-green-400');
+            }
+
+            if (data.reset) {
+                setTimeout(loadPlan, 2000); // Reload new plan
+            } else {
+                faseIndicator.innerText = `FASE ${data.fase}`;
+            }
+
+        } catch (e) {
+            feedbackBox.innerHTML = "Falha no uplink.";
+        }
+    }
+
+    document.getElementById('btn-done').addEventListener('click', () => sendStatus('feito'));
+    document.getElementById('btn-replan').addEventListener('click', () => sendStatus('replan'));
+    document.getElementById('btn-dead').addEventListener('click', () => sendStatus('morreu'));
+
+    async function loadDaily() {
+        try {
+            // Load Daily Json (Mocked by script execution)
+            // In real app, we fetch /api/kira/today
+            const res = await fetch('/kira_today.json'); // Served from public
+            const data = await res.json();
+            
+            const html = data.tasks.map(t => `
+                <div class="bg-black/50 p-4 rounded border border-gray-800">
+                    <div class="text-red-400 font-bold mb-1">${t.time} • ${t.type}</div>
+                    <div class="font-bold text-lg mb-2">${t.title}</div>
+                    <div class="text-gray-400 italic">"${t.desc}"</div>
+                </div>
+            `).join('');
+            
+            document.getElementById('daily-briefing').innerHTML = html;
+        } catch (e) {
+            document.getElementById('daily-briefing').innerHTML = "Agente SleepWalker ainda não gerou o briefing. Rode o script.";
+        }
+    }
+
+    async function dailyReport(status) {
+        if (status === 'OK') {
+             alert("KIRA: Bom trabalho. Amanhã a carga aumenta.");
+        } else {
+             alert("KIRA: Inaceitável. Recalculando rota para compensar sua falha.");
+        }
+        // In real app, POST to /api/kira/daily_feedback
+    }
+
+    // Boot
+    loadPlan();
+    loadDaily();
+</script>
