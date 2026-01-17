@@ -133,5 +133,23 @@ const currentPath = Astro.url.pathname;
         </main>
 
       </div>
+      </div>
   </div>
+
+  <script is:inline>
+      // Auth Guard
+      const token = localStorage.getItem('omnichat_token') || localStorage.getItem('adminToken');
+      if (!token) {
+          window.location.href = '/admin/login';
+      }
+
+      // Update User Avatar/Name if available
+      const userStr = localStorage.getItem('omnichat_user');
+      if (userStr) {
+          try {
+              const user = JSON.parse(userStr);
+              // Logic to update avatar if I added IDs for them
+          } catch(e) {}
+      }
+  </script>
 </Layout>

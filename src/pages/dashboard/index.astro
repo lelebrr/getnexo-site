@@ -19,23 +19,46 @@ import DashboardLayout from '../../layouts/DashboardLayout.astro';
     <!-- KPI Grid -->
     <div style="display:grid; grid-template-columns:repeat(auto-fit, minmax(250px, 1fr)); gap:1.5rem;">
         <div class="glass-panel" style="padding:1.5rem;">
-            <div style="color:#64748b; font-size:0.9rem; font-weight:bold; text-transform:uppercase;">Leads Hoje</div>
-            <div style="font-size:2.5rem; font-weight:800; color:white; margin:0.5rem 0;">42</div>
-            <div style="color:var(--neon-green); font-size:0.8rem;">▲ 12% vs ontem</div>
+            <div style="color:#64748b; font-size:0.9rem; font-weight:bold; text-transform:uppercase;">Vendas (Hoje)</div>
+            <div id="stat-sales" style="font-size:2.5rem; font-weight:800; color:white; margin:0.5rem 0;">R$ 0,00</div>
+            <div style="color:var(--neon-green); font-size:0.8rem;">---</div>
         </div>
         
         <div class="glass-panel" style="padding:1.5rem;">
-            <div style="color:#64748b; font-size:0.9rem; font-weight:bold; text-transform:uppercase;">Vendas Pendentes</div>
-            <div style="font-size:2.5rem; font-weight:800; color:white; margin:0.5rem 0;">8</div>
-            <div style="color:var(--neon-blue); font-size:0.8rem;">R$ 1.240,00 em jogo</div>
+            <div style="color:#64748b; font-size:0.9rem; font-weight:bold; text-transform:uppercase;">Tickets Abertos</div>
+            <div id="stat-tickets" style="font-size:2.5rem; font-weight:800; color:white; margin:0.5rem 0;">0</div>
+            <div style="color:var(--neon-blue); font-size:0.8rem;">Aguardando ação</div>
         </div>
 
         <div class="glass-panel" style="padding:1.5rem;">
-            <div style="color:#64748b; font-size:0.9rem; font-weight:bold; text-transform:uppercase;">Mensagens</div>
-            <div style="font-size:2.5rem; font-weight:800; color:white; margin:0.5rem 0;">1,029</div>
-            <div style="color:#94a3b8; font-size:0.8rem;">Última 2min atrás</div>
+            <div style="color:#64748b; font-size:0.9rem; font-weight:bold; text-transform:uppercase;">CSAT Médio</div>
+            <div id="stat-csat" style="font-size:2.5rem; font-weight:800; color:white; margin:0.5rem 0;">-</div>
+            <div style="color:#94a3b8; font-size:0.8rem;">Nota média</div>
         </div>
     </div>
+
+    <script is:inline>
+        // Fetch Real Dashboard Stats
+        async function fetchStats() {
+            try {
+                // Use public URL if available, else localhost
+                const API = 'http://localhost:3006'; 
+                const res = await fetch(`${API}/dashboard-stats`);
+                const data = await res.json();
+                
+                if (data) {
+                    document.getElementById('stat-sales').innerText = 'R$ ' + (data.sales || 0).toLocaleString('pt-BR', {minimumFractionDigits: 2});
+                    document.getElementById('stat-tickets').innerText = data.open_tickets || 0;
+                    document.getElementById('stat-csat').innerText = data.csat ? Number(data.csat).toFixed(1) : '-';
+                }
+            } catch (e) {
+                console.error('Error fetching stats:', e);
+            }
+        }
+        fetchStats();
+        // Refresh every 30s
+        setInterval(fetchStats, 30000);
+    </script>
 
     <!-- Illustration / Empty State -->
     <div style="text-align:center; padding:3rem; opacity:0.5;">
