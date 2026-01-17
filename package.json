@@ -3,9 +3,9 @@
     "version": "1.0.0",
     "private": true,
     "scripts": {
-        "dev": "astro dev",
+        "dev": "astro dev --host",
         "build": "astro build",
-        "preview": "astro preview",
+        "preview": "astro preview --host",
         "test:perf": "npx lighthouse-ci --url=https://jetnexo.com.br --budget=performance:100,accessibility:100,seo:100"
     },
     "dependencies": {
