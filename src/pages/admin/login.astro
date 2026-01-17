@@ -1,0 +1,60 @@
+---
+import Layout from '../../layouts/Layout.astro';
+---
+<Layout title="GetNexo Admin – Login">
+
+  <div style="background:#0a0e17; min-height:100vh; display:flex; align-items:center; justify-content:center; padding:2rem;">
+    <div style="background:rgba(20,30,50,0.8); border:1px solid #00d4ff55; border-radius:16px; padding:3rem; width:100%; max-width:400px; backdrop-filter: blur(10px);">
+      <h2 style="color:white; text-align:center; margin-bottom:2rem; font-size:1.8rem;">GetNexo <span style="color:#00ff9d;">Admin</span></h2>
+      <form id="login-form">
+        <input name="email" type="email" placeholder="E-mail" required value="admin@getnexo.com" style="width:100%; padding:1rem; margin:1rem 0; background:#1e293b; border:1px solid #00d4ff55; border-radius:8px; color:#e5e7eb; outline:none;">
+        <input name="senha" type="password" placeholder="Senha" required value="123456" style="width:100%; padding:1rem; margin:1rem 0; background:#1e293b; border:1px solid #00d4ff55; border-radius:8px; color:#e5e7eb; outline:none;">
+        <button type="submit" class="btn-cta" style="width:100%; margin-top:1rem; cursor:pointer;">Entrar</button>
+      </form>
+      <div style="text-align:center; margin-top:1rem; color:#6b7280; font-size:0.9rem;">
+        Esqueci a senha
+      </div>
+    </div>
+  </div>
+    
+  <script is:inline>
+    document.getElementById('login-form').onsubmit = async (e) => {
+      e.preventDefault();
+      const form = new FormData(e.target);
+      const payload = Object.fromEntries(form);
+      
+      try {
+        const res = await fetch('http://localhost:3006/api/admin/login', {
+            method: 'POST',
+            headers: { 'Content-Type': 'application/json' },
+            body: JSON.stringify(payload)
+        });
+        const data = await res.json();
+
+        if (data.ok) {
+            localStorage.setItem('adminToken', data.token);
+            window.location.href = '/admin';
+        } else {
+            alert('Erro ao logar: Credenciais inválidas');
+        }
+      } catch (err) {
+          alert('Erro de conexão com servidor');
+      }
+    };
+  </script>
+</Layout>
+<style>
+  .btn-cta { 
+    background: linear-gradient(90deg, #00d4ff, #00ff9d); 
+    color: black; 
+    font-weight: bold; 
+    border: none; 
+    padding: 1rem; 
+    border-radius: 8px; 
+    font-size: 1rem;
+    transition: transform 0.2s;
+  }
+  .btn-cta:hover {
+      transform: scale(1.02);
+  }
+</style>

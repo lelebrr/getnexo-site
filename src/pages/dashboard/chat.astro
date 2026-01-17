@@ -1,0 +1,14 @@
+---
+import DashboardLayout from '../../layouts/DashboardLayout.astro';
+import OmniChatApp from '../../components/OmniChatApp.jsx';
+---
+
+<DashboardLayout title="Chat & Inbox | OmniNexo">
+    <!-- 
+      Mount React App.
+      For the split route approach, we can ask the app to 'start' at a specific tab, 
+      or rely on its internal state if ViewTransitions preserves it sufficiently.
+      Ideally we pass a prop: initialTab="chat" 
+    -->
+    <OmniChatApp client:only="react" initialTab="chat" />
+</DashboardLayout>

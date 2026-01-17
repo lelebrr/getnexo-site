@@ -1,0 +1,151 @@
+---
+import Layout from '../../layouts/Layout.astro';
+// Mock user for demo purpose since middleware might not be active on this route
+const user = { name: 'Admin Demo' }; 
+---
+<Layout title="GetNexo Admin – Veja tudo">
+
+  <header style="background:#0a0e17; padding:2rem; display:flex; justify-content:space-between; color:#00ff9d; align-items:center; border-bottom: 1px solid #1f2937;">
+    <h1 style="margin:0; font-size:2rem; font-weight:bold; letter-spacing:-1px;">GetNexo <span style="color:#fff">Admin</span></h1>
+    <div style="display:flex; align-items:center;">
+      <span style="color:#9ca3af; font-size:0.9rem;">Bem-vindo, <strong style="color:white;">{user.name}</strong></span>
+      <button style="margin-left:1rem; background:#1f2937; color:white; padding:0.5rem 1rem; border:1px solid #374151; border-radius:8px; cursor:pointer;" onclick="window.location.href='/'">Sair</button>
+    </div>
+  </header>
+
+  <main style="padding:2rem 5%; display:grid; grid-template-columns:repeat(auto-fit, minmax(300px, 1fr)); gap:2rem; max-width:1400px; mx-auto;">
+
+    <!-- Conversas em tempo real -->
+    <div class="card" style="grid-column:1 / -1; min-height:400px;">
+      <div style="display:flex; justify-content:space-between; margin-bottom:1rem;">
+          <h2 style="margin:0; font-size:1.5rem;">💬 Conversas ao vivo</h2>
+          <span style="font-size:0.8rem; background:#00ff9d22; color:#00ff9d; padding:2px 8px; border-radius:12px; display:flex; align-items:center;">● Online</span>
+      </div>
+      <div id="conversas" style="height:350px; overflow-y:auto; background:#00000066; border-radius:8px; padding:1.5rem; font-family:monospace; font-size:0.9rem;">
+        <p style="color:#666; text-align:center; margin-top:150px;">Aguardando mensagens do Widget...</p>
+      </div>
+    </div>
+
+    <!-- Relatórios -->
+    <div class="card">
+      <h2>📊 Relatório de hoje</h2>
+      <div style="margin-top:1.5rem; space-y:0.5rem;">
+          <p style="display:flex; justify-content:space-between;"><span style="color:#9ca3af;">Vendas</span> <strong style="color:#00ff9d;">R$ 1.234,00</strong></p>
+          <p style="display:flex; justify-content:space-between;"><span style="color:#9ca3af;">Conversas</span> <strong style="color:white;">45</strong></p>
+          <p style="display:flex; justify-content:space-between;"><span style="color:#9ca3af;">Taxa de resposta</span> <strong style="color:#00d4ff;">98%</strong></p>
+          <div style="margin-top:1rem; padding-top:1rem; border-top:1px solid #374151;">
+             <p style="display:flex; justify-content:space-between; font-size:1.1rem;"><span style="color:white;">Comissões</span> <strong style="color:#fbbf24;">R$ 750,00</strong></p>
+          </div>
+      </div>
+    </div>
+
+    <!-- Bots criados -->
+    <div class="card">
+      <h2>🤖 Seus bots</h2>
+      <ul style="list-style:none; padding:0; margin-top:1.5rem;">
+        <li style="padding:5px 0; border-bottom:1px solid #333; display:flex; justify-content:space-between;">
+            <span>Loja Maria</span> <span style="color:#00ff9d;">● Online</span>
+        </li>
+        <li style="padding:5px 0; border-bottom:1px solid #333; display:flex; justify-content:space-between;">
+            <span>Eletrônicos XP</span> <span style="color:#ef4444;">● Offline</span>
+        </li>
+      </ul>
+      <button class="btn-cta" style="margin-top:1.5rem; width:100%; cursor:pointer;" onclick="window.location.href='/criar-bot'">Criar novo bot</button>
+    </div>
+
+    <!-- Comissões -->
+    <div class="card" style="background:linear-gradient(145deg, rgba(30,41,59,0.8), rgba(0,0,0,0.8));">
+      <h2>💵 Ganhos</h2>
+      <div style="text-align:center; margin-top:1rem;">
+          <p style="font-size:2.5rem; font-weight:bold; color:#00ff9d; margin:0;">R$ 1.500</p>
+          <p style="color:#9ca3af; font-size:0.9rem; margin-top:0.5rem;">este mês</p>
+      </div>
+      <div style="margin-top:1.5rem; font-size:0.9rem; color:#9ca3af;">
+          <p>Indicados: <strong style="color:white;">8</strong></p>
+          <p>Próxima fatura: <strong style="color:white;">15/01</strong></p>
+      </div>
+    </div>
+
+  </main>
+
+  <script is:inline src="https://cdn.socket.io/4.7.5/socket.io.min.js"></script>
+  <script is:inline>
+    // Connect to Backend
+    const socket = io('http://localhost:3006'); // Localhost for demo
+
+    const chatDiv = document.getElementById('conversas');
+
+    socket.on('connect', () => {
+      console.log('[Admin] Conectado ao socket');
+      chatDiv.innerHTML = '<p style="color:#00ff9d; text-align:center; margin-top:150px;">● Conectado! Monitorando...</p>';
+    });
+
+    socket.on('chat-update', (data) => {
+        // Clear placeholder if it exists
+        if (chatDiv.innerHTML.includes('Monitorando...')) chatDiv.innerHTML = '';
+
+        const div = document.createElement('div');
+        div.style.padding = '0.5rem 0.8rem';
+        div.style.marginBottom = '0.5rem';
+        div.style.borderRadius = '6px';
+        div.style.maxWidth = '80%';
+        div.style.clear = 'both';
+        div.style.fontSize = '14px';
+        div.style.animation = 'fadeIn 0.3s';
+        
+        if (data.from === 'user') {
+            div.style.background = 'rgba(0, 255, 157, 0.1)';
+            div.style.border = '1px solid rgba(0, 255, 157, 0.3)';
+            div.style.color = '#00ff9d';
+            div.style.float = 'left';
+            div.innerHTML = `<strong>Visitante:</strong> ${data.msg}`;
+        } else {
+            div.style.background = 'rgba(0, 212, 255, 0.1)';
+            div.style.border = '1px solid rgba(0, 212, 255, 0.3)';
+            div.style.color = '#00d4ff';
+            div.style.float = 'right';
+            div.innerHTML = `<strong>Bot:</strong> ${data.msg}`;
+        }
+
+        const container = document.createElement('div');
+        container.style.clear = 'both';
+        container.appendChild(div);
+        
+        chatDiv.appendChild(container);
+        chatDiv.scrollTop = chatDiv.scrollHeight;
+    });
+  </script>
+
+  <style>
+    @keyframes fadeIn { from { opacity: 0; transform: translateY(5px); } to { opacity: 1; transform: translateY(0); } }
+    
+    .card {
+      background: rgba(30,41,59,0.6);
+      border-radius: 16px;
+      padding: 2rem;
+      border: 1px solid #374151;
+      color: #e5e7eb;
+      backdrop-filter: blur(10px);
+      transition: transform 0.2s, border-color 0.2s;
+    }
+    .card:hover {
+        border-color: #00d4ff55;
+        transform: translateY(-2px);
+    }
+    .btn-cta {
+      background: linear-gradient(90deg, #00d4ff, #00ff9d);
+      color: black;
+      padding: 0.8rem 2rem;
+      border: none;
+      border-radius: 8px;
+      font-weight: bold;
+      transition: opacity 0.2s;
+    }
+    .btn-cta:hover { opacity: 0.9; }
+    
+    /* Global scrollbar for the chat */
+    #conversas::-webkit-scrollbar { width: 6px; }
+    #conversas::-webkit-scrollbar-track { background: transparent; }
+    #conversas::-webkit-scrollbar-thumb { background: #374151; border-radius: 3px; }
+  </style>
+</Layout>

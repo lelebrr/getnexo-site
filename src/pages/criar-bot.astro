@@ -1,0 +1,87 @@
+---
+import Layout from '../layouts/Layout.astro';
+---
+<Layout title="Criar Bot GetNexo – Instale em qualquer site">
+
+  <header style="background:#0a0e17; padding:3rem; text-align:center;">
+    <h1 style="color:#00ff9d; font-size:3.5rem;">Criar Bot GetNexo</h1>
+    <p style="color:#e5e7eb; font-size:1.4rem; margin:1rem 0;">Coloque vendas 24h no seu site em 2 minutos</p>
+  </header>
+
+  <main style="padding:3rem 5%; display:flex; justify-content:center; gap:3rem; flex-wrap:wrap;">
+
+    <!-- Passo 1: Configuração -->
+    <div class="passo" style="flex:1; min-width:300px; background:rgba(20,30,50,0.6); border-radius:16px; padding:2rem; border:1px solid #00d4ff55;">
+      <h3 style="color:#00ff9d;">1. Nome e Loja</h3>
+      <form id="form1">
+        <input name="nome" placeholder="Nome do bot (ex: Loja da Maria)" style="width:100%; padding:1rem; margin:1rem 0; border-radius:8px; background:#1e293b; color: white; border: 1px solid #334155;" required />
+        <input name="site" placeholder="URL do seu site (ex: minhame.com.br)" style="width:100%; padding:1rem; margin:1rem 0; border-radius:8px; background:#1e293b; color: white; border: 1px solid #334155;" required />
+        <button type="submit" class="btn-cta">Próximo</button>
+      </form>
+    </div>
+
+    <!-- Passo 2: Integração -->
+    <div class="passo" style="flex:1; min-width:300px; background:rgba(20,30,50,0.6); border-radius:16px; padding:2rem; border:1px solid #00d4ff55; opacity:0.3; transition: opacity 0.3s;">
+      <h3 style="color:#00ff9d;">2. Conectar à loja</h3>
+      <p style="color: #94a3b8;">Escolha sua plataforma:</p>
+      <div style="color: #cbd5e1; margin-top: 1rem;">
+        <label style="display:block; margin-bottom:0.5rem;"><input type="radio" name="plataforma" value="custom" /> API Personalizada</label>
+        <label style="display:block; margin-bottom:0.5rem;"><input type="radio" name="plataforma" value="woocommerce" /> WooCommerce</label>
+        <label style="display:block; margin-bottom:0.5rem;"><input type="radio" name="plataforma" value="shopify" /> Shopify</label>
+      </div>
+      <div id="chave-api" style="margin-top:1rem; display:none;">
+        <input placeholder="Chave API (se tiver)" style="width:100%; padding:0.8rem; margin:0.5rem 0; border-radius:8px; background:#1e293b; color: white; border: 1px solid #334155;" />
+      </div>
+    </div>
+
+    <!-- Passo 3: Gerar código -->
+    <div class="passo" style="flex:1; min-width:300px; background:rgba(20,30,50,0.6); border-radius:16px; padding:2rem; border:1px solid #00ff9d; opacity:0.1; transition: opacity 0.3s;">
+      <h3 style="color:#00ff9d;">3. Pronto! Cole no site</h3>
+      <p style="color: #94a3b8;">Seu código:</p>
+      <code id="widget-code" style="background:#0a0e17; padding:1rem; border-radius:8px; display:block; white-space:pre-wrap; color:#00ff9d; font-size:0.9rem; margin:1rem 0; word-break: break-all;">
+&lt;script src="https://getnexo.com.br/widget.js" data-bot="carregando..."&gt;&lt;/script&gt;
+      </code>
+      <button onclick="copiar()" class="btn-cta">Copiar código</button>
+      <p style="font-size:0.9rem; color:#666; margin-top:1rem;">Cole antes do &lt;/body&gt;</p>
+    </div>
+
+  </main>
+
+  <script is:inline>
+    let botId = '';
+    document.getElementById('form1').onsubmit = (e) => {
+      e.preventDefault();
+      const form = new FormData(e.target);
+      const nome = form.get('nome');
+      // Simple ID generation
+      botId = 'bot_' + Date.now();
+      
+      const codeBlock = document.getElementById('widget-code');
+      // We use the localhost URL for the demo environment, but in prod it would be the domain
+      const scriptUrl = window.location.hostname === 'localhost' ? 'http://localhost:8080/widget.js' : 'https://getnexo.com.br/widget.js';
+      
+      codeBlock.textContent = `<script src="${scriptUrl}" data-bot="${botId}" data-theme="neon"><\/script>`;
+      
+      document.querySelector('.passo:nth-child(2)').style.opacity = 1;
+      document.querySelector('.passo:nth-child(3)').style.opacity = 1;
+    };
+
+    document.querySelectorAll('input[type=radio]').forEach(el => {
+      el.onchange = () => {
+        document.getElementById('chave-api').style.display = 'block';
+      };
+    });
+
+    window.copiar = function() {
+      const code = document.getElementById('widget-code');
+      navigator.clipboard.writeText(code.textContent).then(() => {
+        alert('✅ Código copiado!');
+      });
+    }
+  </script>
+</Layout>
+
+<style>
+  .btn-cta { background: linear-gradient(90deg, #00d4ff, #00ff9d); color: black; padding: .8rem 2rem; border: none; border-radius: 50px; font-weight: 700; cursor: pointer; transition: transform 0.2s; }
+  .btn-cta:hover { transform: scale(1.05); }
+</style>

@@ -1,0 +1,8 @@
+---
+import DashboardLayout from '../../layouts/DashboardLayout.astro';
+import OmniChatApp from '../../components/OmniChatApp.jsx';
+---
+
+<DashboardLayout title="Loja & Catálogo | OmniNexo">
+    <OmniChatApp client:only="react" initialTab="store" />
+</DashboardLayout>

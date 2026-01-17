@@ -1,0 +1,8 @@
+---
+import DashboardLayout from '../../layouts/DashboardLayout.astro';
+import OmniChatApp from '../../components/OmniChatApp.jsx';
+---
+
+<DashboardLayout title="Flow Builder | OmniNexo">
+    <OmniChatApp client:only="react" initialTab="flows" />
+</DashboardLayout>
