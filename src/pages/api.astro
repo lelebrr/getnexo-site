@@ -6,11 +6,6 @@ const apiStatus = {
   "message": "Welcome to the Evolution API, it is working!",
   "version": "2.2.2"
 };
-
-const messagePayload = {
-  "number": "5511999999999",
-  "message": "Oi, quer fechar uma venda hoje?"
-};
 ---
 
 <Layout title="API GetNexo – Assistente de Vendas WhatsApp">
@@ -24,10 +19,10 @@ const messagePayload = {
       <pre>{JSON.stringify(apiStatus, null, 2)}</pre>
     </div>
 
-    <div class="endpoint">
-      <h2>Enviar Mensagem</h2>
-      <code>POST https://api.getnexo.com.br/send-message</code>
-      <pre>{JSON.stringify(messagePayload, null, 2)}</pre>
+    <div class="swagger-mock">
+      <h2>Swagger Mock (exemplo)</h2>
+      <iframe src="https://petstore.swagger.io" width="100%" height="600px" title="Swagger UI Mock"></iframe>
+      <p>Em produção, será substituído pelo Swagger real da Evolution API.</p>
     </div>
 
     <p><a href="https://api.getnexo.com.br/manager" target="_blank">Acessar Manager da Evolution API</a></p>
@@ -38,7 +33,8 @@ const messagePayload = {
 <style>
   .container { max-width: 1100px; margin: 6rem auto; padding: 0 5%; }
   h1 { font-size: 3rem; background: linear-gradient(90deg, var(--primary), var(--success)); -webkit-background-clip: text; color: transparent; }
-  .endpoint { background: rgba(30,41,59,0.7); backdrop-filter: blur(10px); border: 1px solid rgba(0,212,255,0.2); border-radius: 16px; padding: 2rem; margin: 2rem 0; }
+  .endpoint { background: rgba(30,41,59,0.8); backdrop-filter: blur(10px); border: 1px solid rgba(0,212,255,0.15); border-radius: 16px; padding: 2rem; margin: 2rem 0; }
   code { background: #1e293b; padding: 0.5rem 1rem; border-radius: 8px; font-family: 'Consolas', monospace; display: block; margin: 1rem 0; }
   pre { background: #0f172a; padding: 1.5rem; border-radius: 12px; overflow-x: auto; }
+  .swagger-mock iframe { border: none; border-radius: 12px; box-shadow: 0 10px 30px rgba(0,0,0,0.3); }
 </style>
