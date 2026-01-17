@@ -4,7 +4,7 @@ import axios from 'axios';
 import { io } from 'socket.io-client';
 import OrderBuilder from './OrderBuilder';
 
-const socket = io(import.meta.env.VITE_API_URL || 'http://localhost:3006');
+const socket = io(import.meta.env.VITE_API_URL || 'https://api.getnexo.com.br');
 
 const ChatInterface = () => {
     const [contacts, setContacts] = useState([]);

@@ -12,7 +12,7 @@ const FlowBuilder = () => {
 
     const fetchFlows = async () => {
         try {
-            const res = await fetch('http://localhost:3006/flows');
+            const res = await fetch('https://api.getnexo.com.br/flows');
             const data = await res.json();
             setFlows(data);
         } catch (e) { }
@@ -21,7 +21,7 @@ const FlowBuilder = () => {
     const handleSave = async () => {
         if (!selectedFlow) return;
         const method = selectedFlow.id === 'new' ? 'POST' : 'PUT';
-        const url = selectedFlow.id === 'new' ? 'http://localhost:3006/flows' : `http://localhost:3006/flows/${selectedFlow.id}`;
+        const url = selectedFlow.id === 'new' ? 'https://api.getnexo.com.br/flows' : `https://api.getnexo.com.br/flows/${selectedFlow.id}`;
 
         await fetch(url, {
             method,

@@ -6,7 +6,7 @@ const OrderBuilder = ({ onSendOrder, onClose }) => {
     const [step, setStep] = useState(1); // 1: Select, 2: Review/Payment
 
     useEffect(() => {
-        fetch('http://localhost:3006/catalog')
+        fetch('https://api.getnexo.com.br/catalog')
             .then(res => res.json())
             .then(data => setProducts(data.products || []));
     }, []);

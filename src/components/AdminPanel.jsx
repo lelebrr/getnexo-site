@@ -9,7 +9,7 @@ const AdminPanel = () => {
 
     // Fetch initial data
     useEffect(() => {
-        fetch('http://localhost:3006/dashboard-stats')
+        fetch('https://api.getnexo.com.br/dashboard-stats')
             .then(res => res.json())
             .then(data => setStats(data));
     }, []);
@@ -250,7 +250,7 @@ const AdminPanel = () => {
                                 <p className="text-gray-400 mb-4">Re-enviar mensagem para usuários que não leram a campanha anterior (últimos 7 dias).</p>
                                 <button
                                     onClick={async () => {
-                                        const res = await fetch('http://localhost:3006/retarget', { method: 'POST', headers: { 'Content-Type': 'application/json' }, body: JSON.stringify({ campaign_id: '1' }) });
+                                        const res = await fetch('https://api.getnexo.com.br/retarget', { method: 'POST', headers: { 'Content-Type': 'application/json' }, body: JSON.stringify({ campaign_id: '1' }) });
                                         const data = await res.json();
                                         alert(`Campanha de Retargeting enviada! ${data.unread} contatos impactados.`);
                                     }}
@@ -270,7 +270,7 @@ const AdminPanel = () => {
                                     <button
                                         onClick={async () => {
                                             const phone = document.getElementById('ad-phone').value;
-                                            const res = await fetch(`http://localhost:3006/ad-link?phone=${phone}`);
+                                            const res = await fetch(`https://api.getnexo.com.br/ad-link?phone=${phone}`);
                                             const data = await res.json();
                                             document.getElementById('generated-link').value = data.link;
                                         }}
@@ -294,7 +294,7 @@ const AdminPanel = () => {
                                 </div>
                                 <button
                                     onClick={async () => {
-                                        const res = await fetch('http://localhost:3006/clicks');
+                                        const res = await fetch('https://api.getnexo.com.br/clicks');
                                         const data = await res.json();
                                         const container = document.getElementById('clicks-report');
                                         if (data.length === 0) {
@@ -324,7 +324,7 @@ const AdminPanel = () => {
                                 </div>
                                 <button
                                     onClick={async () => {
-                                        const res = await fetch('http://localhost:3006/csat-report');
+                                        const res = await fetch('https://api.getnexo.com.br/csat-report');
                                         const data = await res.json();
                                         const avg = data.reduce((s, a) => s + a.nota, 0) / (data.length || 1);
                                         document.getElementById('csat-summary').innerText = list = `${avg.toFixed(1)} / 5.0`;

@@ -1,7 +1,7 @@
 
 import React, { useState, useEffect } from 'react';
 
-const API_URL = 'http://localhost:3006';
+const API_URL = 'https://api.getnexo.com.br';
 
 const BroadcastManager = () => {
     const [name, setName] = useState('');

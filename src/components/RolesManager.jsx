@@ -1,10 +1,9 @@
 
 import React, { useState, useEffect } from 'react';
 
-const API_URL = 'http://localhost:3005'; // Should be proxied in production
-// Since this is client-side, localhost:3005 works if user runs backend locally, 
-// but in docker behind nginx it should be /api/roles. 
-// For now specific instructions use localhost:3005 port forwarding.
+const API_URL = typeof window !== 'undefined' && (window.location.hostname === 'localhost' || window.location.hostname === '127.0.0.1')
+    ? 'http://localhost:8080'
+    : 'https://api.getnexo.com.br';
 
 const RolesManager = () => {
     const [token, setToken] = useState(localStorage.getItem('roles_token') || '');

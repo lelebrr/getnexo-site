@@ -1,14 +1,18 @@
 import React, { useState, useEffect } from 'react';
 
+const API_URL = typeof window !== 'undefined' && (window.location.hostname === 'localhost' || window.location.hostname === '127.0.0.1')
+    ? 'http://localhost:8080'
+    : 'https://api.getnexo.com.br';
+
 const ReportsPanel = () => {
     const [stats, setStats] = useState(null);
     const [clicks, setClicks] = useState([]);
     const [csat, setCsat] = useState([]);
 
     useEffect(() => {
-        fetch('http://localhost:3006/dashboard-stats').then(r => r.json()).then(setStats);
-        fetch('http://localhost:3006/clicks').then(r => r.json()).then(setClicks);
-        fetch('http://localhost:3006/csat-report').then(r => r.json()).then(setCsat);
+        fetch(`${API_URL}/dashboard-stats`).then(r => r.json()).then(setStats).catch(() => setStats({ sales: 0, open_tickets: 0, csat: null }));
+        fetch(`${API_URL}/clicks`).then(r => r.json()).then(setClicks).catch(() => setClicks([]));
+        fetch(`${API_URL}/csat-report`).then(r => r.json()).then(setCsat).catch(() => setCsat([]));
     }, []);
 
     if (!stats) return <div className="text-white p-10">Carregando Analytics...</div>;
