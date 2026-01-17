@@ -1,26 +1,207 @@
 ---
-import Layout from '../layouts/Layout.astro';
+import AdminLayout from '../layouts/AdminLayout.astro';
 ---
 
-<Layout title="Admin — GetNexo">
-  <h1>Admin GetNexo</h1>
-  <p>Bem-vindo ao painel interno.</p>
+<AdminLayout title="Dashboard Central">
+  <div class="dashboard-grid">
+    <!-- Row 1: Key Metrics -->
+    <div class="metric-card">
+      <span class="label">ARTIGOS GERADOS</span>
+      <div class="value">21</div>
+      <div class="trend up">+3 hoje</div>
+    </div>
 
-  <section>
-    <h2>Serviços ativos</h2>
-    <ul>
-      <li><strong>Chatwoot:</strong> <a href="https://chat.getnexo.com.br">chat.getnexo.com.br</a></li>
-      <li><strong>n8n:</strong> <a href="https://n8n.getnexo.com.br">n8n.getnexo.com.br</a></li>
-      <li><strong>API:</strong> <a href="https://api.getnexo.com.br/status">status</a></li>
-      <li><strong>Keycloak (Auth):</strong> <a href="https://auth.getnexo.com.br">auth.getnexo.com.br</a></li>
-      <li><strong>Uptime Kuma:</strong> <a href="https://status.getnexo.com.br">status.getnexo.com.br</a></li>
-    </ul>
-  </section>
+    <div class="metric-card">
+      <span class="label">CONVERSÃO CHAT</span>
+      <div class="value">34%</div>
+      <div class="trend up">+2.1%</div>
+    </div>
 
-  <section>
-    <h2>Logs</h2>
-    <p>Próximo: conectar com n8n pra puxar log em tempo real.</p>
-  </section>
+    <div class="metric-card">
+      <span class="label">TEMPO RESPOSTA</span>
+      <div class="value">0.8s</div>
+      <div class="trend down">-0.1s (ótimo)</div>
+    </div>
 
-  <p><a href="/">← Voltar ao site</a></p>
-</Layout>
+    <div class="metric-card">
+      <span class="label">FATURAMENTO</span>
+      <div class="value">R$ 4.2k</div>
+      <div class="trend up">Semana</div>
+    </div>
+
+    <!-- Row 2: Status & Actions -->
+    <div class="card wide">
+      <h3>📡 Tunnel Status</h3>
+      <div class="status-list">
+        <div class="status-item ok">
+            <span class="dot"></span>
+            <strong>API (Evolution)</strong>
+            <span class="url">api.getnexo.com.br</span>
+        </div>
+        <div class="status-item ok">
+            <span class="dot"></span>
+            <strong>Chatwoot</strong>
+            <span class="url">chat.getnexo.com.br</span>
+        </div>
+        <div class="status-item ok">
+            <span class="dot"></span>
+            <strong>n8n Workflow</strong>
+            <span class="url">n8n.getnexo.com.br</span>
+        </div>
+        <div class="status-item ok">
+            <span class="dot"></span>
+            <strong>Keycloak SSO</strong>
+            <span class="url">auth.getnexo.com.br</span>
+        </div>
+      </div>
+    </div>
+
+    <div class="card">
+        <h3>⚡ Ações Rápidas</h3>
+        <div class="btn-group">
+            <a href="/ara" class="action-btn primary">Gerar Novo Artigo</a>
+            <a href="https://n8n.getnexo.com.br" target="_blank" class="action-btn">Abrir n8n</a>
+            <a href="https://chat.getnexo.com.br" target="_blank" class="action-btn">Ver Chat</a>
+        </div>
+    </div>
+  </div>
+
+  <div class="notifications">
+      <h3>🔔 Notificações Recentes</h3>
+      <ul>
+          <li>[07:00] Cron Job diário executado com sucesso.</li>
+          <li>[03:45] Backup do banco de dados realizado (34MB).</li>
+          <li>[Ontem] Novo lead capturado via WhatsApp (11 999...).</li>
+      </ul>
+  </div>
+</AdminLayout>
+
+<style>
+  .dashboard-grid {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 1.5rem;
+      margin-bottom: 2rem;
+  }
+
+  .metric-card {
+      background: #111;
+      border: 1px solid #222;
+      padding: 1.5rem;
+      border-radius: 8px;
+  }
+
+  .metric-card .label {
+      font-size: 0.7rem;
+      color: #777;
+      letter-spacing: 1px;
+      font-weight: bold;
+  }
+
+  .metric-card .value {
+      font-size: 2.5rem;
+      font-weight: 800;
+      color: white;
+      margin: 0.5rem 0;
+      font-family: 'JetBrains Mono', monospace;
+  }
+
+  .trend { font-size: 0.8rem; }
+  .trend.up { color: #0f0; }
+  .trend.down { color: #0f0; } /* Good for latency */
+  
+  .card {
+      background: #111;
+      border: 1px solid #222;
+      padding: 1.5rem;
+      border-radius: 8px;
+  }
+
+  .wide { grid-column: span 3; }
+
+  h3 {
+      font-size: 1rem;
+      margin-bottom: 1.5rem;
+      color: #aaa;
+      border-bottom: 1px solid #222;
+      padding-bottom: 0.5rem;
+      display: flex;
+      align-items: center;
+      gap: 0.5rem;
+  }
+
+  .status-list {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 1rem;
+  }
+
+  .status-item {
+      display: flex;
+      align-items: center;
+      gap: 0.8rem;
+      background: #1a1a1a;
+      padding: 0.8rem;
+      border-radius: 4px;
+      font-size: 0.9rem;
+  }
+
+  .status-item.ok .dot {
+      width: 8px;
+      height: 8px;
+      background: #0f0;
+      border-radius: 50%;
+      box-shadow: 0 0 8px #0f0;
+  }
+
+  .url {
+      margin-left: auto;
+      font-family: 'JetBrains Mono', monospace;
+      color: #555;
+      font-size: 0.8rem;
+  }
+
+  .btn-group {
+      display: flex;
+      flex-direction: column;
+      gap: 0.8rem;
+  }
+
+  .action-btn {
+      display: block;
+      padding: 0.8rem;
+      text-align: center;
+      background: #222;
+      color: white;
+      text-decoration: none;
+      border-radius: 4px;
+      transition: 0.2s;
+      font-size: 0.9rem;
+  }
+
+  .action-btn:hover { background: #333; }
+  
+  .action-btn.primary {
+      background: var(--accent);
+      color: black;
+      font-weight: bold;
+  }
+  
+  .action-btn.primary:hover {
+      background: #ff3355;
+      box-shadow: 0 0 15px rgba(255,0,51,0.4);
+  }
+
+  .notifications ul {
+      list-style: none;
+      margin-top: 1rem;
+  }
+
+  .notifications li {
+      padding: 0.8rem 0;
+      border-bottom: 1px solid #222;
+      color: #888;
+      font-size: 0.9rem;
+      font-family: 'JetBrains Mono', monospace;
+  }
+</style>
