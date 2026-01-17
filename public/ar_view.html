@@ -1,42 +1,83 @@
 <!DOCTYPE html>
-<html>
+<html lang="pt-BR">
 
 <head>
-    <title>JetNexo AR War Room</title>
-    <!-- A-Frame & AR.js -->
-    <script src="https://aframe.io/releases/1.2.0/aframe.min.js"></script>
-    <script src="https://raw.githack.com/AR-js-org/AR.js/master/aframe/build/aframe-ar.js"></script>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>GetNexo AR View</title>
+    <style>
+        body {
+            margin: 0;
+            overflow: hidden;
+            background: #000;
+            color: #0f0;
+            font-family: monospace;
+        }
+
+        .overlay {
+            position: absolute;
+            top: 10px;
+            left: 10px;
+            z-index: 10;
+            pointer-events: none;
+        }
+
+        .reticle {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            width: 50px;
+            height: 50px;
+            border: 2px solid #00F7FF;
+            transform: translate(-50%, -50%);
+            border-radius: 50%;
+            animation: pulse 2s infinite;
+        }
+
+        @keyframes pulse {
+            0% {
+                opacity: 0.5;
+                scale: 1;
+            }
+
+            50% {
+                opacity: 1;
+                scale: 1.1;
+            }
+
+            100% {
+                opacity: 0.5;
+                scale: 1;
+            }
+        }
+    </style>
 </head>
 
-<body style="margin: 0; overflow: hidden;">
-    <!-- AR Scene -->
-    <a-scene embedded arjs>
-
-        <!-- Marker (Hiro) -->
-        <a-marker preset="hiro">
-            <!-- 3D Bar Chart (Performance) -->
-            <a-box position="-1 0.5 0" material="color: #FFD500;" depth="0.5" height="1.5" width="0.5"
-                animation="property: height; to: 2; dir: alternate; loop: true"></a-box>
-            <a-box position="0 0.5 0" material="color: #FF0033;" depth="0.5" height="1.0" width="0.5"
-                animation="property: height; to: 1.5; dir: alternate; loop: true"></a-box>
-            <a-box position="1 0.5 0" material="color: #0000FF;" depth="0.5" height="0.5" width="0.5"
-                animation="property: height; to: 1.2; dir: alternate; loop: true"></a-box>
-
-            <!-- Floating Label -->
-            <a-text value="JETNEXO LIVE STATS" position="0 2 0" align="center" color="red"></a-text>
-
-            <!-- Holographic Plane -->
-            <a-plane position="0 0 0" rotation="-90 0 0" width="4" height="4" color="#000" opacity="0.5"></a-plane>
-        </a-marker>
-
-        <a-entity camera></a-entity>
-    </a-scene>
-
-    <div
-        style="position: fixed; top: 10px; left: 10px; color: white; background: rgba(0,0,0,0.5); padding: 10px; font-family: monospace;">
-        PROJECTING DATA...<br>
-        POINT CAMERA AT 'HIRO' MARKER
+<body>
+    <div class="overlay">
+        <h1>🕶️ AR VIEW MODE</h1>
+        <p>Scanning surface...</p>
+        <p>[MOCK] Camera access required for real AR.</p>
     </div>
+    <div class="reticle"></div>
+    <!-- Simple 3D cube using CSS just to show something -->
+    <div style="width:100%;height:100vh;display:flex;align-items:center;justify-content:center;perspective:1000px;">
+        <div
+            style="width:100px;height:100px;background:rgba(0,247,255,0.2);border:1px solid #00F7FF;transform:rotateX(45deg) rotateY(45deg);animation:spin 5s linear infinite;">
+            <div style="text-align:center;padding-top:40px;color:white;font-weight:bold;">NFT</div>
+        </div>
+    </div>
+    <style>
+        @keyframes spin {
+            from {
+                transform: rotateX(0) rotateY(0);
+            }
+
+            to {
+                transform: rotateX(360deg) rotateY(360deg);
+            }
+        }
+    </style>
 </body>
 
 </html>
