@@ -1,14 +1,21 @@
 ---
-export interface Props {
-  title: string;
-}
+// src/layouts/Layout.astro
 const { title } = Astro.props;
 ---
-<html>
-  <head>
-    <title>{title}</title>
-  </head>
-  <body>
+
+<!doctype html>
+<html lang="pt">
+<head>
+  <title>{title}</title>
+</head>
+<body>
+  <nav>
+    <a href="/">Home</a> |
+    <a href="/blog">Blog</a> |
+    <a href="/privacidade">Privacidade</a>
+  </nav>
+  <main>
     <slot />
-  </body>
+  </main>
+</body>
 </html>
