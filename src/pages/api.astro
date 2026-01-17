@@ -1,5 +1,16 @@
 ---
 import Layout from '../layouts/Layout.astro';
+
+const apiStatus = {
+  "status": 200,
+  "message": "Welcome to the Evolution API, it is working!",
+  "version": "2.2.2"
+};
+
+const messagePayload = {
+  "number": "5511999999999",
+  "message": "Oi, quer fechar uma venda hoje?"
+};
 ---
 
 <Layout title="API GetNexo – Assistente de Vendas WhatsApp">
@@ -10,24 +21,13 @@ import Layout from '../layouts/Layout.astro';
     <div class="endpoint">
       <h2>Status da API</h2>
       <code>GET https://api.getnexo.com.br/status</code>
-      <pre>
-{
-  "status": 200,
-  "message": "Welcome to the Evolution API, it is working!",
-  "version": "2.2.2"
-}
-      </pre>
+      <pre>{JSON.stringify(apiStatus, null, 2)}</pre>
     </div>
 
     <div class="endpoint">
       <h2>Enviar Mensagem</h2>
       <code>POST https://api.getnexo.com.br/send-message</code>
-      <pre>
-{
-  "number": "5511999999999",
-  "message": "Oi, quer fechar uma venda hoje?"
-}
-      </pre>
+      <pre>{JSON.stringify(messagePayload, null, 2)}</pre>
     </div>
 
     <p><a href="https://api.getnexo.com.br/manager" target="_blank">Acessar Manager da Evolution API</a></p>
