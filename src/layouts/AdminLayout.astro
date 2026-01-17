@@ -24,20 +24,38 @@ const { title } = Astro.props;
 			</div>
 			
 			<nav class="menu">
-				<div class="category">CORE</div>
-				<a href="/admin" class="active">Dashboard</a>
-				<a href="/ara">Ara AI</a>
-				<a href="/admin/content">Conteúdo</a>
+				<div class="category">MAIN</div>
+				<a href="/admin" class="active"><span class="icon">📊</span> Dashboard</a>
+				<a href="/admin?tab=content"><span class="icon">📝</span> Conteúdo</a>
+				<a href="/ara"><span class="icon">🤖</span> IA (Ara/Kira)</a>
 				
+				<div class="category">GROWTH</div>
+				<a href="/admin?tab=strategy"><span class="icon">⚔️</span> Estratégia</a>
+				<a href="/admin?tab=marketing"><span class="icon">📢</span> Marketing</a>
+				<a href="/admin?tab=ab"><span class="icon">⚖️</span> A/B Tests</a>
+				
+				<div class="category">TECHNICAL</div>
+				<a href="/admin?tab=security"><span class="icon">🛡️</span> Segurança</a>
+				<a href="/admin?tab=performance"><span class="icon">⚡</span> Performance</a>
+				<a href="/admin?tab=logs"><span class="icon">📋</span> Logs</a>
+				<a href="/admin?tab=backup"><span class="icon">💾</span> Backup</a>
+				
+				<div class="category">CONFIG</div>
+				<a href="/admin?tab=users"><span class="icon">👥</span> Usuários</a>
+				<a href="/admin?tab=integrations"><span class="icon">🔌</span> Integrações</a>
+				<a href="/admin?tab=config"><span class="icon">⚙️</span> Configs</a>
+				<a href="/admin?tab=downloads"><span class="icon">📥</span> Downloads</a>
+				<a href="/admin?tab=notifications"><span class="icon">🔔</span> Notificações</a>
+
 				<div class="category">SYSTEM</div>
-				<a href="/admin/logs">Logs</a>
-				<a href="/admin/security">Security</a>
-				<a href="/admin/status">Tunnel Status</a>
-				
-				<div class="category">USER</div>
-				<a href="/" target="_blank">View Site ↗</a>
-				<a href="#" class="logout">Logout</a>
+				<a href="/" target="_blank"><span class="icon">↗</span> Ver Site</a>
+				<a href="#" class="logout"><span class="icon">🚪</span> Logout</a>
 			</nav>
+
+			<!-- Global Admin Scripts -->
+			<script src="/custom/js/command_palette.js" is:inline></script>
+			<script src="/custom/js/admin_sounds.js" is:inline></script>
+			<script src="/custom/js/holo_agent.js" is:inline></script>
 
 			<div class="user-profile">
 				<div class="avatar">L</div>

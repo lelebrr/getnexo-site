@@ -1,207 +1,194 @@
 ---
 import AdminLayout from '../layouts/AdminLayout.astro';
+
+const tab = Astro.url.searchParams.get('tab') || 'dashboard';
+
+// Mock Config Data for UI
+const tunnelStatus = [
+  { service: 'API (Evolution)', url: 'api.getnexo.com.br', status: 'ok' },
+  { service: 'Chatwoot', url: 'chat.getnexo.com.br', status: 'ok' },
+  { service: 'n8n Workflow', url: 'n8n.getnexo.com.br', status: 'ok' },
+  { service: 'Keycloak SSO', url: 'auth.getnexo.com.br', status: 'ok' },
+];
+
+const logs = [
+    { time: '07:00', level: 'INFO', msg: 'Cron Job diário executado com sucesso.' },
+    { time: '03:45', level: 'INFO', msg: 'Backup do banco de dados realizado (34MB).' },
+    { time: 'Ontem', level: 'WARN', msg: 'Tentativa de login falha (IP Suspeito).' },
+];
 ---
 
-<AdminLayout title="Dashboard Central">
-  <div class="dashboard-grid">
-    <!-- Row 1: Key Metrics -->
-    <div class="metric-card">
-      <span class="label">ARTIGOS GERADOS</span>
-      <div class="value">21</div>
-      <div class="trend up">+3 hoje</div>
-    </div>
-
-    <div class="metric-card">
-      <span class="label">CONVERSÃO CHAT</span>
-      <div class="value">34%</div>
-      <div class="trend up">+2.1%</div>
-    </div>
-
-    <div class="metric-card">
-      <span class="label">TEMPO RESPOSTA</span>
-      <div class="value">0.8s</div>
-      <div class="trend down">-0.1s (ótimo)</div>
-    </div>
-
-    <div class="metric-card">
-      <span class="label">FATURAMENTO</span>
-      <div class="value">R$ 4.2k</div>
-      <div class="trend up">Semana</div>
-    </div>
-
-    <!-- Row 2: Status & Actions -->
-    <div class="card wide">
-      <h3>📡 Tunnel Status</h3>
-      <div class="status-list">
-        <div class="status-item ok">
-            <span class="dot"></span>
-            <strong>API (Evolution)</strong>
-            <span class="url">api.getnexo.com.br</span>
+<AdminLayout title={`Admin: ${tab.charAt(0).toUpperCase() + tab.slice(1)}`}>
+  
+  <!-- DASHBOARD TAB -->
+  {tab === 'dashboard' && (
+      <div class="dashboard-grid fade-in">
+        <div class="metric-card holo-card">
+          <span class="label">ARTIGOS GERADOS</span>
+          <div class="value">21</div>
+          <div class="trend up">+3 hoje</div>
         </div>
-        <div class="status-item ok">
-            <span class="dot"></span>
-            <strong>Chatwoot</strong>
-            <span class="url">chat.getnexo.com.br</span>
+        <div class="metric-card holo-card">
+          <span class="label">CONVERSÃO CHAT</span>
+          <div class="value">34%</div>
+          <div class="trend up">+2.1%</div>
         </div>
-        <div class="status-item ok">
-            <span class="dot"></span>
-            <strong>n8n Workflow</strong>
-            <span class="url">n8n.getnexo.com.br</span>
+        <div class="metric-card holo-card">
+          <span class="label">TEMPO RESPOSTA</span>
+          <div class="value">0.8s</div>
+          <div class="trend down">-0.1s (ótimo)</div>
         </div>
-        <div class="status-item ok">
-            <span class="dot"></span>
-            <strong>Keycloak SSO</strong>
-            <span class="url">auth.getnexo.com.br</span>
+        <div class="metric-card holo-card">
+          <span class="label">FATURAMENTO</span>
+          <div class="value">R$ 4.2k</div>
+          <div class="trend up">Semana</div>
+        </div>
+
+        <div class="card wide holo-card">
+          <h3>📡 Tunnel Status</h3>
+          <div class="status-list">
+            {tunnelStatus.map(s => (
+                <div class={`status-item ${s.status}`}>
+                    <span class="dot"></span>
+                    <strong>{s.service}</strong>
+                    <span class="url">{s.url}</span>
+                </div>
+            ))}
+          </div>
+        </div>
+
+        <div class="card holo-card">
+            <h3>⚡ Ações Rápidas</h3>
+            <div class="btn-group">
+                <a href="/ara" class="action-btn primary">Gerar Novo Artigo</a>
+                <a href="https://n8n.getnexo.com.br" target="_blank" class="action-btn">Abrir n8n</a>
+                <button onclick="playSuccess()" class="action-btn">Testar Som</button>
+            </div>
         </div>
       </div>
-    </div>
+  )}
 
-    <div class="card">
-        <h3>⚡ Ações Rápidas</h3>
-        <div class="btn-group">
-            <a href="/ara" class="action-btn primary">Gerar Novo Artigo</a>
-            <a href="https://n8n.getnexo.com.br" target="_blank" class="action-btn">Abrir n8n</a>
-            <a href="https://chat.getnexo.com.br" target="_blank" class="action-btn">Ver Chat</a>
+  <!-- CONTENT TAB -->
+  {tab === 'content' && (
+      <div class="content-panel fade-in">
+          <div class="card wide">
+              <h3>📝 Editor de Conteúdo (Ara Integration)</h3>
+              <p>Gerencie os posts do blog gerados pela IA.</p>
+              <table class="data-table">
+                  <thead><tr><th>Título</th><th>Data</th><th>Status</th><th>Ações</th></tr></thead>
+                  <tbody>
+                      <tr><td>Como a IA vendeu R$ 8k</td><td>Hoje, 10:00</td><td><span class="badge green">Publicado</span></td><td><button>Editar</button></td></tr>
+                      <tr><td>Guia WhatsApp Auto</td><td>Ontem</td><td><span class="badge green">Publicado</span></td><td><button>Editar</button></td></tr>
+                      <tr><td>Tendências Black Friday</td><td>Rascunho</td><td><span class="badge yellow">Gerando...</span></td><td><button>Ver</button></td></tr>
+                  </tbody>
+              </table>
+          </div>
+      </div>
+  )}
+
+  <!-- LOGS TAB -->
+  {tab === 'logs' && (
+      <div class="logs-panel fade-in">
+          <div class="card wide">
+              <h3>📋 Logs do Sistema</h3>
+              <div class="logs-container">
+                  {logs.map(log => (
+                      <div class={`log-entry ${log.level.toLowerCase()}`}>
+                          <span class="time">[{log.time}]</span>
+                          <span class={`level ${log.level}`}>{log.level}</span>
+                          <span class="msg">{log.msg}</span>
+                      </div>
+                  ))}
+              </div>
+          </div>
+      </div>
+  )}
+
+    <!-- SECURITY TAB -->
+    {tab === 'security' && (
+        <div class="security-panel fade-in">
+            <div class="card wide">
+                <h3>🛡️ Security Hardening</h3>
+                <div class="grid-2">
+                    <div class="setting-item">
+                        <label>Kill Switch Ativo</label>
+                        <div class="status-badge green">ON</div>
+                    </div>
+                    <div class="setting-item">
+                        <label>Fail2Ban Banned IPs</label>
+                        <div class="value">12</div>
+                    </div>
+                </div>
+            </div>
         </div>
-    </div>
-  </div>
+    )}
 
-  <div class="notifications">
-      <h3>🔔 Notificações Recentes</h3>
-      <ul>
-          <li>[07:00] Cron Job diário executado com sucesso.</li>
-          <li>[03:45] Backup do banco de dados realizado (34MB).</li>
-          <li>[Ontem] Novo lead capturado via WhatsApp (11 999...).</li>
-      </ul>
-  </div>
+    <!-- GENERIC PLACEHOLDER FOR OTHERS -->
+    {!['dashboard', 'content', 'logs', 'security'].includes(tab) && (
+        <div class="empty-state fade-in">
+            <h2>🚧 Módulo {tab.toUpperCase()}</h2>
+            <p>Este módulo está ativo e rodando no backend.</p>
+            <p class="mono">Status: RUNNING (Docker Container)</p>
+            <br/>
+            <button class="action-btn primary" onclick="history.back()">Voltar</button>
+        </div>
+    )}
+
 </AdminLayout>
 
 <style>
-  .dashboard-grid {
+  .dashboard-grid, .grid-2 {
       display: grid;
       grid-template-columns: repeat(4, 1fr);
       gap: 1.5rem;
       margin-bottom: 2rem;
   }
+  .grid-2 { grid-template-columns: 1fr 1fr; }
 
-  .metric-card {
+  .metric-card, .card {
       background: #111;
       border: 1px solid #222;
       padding: 1.5rem;
       border-radius: 8px;
   }
-
-  .metric-card .label {
-      font-size: 0.7rem;
-      color: #777;
-      letter-spacing: 1px;
-      font-weight: bold;
-  }
-
-  .metric-card .value {
-      font-size: 2.5rem;
-      font-weight: 800;
-      color: white;
-      margin: 0.5rem 0;
-      font-family: 'JetBrains Mono', monospace;
-  }
-
-  .trend { font-size: 0.8rem; }
-  .trend.up { color: #0f0; }
-  .trend.down { color: #0f0; } /* Good for latency */
   
-  .card {
-      background: #111;
-      border: 1px solid #222;
-      padding: 1.5rem;
-      border-radius: 8px;
-  }
+  .metric-card .label { font-size: 0.7rem; color: #777; font-weight: bold; letter-spacing: 1px; }
+  .metric-card .value { font-size: 2.5rem; font-weight: 800; color: white;     font-family: 'JetBrains Mono', monospace; margin: 0.5rem 0; }
+  .trend { font-size: 0.8rem; }
+  .trend.up { color: #0f0; } .trend.down { color: #0f0; }
 
   .wide { grid-column: span 3; }
+  h3 { font-size: 1rem; margin-bottom: 1rem; color: #aaa; border-bottom: 1px solid #222; padding-bottom: 0.5rem; }
 
-  h3 {
-      font-size: 1rem;
-      margin-bottom: 1.5rem;
-      color: #aaa;
-      border-bottom: 1px solid #222;
-      padding-bottom: 0.5rem;
-      display: flex;
-      align-items: center;
-      gap: 0.5rem;
-  }
+  .status-list { display: grid; grid-template-columns: 1fr 1fr; gap: 1rem; }
+  .status-item { display: flex; align-items: center; gap: 0.8rem; background: #1a1a1a; padding: 0.8rem; border-radius: 4px; font-size: 0.9rem; }
+  .status-item .dot { width: 8px; height: 8px; background: #0f0; border-radius: 50%; box-shadow: 0 0 8px #0f0; }
+  .url { margin-left: auto; font-family: 'JetBrains Mono', monospace; color: #555; font-size: 0.8rem; }
 
-  .status-list {
-      display: grid;
-      grid-template-columns: 1fr 1fr;
-      gap: 1rem;
-  }
-
-  .status-item {
-      display: flex;
-      align-items: center;
-      gap: 0.8rem;
-      background: #1a1a1a;
-      padding: 0.8rem;
-      border-radius: 4px;
-      font-size: 0.9rem;
-  }
-
-  .status-item.ok .dot {
-      width: 8px;
-      height: 8px;
-      background: #0f0;
-      border-radius: 50%;
-      box-shadow: 0 0 8px #0f0;
-  }
-
-  .url {
-      margin-left: auto;
-      font-family: 'JetBrains Mono', monospace;
-      color: #555;
-      font-size: 0.8rem;
-  }
-
-  .btn-group {
-      display: flex;
-      flex-direction: column;
-      gap: 0.8rem;
-  }
-
-  .action-btn {
-      display: block;
-      padding: 0.8rem;
-      text-align: center;
-      background: #222;
-      color: white;
-      text-decoration: none;
-      border-radius: 4px;
-      transition: 0.2s;
-      font-size: 0.9rem;
-  }
-
+  .btn-group { display: flex; flexDirection: column; gap: 0.8rem; }
+  .action-btn { display: block; padding: 0.8rem; text-align: center; background: #222; color: white; text-decoration: none; border-radius: 4px; transition: 0.2s; font-size: 0.9rem; cursor: pointer; border: none; width: 100%; }
   .action-btn:hover { background: #333; }
-  
-  .action-btn.primary {
-      background: var(--accent);
-      color: black;
-      font-weight: bold;
-  }
-  
-  .action-btn.primary:hover {
-      background: #ff3355;
-      box-shadow: 0 0 15px rgba(255,0,51,0.4);
-  }
+  .action-btn.primary { background: #FF0033; color: white; font-weight: bold; }
+  .action-btn.primary:hover { background: #cc0029; box-shadow: 0 0 15px rgba(255,0,51,0.4); }
 
-  .notifications ul {
-      list-style: none;
-      margin-top: 1rem;
-  }
+  /* Table Styles */
+  .data-table { width: 100%; border-collapse: collapse; margin-top: 1rem; }
+  .data-table th, .data-table td { padding: 1rem; text-align: left; border-bottom: 1px solid #222; color: #ccc; }
+  .badge { padding: 4px 8px; border-radius: 4px; font-size: 0.7rem; font-weight: bold; }
+  .badge.green { background: #0f02; color: #0f0; border: 1px solid #0f04; }
+  .badge.yellow { background: #ff02; color: #ff0; border: 1px solid #ff04; }
 
-  .notifications li {
-      padding: 0.8rem 0;
-      border-bottom: 1px solid #222;
-      color: #888;
-      font-size: 0.9rem;
-      font-family: 'JetBrains Mono', monospace;
-  }
+  /* Logs Styles */
+  .logs-container { background: #000; padding: 1rem; border-radius: 4px; border: 1px solid #222; max-height: 400px; overflow-y: auto; font-family: 'JetBrains Mono', monospace; font-size: 0.85rem; }
+  .log-entry { margin-bottom: 0.5rem; border-bottom: 1px solid #111; padding-bottom: 0.2rem; }
+  .log-entry .time { color: #555; margin-right: 0.5rem; }
+  .log-entry .level { font-weight: bold; margin-right: 0.5rem; }
+  .log-entry .level.INFO { color: #0f0; }
+  .log-entry .level.WARN { color: #ffb700; }
+  
+  .fade-in { animation: fadeIn 0.3s ease-in; }
+  @keyframes fadeIn { from { opacity: 0; transform: translateY(10px); } to { opacity: 1; transform: translateY(0); } }
+  
+  .empty-state { text-align: center; padding: 4rem; color: #666; }
+  .mono { font-family: 'JetBrains Mono', monospace; color: #00F7FF; }
 </style>
