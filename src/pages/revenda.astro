@@ -1,0 +1,84 @@
+---
+import Layout from '../layouts/Layout.astro';
+
+// Verifica se o parâmetro ?revenda=sim está presente
+const url = new URL(Astro.request.url);
+const isAuthorized = url.searchParams.get('revenda') === 'sim';
+---
+
+{isAuthorized ? (
+<Layout title="Área de Revenda – Parceiros GetNexo (Acesso Restrito)">
+  <section style="padding: 100px 20px; max-width: 1000px; margin: auto;">
+    <div style="text-align: center; margin-bottom: 4rem;">
+      <span style="background: linear-gradient(90deg, #f59e0b, #f97316); padding: 0.5rem 1.5rem; border-radius: 50px; font-size: 0.9rem; font-weight: 800; color: black;">🔐 ÁREA RESTRITA – PARCEIROS</span>
+      <h1 style="font-size: 3rem; margin-top: 2rem; background: linear-gradient(90deg, var(--primary), var(--success)); -webkit-background-clip: text; color: transparent;">
+        Programa de Revenda GetNexo
+      </h1>
+      <p style="color: var(--text); font-size: 1.2rem; max-width: 700px; margin: 1rem auto;">
+        Ganhe dinheiro instalando o GetNexo para clientes. Comissão de 100% no primeiro setup + recorrente em suporte.
+      </p>
+    </div>
+
+    <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 2rem; margin-bottom: 4rem;">
+      <div style="background: rgba(30,41,59,0.8); padding: 2.5rem; border-radius: 20px; border: 1px solid rgba(0,212,255,0.15);">
+        <h3 style="color: var(--success); font-size: 1.5rem; margin-bottom: 1rem;">💰 Modelo de Comissão</h3>
+        <ul style="color: var(--text); line-height: 2;">
+          <li><strong>Setup:</strong> Cobra R$ 500–2.000/cliente (100% seu)</li>
+          <li><strong>Suporte mensal:</strong> R$ 97–297/mês (recorrente)</li>
+          <li><strong>Upsell:</strong> Fluxos customizados, integrações</li>
+        </ul>
+      </div>
+
+      <div style="background: rgba(30,41,59,0.8); padding: 2.5rem; border-radius: 20px; border: 1px solid rgba(0,212,255,0.15);">
+        <h3 style="color: var(--success); font-size: 1.5rem; margin-bottom: 1rem;">🎯 Público-Alvo</h3>
+        <ul style="color: var(--text); line-height: 2;">
+          <li>Clínicas, imobiliárias, e-commerces</li>
+          <li>Lojas físicas com WhatsApp</li>
+          <li>Infoprodutores e afiliados</li>
+          <li>Agências de marketing digital</li>
+        </ul>
+      </div>
+
+      <div style="background: rgba(30,41,59,0.8); padding: 2.5rem; border-radius: 20px; border: 1px solid rgba(0,212,255,0.15);">
+        <h3 style="color: var(--success); font-size: 1.5rem; margin-bottom: 1rem;">📦 O Que Você Entrega</h3>
+        <ul style="color: var(--text); line-height: 2;">
+          <li>Instalação completa (Docker + Tunnel)</li>
+          <li>Configuração do WhatsApp</li>
+          <li>3 fluxos de automação prontos</li>
+          <li>30 dias de suporte básico</li>
+        </ul>
+      </div>
+    </div>
+
+    <div style="background: linear-gradient(135deg, rgba(0,212,255,0.1), rgba(0,255,157,0.1)); padding: 3rem; border-radius: 20px; text-align: center; margin-bottom: 3rem;">
+      <h2 style="font-size: 2rem; color: var(--light); margin-bottom: 1rem;">Cálculo Rápido</h2>
+      <p style="color: var(--text); margin-bottom: 2rem;">10 clientes × R$ 1.000 setup = <strong style="color: var(--success); font-size: 1.5rem;">R$ 10.000</strong></p>
+      <p style="color: var(--text);">+ 10 clientes × R$ 197/mês suporte = <strong style="color: var(--success); font-size: 1.5rem;">R$ 1.970/mês recorrente</strong></p>
+    </div>
+
+    <div style="background: rgba(10,14,23,0.9); padding: 2.5rem; border-radius: 20px; border: 1px solid rgba(255,77,77,0.3);">
+      <h3 style="color: #ff6b6b; margin-bottom: 1rem;">⚠️ Regras do Programa</h3>
+      <ul style="color: var(--text); line-height: 2;">
+        <li>Não divulgue este link publicamente</li>
+        <li>Não prometa suporte oficial da GetNexo (você é o suporte)</li>
+        <li>Mantenha o padrão de qualidade nas instalações</li>
+        <li>Dúvidas técnicas avançadas: encaminhe para o canal de parceiros</li>
+      </ul>
+    </div>
+
+    <div style="text-align: center; margin-top: 4rem;">
+      <h2 style="font-size: 1.8rem; color: var(--light); margin-bottom: 1.5rem;">Pronto pra começar a revender?</h2>
+      <a href="https://chat.getnexo.com.br" target="_blank" style="background: var(--success); color: black; padding: 1.2rem 2.5rem; border-radius: 50px; font-weight: 800; text-decoration: none; font-size: 1.2rem; display: inline-block; margin-right: 1rem;">Falar com Suporte de Parceiros</a>
+      <a href="/documentacao" style="color: var(--primary); border: 2px solid var(--primary); padding: 1.2rem 2.5rem; border-radius: 50px; font-weight: 800; text-decoration: none; font-size: 1.2rem; display: inline-block;">Ver Documentação Técnica</a>
+    </div>
+  </section>
+</Layout>
+) : (
+<Layout title="Acesso Negado">
+  <section style="text-align: center; padding: 200px 20px; min-height: 60vh;">
+    <h1 style="font-size: 4rem; color: #ff6b6b;">🚫 Acesso Negado</h1>
+    <p style="color: var(--text); font-size: 1.3rem; margin: 2rem 0;">Esta página é restrita a parceiros autorizados.</p>
+    <a href="/" style="color: var(--primary); font-size: 1.1rem;">← Voltar para a página inicial</a>
+  </section>
+</Layout>
+)}
