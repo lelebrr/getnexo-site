@@ -1,0 +1,16 @@
+---
+// src/pages/blog/index.astro
+const posts = [
+  { title: 'Primeiro post', content: 'Teste do blog.' }
+];
+---
+
+<div>
+  <h1>Blog GetNexo</h1>
+  {posts.map(post => (
+    <article>
+      <h2>{post.title}</h2>
+      <p>{post.content}</p>
+    </article>
+  ))}
+</div>
