@@ -2,22 +2,28 @@ export async function GET(context) {
     const site = 'https://getnexo.com.br';
     const posts = [
         {
+            title: 'Lançamento do GetNexo',
+            slug: 'lancamento',
+            date: '2026-01-17',
+            description: 'A revolução do atendimento local começou. Veja o que mudou.'
+        },
+        {
             title: 'Como a IA vendeu R$ 8k em 24 horas',
-            slug: 'ia-vendeu-8k-24-horas',
+            slug: 'ia-vendeu-8k',
             date: '2026-01-15',
             description: 'Caso real de um cliente que deixou a Ara rodar sozinha por um dia.'
         },
         {
-            title: 'WhatsApp Automatizado: O Guia Completo',
+            title: 'WhatsApp Automatizado: O Guia Definitivo',
             slug: 'whatsapp-automatizado-guia',
             date: '2026-01-10',
-            description: 'Tudo que você precisa saber para vender no piloto automático.'
+            description: 'Como escalar sem levar banimento do Facebook.'
         },
         {
             title: 'Dark Mode e Conversão: A Ciência',
             slug: 'dark-mode-conversao',
             date: '2026-01-05',
-            description: 'Por que interfaces escuras convertem mais à noite.'
+            description: 'Por que interfaces dark vendem 82% a mais.'
         }
     ];
 
