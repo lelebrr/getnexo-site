@@ -2,6 +2,14 @@
 import Layout from '../../layouts/Layout.astro';
 ---
 <Layout title="Relatório GetNexo">
+  <!-- Admin Navigation -->
+  <nav style="background:#0f172a; padding:1rem 5%; display:flex; gap:1rem; border-bottom:1px solid #1e293b; flex-wrap:wrap;">
+    <a href="/admin" style="color:#94a3b8; text-decoration:none; padding:0.5rem 1rem; border-radius:8px;">📊 Dashboard</a>
+    <a href="/admin/cupons" style="color:#94a3b8; text-decoration:none; padding:0.5rem 1rem; border-radius:8px;">🎟️ Cupons</a>
+    <a href="/admin/relatorio" style="color:#00ff9d; text-decoration:none; padding:0.5rem 1rem; background:#00ff9d22; border-radius:8px; font-weight:600;">📈 Relatórios</a>
+    <a href="/criar-bot" style="color:#94a3b8; text-decoration:none; padding:0.5rem 1rem; border-radius:8px;">🤖 Criar Bot</a>
+  </nav>
+
   <div style="background:#0a0e17; min-height:100vh; padding:2rem; color:white;">
       <div style="max-width:800px; mx-auto;">
         <div style="display:flex; justify-content:space-between; align-items:center; margin-bottom:2rem;">
@@ -42,8 +50,12 @@ import Layout from '../../layouts/Layout.astro';
   </div>
 
   <script is:inline>
+    const API_URL = window.location.hostname === 'localhost' 
+      ? 'http://localhost:8080' 
+      : 'https://api.getnexo.com.br';
+    
     // Fetch Data on Load
-    fetch('https://api.getnexo.com.br/api/relatorio')
+    fetch(`${API_URL}/api/relatorio`)
         .then(r => r.json())
         .then(data => {
             document.getElementById('loading').style.display = 'none';
