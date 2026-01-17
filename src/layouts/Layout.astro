@@ -1,21 +1,225 @@
 ---
-// src/layouts/Layout.astro
+interface Props {
+	title: string;
+}
+
 const { title } = Astro.props;
 ---
 
 <!doctype html>
-<html lang="pt">
-<head>
-  <title>{title}</title>
-</head>
-<body>
-  <nav>
-    <a href="/">Home</a> |
-    <a href="/blog">Blog</a> |
-    <a href="/privacidade">Privacidade</a>
-  </nav>
-  <main>
-    <slot />
-  </main>
-</body>
+<html lang="pt-BR">
+	<head>
+		<meta charset="UTF-8" />
+		<meta name="description" content="GetNexo - Seu assistente de vendas 24h com IA" />
+		<meta name="viewport" content="width=device-width" />
+		<link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+		<link rel="preconnect" href="https://fonts.googleapis.com">
+		<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+		<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;800&family=JetBrains+Mono:wght@400;700&display=swap" rel="stylesheet">
+		<meta name="generator" content={Astro.generator} />
+		<title>{title}</title>
+	</head>
+	<body>
+		<nav class="glass-nav">
+			<div class="logo">
+				<a href="/">GET<span class="highlight">NEXO</span></a>
+			</div>
+			<div class="links">
+				<a href="/melhorias">Melhorias</a>
+				<a href="/oferta" class="pulse">Oferta</a>
+				<a href="/blog">Blog</a>
+				<a href="https://chat.getnexo.com.br" class="btn-nav">Login</a>
+			</div>
+		</nav>
+		<main>
+			<slot />
+		</main>
+		<footer>
+			<p>&copy; 2026 GetNexo. Todos os direitos reservados.</p>
+			<p class="secure-badge">🔒 Dados Blindados (AES-256)</p>
+		</footer>
+	</body>
 </html>
+
+<style is:global>
+	:root {
+		--bg: #050505;
+		--fg: #ffffff;
+		--accent: #FF0033; /* Urgency Red */
+		--glow: rgba(255, 0, 51, 0.4);
+		--gold: #FFD500;
+		--neon-blue: #00F7FF;
+		--dark-panel: #111111;
+	}
+	
+	* {
+		box-sizing: border-box;
+		margin: 0;
+		padding: 0;
+	}
+
+	html {
+		font-family: 'Inter', system-ui, sans-serif;
+		background: var(--bg);
+		color: var(--fg);
+		scroll-behavior: smooth;
+	}
+
+	body {
+		min-height: 100vh;
+		display: flex;
+		flex-direction: column;
+		overflow-x: hidden;
+	}
+
+	h1, h2, h3, h4 {
+		font-family: 'JetBrains Mono', monospace;
+		letter-spacing: -0.05em;
+	}
+
+	a {
+		color: inherit;
+		text-decoration: none;
+		transition: 0.2s;
+	}
+
+	/* Glassmorphism Nav */
+	.glass-nav {
+		display: flex;
+		justify-content: space-between;
+		align-items: center;
+		padding: 1rem 2rem;
+		background: rgba(5, 5, 5, 0.8);
+		backdrop-filter: blur(12px);
+		border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+		position: sticky;
+		top: 0;
+		z-index: 100;
+	}
+
+	.logo {
+		font-family: 'JetBrains Mono', monospace;
+		font-weight: 800;
+		font-size: 1.5rem;
+		letter-spacing: -0.1em;
+	}
+
+	.highlight {
+		color: var(--accent);
+		text-shadow: 0 0 10px var(--glow);
+	}
+
+	.links {
+		display: flex;
+		gap: 2rem;
+		align-items: center;
+	}
+
+	.links a:hover {
+		color: var(--accent);
+	}
+
+	.btn-nav {
+		background: rgba(255, 255, 255, 0.1);
+		padding: 0.5rem 1rem;
+		border-radius: 4px;
+		font-size: 0.9rem;
+	}
+
+	.btn-nav:hover {
+		background: var(--accent);
+		color: black;
+		box-shadow: 0 0 15px var(--glow);
+	}
+
+	.pulse {
+		color: var(--gold);
+		font-weight: bold;
+		animation: pulse 2s infinite;
+	}
+
+	@keyframes pulse {
+		0% { opacity: 1; }
+		50% { opacity: 0.6; }
+		100% { opacity: 1; }
+	}
+
+	main {
+		flex: 1;
+		padding: 2rem;
+		max-width: 1200px;
+		margin: 0 auto;
+		width: 100%;
+	}
+
+	footer {
+		text-align: center;
+		padding: 3rem 0;
+		border-top: 1px solid #222;
+		color: #666;
+		font-size: 0.9rem;
+	}
+
+	.secure-badge {
+		margin-top: 0.5rem;
+		color: #444;
+		font-family: 'JetBrains Mono', monospace;
+		font-size: 0.8rem;
+	}
+
+	/* Utilities */
+	.text-accent { color: var(--accent); }
+	.text-gold { color: var(--gold); }
+	.text-neon { color: var(--neon-blue); }
+	
+	.card {
+		background: var(--dark-panel);
+		border: 1px solid #222;
+		padding: 1.5rem;
+		border-radius: 8px;
+		transition: 0.3s;
+	}
+
+	.card:hover {
+		border-color: var(--accent);
+		box-shadow: 0 0 20px rgba(255, 0, 51, 0.1);
+		transform: translateY(-2px);
+	}
+
+	/* Buttons */
+	.btn {
+		display: inline-block;
+		padding: 1rem 2.5rem;
+		background: var(--accent);
+		color: black;
+		font-weight: 800;
+		font-family: 'JetBrains Mono', monospace;
+		text-transform: uppercase;
+		border: none;
+		border-radius: 4px;
+		cursor: pointer;
+		box-shadow: 0 0 20px var(--glow);
+		transition: 0.2s;
+	}
+
+	.btn:hover {
+		transform: scale(1.05);
+		box-shadow: 0 0 40px var(--glow);
+		background: #ff1a47;
+		color: white;
+	}
+
+	.btn-secondary {
+		background: transparent;
+		border: 1px solid #333;
+		color: #fff;
+		box-shadow: none;
+	}
+
+	.btn-secondary:hover {
+		border-color: #fff;
+		background: #111;
+		color: #fff;
+		box-shadow: none;
+	}
+</style>
