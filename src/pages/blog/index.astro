@@ -1,24 +1,15 @@
 ---
 import Layout from '../../layouts/Layout.astro';
-
-const posts = [
-  { title: "Lançamento do GetNexo", slug: "lancamento", data: "2026-01-01", excerpt: "Bem-vindo ao nosso novo site!" },
-  { title: "Automação com n8n", slug: "n8n", data: "2026-01-02", excerpt: "Aprenda a integrar WhatsApp e CRM." },
-  { title: "Segurança no WSL", slug: "wsl", data: "2026-01-03", excerpt: "Como rodar tudo em 8GB sem lag." },
-  { title: "Cloudflare Tunnel", slug: "tunnel", data: "2026-01-04", excerpt: "Túnel zero trust pra servidores locais." }
-];
 ---
 
-<Layout title="Blog GetNexo">
+<Layout title="Blog — GetNexo">
   <h1>Blog</h1>
   <ul>
-    {posts.map(post => (
-      <li>
-        <h3>{post.title}</h3>
-        <p>{post.data}</p>
-        <p>{post.excerpt}</p>
-        <a href={`/blog/${post.slug}`}>Ler mais →</a>
-      </li>
-    ))}
+    <li>
+      <h3>Lançamento do GetNexo</h3>
+      <p>17 Jan 2026</p>
+      <p>Site novo no ar com IA e túnel.</p>
+      <a href="/blog/lancamento">Ler mais →</a>
+    </li>
   </ul>
 </Layout>
