@@ -3,37 +3,280 @@ import Layout from '../layouts/Layout.astro';
 ---
 
 <Layout title="Como Funciona – GetNexo Assistente de Vendas WhatsApp">
-  <section class="container">
+  <section class="hero">
     <h1>Como Funciona o GetNexo</h1>
-    <p>Instalação em 10 minutos – sem nuvem, sem mensalidade.</p>
+    <p>Instalação em 10-20 minutos – tudo local, sem nuvem, sem mensalidade.</p>
+  </section>
 
+  <section class="steps-container">
     <div class="steps">
       <div class="step">
-        <h2>1. Instale no teu PC</h2>
-        <p>WSL + Docker + Cloudflare Tunnel (tudo local)</p>
+        <div class="step-number">1</div>
+        <h2>Instale o ambiente</h2>
+        <p>WSL (Ubuntu) + Docker + Cloudflare Tunnel – tudo no teu PC com 8GB de RAM</p>
+        <div class="tech-tags">
+          <span>WSL2</span>
+          <span>Docker</span>
+          <span>Ubuntu</span>
+        </div>
       </div>
+      
       <div class="step">
-        <h2>2. Conecte o WhatsApp</h2>
-        <p>Via Evolution API – QR Code simples</p>
+        <div class="step-number">2</div>
+        <h2>Conecte teu WhatsApp</h2>
+        <p>Via Evolution API – escaneie o QR Code em 10 segundos e pronto</p>
+        <div class="tech-tags">
+          <span>Evolution API</span>
+          <span>QR Code</span>
+        </div>
       </div>
+      
       <div class="step">
-        <h2>3. Configure a IA</h2>
-        <p>n8n + Chatwoot – fluxos prontos ou customizados</p>
+        <div class="step-number">3</div>
+        <h2>Ative a IA e automação</h2>
+        <p>n8n + Chatwoot – fluxos prontos ou customizados em minutos</p>
+        <div class="tech-tags">
+          <span>n8n</span>
+          <span>Chatwoot</span>
+          <span>OpenAI/Ollama</span>
+        </div>
       </div>
+      
       <div class="step">
-        <h2>4. Venda 24h</h2>
-        <p>IA responde, qualifica, fecha vendas – você só ganha</p>
+        <div class="step-number">4</div>
+        <h2>Venda 24h por dia</h2>
+        <p>IA responde clientes, qualifica leads, fecha vendas – você só recebe o lucro</p>
+        <div class="tech-tags">
+          <span>Automático</span>
+          <span>24/7</span>
+          <span>Zero esforço</span>
+        </div>
       </div>
     </div>
+  </section>
 
-    <p><a href="https://chat.getnexo.com.br" target="_blank">Testar agora →</a></p>
+  <section class="fluxo">
+    <h2>Fluxo Simplificado</h2>
+    <div class="fluxo-visual">
+      <div class="fluxo-item">
+        <span class="icon">📱</span>
+        <span>Cliente manda msg</span>
+      </div>
+      <div class="arrow">→</div>
+      <div class="fluxo-item">
+        <span class="icon">🤖</span>
+        <span>IA responde</span>
+      </div>
+      <div class="arrow">→</div>
+      <div class="fluxo-item">
+        <span class="icon">📋</span>
+        <span>Qualifica lead</span>
+      </div>
+      <div class="arrow">→</div>
+      <div class="fluxo-item">
+        <span class="icon">💰</span>
+        <span>Fecha venda</span>
+      </div>
+      <div class="arrow">→</div>
+      <div class="fluxo-item">
+        <span class="icon">🎉</span>
+        <span>Você lucra</span>
+      </div>
+    </div>
+  </section>
+
+  <section class="requisitos">
+    <h2>Requisitos Mínimos</h2>
+    <div class="req-grid">
+      <div class="req-card">
+        <span class="icon">💻</span>
+        <h3>Hardware</h3>
+        <ul>
+          <li>CPU: 2 cores (i5/Ryzen 3+)</li>
+          <li>RAM: 8GB</li>
+          <li>SSD: 20GB livres</li>
+        </ul>
+      </div>
+      <div class="req-card">
+        <span class="icon">🖥️</span>
+        <h3>Sistema</h3>
+        <ul>
+          <li>Windows 10/11 com WSL2</li>
+          <li>OU Linux (Ubuntu 22.04+)</li>
+          <li>OU macOS com Docker</li>
+        </ul>
+      </div>
+      <div class="req-card">
+        <span class="icon">📶</span>
+        <h3>Internet</h3>
+        <ul>
+          <li>Conexão estável</li>
+          <li>Mínimo 10 Mbps</li>
+          <li>IP pode ser dinâmico</li>
+        </ul>
+      </div>
+    </div>
+  </section>
+
+  <section class="cta">
+    <p>Pronto pra começar?</p>
+    <a href="https://chat.getnexo.com.br" target="_blank" class="btn-cta">Testar o Agente IA Agora →</a>
+    <a href="/documentacao" class="btn-secondary">Ver Documentação Técnica</a>
   </section>
 </Layout>
 
 <style>
-  .container { max-width: 1100px; margin: 6rem auto; padding: 0 5%; }
-  h1 { font-size: 3rem; background: linear-gradient(90deg, var(--primary), var(--success)); -webkit-background-clip: text; color: transparent; }
-  .steps { display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 2rem; margin: 4rem 0; }
-  .step { background: rgba(30,41,59,0.8); backdrop-filter: blur(10px); border: 1px solid rgba(0,212,255,0.15); border-radius: 16px; padding: 2rem; text-align: center; }
-  .step h2 { font-size: 1.8rem; margin: 0 0 1rem; color: var(--success); }
+  .hero {
+    text-align: center;
+    padding: 7rem 5% 4rem;
+    background: linear-gradient(135deg, var(--dark), var(--gray));
+  }
+  .hero h1 { 
+    font-size: clamp(2.5rem, 5vw, 3.5rem); 
+    background: linear-gradient(90deg, var(--primary), var(--success)); 
+    -webkit-background-clip: text; 
+    background-clip: text;
+    color: transparent;
+    margin: 0 0 1rem;
+  }
+  .hero p { color: var(--text); font-size: 1.3rem; margin: 0; }
+
+  .steps-container { max-width: 1100px; margin: 0 auto; padding: 4rem 5%; }
+  
+  .steps { 
+    display: grid; 
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); 
+    gap: 2rem; 
+  }
+  
+  .step { 
+    background: rgba(30,41,59,0.8); 
+    backdrop-filter: blur(10px); 
+    border: 1px solid rgba(0,212,255,0.15); 
+    border-radius: 16px; 
+    padding: 2rem; 
+    text-align: center; 
+    transition: all 0.4s;
+    position: relative;
+  }
+  .step:hover { 
+    transform: translateY(-10px); 
+    border-color: var(--primary); 
+    box-shadow: 0 20px 40px rgba(0,212,255,0.2); 
+  }
+  
+  .step-number {
+    position: absolute;
+    top: -15px;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 40px;
+    height: 40px;
+    background: linear-gradient(135deg, var(--primary), var(--success));
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-weight: 800;
+    font-size: 1.2rem;
+    color: #000;
+  }
+  
+  .step h2 { 
+    font-size: 1.5rem; 
+    margin: 1.5rem 0 1rem; 
+    color: var(--success); 
+  }
+  .step p { color: var(--text); line-height: 1.6; margin: 0 0 1rem; }
+  
+  .tech-tags { display: flex; gap: 0.5rem; justify-content: center; flex-wrap: wrap; }
+  .tech-tags span {
+    background: rgba(0,212,255,0.1);
+    color: var(--primary);
+    padding: 0.3rem 0.8rem;
+    border-radius: 50px;
+    font-size: 0.8rem;
+    font-weight: 600;
+  }
+
+  .fluxo {
+    background: rgba(30,41,59,0.5);
+    padding: 4rem 5%;
+    text-align: center;
+  }
+  .fluxo h2 {
+    font-size: 2rem;
+    color: var(--light);
+    margin: 0 0 3rem;
+  }
+  .fluxo-visual {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-wrap: wrap;
+    gap: 1rem;
+  }
+  .fluxo-item {
+    background: rgba(10,14,23,0.8);
+    border: 1px solid rgba(0,212,255,0.2);
+    border-radius: 12px;
+    padding: 1.5rem;
+    text-align: center;
+    min-width: 100px;
+  }
+  .fluxo-item .icon { display: block; font-size: 2rem; margin-bottom: 0.5rem; }
+  .fluxo-item span { color: var(--light); font-size: 0.9rem; }
+  .arrow { color: var(--success); font-size: 1.5rem; font-weight: 800; }
+
+  .requisitos {
+    max-width: 1100px;
+    margin: 0 auto;
+    padding: 4rem 5%;
+  }
+  .requisitos h2 {
+    text-align: center;
+    font-size: 2rem;
+    color: var(--light);
+    margin: 0 0 2rem;
+  }
+  .req-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: 2rem;
+  }
+  .req-card {
+    background: rgba(30,41,59,0.6);
+    border: 1px solid rgba(0,212,255,0.1);
+    border-radius: 16px;
+    padding: 2rem;
+    text-align: center;
+  }
+  .req-card .icon { font-size: 2.5rem; display: block; margin-bottom: 1rem; }
+  .req-card h3 { color: var(--success); margin: 0 0 1rem; }
+  .req-card ul { list-style: none; padding: 0; margin: 0; }
+  .req-card li { color: var(--text); padding: 0.3rem 0; }
+
+  .cta { 
+    text-align: center; 
+    padding: 4rem 5%;
+    background: linear-gradient(135deg, rgba(0,212,255,0.1), rgba(0,255,157,0.1));
+  }
+  .cta p { font-size: 1.5rem; color: var(--light); margin: 0 0 2rem; }
+  .btn-secondary {
+    display: inline-block;
+    color: var(--primary);
+    border: 2px solid var(--primary);
+    padding: 0.8rem 2rem;
+    border-radius: 50px;
+    text-decoration: none;
+    font-weight: 700;
+    margin-left: 1rem;
+    transition: all 0.3s;
+  }
+  .btn-secondary:hover { background: var(--primary); color: #000; }
+
+  @media (max-width: 768px) {
+    .fluxo-visual { flex-direction: column; }
+    .arrow { transform: rotate(90deg); }
+  }
 </style>
