@@ -1,0 +1,317 @@
+---
+import Layout from '../layouts/Layout.astro';
+---
+
+<Layout title="Sobre o GetNexo – Quem Somos | Assistente de Vendas WhatsApp">
+  <section class="about-hero">
+    <h1>Sobre o GetNexo</h1>
+    <p>A história por trás do assistente de vendas WhatsApp 100% grátis</p>
+  </section>
+
+  <section class="mission">
+    <div class="mission-content">
+      <h2>Nossa Missão</h2>
+      <p>Democratizar o acesso à automação de vendas via WhatsApp. Acreditamos que <strong>todo empreendedor brasileiro</strong> – do MEI ao CEO – merece ter um assistente de vendas inteligente, sem pagar fortunas em SaaS ou depender de big techs.</p>
+      <p>Por isso criamos o GetNexo: uma solução <strong>100% grátis, self-hosted e open-source</strong> que roda no seu próprio servidor. Você tem controle total dos seus dados e não paga mensalidade pra ninguém.</p>
+    </div>
+  </section>
+
+  <section class="story">
+    <h2>Como Surgiu</h2>
+    <div class="story-timeline">
+      <div class="timeline-item">
+        <div class="year">2024</div>
+        <div class="content">
+          <h3>O Problema</h3>
+          <p>Cansamos de ver pequenos empreendedores pagando R$ 200-500/mês em ferramentas de automação de WhatsApp que não entregam o prometido.</p>
+        </div>
+      </div>
+      <div class="timeline-item">
+        <div class="year">2025</div>
+        <div class="content">
+          <h3>A Solução</h3>
+          <p>Começamos a montar um stack open-source: Evolution API, n8n, Chatwoot, IA local. Tudo rodando em Docker, exposto via Cloudflare Tunnel.</p>
+        </div>
+      </div>
+      <div class="timeline-item">
+        <div class="year">2026</div>
+        <div class="content">
+          <h3>O Lançamento</h3>
+          <p>GetNexo nasce: uma plataforma completa de assistente de vendas no WhatsApp, 100% grátis, que qualquer pessoa pode instalar em 10 minutos.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="values">
+    <h2>Nossos Valores</h2>
+    <div class="values-grid">
+      <div class="value-card">
+        <div class="icon">🔓</div>
+        <h3>Open Source</h3>
+        <p>Código aberto, auditável, sem backdoors. Você pode ver exatamente o que está rodando.</p>
+      </div>
+      <div class="value-card">
+        <div class="icon">🛡️</div>
+        <h3>Privacidade First</h3>
+        <p>Seus dados ficam no seu servidor. Não coletamos, não vendemos, não treinamos IA com suas conversas.</p>
+      </div>
+      <div class="value-card">
+        <div class="icon">💪</div>
+        <h3>Empoderamento</h3>
+        <p>Queremos que você tenha autonomia total. Por isso ensinamos, documentamos e suportamos a comunidade.</p>
+      </div>
+      <div class="value-card">
+        <div class="icon">🇧🇷</div>
+        <h3>Feito no Brasil</h3>
+        <p>Desenvolvido por brasileiros, para brasileiros. Entendemos as dores e necessidades do nosso mercado.</p>
+      </div>
+    </div>
+  </section>
+
+  <section class="tech-stack">
+    <h2>Nossa Stack Tecnológica</h2>
+    <div class="tech-grid">
+      <div class="tech-item">
+        <strong>Evolution API</strong>
+        <span>WhatsApp oficial</span>
+      </div>
+      <div class="tech-item">
+        <strong>n8n</strong>
+        <span>Automação de workflows</span>
+      </div>
+      <div class="tech-item">
+        <strong>Chatwoot</strong>
+        <span>Suporte e CRM</span>
+      </div>
+      <div class="tech-item">
+        <strong>Cloudflare Tunnel</strong>
+        <span>Exposição segura</span>
+      </div>
+      <div class="tech-item">
+        <strong>Docker</strong>
+        <span>Containerização</span>
+      </div>
+      <div class="tech-item">
+        <strong>Llama 3 / GPT</strong>
+        <span>IA conversacional</span>
+      </div>
+    </div>
+  </section>
+
+  <section class="cta-section">
+    <h2>Pronto para automatizar suas vendas?</h2>
+    <p>Comece agora – é grátis e leva menos de 10 minutos.</p>
+    <div class="cta-buttons">
+      <a href="https://chat.getnexo.com.br" class="btn-primary" target="_blank">Testar o Agente IA →</a>
+      <a href="/como-funciona" class="btn-secondary">Ver Como Funciona</a>
+    </div>
+  </section>
+</Layout>
+
+<style>
+  .about-hero {
+    text-align: center;
+    padding: 7rem 5% 4rem;
+    background: linear-gradient(135deg, var(--dark), var(--gray));
+  }
+  .about-hero h1 {
+    font-size: 3.5rem;
+    background: linear-gradient(90deg, var(--primary), var(--success));
+    -webkit-background-clip: text;
+    color: transparent;
+  }
+  .about-hero p {
+    color: var(--text);
+    font-size: 1.3rem;
+    margin-top: 1rem;
+  }
+
+  .mission {
+    max-width: 900px;
+    margin: 4rem auto;
+    padding: 0 5%;
+  }
+  .mission h2 {
+    font-size: 2.5rem;
+    color: var(--success);
+    margin-bottom: 1.5rem;
+  }
+  .mission p {
+    font-size: 1.2rem;
+    color: var(--light);
+    line-height: 1.8;
+    margin-bottom: 1rem;
+  }
+
+  .story {
+    max-width: 900px;
+    margin: 4rem auto;
+    padding: 3rem 5%;
+    background: rgba(0,212,255,0.05);
+    border-radius: 24px;
+  }
+  .story h2 {
+    text-align: center;
+    font-size: 2rem;
+    color: var(--light);
+    margin-bottom: 3rem;
+  }
+  .story-timeline {
+    position: relative;
+    padding-left: 3rem;
+    border-left: 2px solid var(--primary);
+  }
+  .timeline-item {
+    margin-bottom: 2.5rem;
+    position: relative;
+  }
+  .timeline-item::before {
+    content: '';
+    position: absolute;
+    left: -3.5rem;
+    top: 0;
+    width: 12px;
+    height: 12px;
+    background: var(--success);
+    border-radius: 50%;
+  }
+  .year {
+    color: var(--primary);
+    font-weight: 800;
+    font-size: 1.2rem;
+  }
+  .timeline-item h3 {
+    color: var(--light);
+    margin: 0.5rem 0;
+  }
+  .timeline-item p {
+    color: var(--text);
+    line-height: 1.6;
+  }
+
+  .values {
+    max-width: 1100px;
+    margin: 4rem auto;
+    padding: 0 5%;
+  }
+  .values h2 {
+    text-align: center;
+    font-size: 2rem;
+    color: var(--light);
+    margin-bottom: 2rem;
+  }
+  .values-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+    gap: 2rem;
+  }
+  .value-card {
+    background: rgba(30,41,59,0.8);
+    backdrop-filter: blur(10px);
+    border: 1px solid rgba(0,212,255,0.15);
+    border-radius: 16px;
+    padding: 2rem;
+    text-align: center;
+    transition: all 0.3s;
+  }
+  .value-card:hover {
+    transform: translateY(-5px);
+    border-color: var(--primary);
+  }
+  .value-card .icon {
+    font-size: 2.5rem;
+    margin-bottom: 1rem;
+  }
+  .value-card h3 {
+    color: var(--success);
+    margin-bottom: 0.5rem;
+  }
+  .value-card p {
+    color: var(--text);
+    font-size: 0.95rem;
+    line-height: 1.6;
+  }
+
+  .tech-stack {
+    max-width: 1100px;
+    margin: 4rem auto;
+    padding: 0 5%;
+  }
+  .tech-stack h2 {
+    text-align: center;
+    font-size: 2rem;
+    color: var(--light);
+    margin-bottom: 2rem;
+  }
+  .tech-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(160px, 1fr));
+    gap: 1.5rem;
+  }
+  .tech-item {
+    background: rgba(30,41,59,0.6);
+    border: 1px solid rgba(0,212,255,0.1);
+    border-radius: 12px;
+    padding: 1.5rem;
+    text-align: center;
+  }
+  .tech-item strong {
+    display: block;
+    color: var(--primary);
+    font-size: 1.1rem;
+    margin-bottom: 0.3rem;
+  }
+  .tech-item span {
+    color: var(--text);
+    font-size: 0.85rem;
+  }
+
+  .cta-section {
+    text-align: center;
+    padding: 4rem 5%;
+    background: linear-gradient(135deg, rgba(0,212,255,0.1), rgba(0,255,157,0.1));
+    margin-top: 2rem;
+  }
+  .cta-section h2 {
+    font-size: 2rem;
+    color: var(--light);
+    margin-bottom: 1rem;
+  }
+  .cta-section p {
+    color: var(--text);
+    margin-bottom: 2rem;
+  }
+  .cta-buttons {
+    display: flex;
+    gap: 1.5rem;
+    justify-content: center;
+    flex-wrap: wrap;
+  }
+  .btn-primary {
+    background: linear-gradient(90deg, var(--primary), var(--success));
+    color: #000;
+    padding: 1rem 2rem;
+    border-radius: 50px;
+    font-weight: 800;
+    text-decoration: none;
+    transition: all 0.3s;
+  }
+  .btn-primary:hover {
+    transform: scale(1.05);
+    box-shadow: 0 10px 30px rgba(0,255,157,0.3);
+  }
+  .btn-secondary {
+    border: 2px solid var(--primary);
+    color: var(--primary);
+    padding: 1rem 2rem;
+    border-radius: 50px;
+    font-weight: 800;
+    text-decoration: none;
+    transition: all 0.3s;
+  }
+  .btn-secondary:hover {
+    background: var(--primary);
+    color: #000;
+  }
+</style>

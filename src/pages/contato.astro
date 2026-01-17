@@ -1,0 +1,194 @@
+---
+import Layout from '../layouts/Layout.astro';
+---
+
+<Layout title="Contato – Fale Conosco | GetNexo">
+  <section class="contact-hero">
+    <h1>Fale Conosco</h1>
+    <p>Dúvidas, sugestões ou quer contratar? Escolha o melhor canal.</p>
+  </section>
+
+  <section class="contact-grid">
+    <div class="contact-card primary">
+      <div class="icon">💬</div>
+      <h2>WhatsApp (Recomendado)</h2>
+      <p>Fale diretamente com nosso agente IA – resposta instantânea 24h!</p>
+      <a href="https://chat.getnexo.com.br" class="btn-whatsapp" target="_blank">
+        Iniciar Conversa →
+      </a>
+    </div>
+
+    <div class="contact-card">
+      <div class="icon">📧</div>
+      <h2>E-mail</h2>
+      <p>Para assuntos comerciais, parcerias ou suporte técnico avançado.</p>
+      <a href="mailto:lelebrr@gmail.com" class="btn-email">
+        lelebrr@gmail.com
+      </a>
+    </div>
+
+    <div class="contact-card">
+      <div class="icon">📚</div>
+      <h2>Documentação</h2>
+      <p>Tutoriais, guias de instalação e troubleshooting completo.</p>
+      <a href="/blog" class="btn-docs">
+        Ver Blog e Docs →
+      </a>
+    </div>
+
+    <div class="contact-card">
+      <div class="icon">🐙</div>
+      <h2>GitHub</h2>
+      <p>Código fonte, issues técnicos e contribuições open-source.</p>
+      <a href="https://github.com/lelebrr" class="btn-github" target="_blank">
+        Ver Repositórios →
+      </a>
+    </div>
+  </section>
+
+  <section class="contact-info">
+    <h2>Informações</h2>
+    <div class="info-grid">
+      <div class="info-item">
+        <h3>🕐 Horário de Atendimento</h3>
+        <p><strong>IA:</strong> 24 horas, 7 dias por semana</p>
+        <p><strong>Humano:</strong> Seg-Sex, 9h às 18h (Brasília)</p>
+      </div>
+      <div class="info-item">
+        <h3>📍 Localização</h3>
+        <p>100% remoto e digital</p>
+        <p>Atendemos todo o Brasil e LATAM</p>
+      </div>
+      <div class="info-item">
+        <h3>⚡ Tempo de Resposta</h3>
+        <p><strong>WhatsApp IA:</strong> Instantâneo</p>
+        <p><strong>E-mail:</strong> Até 24h úteis</p>
+        <p><strong>Plano Pro:</strong> Até 4h</p>
+      </div>
+    </div>
+  </section>
+</Layout>
+
+<style>
+  .contact-hero {
+    text-align: center;
+    padding: 7rem 5% 4rem;
+    background: linear-gradient(135deg, var(--dark), var(--gray));
+  }
+  .contact-hero h1 {
+    font-size: 3.5rem;
+    background: linear-gradient(90deg, var(--primary), var(--success));
+    -webkit-background-clip: text;
+    color: transparent;
+  }
+  .contact-hero p {
+    color: var(--text);
+    font-size: 1.3rem;
+    margin-top: 1rem;
+  }
+
+  .contact-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: 2rem;
+    max-width: 1200px;
+    margin: 4rem auto;
+    padding: 0 5%;
+  }
+
+  .contact-card {
+    background: rgba(30,41,59,0.8);
+    backdrop-filter: blur(10px);
+    border: 1px solid rgba(0,212,255,0.15);
+    border-radius: 20px;
+    padding: 2.5rem;
+    text-align: center;
+    transition: all 0.4s;
+  }
+  .contact-card:hover {
+    transform: translateY(-8px);
+    border-color: var(--primary);
+    box-shadow: 0 20px 40px rgba(0,212,255,0.15);
+  }
+  .contact-card.primary {
+    border-color: var(--success);
+    box-shadow: 0 0 30px rgba(0,255,157,0.1);
+  }
+
+  .icon {
+    font-size: 3rem;
+    margin-bottom: 1.5rem;
+  }
+
+  .contact-card h2 {
+    font-size: 1.5rem;
+    color: var(--light);
+    margin-bottom: 1rem;
+  }
+  .contact-card p {
+    color: var(--text);
+    margin-bottom: 1.5rem;
+    line-height: 1.6;
+  }
+
+  .btn-whatsapp {
+    display: inline-block;
+    background: linear-gradient(90deg, #25D366, #128C7E);
+    color: #fff;
+    padding: 1rem 2rem;
+    border-radius: 50px;
+    font-weight: 700;
+    text-decoration: none;
+    transition: all 0.3s;
+  }
+  .btn-whatsapp:hover {
+    transform: scale(1.05);
+    box-shadow: 0 10px 30px rgba(37,211,102,0.4);
+  }
+
+  .btn-email, .btn-docs, .btn-github {
+    display: inline-block;
+    border: 2px solid var(--primary);
+    color: var(--primary);
+    padding: 0.8rem 1.5rem;
+    border-radius: 50px;
+    font-weight: 600;
+    text-decoration: none;
+    transition: all 0.3s;
+  }
+  .btn-email:hover, .btn-docs:hover, .btn-github:hover {
+    background: var(--primary);
+    color: #000;
+  }
+
+  .contact-info {
+    max-width: 1100px;
+    margin: 4rem auto;
+    padding: 3rem 5%;
+    background: rgba(0,212,255,0.05);
+    border-radius: 24px;
+  }
+  .contact-info h2 {
+    text-align: center;
+    font-size: 2rem;
+    color: var(--light);
+    margin-bottom: 2rem;
+  }
+  .info-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: 2rem;
+  }
+  .info-item {
+    text-align: center;
+  }
+  .info-item h3 {
+    color: var(--success);
+    font-size: 1.2rem;
+    margin-bottom: 1rem;
+  }
+  .info-item p {
+    color: var(--text);
+    margin: 0.3rem 0;
+  }
+</style>
