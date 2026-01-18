@@ -1,126 +1,1339 @@
 ---
 import Layout from '../../layouts/Layout.astro';
-const title = "CRM Integrado ao WhatsApp | GetNexo";
-const description = "Gestão de leads em Kanban, multi-agente e relatórios de performance diretamente no seu WhatsApp Oficial.";
+
+const title = "CRM WhatsApp: Kanban, Multi-Agente e Analytics | GetNexo";
+const description = "Gestão completa de leads no WhatsApp. Kanban visual, atendimento multi-agente, histórico unificado, SLA automático e relatórios de performance em tempo real.";
+const keywords = "crm whatsapp, kanban whatsapp, multi agente whatsapp, gestão leads whatsapp, atendimento equipe whatsapp, pipeline vendas whatsapp, getnexo crm, helpdesk whatsapp";
+
+const stats = [
+  { value: "3x", label: "mais produtivo", desc: "que planilhas e emails" },
+  { value: "< 2min", label: "tempo resposta", desc: "com atribuição automática" },
+  { value: "100%", label: "histórico", desc: "de todas conversas salvo" },
+  { value: "∞", label: "agentes", desc: "no mesmo número WhatsApp" }
+];
+
+const features = [
+  {
+    icon: "📋",
+    title: "Kanban Visual",
+    description: "Arraste e solte leads entre colunas personalizadas. Visualize todo seu funil de vendas em tempo real.",
+    details: [
+      "Colunas customizáveis",
+      "Drag and drop intuitivo",
+      "Cores e prioridades",
+      "Filtros por agente/tag"
+    ]
+  },
+  {
+    icon: "👥",
+    title: "Multi-Agente",
+    description: "Toda sua equipe atendendo no mesmo número WhatsApp. Atribuição automática ou manual de conversas.",
+    details: [
+      "Número único para todos",
+      "Distribuição round-robin",
+      "Transferência entre agentes",
+      "Supervisão em tempo real"
+    ]
+  },
+  {
+    icon: "🏷️",
+    title: "Tags e Segmentos",
+    description: "Organize leads com tags automáticas ou manuais. Crie segmentos para campanhas e follow-ups.",
+    details: [
+      "Tags ilimitadas",
+      "Automação por comportamento",
+      "Segmentos dinâmicos",
+      "Exportação por filtro"
+    ]
+  },
+  {
+    icon: "📝",
+    title: "Notas e Histórico",
+    description: "Mantenha contexto completo de cada cliente. Notas internas, histórico de compras e interações anteriores.",
+    details: [
+      "Notas internas privadas",
+      "Histórico completo",
+      "Anexos e documentos",
+      "Timeline de eventos"
+    ]
+  },
+  {
+    icon: "🛎️",
+    title: "SLA e Alertas",
+    description: "Nunca perca um lead por demora. Alertas automáticos quando conversas passam do tempo limite.",
+    details: [
+      "SLA por prioridade",
+      "Alertas em tempo real",
+      "Escalação automática",
+      "Relatório de violações"
+    ]
+  },
+  {
+    icon: "📊",
+    title: "Analytics Completo",
+    description: "Métricas de performance individual e da equipe. Entenda quem vende mais e por quê.",
+    details: [
+      "Tempo médio de resposta",
+      "Taxa de conversão",
+      "Ranking de agentes",
+      "Export para Excel/BI"
+    ]
+  }
+];
+
+const pipelineStages = [
+  { name: "Novo Lead", color: "#00d4ff", count: 24, desc: "Leads que acabaram de chegar" },
+  { name: "Qualificando", color: "#eab308", count: 18, desc: "Em processo de qualificação" },
+  { name: "Proposta Enviada", color: "#a855f7", count: 12, desc: "Aguardando retorno" },
+  { name: "Negociando", color: "#f97316", count: 8, desc: "Em negociação de valores" },
+  { name: "Fechado/Ganho", color: "#00ff9d", count: 45, desc: "Vendas concluídas" },
+  { name: "Perdido", color: "#ef4444", count: 15, desc: "Leads não convertidos" }
+];
+
+const teamRoles = [
+  { role: "Administrador", icon: "👑", desc: "Acesso total ao sistema", permissions: ["Configurações", "Relatórios", "Gestão de equipe", "Todos os chats"] },
+  { role: "Supervisor", icon: "👔", desc: "Gestão da equipe e métricas", permissions: ["Ver todos os chats", "Relatórios", "Transferir conversas", "Editar leads"] },
+  { role: "Atendente", icon: "💬", desc: "Atendimento ao cliente", permissions: ["Seus chats", "Notas", "Tags", "Histórico"] },
+  { role: "Visualizador", icon: "👁️", desc: "Apenas leitura", permissions: ["Ver chats", "Ver relatórios", "Sem edição"] }
+];
+
+const integrations = [
+  { name: "Google Calendar", icon: "📅", desc: "Agende reuniões direto do chat" },
+  { name: "Google Sheets", icon: "📊", desc: "Exporte leads automaticamente" },
+  { name: "Webhooks", icon: "🔗", desc: "Integre com qualquer sistema" },
+  { name: "Zapier/n8n", icon: "⚡", desc: "Automações avançadas" }
+];
+
+const faqs = [
+  {
+    q: "Quantos agentes podem usar o mesmo número?",
+    a: "Não há limite! Você pode ter quantos atendentes quiser logados simultaneamente no mesmo número WhatsApp. A distribuição de conversas pode ser automática (round-robin) ou manual."
+  },
+  {
+    q: "Os agentes veem as conversas uns dos outros?",
+    a: "Depende da configuração de permissões. Administradores e Supervisores podem ver todos os chats. Atendentes normalmente veem apenas os chats atribuídos a eles, mas isso é configurável."
+  },
+  {
+    q: "Como funciona a atribuição automática?",
+    a: "Quando um novo lead chega, o sistema distribui automaticamente para o agente disponível usando round-robin ou baseado em carga de trabalho. Você também pode criar regras por departamento, horário ou origem do lead."
+  },
+  {
+    q: "Posso customizar as colunas do Kanban?",
+    a: "Sim! Você pode criar quantas colunas quiser, renomeá-las, definir cores e ordenar conforme seu processo de vendas. Exemplos: Novo → Qualificando → Proposta → Negociando → Fechado."
+  },
+  {
+    q: "O histórico fica salvo por quanto tempo?",
+    a: "Para sempre! Todas as conversas, notas, anexos e eventos ficam salvos indefinidamente. Você pode buscar qualquer interação feita com um cliente, mesmo que tenha sido há anos."
+  },
+  {
+    q: "Consigo ver métricas individuais dos atendentes?",
+    a: "Sim! O dashboard mostra tempo médio de resposta, quantidade de atendimentos, taxa de conversão e satisfação de cada agente. Ideal para bonificações e treinamentos."
+  }
+];
+
+const useCases = [
+  { industry: "Vendas B2B", icon: "💼", benefit: "Pipeline visual de negociações" },
+  { industry: "Suporte Técnico", icon: "🔧", benefit: "Tickets e escalação automática" },
+  { industry: "Imobiliárias", icon: "🏠", benefit: "Gestão de visitas e propostas" },
+  { industry: "Clínicas", icon: "🏥", benefit: "Agendamento e follow-up" }
+];
 ---
 
-<Layout title={title} description={description}>
+<Layout title={title} description={description} keywords={keywords}>
+  
+  <!-- Hero Section -->
   <section class="prod-hero">
-    <div class="hero-badge">Gestão & Controle</div>
-    <h1 class="text-gradient">CRM Via WhatsApp</h1>
-    <p>Transforme seu chat em uma máquina de vendas organizada. Kanban, multi-agente e histórico unificado.</p>
+    <div class="hero-badge">📋 Gestão Inteligente</div>
+    <h1>CRM completo no <span class="text-gradient">WhatsApp</span></h1>
+    <p class="hero-subtitle">
+      Transforme seu WhatsApp em uma central de vendas organizada. Kanban visual, equipe multi-agente, histórico unificado e métricas em tempo real.
+    </p>
+    <div class="hero-stats">
+      {stats.map(stat => (
+        <div class="stat-card glass-panel">
+          <span class="stat-value">{stat.value}</span>
+          <span class="stat-label">{stat.label}</span>
+          <span class="stat-desc">{stat.desc}</span>
+        </div>
+      ))}
+    </div>
+    <div class="hero-ctas">
+      <a href="/criar-bot" class="btn-primary-glow">Ativar Meu CRM</a>
+      <a href="/demo" class="btn-outline">Ver Demonstração →</a>
+    </div>
   </section>
 
-  <section class="prod-content">
-    <div class="glass-panel main-panel">
-      <div class="prod-grid">
-        <div class="prod-info">
-          <h2>Controle Total do Funil</h2>
-          <ul class="feature-list">
-            <li>
-                <span class="icon">📋</span>
-                <div class="txt">
-                    <strong>Visualização Kanban</strong>
-                    <p>Arraste e solte leads entre colunas: Prospecção, Negociação, Fechado.</p>
-                </div>
-            </li>
-            <li>
-                <span class="icon">👥</span>
-                <div class="txt">
-                    <strong>Multi-Agente Nativo</strong>
-                    <p>Toda sua equipe logada no mesmo número, com atribuição inteligente de chats.</p>
-                </div>
-            </li>
-            <li>
-                <span class="icon">🛎</span>
-                <div class="txt">
-                    <strong>SLA & Notificações</strong>
-                    <p>Alertas em tempo real quando um lead importante abre a conversa ou demora a ser respondido.</p>
-                </div>
-            </li>
-            <li>
-                <span class="icon">📈</span>
-                <div class="txt">
-                    <strong>Analytics Pro</strong>
-                    <p>Quem vende mais? Qual o tempo médio de resposta? Decida com base em dados.</p>
-                </div>
-            </li>
+  <!-- Kanban Preview -->
+  <section class="kanban-section">
+    <h2>Visualize seu <span class="text-gradient">funil de vendas</span></h2>
+    <p class="section-subtitle">Arraste e solte leads entre colunas. Tudo em tempo real.</p>
+    
+    <div class="kanban-preview">
+      {pipelineStages.map(stage => (
+        <div class="kanban-column glass-panel">
+          <div class="column-header" style={`border-color: ${stage.color}`}>
+            <span class="column-dot" style={`background: ${stage.color}`}></span>
+            <span class="column-name">{stage.name}</span>
+            <span class="column-count">{stage.count}</span>
+          </div>
+          <div class="column-body">
+            <div class="lead-card-mini">
+              <span class="lead-avatar">👤</span>
+              <span class="lead-name">Lead exemplo</span>
+            </div>
+            <div class="lead-card-mini">
+              <span class="lead-avatar">👤</span>
+              <span class="lead-name">Lead exemplo</span>
+            </div>
+            <p class="column-desc">{stage.desc}</p>
+          </div>
+        </div>
+      ))}
+    </div>
+  </section>
+
+  <!-- Features Grid -->
+  <section class="features-section">
+    <h2>Recursos do <span class="text-gradient">CRM GetNexo</span></h2>
+    <p class="section-subtitle">Tudo que sua equipe precisa para vender mais</p>
+    
+    <div class="features-grid">
+      {features.map(feature => (
+        <div class="feature-card glass-panel">
+          <div class="feature-header">
+            <span class="feature-icon">{feature.icon}</span>
+            <h3>{feature.title}</h3>
+          </div>
+          <p class="feature-desc">{feature.description}</p>
+          <ul class="feature-details">
+            {feature.details.map(d => <li>✓ {d}</li>)}
           </ul>
         </div>
-        <div class="prod-visual">
-            <div class="visual-card-glass">
-                <div class="v-head">crm.pipeline.stage</div>
-                <div class="v-body">
-                  <div class="pipeline-row">
-                    <span class="p-dot blue"></span>
-                    <span class="p-txt">Novo Lead (12)</span>
-                  </div>
-                  <div class="pipeline-row active">
-                    <span class="p-dot green"></span>
-                    <span class="p-txt">Negociando (5)</span>
-                  </div>
-                  <div class="pipeline-row">
-                    <span class="p-dot purple"></span>
-                    <span class="p-txt">Vendido (28)</span>
-                  </div>
-                </div>
+      ))}
+    </div>
+  </section>
+
+  <!-- Team Roles -->
+  <section class="roles-section">
+    <h2>Controle de <span class="text-gradient">permissões</span></h2>
+    <p class="section-subtitle">Defina exatamente o que cada membro da equipe pode fazer</p>
+    
+    <div class="roles-grid">
+      {teamRoles.map(tr => (
+        <div class="role-card glass-panel">
+          <div class="role-header">
+            <span class="role-icon">{tr.icon}</span>
+            <div>
+              <h4>{tr.role}</h4>
+              <span class="role-desc">{tr.desc}</span>
             </div>
+          </div>
+          <ul class="role-permissions">
+            {tr.permissions.map(p => <li>• {p}</li>)}
+          </ul>
+        </div>
+      ))}
+    </div>
+  </section>
+
+  <!-- Multi-Agent Preview -->
+  <section class="multiagent-section">
+    <div class="glass-panel multiagent-box">
+      <div class="ma-content">
+        <h2>Equipe inteira no <span class="text-gradient">mesmo número</span></h2>
+        <p>Seus clientes falam com um único número, mas sua equipe trabalha de forma organizada. Cada agente vê seus chats, supervisores monitoram tudo.</p>
+        
+        <div class="ma-features">
+          <div class="ma-feature">
+            <span class="maf-icon">🔄</span>
+            <div>
+              <strong>Distribuição Automática</strong>
+              <span>Round-robin ou por carga</span>
+            </div>
+          </div>
+          <div class="ma-feature">
+            <span class="maf-icon">➡️</span>
+            <div>
+              <strong>Transferência Fácil</strong>
+              <span>Passe chats entre agentes</span>
+            </div>
+          </div>
+          <div class="ma-feature">
+            <span class="maf-icon">👁️</span>
+            <div>
+              <strong>Supervisão em Tempo Real</strong>
+              <span>Veja quem está atendendo o quê</span>
+            </div>
+          </div>
+          <div class="ma-feature">
+            <span class="maf-icon">📊</span>
+            <div>
+              <strong>Métricas por Agente</strong>
+              <span>Performance individual</span>
+            </div>
+          </div>
+        </div>
+      </div>
+      
+      <div class="ma-preview">
+        <div class="team-widget">
+          <div class="tw-header">
+            <span>👥 Equipe Online (5)</span>
+          </div>
+          <div class="tw-list">
+            <div class="agent-row online">
+              <span class="agent-avatar">👩</span>
+              <span class="agent-name">Ana</span>
+              <span class="agent-chats">8 chats</span>
+            </div>
+            <div class="agent-row online">
+              <span class="agent-avatar">👨</span>
+              <span class="agent-name">Carlos</span>
+              <span class="agent-chats">6 chats</span>
+            </div>
+            <div class="agent-row online">
+              <span class="agent-avatar">👩</span>
+              <span class="agent-name">Maria</span>
+              <span class="agent-chats">5 chats</span>
+            </div>
+            <div class="agent-row away">
+              <span class="agent-avatar">👨</span>
+              <span class="agent-name">João</span>
+              <span class="agent-status">Ausente</span>
+            </div>
+          </div>
         </div>
       </div>
     </div>
   </section>
 
-  <section class="prod-cta">
-    <h2>Sua equipe pronta para vender mais.</h2>
-    <p>A organização que falta para sua operação escalar sem perder o fio da meada.</p>
-    <div class="btn-wrap">
-        <a href="/criar-bot" class="btn-primary-glow">Ativar Meu CRM Agora</a>
-        <a href="/produtos" class="btn-outline">Ver Todas Soluções</a>
+  <!-- Workflow Section -->
+  <section class="workflow-section">
+    <h2>Como funciona na <span class="text-gradient">prática</span></h2>
+    <p class="section-subtitle">Do primeiro "oi" até o fechamento da venda</p>
+    <div class="steps-container">
+      <div class="step-card glass-panel">
+        <div class="step-num">1</div>
+        <div class="step-icon">💬</div>
+        <h3>O Lead Chega</h3>
+        <p>Cliente envia mensagem no WhatsApp. A IA atende em segundos, 24/7, garantindo resposta imediata sem fila de espera.</p>
+      </div>
+      <div class="step-arrow">➜</div>
+      <div class="step-card glass-panel">
+        <div class="step-num">2</div>
+        <div class="step-icon">🤖</div>
+        <h3>Qualificação</h3>
+        <p>O sistema coleta nome, email e interesse. Baseado nas respostas, move o card automaticamente para a coluna "Qualificado" no Kanban.</p>
+      </div>
+      <div class="step-arrow">➜</div>
+      <div class="step-card glass-panel">
+        <div class="step-num">3</div>
+        <div class="step-icon">🤝</div>
+        <h3>Negociação</h3>
+        <p>Seu agente humano assume com todo histórico. Envia áudios, PDFs e propostas direto da tela do chat.</p>
+      </div>
+      <div class="step-arrow">➜</div>
+      <div class="step-card glass-panel">
+        <div class="step-num">4</div>
+        <div class="step-icon">💰</div>
+        <h3>Fechamento</h3>
+        <p>Negócio Ganho! Automação envia link de PIX/Boleto e agradecimento. Lead vai para automação de pós-venda.</p>
+      </div>
     </div>
   </section>
+
+  <!-- Comparison Section -->
+  <section class="comparison-section">
+    <h2>Por que o <span class="text-gradient">GetNexo</span> é superior?</h2>
+    <p class="section-subtitle">Não somos apenas um "bot". Somos uma plataforma de crescimento.</p>
+    
+    <div class="comparison-table glass-panel">
+      <div class="comp-header">
+        <div class="comp-col feature-col">Diferencial</div>
+        <div class="comp-col nexo-col">GetNexo AI</div>
+        <div class="comp-col other-col">WhastApp Business</div>
+        <div class="comp-col other-col">CRMs Padrão</div>
+      </div>
+      
+      <div class="comp-row">
+        <div class="comp-col feature-col">
+          <strong>Atendimento Multi-Agente</strong>
+          <span>Várias pessoas no mesmo número</span>
+        </div>
+        <div class="comp-col nexo-col">✅ Ilimitado & Organizado</div>
+        <div class="comp-col other-col">⚠️ Limitado (4 telas/caos)</div>
+        <div class="comp-col other-col">❌ Não Nativo</div>
+      </div>
+      
+      <div class="comp-row">
+        <div class="comp-col feature-col">
+          <strong>Pipeline Visual</strong>
+          <span>Kanban de arrastar e soltar</span>
+        </div>
+        <div class="comp-col nexo-col">✅ Nativo no Chat</div>
+        <div class="comp-col other-col">❌ Lista Infinita</div>
+        <div class="comp-col other-col">⚠️ Em outra aba/sistema</div>
+      </div>
+      
+      <div class="comp-row">
+        <div class="comp-col feature-col">
+          <strong>Inteligência Artificial</strong>
+          <span>Respostas inteligentes e treino</span>
+        </div>
+        <div class="comp-col nexo-col">✅ IA Generativa (GPT/Claude)</div>
+        <div class="comp-col other-col">❌ Apenas Respostas Rápidas</div>
+        <div class="comp-col other-col">⚠️ Custos Extras Altos</div>
+      </div>
+      
+      <div class="comp-row">
+        <div class="comp-col feature-col">
+          <strong>Custo por Usuário</strong>
+          <span>Escalabilidade da equipe</span>
+        </div>
+        <div class="comp-col nexo-col">✅ Preço Fixo (Equipe Ilimitada!)</div>
+        <div class="comp-col other-col">✅ Grátis</div>
+        <div class="comp-col other-col">❌ Caro (Cobra por cabeça)</div>
+      </div>
+    </div>
+  </section>
+  <section class="use-cases-section">
+    <h2>Ideal para <span class="text-gradient">diversos segmentos</span></h2>
+    
+    <div class="use-cases-grid">
+      {useCases.map(uc => (
+        <div class="use-case-card glass-panel">
+          <span class="uc-icon">{uc.icon}</span>
+          <h4>{uc.industry}</h4>
+          <p>{uc.benefit}</p>
+        </div>
+      ))}
+    </div>
+  </section>
+
+  <!-- Integrations -->
+  <section class="integrations-section">
+    <h2>Integra com suas <span class="text-gradient">ferramentas</span></h2>
+    
+    <div class="integrations-grid">
+      {integrations.map(int => (
+        <div class="integration-card glass-panel">
+          <span class="int-icon">{int.icon}</span>
+          <div>
+            <strong>{int.name}</strong>
+            <span>{int.desc}</span>
+          </div>
+        </div>
+      ))}
+    </div>
+    
+    <a href="/integracoes" class="link-more">Ver todas integrações →</a>
+  </section>
+
+  <!-- FAQ Section -->
+  <section class="faq-section">
+    <h2>Perguntas <span class="text-gradient">frequentes</span></h2>
+    
+    <div class="faq-list">
+      {faqs.map(faq => (
+        <details class="faq-item glass-panel">
+          <summary>
+            <span class="faq-q">{faq.q}</span>
+            <span class="faq-toggle">+</span>
+          </summary>
+          <p class="faq-a">{faq.a}</p>
+        </details>
+      ))}
+    </div>
+  </section>
+
+  <!-- Final CTA -->
+  <section class="final-cta">
+    <div class="glass-panel cta-box">
+      <h2>Organize sua <span class="text-gradient">operação de vendas</span></h2>
+      <p>Chega de planilhas e conversas perdidas. Centralize tudo em um CRM integrado ao WhatsApp.</p>
+      <div class="cta-buttons">
+        <a href="/criar-bot" class="btn-primary-glow">Começar Gratuitamente</a>
+        <a href="/precos" class="btn-outline">Ver Planos</a>
+      </div>
+      <p class="cta-note">Sem cartão de crédito • Agentes ilimitados • Suporte incluso</p>
+    </div>
+  </section>
+
 </Layout>
 
 <style>
-  .prod-hero { text-align: center; padding: 10rem 5% 5rem; }
-  .hero-badge { background: rgba(0, 212, 255, 0.1); color: #00d4ff; padding: 0.5rem 1.2rem; border-radius: 50px; font-size: 0.85rem; font-weight: 700; display: inline-block; margin-bottom: 2rem; border: 1px solid rgba(0,212,255,0.2); }
-  .prod-hero h1 { font-size: 3.5rem; margin-bottom: 1.5rem; font-weight: 800; }
-  .prod-hero p { color: #94a3b8; font-size: 1.25rem; max-width: 700px; margin: 0 auto; }
+  /* Hero */
+  .prod-hero {
+    text-align: center;
+    padding: 10rem 5% 5rem;
+    max-width: 1200px;
+    margin: 0 auto;
+  }
 
-  .prod-content { padding: 4rem 5%; max-width: 1200px; margin: 0 auto; }
-  .main-panel { padding: 5rem; border-radius: 40px; }
-  .prod-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 4rem; align-items: center; }
+  .hero-badge {
+    background: rgba(0, 212, 255, 0.1);
+    color: #00d4ff;
+    padding: 0.5rem 1.2rem;
+    border-radius: 50px;
+    font-size: 0.85rem;
+    font-weight: 700;
+    display: inline-block;
+    margin-bottom: 2rem;
+    border: 1px solid rgba(0,212,255,0.2);
+  }
+
+  .prod-hero h1 {
+    font-size: 3.5rem;
+    margin-bottom: 1.5rem;
+    font-weight: 900;
+    color: white;
+    line-height: 1.1;
+  }
+
+  .hero-subtitle {
+    color: #94a3b8;
+    font-size: 1.3rem;
+    max-width: 800px;
+    margin: 0 auto 3rem;
+    line-height: 1.6;
+  }
+
+  .hero-stats {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 1.5rem;
+    max-width: 900px;
+    margin: 0 auto 3rem;
+  }
+
+  .stat-card {
+    padding: 1.5rem;
+    text-align: center;
+  }
+
+  .stat-value {
+    display: block;
+    font-size: 2.5rem;
+    font-weight: 900;
+    color: #00ff9d;
+    line-height: 1;
+  }
+
+  .stat-label {
+    display: block;
+    color: white;
+    font-weight: 700;
+    font-size: 1rem;
+    margin-top: 0.3rem;
+  }
+
+  .stat-desc {
+    display: block;
+    color: #64748b;
+    font-size: 0.75rem;
+    margin-top: 0.3rem;
+  }
+
+  .hero-ctas {
+    display: flex;
+    gap: 1.5rem;
+    justify-content: center;
+    flex-wrap: wrap;
+  }
+
+  .btn-primary-glow {
+    background: linear-gradient(135deg, #00d4ff, #00ff9d);
+    color: black;
+    padding: 1.2rem 2.8rem;
+    border-radius: 12px;
+    font-weight: 900;
+    text-decoration: none;
+    transition: 0.3s;
+    box-shadow: 0 10px 30px rgba(0,212,255,0.2);
+  }
+
+  .btn-primary-glow:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 15px 40px rgba(0,212,255,0.4);
+  }
+
+  .btn-outline {
+    border: 1px solid rgba(255,255,255,0.1);
+    color: white;
+    padding: 1.2rem 2.8rem;
+    border-radius: 12px;
+    font-weight: 700;
+    text-decoration: none;
+    background: rgba(255,255,255,0.03);
+    transition: 0.3s;
+  }
+
+  .btn-outline:hover {
+    background: rgba(255,255,255,0.08);
+    border-color: #00d4ff;
+  }
+
+  /* Kanban Preview */
+  .kanban-section {
+    padding: 6rem 5%;
+    max-width: 1400px;
+    margin: 0 auto;
+    text-align: center;
+  }
+
+  .kanban-section h2 {
+    font-size: 2.5rem;
+    color: white;
+    font-weight: 800;
+    margin-bottom: 1rem;
+  }
+
+  .section-subtitle {
+    color: #64748b;
+    font-size: 1.1rem;
+    margin-bottom: 3rem;
+  }
+
+  .kanban-preview {
+    display: grid;
+    grid-template-columns: repeat(6, 1fr);
+    gap: 1rem;
+    overflow-x: auto;
+    padding: 1rem 0;
+  }
+
+  .kanban-column {
+    min-width: 180px;
+    padding: 1rem;
+    border-radius: 16px;
+  }
+
+  .column-header {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    padding-bottom: 0.8rem;
+    margin-bottom: 1rem;
+    border-bottom: 2px solid;
+  }
+
+  .column-dot {
+    width: 10px;
+    height: 10px;
+    border-radius: 50%;
+  }
+
+  .column-name {
+    color: white;
+    font-weight: 700;
+    font-size: 0.85rem;
+    flex: 1;
+  }
+
+  .column-count {
+    background: rgba(255,255,255,0.1);
+    padding: 0.2rem 0.6rem;
+    border-radius: 10px;
+    font-size: 0.75rem;
+    color: #94a3b8;
+    font-weight: 700;
+  }
+
+  .column-body {
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+  }
+
+  .lead-card-mini {
+    background: rgba(255,255,255,0.03);
+    padding: 0.6rem;
+    border-radius: 8px;
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+  }
+
+  .lead-avatar {
+    font-size: 1rem;
+  }
+
+  .lead-name {
+    color: #94a3b8;
+    font-size: 0.75rem;
+  }
+
+  .column-desc {
+    color: #475569;
+    font-size: 0.7rem;
+    margin-top: 0.5rem;
+    font-style: italic;
+  }
+
+  /* Features */
+  .features-section {
+    padding: 6rem 5%;
+    max-width: 1300px;
+    margin: 0 auto;
+    text-align: center;
+  }
+
+  .features-section h2 {
+    font-size: 2.5rem;
+    color: white;
+    font-weight: 800;
+    margin-bottom: 1rem;
+  }
+
+  .features-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 2rem;
+    margin-top: 4rem;
+  }
+
+  .feature-card {
+    padding: 2.5rem;
+    text-align: left;
+    transition: 0.3s;
+  }
+
+  .feature-card:hover {
+    transform: translateY(-5px);
+    border-color: rgba(0, 255, 157, 0.3);
+  }
+
+  .feature-header {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+    margin-bottom: 1rem;
+  }
+
+  .feature-icon {
+    font-size: 2rem;
+  }
+
+  .feature-card h3 {
+    color: white;
+    font-size: 1.2rem;
+    font-weight: 800;
+  }
+
+  .feature-desc {
+    color: #94a3b8;
+    font-size: 0.95rem;
+    line-height: 1.6;
+    margin-bottom: 1.5rem;
+  }
+
+  .feature-details {
+    list-style: none;
+    padding: 0;
+  }
+
+  .feature-details li {
+    color: #64748b;
+    font-size: 0.85rem;
+    padding: 0.3rem 0;
+  }
+
+  /* Roles */
+  .roles-section {
+    padding: 6rem 5%;
+    max-width: 1100px;
+    margin: 0 auto;
+    text-align: center;
+  }
+
+  .roles-section h2 {
+    font-size: 2.5rem;
+    color: white;
+    font-weight: 800;
+    margin-bottom: 1rem;
+  }
+
+  .roles-grid {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 1.5rem;
+    margin-top: 3rem;
+  }
+
+  .role-card {
+    padding: 2rem;
+    text-align: left;
+  }
+
+  .role-header {
+    display: flex;
+    align-items: flex-start;
+    gap: 1rem;
+    margin-bottom: 1.5rem;
+  }
+
+  .role-icon {
+    font-size: 2rem;
+  }
+
+  .role-card h4 {
+    color: white;
+    font-size: 1rem;
+    font-weight: 700;
+    margin-bottom: 0.2rem;
+  }
+
+  .role-desc {
+    color: #64748b;
+    font-size: 0.8rem;
+  }
+
+  .role-permissions {
+    list-style: none;
+    padding: 0;
+  }
+
+  .role-permissions li {
+    color: #94a3b8;
+    font-size: 0.8rem;
+    padding: 0.2rem 0;
+  }
+
+  /* Multi-Agent */
+  .multiagent-section {
+    padding: 6rem 5%;
+    max-width: 1100px;
+    margin: 0 auto;
+  }
+
+  .multiagent-box {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 4rem;
+    padding: 4rem;
+    border-radius: 32px;
+    align-items: center;
+  }
+
+  .ma-content h2 {
+    font-size: 2rem;
+    color: white;
+    font-weight: 800;
+    margin-bottom: 1rem;
+  }
+
+  .ma-content > p {
+    color: #94a3b8;
+    margin-bottom: 2rem;
+    line-height: 1.6;
+  }
+
+  .ma-features {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 1.5rem;
+  }
+
+  .ma-feature {
+    display: flex;
+    gap: 1rem;
+    align-items: flex-start;
+  }
+
+  .maf-icon {
+    font-size: 1.5rem;
+  }
+
+  .ma-feature strong {
+    display: block;
+    color: white;
+    font-size: 0.9rem;
+    margin-bottom: 0.2rem;
+  }
+
+  .ma-feature span {
+    color: #64748b;
+    font-size: 0.8rem;
+  }
+
+  /* Team Widget */
+  .ma-preview {
+    display: flex;
+    justify-content: center;
+  }
+
+  .team-widget {
+    background: rgba(0, 212, 255, 0.05);
+    border: 1px solid rgba(0, 212, 255, 0.2);
+    border-radius: 16px;
+    width: 280px;
+    overflow: hidden;
+  }
+
+  .tw-header {
+    background: rgba(0,0,0,0.3);
+    padding: 1rem;
+    color: white;
+    font-weight: 700;
+    font-size: 0.9rem;
+  }
+
+  .tw-list {
+    padding: 1rem;
+    display: flex;
+    flex-direction: column;
+    gap: 0.8rem;
+  }
+
+  .agent-row {
+    display: flex;
+    align-items: center;
+    gap: 0.8rem;
+    padding: 0.8rem;
+    background: rgba(255,255,255,0.03);
+    border-radius: 10px;
+  }
+
+  .agent-row.online::before {
+    content: "";
+    width: 8px;
+    height: 8px;
+    background: #00ff9d;
+    border-radius: 50%;
+    box-shadow: 0 0 6px #00ff9d;
+  }
+
+  .agent-row.away::before {
+    content: "";
+    width: 8px;
+    height: 8px;
+    background: #eab308;
+    border-radius: 50%;
+  }
+
+  .agent-avatar {
+    font-size: 1.2rem;
+  }
+
+  .agent-name {
+    color: white;
+    font-weight: 600;
+    flex: 1;
+    font-size: 0.9rem;
+  }
+
+  .agent-chats {
+    color: #00ff9d;
+    font-size: 0.75rem;
+    font-weight: 700;
+  }
+
+  .agent-status {
+    color: #eab308;
+    font-size: 0.75rem;
+    font-weight: 600;
+  }
+
+  /* Workflow & Comparison New Styles */
+  .workflow-section {
+    padding: 6rem 5%;
+    max-width: 1200px;
+    margin: 0 auto;
+    text-align: center;
+  }
+
+  .workflow-section h2, .comparison-section h2 {
+    font-size: 2.5rem;
+    color: white;
+    font-weight: 800;
+    margin-bottom: 3rem;
+  }
+
+  .steps-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 1rem;
+    margin-top: 3rem;
+  }
+
+  .step-card {
+    flex: 1;
+    padding: 2rem;
+    position: relative;
+    border-radius: 20px;
+    background: rgba(255,255,255,0.03);
+    border: 1px solid rgba(255,255,255,0.05);
+    text-align: left;
+    transition: 0.3s;
+  }
+
+  .step-card:hover {
+    background: rgba(255,255,255,0.05);
+    transform: translateY(-5px);
+  }
+
+  .step-num {
+    position: absolute;
+    top: -20px;
+    left: 20px;
+    width: 40px;
+    height: 40px;
+    background: #00d4ff;
+    color: black;
+    font-weight: 900;
+    border-radius: 12px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 1.2rem;
+    box-shadow: 0 5px 15px rgba(0,212,255,0.3);
+  }
+
+  .step-icon {
+    font-size: 2.5rem;
+    margin-top: 1rem;
+    margin-bottom: 1rem;
+    display: block;
+  }
+
+  .step-card h3 {
+    color: white;
+    font-size: 1.2rem;
+    margin-bottom: 0.5rem;
+  }
+
+  .step-card p {
+    color: #94a3b8;
+    font-size: 0.9rem;
+    line-height: 1.5;
+  }
+
+  .step-arrow {
+    color: #00d4ff;
+    font-size: 2rem;
+    opacity: 0.5;
+  }
+
+  /* Comparison */
+  .comparison-section {
+    padding: 6rem 5%;
+    max-width: 1000px;
+    margin: 0 auto;
+    text-align: center;
+  }
+
+  .comparison-table {
+    display: flex;
+    flex-direction: column;
+    border-radius: 24px;
+    overflow: hidden;
+    border: 1px solid rgba(255,255,255,0.05);
+  }
+
+  .comp-header {
+    display: flex;
+    background: rgba(255,255,255,0.05);
+    padding: 1.5rem;
+    font-weight: 800;
+    color: white;
+  }
+
+  .comp-row {
+    display: flex;
+    padding: 1.5rem;
+    border-top: 1px solid rgba(255,255,255,0.05);
+    align-items: center;
+    transition: 0.2s;
+  }
+
+  .comp-row:hover {
+    background: rgba(255,255,255,0.02);
+  }
+
+  .comp-col {
+    flex: 1;
+    text-align: center;
+    font-size: 0.95rem;
+  }
+
+  .feature-col {
+    flex: 1.5;
+    text-align: left;
+    display: flex;
+    flex-direction: column;
+  }
   
-  .prod-info h2 { color: white; font-size: 2rem; margin-bottom: 3rem; font-weight: 800; }
-  .feature-list { list-style: none; padding: 0; display: flex; flex-direction: column; gap: 2.5rem; }
-  .feature-list li { display: flex; gap: 1.5rem; align-items: flex-start; }
-  .feature-list .icon { font-size: 1.8rem; background: rgba(255,255,255,0.03); width: 50px; height: 50px; display: flex; align-items: center; justify-content: center; border-radius: 12px; flex-shrink: 0; }
-  .feature-list .txt strong { color: #00ff9d; font-size: 1.1rem; display: block; margin-bottom: 0.4rem; }
-  .feature-list .txt p { color: #94a3b8; font-size: 0.95rem; line-height: 1.6; }
+  .feature-col strong { color: white; display: block; }
+  .feature-col span { color: #64748b; font-size: 0.8rem; font-weight: 400; }
 
-  .prod-visual { display: flex; justify-content: center; }
-  .visual-card-glass { background: rgba(0, 212, 255, 0.05); border: 1px solid rgba(0, 212, 255, 0.1); border-radius: 20px; padding: 3rem; width: 100%; max-width: 400px; font-family: 'JetBrains Mono', monospace; box-shadow: 0 20px 50px rgba(0,0,0,0.3); }
-  .v-head { color: #00d4ff; font-size: 0.8rem; margin-bottom: 2rem; font-weight: 700; border-bottom: 1px solid rgba(255,255,255,0.05); padding-bottom: 0.5rem; }
-  .v-body { display: flex; flex-direction: column; gap: 1.5rem; }
-  .pipeline-row { display: flex; align-items: center; gap: 1rem; opacity: 0.5; }
-  .pipeline-row.active { opacity: 1; transform: scale(1.05); }
-  .p-dot { width: 10px; height: 10px; border-radius: 50%; }
-  .p-dot.blue { background: #00d4ff; box-shadow: 0 0 10px #00d4ff; }
-  .p-dot.green { background: #00ff9d; box-shadow: 0 0 10px #00ff9d; }
-  .p-dot.purple { background: #a855f7; box-shadow: 0 0 10px #a855f7; }
-  .p-txt { color: white; font-weight: 700; font-size: 0.95rem; }
+  .nexo-col {
+    color: #00ff9d;
+    font-weight: 700;
+    background: rgba(0, 255, 157, 0.05);
+    padding: 0.5rem;
+    border-radius: 8px;
+  }
 
-  .prod-cta { padding: 6rem 5% 10rem; text-align: center; max-width: 800px; margin: 0 auto; }
-  .prod-cta h2 { color: white; font-size: 2.5rem; margin-bottom: 1rem; font-weight: 800; }
-  .prod-cta p { color: #94a3b8; font-size: 1.2rem; margin-bottom: 3rem; }
-  .btn-wrap { display: flex; justify-content: center; gap: 2rem; }
+  .other-col {
+    color: #94a3b8;
+  }
 
-  .btn-primary-glow { background: linear-gradient(135deg, #00d4ff, #00ff9d); color: black; padding: 1.2rem 3rem; border-radius: 12px; font-weight: 900; text-decoration: none; transition: 0.3s; box-shadow: 0 10px 30px rgba(0,212,255,0.2); }
-  .btn-outline { border: 1px solid rgba(255,255,255,0.1); color: white; padding: 1.2rem 3rem; border-radius: 12px; font-weight: 700; text-decoration: none; transition: 0.3s; background: rgba(255,255,255,0.03); }
+  @media (max-width: 768px) {
+    .steps-container {
+      flex-direction: column;
+    }
+    .step-arrow {
+      transform: rotate(90deg);
+    }
+    .comparison-table {
+      overflow-x: auto;
+      min-width: 600px; /* Scroll horizontal on mobile */
+    }
+    .comparison-section {
+      overflow-x: auto; /* Contain the scroll */
+    }
+  }
+  .use-cases-section {
+    padding: 6rem 5%;
+    max-width: 1000px;
+    margin: 0 auto;
+    text-align: center;
+  }
 
-  @media (max-width: 900px) {
-    .prod-grid { grid-template-columns: 1fr; gap: 3rem; }
-    .main-panel { padding: 2.5rem; }
-    .btn-wrap { flex-direction: column; gap: 1rem; }
-    .prod-hero h1 { font-size: 2.5rem; }
+  .use-cases-section h2 {
+    font-size: 2.5rem;
+    color: white;
+    font-weight: 800;
+    margin-bottom: 3rem;
+  }
+
+  .use-cases-grid {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 1.5rem;
+  }
+
+  .use-case-card {
+    padding: 2rem;
+    text-align: center;
+  }
+
+  .uc-icon {
+    font-size: 2.5rem;
+    display: block;
+    margin-bottom: 1rem;
+  }
+
+  .use-case-card h4 {
+    color: white;
+    font-size: 1rem;
+    font-weight: 700;
+    margin-bottom: 0.5rem;
+  }
+
+  .use-case-card p {
+    color: #64748b;
+    font-size: 0.85rem;
+  }
+
+  /* Integrations */
+  .integrations-section {
+    padding: 6rem 5%;
+    max-width: 900px;
+    margin: 0 auto;
+    text-align: center;
+  }
+
+  .integrations-section h2 {
+    font-size: 2.5rem;
+    color: white;
+    font-weight: 800;
+    margin-bottom: 3rem;
+  }
+
+  .integrations-grid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 1.5rem;
+    margin-bottom: 2rem;
+  }
+
+  .integration-card {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+    padding: 1.5rem;
+    text-align: left;
+  }
+
+  .int-icon {
+    font-size: 2rem;
+  }
+
+  .integration-card strong {
+    display: block;
+    color: white;
+    font-size: 0.95rem;
+  }
+
+  .integration-card span {
+    color: #64748b;
+    font-size: 0.8rem;
+  }
+
+  .link-more {
+    color: #00d4ff;
+    font-weight: 700;
+    text-decoration: none;
+  }
+
+  /* FAQ */
+  .faq-section {
+    padding: 6rem 5%;
+    max-width: 800px;
+    margin: 0 auto;
+  }
+
+  .faq-section h2 {
+    font-size: 2.5rem;
+    color: white;
+    font-weight: 800;
+    margin-bottom: 3rem;
+    text-align: center;
+  }
+
+  .faq-list {
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+  }
+
+  .faq-item {
+    padding: 1.5rem;
+    cursor: pointer;
+  }
+
+  .faq-item summary {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    list-style: none;
+  }
+
+  .faq-item summary::-webkit-details-marker {
+    display: none;
+  }
+
+  .faq-q {
+    color: white;
+    font-weight: 700;
+    font-size: 1rem;
+  }
+
+  .faq-toggle {
+    color: #00d4ff;
+    font-size: 1.5rem;
+    font-weight: 300;
+    transition: 0.3s;
+  }
+
+  .faq-item[open] .faq-toggle {
+    transform: rotate(45deg);
+  }
+
+  .faq-a {
+    color: #94a3b8;
+    font-size: 0.95rem;
+    line-height: 1.6;
+    margin-top: 1.5rem;
+    padding-top: 1rem;
+    border-top: 1px solid rgba(255,255,255,0.05);
+  }
+
+  /* Final CTA */
+  .final-cta {
+    padding: 4rem 5% 8rem;
+    max-width: 900px;
+    margin: 0 auto;
+  }
+
+  .cta-box {
+    padding: 5rem;
+    text-align: center;
+    border-radius: 40px;
+  }
+
+  .cta-box h2 {
+    font-size: 2.8rem;
+    color: white;
+    font-weight: 800;
+    margin-bottom: 1rem;
+  }
+
+  .cta-box > p {
+    color: #94a3b8;
+    font-size: 1.2rem;
+    margin-bottom: 2.5rem;
+  }
+
+  .cta-buttons {
+    display: flex;
+    gap: 1.5rem;
+    justify-content: center;
+    flex-wrap: wrap;
+    margin-bottom: 2rem;
+  }
+
+  .cta-note {
+    color: #475569;
+    font-size: 0.85rem;
+  }
+
+  /* Responsive */
+  @media (max-width: 1200px) {
+    .kanban-preview {
+      grid-template-columns: repeat(3, 1fr);
+    }
+  }
+
+  @media (max-width: 1000px) {
+    .hero-stats, .roles-grid, .use-cases-grid {
+      grid-template-columns: repeat(2, 1fr);
+    }
+    .features-grid {
+      grid-template-columns: repeat(2, 1fr);
+    }
+    .multiagent-box {
+      grid-template-columns: 1fr;
+    }
+  }
+
+  @media (max-width: 768px) {
+    .prod-hero h1 {
+      font-size: 2.5rem;
+    }
+    .hero-stats {
+      grid-template-columns: 1fr 1fr;
+      gap: 1rem;
+    }
+    .kanban-preview {
+      grid-template-columns: repeat(2, 1fr);
+    }
+    .features-grid, .roles-grid, .use-cases-grid {
+      grid-template-columns: 1fr;
+    }
+    .integrations-grid {
+      grid-template-columns: 1fr;
+    }
+    .ma-features {
+      grid-template-columns: 1fr;
+    }
+    .cta-box {
+      padding: 3rem 2rem;
+    }
+    .cta-box h2 {
+      font-size: 2rem;
+    }
   }
 </style>

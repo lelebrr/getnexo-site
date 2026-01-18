@@ -1,127 +1,1158 @@
 ---
 import Layout from '../../layouts/Layout.astro';
-const title = "Marketing WhatsApp: Ads & Broadcast | GetNexo";
-const description = "Escala suas campanhas com Click to WhatsApp Ads, Broadcast ilimitado e retargeting inteligente sem mensalidades.";
+
+const title = "Marketing WhatsApp: Ads, Broadcast & Retargeting | GetNexo";
+const description = "Escale campanhas com Click-to-WhatsApp Ads, Broadcast ilimitado, segmentação avançada e retargeting inteligente. ROI mensurável, templates aprovados e automação completa.";
+const keywords = "click to whatsapp ads, broadcast whatsapp, marketing whatsapp, campanha whatsapp, retargeting whatsapp, segmentação whatsapp, lead whatsapp, getnexo marketing, disparo em massa whatsapp, propaganda whatsapp";
+
+const stats = [
+  { value: "5x", label: "mais abertura", desc: "que email marketing" },
+  { value: "98%", label: "taxa de leitura", desc: "mensagens entregues" },
+  { value: "45%", label: "CTR médio", desc: "em campanhas broadcast" },
+  { value: "R$0,02", label: "custo por msg", desc: "via API oficial Meta" }
+];
+
+const features = [
+  {
+    icon: "🚀",
+    title: "Click-to-WhatsApp Ads",
+    description: "Conecte seus anúncios do Meta (Facebook/Instagram) diretamente ao seu funil de vendas no WhatsApp. Mensuração completa de ROAS.",
+    details: [
+      "Integração nativa Meta Business",
+      "Tracking de conversão end-to-end",
+      "Atribuição de vendas por campanha",
+      "Otimização automática de público"
+    ]
+  },
+  {
+    icon: "📨",
+    title: "Broadcast Ilimitado",
+    description: "Envie campanhas para toda sua base ou segmentos específicos. Sem limites de mensagens, com templates aprovados previamente.",
+    details: [
+      "Disparo para milhares de contatos",
+      "Agendamento de campanhas",
+      "Templates aprovados pelo Meta",
+      "Velocidade configurável"
+    ]
+  },
+  {
+    icon: "🎯",
+    title: "Segmentação Avançada",
+    description: "Crie audiências baseadas em comportamento, histórico de compras, tags e engajamento. Mensagens certas para pessoas certas.",
+    details: [
+      "Filtros por comportamento",
+      "Tags automáticas e manuais",
+      "Histórico de interações",
+      "Lookalike de melhores clientes"
+    ]
+  },
+  {
+    icon: "🔁",
+    title: "Retargeting Automático",
+    description: "Cliente abriu mas não comprou? A IA detecta e relança oferta personalizada automaticamente após período configurável.",
+    details: [
+      "Gatilhos por comportamento",
+      "Ofertas personalizadas",
+      "Urgência e escassez",
+      "Taxa de recuperação de 25%"
+    ]
+  },
+  {
+    icon: "🏷️",
+    title: "UTM & Atribuição",
+    description: "Saiba exatamente de qual anúncio, campanha ou fonte orgânica veio cada lead que converteu no WhatsApp.",
+    details: [
+      "Tracking completo de UTMs",
+      "Dashboard de atribuição",
+      "ROI por canal",
+      "Exportação para BI"
+    ]
+  },
+  {
+    icon: "📊",
+    title: "Analytics de Campanhas",
+    description: "Dashboard completo com métricas de entrega, leitura, cliques, respostas e conversões de todas suas campanhas.",
+    details: [
+      "Relatórios em tempo real",
+      "Comparação A/B",
+      "Heat map de horários",
+      "Métricas de engajamento"
+    ]
+  }
+];
+
+const campaignTypes = [
+  { name: "Lançamento de Produto", icon: "🆕", desc: "Anuncie novidades para sua base", example: "Novo iPhone disponível! Garanta o seu →" },
+  { name: "Promoção Flash", icon: "⚡", desc: "Ofertas relâmpago com urgência", example: "30% OFF só até meia-noite! Use: FLASH30" },
+  { name: "Carrinho Abandonado", icon: "🛒", desc: "Recupere vendas perdidas", example: "Esqueceu algo no carrinho? Finalize agora!" },
+  { name: "Reativação", icon: "👋", desc: "Reengaje clientes inativos", example: "Sentimos sua falta! Volte com 20% OFF" },
+  { name: "Pós-Venda", icon: "⭐", desc: "NPS e cross-sell", example: "Como foi sua experiência? Avalie de 1-5" },
+  { name: "Aniversário", icon: "🎂", desc: "Mensagens personalizadas", example: "Feliz aniversário! Um presente especial pra você" }
+];
+
+
+
+const comparisonData = [
+  { feature: "Taxa de abertura", email: "20%", sms: "45%", whatsapp: "98%" },
+  { feature: "Taxa de clique (CTR)", email: "3%", sms: "8%", whatsapp: "45%" },
+  { feature: "Tempo de leitura", email: "6h", sms: "3min", whatsapp: "90s" },
+  { feature: "Custo por mil (CPM)", email: "R$5", sms: "R$80", whatsapp: "R$20" },
+  { feature: "Interatividade", email: "Baixa", sms: "Zero", whatsapp: "Alta" },
+  { feature: "Conversação", email: "Não", sms: "Não", whatsapp: "Sim" }
+];
+
+const faqs = [
+  {
+    q: "Preciso ter conta no Meta Business para usar Click-to-WhatsApp?",
+    a: "Sim. O Click-to-WhatsApp Ads é uma funcionalidade do Meta (Facebook/Instagram). Você precisa de uma conta no Meta Business Suite com método de pagamento configurado. O GetNexo se integra para receber os leads e fazer o tracking de conversão."
+  },
+  {
+    q: "Quantas mensagens posso enviar por dia no broadcast?",
+    a: "Com a API Oficial Meta, não há limite técnico. Porém, para manter a qualidade do seu número, recomendamos começar gradualmente (1.000/dia) e escalar conforme sua reputação aumenta. O GetNexo monitora sua qualidade automaticamente."
+  },
+  {
+    q: "Os templates precisam ser aprovados pelo WhatsApp?",
+    a: "Sim. Mensagens iniciadas pela empresa (broadcast) precisam usar Templates HSM aprovados pelo Meta. O GetNexo facilita a criação e submissão, e aprovações geralmente levam de minutos a poucas horas."
+  },
+  {
+    q: "Posso segmentar por comportamento do cliente?",
+    a: "Sim! Você pode criar segmentos baseados em: última compra, valor gasto, tags aplicadas, tempo de inatividade, origem (ads, orgânico), respostas anteriores, e muito mais. Quanto mais dados, melhor a segmentação."
+  },
+  {
+    q: "Como funciona o tracking de conversão?",
+    a: "Quando um lead chega via Click-to-WhatsApp Ads, preservamos os parâmetros UTM e ID do anúncio. Se esse lead converter (comprar, agendar, etc.), o evento é enviado de volta para o Meta via Conversion API, permitindo otimização automática."
+  },
+  {
+    q: "Qual a diferença entre GetNexo e disparadores em massa?",
+    a: "Disparadores usam métodos não-oficiais que podem banir seu número. O GetNexo usa a API Cloud Oficial do Meta, garantindo segurança, compliance e funcionalidades como templates, botões interativos e analytics reais."
+  }
+];
+
+const useCases = [
+  {
+    industry: "E-commerce",
+    icon: "🛍️",
+    scenario: "Lançamento de coleção + recuperação de carrinho",
+    result: "32% de aumento em vendas"
+  },
+  {
+    industry: "Infoprodutos",
+    icon: "📚",
+    scenario: "Aquecimento de lista para lançamento",
+    result: "5x mais conversões no carrinho"
+  },
+  {
+    industry: "Clínicas",
+    icon: "🏥",
+    scenario: "Lembretes de consulta + campanhas preventivas",
+    result: "60% menos no-show"
+  },
+  {
+    industry: "Imobiliárias",
+    icon: "🏠",
+    scenario: "Novos lançamentos para base de interessados",
+    result: "25% de leads qualificados"
+  }
+];
 ---
 
-<Layout title={title} description={description}>
+<Layout title={title} description={description} keywords={keywords}>
+  
+  <!-- Hero Section -->
   <section class="prod-hero">
-    <div class="hero-badge">Crescimento Viral</div>
-    <h1 class="text-gradient">Marketing de Elite</h1>
-    <p>Campanhas que convertem. Click-to-WhatsApp Ads integrado e broadcast em massa sem as limitações das nuvens tradicionais.</p>
+    <div class="hero-badge">📢 Crescimento Escalável</div>
+    <h1>Marketing que <span class="text-gradient">converte de verdade</span></h1>
+    <p class="hero-subtitle">
+      Click-to-WhatsApp Ads integrado, broadcast ilimitado, segmentação avançada e retargeting inteligente. Tudo com ROI mensurável e compliance total.
+    </p>
+    <div class="hero-stats">
+      {stats.map(stat => (
+        <div class="stat-card glass-panel">
+          <span class="stat-value">{stat.value}</span>
+          <span class="stat-label">{stat.label}</span>
+          <span class="stat-desc">{stat.desc}</span>
+        </div>
+      ))}
+    </div>
+    <div class="hero-ctas">
+      <a href="/criar-bot" class="btn-primary-glow">Criar Minha Campanha</a>
+      <a href="/demo" class="btn-outline">Ver Demonstração →</a>
+    </div>
   </section>
 
-  <section class="prod-content">
-    <div class="glass-panel main-panel">
-      <div class="prod-grid">
-        <div class="prod-info">
-          <h2>Atração e Retenção</h2>
-          <ul class="feature-list">
-            <li>
-                <span class="icon">🚀</span>
-                <div class="txt">
-                    <strong>Click to WhatsApp Ads</strong>
-                    <p>Conecte seus anúncios do Meta diretamente ao seu funil de IA. Mensuração total de ROAS.</p>
-                </div>
-            </li>
-            <li>
-                <span class="icon">📨</span>
-                <div class="txt">
-                    <strong>Broadcast Sem Limites</strong>
-                    <p>Envie campanhas para sua base com segmentação avançada e gatilhos de comportamento.</p>
-                </div>
-            </li>
-            <li>
-                <span class="icon">🔁</span>
-                <div class="txt">
-                    <strong>Retargeting Automático</strong>
-                    <p>Abriu mas não comprou? O GetNexo relança a oferta automaticamente após 24h com um novo gancho.</p>
-                </div>
-            </li>
-            <li>
-                <span class="icon">🏷️</span>
-                <div class="txt">
-                    <strong>Gestão de Tags & UTMs</strong>
-                    <p>Saiba exatamente de qual anúncio ou campanha veio cada lead que fechou no WhatsApp.</p>
-                </div>
-            </li>
+  <!-- Comparison Section -->
+  <section class="comparison-section">
+    <h2>Por que WhatsApp <span class="text-gradient">supera todos</span>?</h2>
+    <p class="section-subtitle">Compare as métricas de marketing entre canais</p>
+    
+    <div class="comparison-table glass-panel">
+      <div class="table-header">
+        <span></span>
+        <span>📧 Email</span>
+        <span>📱 SMS</span>
+        <span class="highlight">💬 WhatsApp</span>
+      </div>
+      {comparisonData.map(row => (
+        <div class="table-row">
+          <span class="row-feature">{row.feature}</span>
+          <span class="row-email">{row.email}</span>
+          <span class="row-sms">{row.sms}</span>
+          <span class="row-whatsapp">{row.whatsapp}</span>
+        </div>
+      ))}
+    </div>
+  </section>
+
+  <!-- Features Grid -->
+  <section class="features-section">
+    <h2>Ferramentas completas de <span class="text-gradient">marketing</span></h2>
+    <p class="section-subtitle">Tudo que você precisa para campanhas que convertem</p>
+    
+    <div class="features-grid">
+      {features.map(feature => (
+        <div class="feature-card glass-panel">
+          <div class="feature-header">
+            <span class="feature-icon">{feature.icon}</span>
+            <h3>{feature.title}</h3>
+          </div>
+          <p class="feature-desc">{feature.description}</p>
+          <ul class="feature-details">
+            {feature.details.map(d => <li>✓ {d}</li>)}
           </ul>
         </div>
-        <div class="prod-visual">
-            <div class="visual-card-glass">
-                <div class="v-head">marketing.campaign.stats</div>
-                <div class="v-body">
-                    <div class="stat-row">
-                        <span class="s-label">ALCANCE</span>
-                        <span class="s-val">42.8k</span>
-                    </div>
-                    <div class="stat-progress">
-                        <div class="bar" style="width: 85%;"></div>
-                    </div>
-                    <div class="stat-row">
-                        <span class="s-label">CONVERSÃO</span>
-                        <span class="s-val">12.4%</span>
-                    </div>
-                    <div class="stat-progress">
-                        <div class="bar success" style="width: 65%;"></div>
-                    </div>
-                </div>
+      ))}
+    </div>
+  </section>
+
+  <!-- Campaign Types -->
+  <section class="campaigns-section">
+    <h2>Tipos de <span class="text-gradient">campanhas</span></h2>
+    <p class="section-subtitle">Templates prontos para cada objetivo</p>
+    
+    <div class="campaigns-grid">
+      {campaignTypes.map(ct => (
+        <div class="campaign-card glass-panel">
+          <span class="campaign-icon">{ct.icon}</span>
+          <h4>{ct.name}</h4>
+          <p class="campaign-desc">{ct.desc}</p>
+          <div class="campaign-example">
+            <span class="example-label">Exemplo:</span>
+            <p>"{ct.example}"</p>
+          </div>
+        </div>
+      ))}
+    </div>
+  </section>
+
+  <!-- Template Preview -->
+  <section class="templates-section">
+    <div class="glass-panel templates-box">
+      <div class="templates-content">
+        <h2>Templates <span class="text-gradient">interativos</span></h2>
+        <p>Crie mensagens ricas com imagens, vídeos, carrosséis e botões de ação. Tudo aprovado pelo Meta.</p>
+        
+        <ul class="template-features">
+          <li>✓ Texto com variáveis personalizadas</li>
+          <li>✓ Imagens e vídeos</li>
+          <li>✓ Carrossel de produtos</li>
+          <li>✓ Botões de resposta rápida</li>
+          <li>✓ Botões com link</li>
+          <li>✓ Localização e documentos</li>
+        </ul>
+        
+        <a href="/documentacao" class="link-more">Ver guia de templates →</a>
+      </div>
+      
+      <div class="template-preview">
+        <div class="phone-mockup">
+          <div class="phone-notch"></div>
+          <div class="phone-screen">
+            <div class="chat-header-mini">
+              <span class="store-avatar">🏪</span>
+              <span class="store-name">Loja Demo</span>
             </div>
+            <div class="chat-messages">
+              <div class="msg-bubble business">
+                <p>Olá <strong>Maria</strong>! 🎉</p>
+                <p>Temos uma oferta especial pra você:</p>
+                <p>✨ <strong>25% OFF</strong> em toda a loja</p>
+                <p>📅 Válido até domingo</p>
+                <div class="msg-buttons">
+                  <button>Ver Ofertas</button>
+                  <button>Falar com Vendedor</button>
+                </div>
+              </div>
+            </div>
+          </div>
         </div>
       </div>
     </div>
   </section>
 
-  <section class="prod-cta">
-    <h2>Chega de pagar por lead que não converte.</h2>
-    <p>Aumente sua eficiência de marketing com a inteligência artificial do GetNexo.</p>
-    <div class="btn-wrap">
-        <a href="/criar-bot" class="btn-primary-glow">Criar Minha Campanha</a>
-        <a href="/suporte" class="btn-outline">Ver Cases de Sucesso</a>
+  <!-- Use Cases -->
+  <section class="use-cases-section">
+    <h2>Casos de <span class="text-gradient">sucesso</span></h2>
+    <p class="section-subtitle">Como diferentes segmentos usam marketing no WhatsApp</p>
+    
+    <div class="use-cases-grid">
+      {useCases.map(uc => (
+        <div class="use-case-card glass-panel">
+          <div class="uc-header">
+            <span class="uc-icon">{uc.icon}</span>
+            <h4>{uc.industry}</h4>
+          </div>
+          <p class="uc-scenario">{uc.scenario}</p>
+          <div class="uc-result">
+            <span class="result-label">Resultado:</span>
+            <span class="result-value">{uc.result}</span>
+          </div>
+        </div>
+      ))}
     </div>
   </section>
+
+  <!-- Dashboard Preview -->
+  <section class="dashboard-section">
+    <h2>Dashboard de <span class="text-gradient">campanhas</span></h2>
+    <p class="section-subtitle">Visualize performance em tempo real</p>
+    
+    <div class="glass-panel dashboard-preview">
+      <div class="dash-header">
+        <span class="dash-title">📊 Campanha: Black Friday 2024</span>
+        <span class="dash-status active">● Ativa</span>
+      </div>
+      <div class="dash-metrics">
+        <div class="metric">
+          <span class="m-value">42.847</span>
+          <span class="m-label">Mensagens enviadas</span>
+        </div>
+        <div class="metric">
+          <span class="m-value">41.990</span>
+          <span class="m-label">Entregues (98%)</span>
+        </div>
+        <div class="metric">
+          <span class="m-value">39.891</span>
+          <span class="m-label">Lidas (95%)</span>
+        </div>
+        <div class="metric">
+          <span class="m-value">5.312</span>
+          <span class="m-label">Cliques (12.6%)</span>
+        </div>
+        <div class="metric highlight">
+          <span class="m-value">847</span>
+          <span class="m-label">Conversões (2%)</span>
+        </div>
+        <div class="metric highlight">
+          <span class="m-value">R$ 127.050</span>
+          <span class="m-label">Receita gerada</span>
+        </div>
+      </div>
+      <div class="dash-footer">
+        <span>ROI: <strong class="roi-value">15.2x</strong></span>
+        <span>Custo por conversão: <strong>R$ 9,85</strong></span>
+      </div>
+    </div>
+  </section>
+
+  <!-- FAQ Section -->
+  <section class="faq-section">
+    <h2>Perguntas <span class="text-gradient">frequentes</span></h2>
+    
+    <div class="faq-list">
+      {faqs.map(faq => (
+        <details class="faq-item glass-panel">
+          <summary>
+            <span class="faq-q">{faq.q}</span>
+            <span class="faq-toggle">+</span>
+          </summary>
+          <p class="faq-a">{faq.a}</p>
+        </details>
+      ))}
+    </div>
+  </section>
+
+  <!-- Final CTA -->
+  <section class="final-cta">
+    <div class="glass-panel cta-box">
+      <h2>Pronto para <span class="text-gradient">escalar seu marketing</span>?</h2>
+      <p>Chega de pagar por lead que não converte. Use a inteligência artificial do GetNexo para campanhas que realmente vendem.</p>
+      <div class="cta-buttons">
+        <a href="/criar-bot" class="btn-primary-glow">Começar Gratuitamente</a>
+        <a href="/precos" class="btn-outline">Ver Planos</a>
+      </div>
+      <p class="cta-note">Sem cartão de crédito • API Oficial Meta • Suporte especializado</p>
+    </div>
+  </section>
+
 </Layout>
 
 <style>
-  .prod-hero { text-align: center; padding: 10rem 5% 5rem; }
-  .hero-badge { background: rgba(0, 212, 255, 0.1); color: #00d4ff; padding: 0.5rem 1.2rem; border-radius: 50px; font-size: 0.85rem; font-weight: 700; display: inline-block; margin-bottom: 2rem; border: 1px solid rgba(0,212,255,0.2); }
-  .prod-hero h1 { font-size: 3.5rem; margin-bottom: 1.5rem; font-weight: 800; }
-  .prod-hero p { color: #94a3b8; font-size: 1.25rem; max-width: 700px; margin: 0 auto; }
+  /* Hero */
+  .prod-hero {
+    text-align: center;
+    padding: 10rem 5% 5rem;
+    max-width: 1200px;
+    margin: 0 auto;
+  }
 
-  .prod-content { padding: 4rem 5%; max-width: 1200px; margin: 0 auto; }
-  .main-panel { padding: 5rem; border-radius: 40px; }
-  .prod-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 4rem; align-items: center; }
-  
-  .prod-info h2 { color: white; font-size: 2rem; margin-bottom: 3rem; font-weight: 800; }
-  .feature-list { list-style: none; padding: 0; display: flex; flex-direction: column; gap: 2.5rem; }
-  .feature-list li { display: flex; gap: 1.5rem; align-items: flex-start; }
-  .feature-list .icon { font-size: 1.8rem; background: rgba(255,255,255,0.03); width: 50px; height: 50px; display: flex; align-items: center; justify-content: center; border-radius: 12px; flex-shrink: 0; }
-  .feature-list .txt strong { color: #00ff9d; font-size: 1.1rem; display: block; margin-bottom: 0.4rem; }
-  .feature-list .txt p { color: #94a3b8; font-size: 0.95rem; line-height: 1.6; }
+  .hero-badge {
+    background: rgba(0, 212, 255, 0.1);
+    color: #00d4ff;
+    padding: 0.5rem 1.2rem;
+    border-radius: 50px;
+    font-size: 0.85rem;
+    font-weight: 700;
+    display: inline-block;
+    margin-bottom: 2rem;
+    border: 1px solid rgba(0,212,255,0.2);
+  }
 
-  .prod-visual { display: flex; justify-content: center; }
-  .visual-card-glass { background: rgba(0, 255, 157, 0.05); border: 1px solid rgba(0, 255, 157, 0.1); border-radius: 20px; padding: 3rem; width: 100%; max-width: 400px; font-family: 'JetBrains Mono', monospace; box-shadow: 0 20px 50px rgba(0,0,0,0.3); }
-  .v-head { color: #00ff9d; font-size: 0.8rem; margin-bottom: 2rem; font-weight: 700; border-bottom: 1px solid rgba(255,255,255,0.05); padding-bottom: 0.5rem; text-transform: uppercase; }
-  .v-body { display: flex; flex-direction: column; gap: 1.5rem; }
-  .stat-row { display: flex; justify-content: space-between; align-items: center; }
-  .s-label { color: #64748b; font-size: 0.75rem; font-weight: 800; }
-  .s-val { color: white; font-weight: 900; font-size: 1.2rem; }
-  .stat-progress { height: 6px; background: rgba(255,255,255,0.05); border-radius: 10px; overflow: hidden; }
-  .stat-progress .bar { height: 100%; background: #00d4ff; box-shadow: 0 0 10px #00d4ff; border-radius: 10px; }
-  .stat-progress .bar.success { background: #00ff9d; box-shadow: 0 0 10px #00ff9d; }
+  .prod-hero h1 {
+    font-size: 3.5rem;
+    margin-bottom: 1.5rem;
+    font-weight: 900;
+    color: white;
+    line-height: 1.1;
+  }
 
-  .prod-cta { padding: 6rem 5% 10rem; text-align: center; max-width: 800px; margin: 0 auto; }
-  .prod-cta h2 { color: white; font-size: 2.5rem; margin-bottom: 1rem; font-weight: 800; }
-  .prod-cta p { color: #94a3b8; font-size: 1.2rem; margin-bottom: 3rem; }
-  .btn-wrap { display: flex; justify-content: center; gap: 2rem; }
+  .hero-subtitle {
+    color: #94a3b8;
+    font-size: 1.3rem;
+    max-width: 800px;
+    margin: 0 auto 3rem;
+    line-height: 1.6;
+  }
 
-  .btn-primary-glow { background: linear-gradient(135deg, #00d4ff, #00ff9d); color: black; padding: 1.2rem 3rem; border-radius: 12px; font-weight: 900; text-decoration: none; transition: 0.3s; box-shadow: 0 10px 30px rgba(0,212,255,0.2); }
-  .btn-outline { border: 1px solid rgba(255,255,255,0.1); color: white; padding: 1.2rem 3rem; border-radius: 12px; font-weight: 700; text-decoration: none; transition: 0.3s; background: rgba(255,255,255,0.03); }
+  .hero-stats {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 1.5rem;
+    max-width: 900px;
+    margin: 0 auto 3rem;
+  }
 
-  @media (max-width: 900px) {
-    .prod-grid { grid-template-columns: 1fr; gap: 3rem; }
-    .main-panel { padding: 2.5rem; }
-    .btn-wrap { flex-direction: column; gap: 1rem; }
-    .prod-hero h1 { font-size: 2.5rem; }
+  .stat-card {
+    padding: 1.5rem;
+    text-align: center;
+  }
+
+  .stat-value {
+    display: block;
+    font-size: 2.5rem;
+    font-weight: 900;
+    color: #00ff9d;
+    line-height: 1;
+  }
+
+  .stat-label {
+    display: block;
+    color: white;
+    font-weight: 700;
+    font-size: 1rem;
+    margin-top: 0.3rem;
+  }
+
+  .stat-desc {
+    display: block;
+    color: #64748b;
+    font-size: 0.75rem;
+    margin-top: 0.3rem;
+  }
+
+  .hero-ctas {
+    display: flex;
+    gap: 1.5rem;
+    justify-content: center;
+    flex-wrap: wrap;
+  }
+
+  .btn-primary-glow {
+    background: linear-gradient(135deg, #00d4ff, #00ff9d);
+    color: black;
+    padding: 1.2rem 2.8rem;
+    border-radius: 12px;
+    font-weight: 900;
+    text-decoration: none;
+    transition: 0.3s;
+    box-shadow: 0 10px 30px rgba(0,212,255,0.2);
+  }
+
+  .btn-primary-glow:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 15px 40px rgba(0,212,255,0.4);
+  }
+
+  .btn-outline {
+    border: 1px solid rgba(255,255,255,0.1);
+    color: white;
+    padding: 1.2rem 2.8rem;
+    border-radius: 12px;
+    font-weight: 700;
+    text-decoration: none;
+    background: rgba(255,255,255,0.03);
+    transition: 0.3s;
+  }
+
+  .btn-outline:hover {
+    background: rgba(255,255,255,0.08);
+    border-color: #00d4ff;
+  }
+
+  /* Comparison */
+  .comparison-section {
+    padding: 6rem 5%;
+    max-width: 900px;
+    margin: 0 auto;
+    text-align: center;
+  }
+
+  .comparison-section h2 {
+    font-size: 2.5rem;
+    color: white;
+    font-weight: 800;
+    margin-bottom: 1rem;
+  }
+
+  .section-subtitle {
+    color: #64748b;
+    font-size: 1.1rem;
+    margin-bottom: 3rem;
+  }
+
+  .comparison-table {
+    padding: 2rem;
+    border-radius: 20px;
+    overflow: hidden;
+  }
+
+  .table-header, .table-row {
+    display: grid;
+    grid-template-columns: 2fr 1fr 1fr 1fr;
+    gap: 1rem;
+    padding: 1rem;
+    align-items: center;
+  }
+
+  .table-header {
+    font-weight: 700;
+    color: #64748b;
+    font-size: 0.9rem;
+    border-bottom: 1px solid rgba(255,255,255,0.05);
+  }
+
+  .table-header .highlight {
+    color: #00ff9d;
+  }
+
+  .table-row {
+    border-bottom: 1px solid rgba(255,255,255,0.03);
+  }
+
+  .row-feature {
+    text-align: left;
+    color: white;
+    font-weight: 600;
+    font-size: 0.9rem;
+  }
+
+  .row-email, .row-sms {
+    color: #64748b;
+  }
+
+  .row-whatsapp {
+    color: #00ff9d;
+    font-weight: 700;
+  }
+
+  /* Features */
+  .features-section {
+    padding: 6rem 5%;
+    max-width: 1300px;
+    margin: 0 auto;
+    text-align: center;
+  }
+
+  .features-section h2 {
+    font-size: 2.5rem;
+    color: white;
+    font-weight: 800;
+    margin-bottom: 1rem;
+  }
+
+  .features-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 2rem;
+    margin-top: 4rem;
+  }
+
+  .feature-card {
+    padding: 2.5rem;
+    text-align: left;
+    transition: 0.3s;
+  }
+
+  .feature-card:hover {
+    transform: translateY(-5px);
+    border-color: rgba(0, 255, 157, 0.3);
+  }
+
+  .feature-header {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+    margin-bottom: 1rem;
+  }
+
+  .feature-icon {
+    font-size: 2rem;
+  }
+
+  .feature-card h3 {
+    color: white;
+    font-size: 1.2rem;
+    font-weight: 800;
+  }
+
+  .feature-desc {
+    color: #94a3b8;
+    font-size: 0.95rem;
+    line-height: 1.6;
+    margin-bottom: 1.5rem;
+  }
+
+  .feature-details {
+    list-style: none;
+    padding: 0;
+  }
+
+  .feature-details li {
+    color: #64748b;
+    font-size: 0.85rem;
+    padding: 0.3rem 0;
+  }
+
+  /* Campaign Types */
+  .campaigns-section {
+    padding: 6rem 5%;
+    max-width: 1200px;
+    margin: 0 auto;
+    text-align: center;
+  }
+
+  .campaigns-section h2 {
+    font-size: 2.5rem;
+    color: white;
+    font-weight: 800;
+    margin-bottom: 1rem;
+  }
+
+  .campaigns-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 1.5rem;
+    margin-top: 3rem;
+  }
+
+  .campaign-card {
+    padding: 2rem;
+    text-align: left;
+    transition: 0.3s;
+  }
+
+  .campaign-card:hover {
+    border-color: rgba(0, 212, 255, 0.3);
+  }
+
+  .campaign-icon {
+    font-size: 2.5rem;
+    display: block;
+    margin-bottom: 1rem;
+  }
+
+  .campaign-card h4 {
+    color: white;
+    font-size: 1.1rem;
+    font-weight: 700;
+    margin-bottom: 0.5rem;
+  }
+
+  .campaign-desc {
+    color: #64748b;
+    font-size: 0.85rem;
+    margin-bottom: 1.5rem;
+  }
+
+  .campaign-example {
+    background: rgba(0, 212, 255, 0.05);
+    border-left: 3px solid #00d4ff;
+    padding: 0.8rem;
+    border-radius: 0 8px 8px 0;
+  }
+
+  .example-label {
+    color: #00d4ff;
+    font-size: 0.7rem;
+    font-weight: 700;
+    text-transform: uppercase;
+    display: block;
+    margin-bottom: 0.3rem;
+  }
+
+  .campaign-example p {
+    color: #94a3b8;
+    font-size: 0.85rem;
+    font-style: italic;
+    margin: 0;
+  }
+
+  /* Templates */
+  .templates-section {
+    padding: 6rem 5%;
+    max-width: 1100px;
+    margin: 0 auto;
+  }
+
+  .templates-box {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 4rem;
+    padding: 4rem;
+    border-radius: 32px;
+    align-items: center;
+  }
+
+  .templates-content h2 {
+    font-size: 2rem;
+    color: white;
+    font-weight: 800;
+    margin-bottom: 1rem;
+  }
+
+  .templates-content > p {
+    color: #94a3b8;
+    margin-bottom: 2rem;
+    line-height: 1.6;
+  }
+
+  .template-features {
+    list-style: none;
+    padding: 0;
+    margin-bottom: 2rem;
+  }
+
+  .template-features li {
+    color: #64748b;
+    font-size: 0.95rem;
+    padding: 0.4rem 0;
+  }
+
+  .link-more {
+    color: #00d4ff;
+    font-weight: 700;
+    text-decoration: none;
+  }
+
+  /* Phone Mockup */
+  .template-preview {
+    display: flex;
+    justify-content: center;
+  }
+
+  .phone-mockup {
+    width: 280px;
+    background: #1a1a2e;
+    border-radius: 30px;
+    padding: 0.5rem;
+    box-shadow: 0 30px 60px rgba(0,0,0,0.5);
+    border: 2px solid #333;
+  }
+
+  .phone-notch {
+    width: 80px;
+    height: 20px;
+    background: #000;
+    border-radius: 10px;
+    margin: 0 auto 0.5rem;
+  }
+
+  .phone-screen {
+    background: #0a0f1a;
+    border-radius: 25px;
+    overflow: hidden;
+    min-height: 350px;
+  }
+
+  .chat-header-mini {
+    background: #1a1f2e;
+    padding: 1rem;
+    display: flex;
+    align-items: center;
+    gap: 0.8rem;
+    border-bottom: 1px solid rgba(255,255,255,0.05);
+  }
+
+  .store-avatar {
+    font-size: 1.5rem;
+  }
+
+  .store-name {
+    color: white;
+    font-weight: 600;
+    font-size: 0.95rem;
+  }
+
+  .chat-messages {
+    padding: 1rem;
+  }
+
+  .msg-bubble {
+    background: rgba(0, 212, 255, 0.1);
+    border: 1px solid rgba(0, 212, 255, 0.2);
+    border-radius: 0 15px 15px 15px;
+    padding: 1rem;
+    max-width: 90%;
+  }
+
+  .msg-bubble p {
+    color: white;
+    font-size: 0.85rem;
+    margin: 0.3rem 0;
+    line-height: 1.4;
+  }
+
+  .msg-buttons {
+    margin-top: 1rem;
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+  }
+
+  .msg-buttons button {
+    background: rgba(0, 212, 255, 0.2);
+    border: 1px solid rgba(0, 212, 255, 0.4);
+    color: #00d4ff;
+    padding: 0.6rem;
+    border-radius: 8px;
+    font-size: 0.8rem;
+    font-weight: 600;
+    cursor: pointer;
+  }
+
+  /* Use Cases */
+  .use-cases-section {
+    padding: 6rem 5%;
+    max-width: 1100px;
+    margin: 0 auto;
+    text-align: center;
+  }
+
+  .use-cases-section h2 {
+    font-size: 2.5rem;
+    color: white;
+    font-weight: 800;
+    margin-bottom: 1rem;
+  }
+
+  .use-cases-grid {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 1.5rem;
+    margin-top: 3rem;
+  }
+
+  .use-case-card {
+    padding: 2rem;
+    text-align: left;
+  }
+
+  .uc-header {
+    display: flex;
+    align-items: center;
+    gap: 0.8rem;
+    margin-bottom: 1rem;
+  }
+
+  .uc-icon {
+    font-size: 2rem;
+  }
+
+  .use-case-card h4 {
+    color: white;
+    font-size: 1rem;
+    font-weight: 700;
+  }
+
+  .uc-scenario {
+    color: #64748b;
+    font-size: 0.85rem;
+    line-height: 1.5;
+    margin-bottom: 1.5rem;
+  }
+
+  .uc-result {
+    background: rgba(0, 255, 157, 0.05);
+    border: 1px solid rgba(0, 255, 157, 0.2);
+    padding: 0.8rem;
+    border-radius: 10px;
+  }
+
+  .result-label {
+    color: #64748b;
+    font-size: 0.7rem;
+    font-weight: 700;
+    text-transform: uppercase;
+    display: block;
+    margin-bottom: 0.2rem;
+  }
+
+  .result-value {
+    color: #00ff9d;
+    font-weight: 800;
+    font-size: 0.95rem;
+  }
+
+  /* Dashboard Preview */
+  .dashboard-section {
+    padding: 6rem 5%;
+    max-width: 1000px;
+    margin: 0 auto;
+    text-align: center;
+  }
+
+  .dashboard-section h2 {
+    font-size: 2.5rem;
+    color: white;
+    font-weight: 800;
+    margin-bottom: 1rem;
+  }
+
+  .dashboard-preview {
+    padding: 2.5rem;
+    border-radius: 20px;
+    margin-top: 3rem;
+    text-align: left;
+  }
+
+  .dash-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding-bottom: 1.5rem;
+    border-bottom: 1px solid rgba(255,255,255,0.05);
+    margin-bottom: 2rem;
+  }
+
+  .dash-title {
+    color: white;
+    font-weight: 700;
+    font-size: 1.1rem;
+  }
+
+  .dash-status {
+    color: #00ff9d;
+    font-size: 0.8rem;
+    font-weight: 600;
+  }
+
+  .dash-metrics {
+    display: grid;
+    grid-template-columns: repeat(6, 1fr);
+    gap: 1rem;
+  }
+
+  .metric {
+    background: rgba(255,255,255,0.02);
+    padding: 1.5rem 1rem;
+    border-radius: 12px;
+    text-align: center;
+  }
+
+  .metric.highlight {
+    background: rgba(0, 255, 157, 0.05);
+    border: 1px solid rgba(0, 255, 157, 0.2);
+  }
+
+  .m-value {
+    display: block;
+    font-size: 1.3rem;
+    font-weight: 900;
+    color: white;
+    margin-bottom: 0.3rem;
+  }
+
+  .metric.highlight .m-value {
+    color: #00ff9d;
+  }
+
+  .m-label {
+    color: #64748b;
+    font-size: 0.75rem;
+  }
+
+  .dash-footer {
+    margin-top: 2rem;
+    padding-top: 1.5rem;
+    border-top: 1px solid rgba(255,255,255,0.05);
+    display: flex;
+    gap: 3rem;
+    color: #64748b;
+    font-size: 0.9rem;
+  }
+
+  .roi-value {
+    color: #00ff9d;
+    font-size: 1.2rem;
+  }
+
+  /* FAQ */
+  .faq-section {
+    padding: 6rem 5%;
+    max-width: 800px;
+    margin: 0 auto;
+  }
+
+  .faq-section h2 {
+    font-size: 2.5rem;
+    color: white;
+    font-weight: 800;
+    margin-bottom: 3rem;
+    text-align: center;
+  }
+
+  .faq-list {
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+  }
+
+  .faq-item {
+    padding: 1.5rem;
+    cursor: pointer;
+  }
+
+  .faq-item summary {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    list-style: none;
+  }
+
+  .faq-item summary::-webkit-details-marker {
+    display: none;
+  }
+
+  .faq-q {
+    color: white;
+    font-weight: 700;
+    font-size: 1rem;
+  }
+
+  .faq-toggle {
+    color: #00d4ff;
+    font-size: 1.5rem;
+    font-weight: 300;
+    transition: 0.3s;
+  }
+
+  .faq-item[open] .faq-toggle {
+    transform: rotate(45deg);
+  }
+
+  .faq-a {
+    color: #94a3b8;
+    font-size: 0.95rem;
+    line-height: 1.6;
+    margin-top: 1.5rem;
+    padding-top: 1rem;
+    border-top: 1px solid rgba(255,255,255,0.05);
+  }
+
+  /* Final CTA */
+  .final-cta {
+    padding: 4rem 5% 8rem;
+    max-width: 900px;
+    margin: 0 auto;
+  }
+
+  .cta-box {
+    padding: 5rem;
+    text-align: center;
+    border-radius: 40px;
+  }
+
+  .cta-box h2 {
+    font-size: 2.8rem;
+    color: white;
+    font-weight: 800;
+    margin-bottom: 1rem;
+  }
+
+  .cta-box > p {
+    color: #94a3b8;
+    font-size: 1.2rem;
+    margin-bottom: 2.5rem;
+  }
+
+  .cta-buttons {
+    display: flex;
+    gap: 1.5rem;
+    justify-content: center;
+    flex-wrap: wrap;
+    margin-bottom: 2rem;
+  }
+
+  .cta-note {
+    color: #475569;
+    font-size: 0.85rem;
+  }
+
+  /* Responsive */
+  @media (max-width: 1000px) {
+    .hero-stats {
+      grid-template-columns: repeat(2, 1fr);
+    }
+    .features-grid, .campaigns-grid {
+      grid-template-columns: repeat(2, 1fr);
+    }
+    .templates-box {
+      grid-template-columns: 1fr;
+    }
+    .use-cases-grid {
+      grid-template-columns: repeat(2, 1fr);
+    }
+    .dash-metrics {
+      grid-template-columns: repeat(3, 1fr);
+    }
+  }
+
+  @media (max-width: 768px) {
+    .prod-hero h1 {
+      font-size: 2.5rem;
+    }
+    .hero-stats {
+      grid-template-columns: 1fr 1fr;
+      gap: 1rem;
+    }
+    .features-grid, .campaigns-grid {
+      grid-template-columns: 1fr;
+    }
+    .use-cases-grid {
+      grid-template-columns: 1fr;
+    }
+    .dash-metrics {
+      grid-template-columns: repeat(2, 1fr);
+    }
+    .cta-box {
+      padding: 3rem 2rem;
+    }
+    .cta-box h2 {
+      font-size: 2rem;
+    }
+    .comparison-table .table-header,
+    .comparison-table .table-row {
+      grid-template-columns: 1.5fr 1fr 1fr 1fr;
+      font-size: 0.8rem;
+    }
   }
 </style>

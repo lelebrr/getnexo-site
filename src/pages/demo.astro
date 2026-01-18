@@ -21,7 +21,7 @@ const ogImage = "https://getnexo.com.br/assets/og-poster.jpg";
         
         <input type="tel" id="lead-phone" placeholder="Seu WhatsApp (99) 99999-9999" required 
                maxlength="15"
-               oninput="this.value = this.value.replace(/\D/g,'').replace(/^(\d{2})(\d)/g,'($1) $2').replace(/(\d)(\d{4})$/,'$1-$2')"
+               maxlength="15"
                style="padding: 1rem; background: #0f172a; border: 1px solid #334155; color: white; border-radius: 8px;" />
         
         <input type="email" id="lead-email" placeholder="Seu E-mail Corporativo" required style="padding: 1rem; background: #0f172a; border: 1px solid #334155; color: white; border-radius: 8px;" />
@@ -143,6 +143,15 @@ const ogImage = "https://getnexo.com.br/assets/og-poster.jpg";
     const stage2 = document.getElementById('demo-stage-2');
     const stage3 = document.getElementById('demo-stage-3');
     const chatTitle = document.getElementById('chat-industry-display');
+
+    // Phone formatting
+    const phoneInput = document.getElementById('lead-phone');
+    if (phoneInput) {
+      phoneInput.addEventListener('input', function() {
+        let value = this.value.replace(/\D/g,'');
+        this.value = value.replace(/^(\d{2})(\d)/g,'($1) $2').replace(/(\d)(\d{4})$/,'$1-$2');
+      });
+    }
 
     // Stage 1: Lead Form Submit
     document.getElementById('lead-form').onsubmit = (e) => {
@@ -311,7 +320,7 @@ const ogImage = "https://getnexo.com.br/assets/og-poster.jpg";
                     <button onclick="this.closest('div').parentElement.parentElement.remove()" style="background:none; border:none; color:white; font-size:1.5rem; cursor:pointer;">✕</button>
                 </div>
                 <div style="flex:1; background:#fff; position:relative;">
-                    <iframe src="${link}" style="width:100%; height:100%; border:none;" allowfullscreen></iframe>
+                    <iframe src="${link}" style="width:100%; height:100%; border:none;" allowfullscreen loading="lazy"></iframe>
                 </div>
             </div>
         `;

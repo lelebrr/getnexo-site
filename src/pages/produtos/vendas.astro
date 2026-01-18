@@ -1,127 +1,971 @@
 ---
 import Layout from '../../layouts/Layout.astro';
-const title = "Checkout & Vendas PIX no WhatsApp | GetNexo";
-const description = "Transforme seu WhatsApp em uma loja completa. Catálogo, carrinho e pagamento via PIX nativo sem sair do chat.";
+
+const title = "Checkout & Vendas PIX no WhatsApp | GetNexo - Converta 3x Mais";
+const description = "Transforme seu WhatsApp em uma loja completa. Catálogo inteligente, carrinho de compras, pagamento PIX nativo, recuperação de carrinho e checkout sem sair do chat. Aumente conversões em até 300%.";
+const keywords = "checkout whatsapp, pix whatsapp, vendas whatsapp, carrinho whatsapp, pagamento pix chat, loja whatsapp, e-commerce whatsapp, catálogo whatsapp, cobrança pix automática, getnexo vendas";
+
+const stats = [
+  { value: "67%", label: "menos abandono", desc: "de carrinho vs. sites tradicionais" },
+  { value: "3x", label: "mais conversão", desc: "vendendo no chat vs. emails" },
+  { value: "< 30s", label: "tempo médio", desc: "para fechamento de venda" },
+  { value: "24/7", label: "vendas automáticas", desc: "mesmo enquanto você dorme" }
+];
+
+const features = [
+  {
+    icon: "🛒",
+    title: "Catálogo Inteligente",
+    description: "Sincronize produtos automaticamente do seu e-commerce. A IA apresenta imagens, preços e descrições no momento exato da conversa.",
+    details: [
+      "Sync automático com Shopify, WooCommerce, Nuvemshop",
+      "Carrossel de produtos interativo",
+      "Busca por voz e texto",
+      "Estoque em tempo real"
+    ]
+  },
+  {
+    icon: "💸",
+    title: "PIX Nativo Automático",
+    description: "Gere cobranças PIX instantâneas direto no chat. QR Code, copia e cola, e confirmação automática de pagamento.",
+    details: [
+      "QR Code e Copia e Cola",
+      "Confirmação via Webhook",
+      "Suporte a múltiplos bancos",
+      "Conciliação automática"
+    ]
+  },
+  {
+    icon: "📦",
+    title: "Gestão de Pedidos",
+    description: "Venda confirmada? O pedido cai automaticamente no seu ERP ou painel. Rastreamento e notificações automáticas.",
+    details: [
+      "Integração com ERP",
+      "Status de pedido no chat",
+      "Notificações de envio",
+      "Histórico completo"
+    ]
+  },
+  {
+    icon: "🔄",
+    title: "Recuperação de Carrinho",
+    description: "Cliente abandonou? A IA envia lembretes personalizados e ofertas para recuperar a venda automaticamente.",
+    details: [
+      "Lembretes automáticos",
+      "Ofertas personalizadas",
+      "Urgência inteligente",
+      "Taxa de recuperação de 35%"
+    ]
+  },
+  {
+    icon: "🎯",
+    title: "Upsell & Cross-sell",
+    description: "A IA sugere produtos complementares baseados no histórico e contexto da conversa para aumentar o ticket médio.",
+    details: [
+      "Recomendações por IA",
+      "Combos automáticos",
+      "Descontos progressivos",
+      "Aumento de 40% no ticket"
+    ]
+  },
+  {
+    icon: "📊",
+    title: "Analytics de Vendas",
+    description: "Dashboard completo com métricas de conversão, ticket médio, produtos mais vendidos e performance da equipe.",
+    details: [
+      "Relatórios em tempo real",
+      "Funil de vendas visual",
+      "ROI por campanha",
+      "Export para BI"
+    ]
+  }
+];
+
+const paymentMethods = [
+  { name: "PIX", icon: "💚", desc: "Confirmação instantânea", popular: true },
+  { name: "Cartão de Crédito", icon: "💳", desc: "Link de pagamento seguro", popular: false },
+  { name: "Boleto", icon: "📄", desc: "Parcelado e à vista", popular: false },
+  { name: "Link Personalizado", icon: "🔗", desc: "Para negociações especiais", popular: false }
+];
+
+const steps = [
+  { num: "01", title: "Cliente pergunta", desc: "Cliente demonstra interesse em um produto no chat" },
+  { num: "02", title: "IA apresenta", desc: "Catálogo é exibido com imagens, preços e opções" },
+  { num: "03", title: "Carrinho criado", desc: "Cliente seleciona e adiciona itens ao carrinho" },
+  { num: "04", title: "PIX gerado", desc: "Cobrança automática com QR Code no chat" },
+  { num: "05", title: "Pagamento confirmado", desc: "Webhook confirma e dispara notificação" },
+  { num: "06", title: "Pedido processado", desc: "Cai no ERP e cliente recebe rastreio" }
+];
+
+const faqs = [
+  {
+    q: "Como funciona o PIX nativo no WhatsApp?",
+    a: "Quando o cliente está pronto para pagar, a IA gera automaticamente um QR Code PIX ou código copia e cola diretamente no chat. Assim que o pagamento é detectado via webhook do seu banco/PSP, o cliente recebe a confirmação instantânea e o pedido é processado."
+  },
+  {
+    q: "Posso usar minha própria conta bancária?",
+    a: "Sim! O GetNexo funciona com qualquer banco ou PSP que suporte PIX via API. Trabalhamos com Mercado Pago, PagSeguro, Asaas, Open Pix, Banco Inter, Sicredi e muitos outros. Você recebe direto na sua conta."
+  },
+  {
+    q: "Preciso de um e-commerce para usar?",
+    a: "Não! Você pode cadastrar produtos diretamente no painel GetNexo. Mas se você já tem uma loja (Shopify, WooCommerce, Nuvemshop), a sincronização é automática e em tempo real."
+  },
+  {
+    q: "Como funciona a recuperação de carrinho?",
+    a: "Quando um cliente adiciona produtos mas não finaliza, a IA aguarda um tempo configurável (ex: 2 horas) e envia uma mensagem personalizada lembrando do carrinho. Pode incluir desconto ou urgência. A taxa média de recuperação é de 35%."
+  },
+  {
+    q: "Posso parcelar vendas?",
+    a: "Sim! Para pagamentos com cartão, você pode oferecer parcelamento. Para PIX, é possível configurar entradas + parcelas ou usar links de pagamento de gateways como PagSeguro ou Mercado Pago que suportam parcelamento."
+  },
+  {
+    q: "Como vejo os relatórios de vendas?",
+    a: "No dashboard GetNexo você tem acesso a métricas completas: vendas por período, ticket médio, produtos mais vendidos, taxa de conversão, desempenho por atendente, e muito mais. Tudo exportável para Excel ou integrado via API."
+  }
+];
+
+const testimonials = [
+  { name: "Carla Mendes", company: "Boutique Online", text: "Aumentamos 280% nas vendas depois de implementar o checkout no WhatsApp. Os clientes adoram a praticidade do PIX direto no chat!", avatar: "👩‍💼" },
+  { name: "Roberto Silva", company: "Tech Store", text: "A recuperação de carrinho está salvando vendas que antes eram perdidas. Recuperamos em média R$ 15.000/mês.", avatar: "👨‍💻" },
+  { name: "Ana Costa", company: "Confeitaria Doce", text: "Antes eu perdia muito tempo enviando dados bancários. Agora é tudo automático e meus clientes recebem o QR Code na hora!", avatar: "👩‍🍳" }
+];
 ---
 
-<Layout title={title} description={description}>
+<Layout title={title} description={description} keywords={keywords}>
+  
+  <!-- Hero Section -->
   <section class="prod-hero">
-    <div class="hero-badge">Conversão Imediata</div>
-    <h1 class="text-gradient">Vendas & Checkout</h1>
-    <p>O menor caminho entre o desejo e o pagamento. Checkout nativo no WhatsApp com integração PIX em tempo real.</p>
+    <div class="hero-badge">💰 Conversão Imediata</div>
+    <h1>Transforme conversas em <span class="text-gradient">vendas instantâneas</span></h1>
+    <p class="hero-subtitle">
+      O menor caminho entre o desejo e o pagamento. Checkout nativo no WhatsApp com PIX em tempo real, catálogo inteligente e recuperação automática de carrinho.
+    </p>
+    <div class="hero-stats">
+      {stats.map(stat => (
+        <div class="stat-card glass-panel">
+          <span class="stat-value">{stat.value}</span>
+          <span class="stat-label">{stat.label}</span>
+          <span class="stat-desc">{stat.desc}</span>
+        </div>
+      ))}
+    </div>
+    <div class="hero-ctas">
+      <a href="/criar-bot" class="btn-primary-glow">Ativar Vendas no Chat</a>
+      <a href="/demo" class="btn-outline">Ver Demonstração →</a>
+    </div>
   </section>
 
-  <section class="prod-content">
-    <div class="glass-panel main-panel">
-      <div class="prod-grid">
-        <div class="prod-info">
-          <h2>Venda Enquanto Eles Digitam</h2>
-          <ul class="feature-list">
-            <li>
-                <span class="icon">🛒</span>
-                <div class="txt">
-                    <strong>Catálogo Inteligente</strong>
-                    <p>Sincronize seus produtos e permita que a IA apresente imagens e preços na hora certa da conversa.</p>
-                </div>
-            </li>
-            <li>
-                <span class="icon">💸</span>
-                <div class="txt">
-                    <strong>PIX Nativo Automático</strong>
-                    <p>Gere chaves PIX de pagamento diretamente no chat e confirme o recebimento instantaneamente.</p>
-                </div>
-            </li>
-            <li>
-                <span class="icon">📦</span>
-                <div class="txt">
-                    <strong>Sincronização de Pedidos</strong>
-                    <p>Venda confirmada no WhatsApp? O pedido cai direto no seu ERP ou E-commerce (WooCommerce/Shopify).</p>
-                </div>
-            </li>
-            <li>
-                <span class="icon">🔗</span>
-                <div class="txt">
-                    <strong>Links de Pagamento</strong>
-                    <p>Envie links dinâmicos para pagamentos com cartão ou boleto para finalizar negociações complexas.</p>
-                </div>
-            </li>
+  <!-- How It Works -->
+  <section class="how-it-works">
+    <h2>Como funciona a <span class="text-gradient">venda no WhatsApp</span></h2>
+    <p class="section-subtitle">Do primeiro "Oi" ao pagamento confirmado em menos de 2 minutos</p>
+    
+    <div class="steps-grid">
+      {steps.map((step, i) => (
+        <div class="step-card">
+          <span class="step-num">{step.num}</span>
+          <h4>{step.title}</h4>
+          <p>{step.desc}</p>
+          {i < steps.length - 1 && <div class="step-arrow">→</div>}
+        </div>
+      ))}
+    </div>
+  </section>
+
+  <!-- Features Grid -->
+  <section class="features-section">
+    <h2>Tudo que você precisa para <span class="text-gradient">vender mais</span></h2>
+    <p class="section-subtitle">Ferramentas completas de vendas integradas ao WhatsApp</p>
+    
+    <div class="features-grid">
+      {features.map(feature => (
+        <div class="feature-card glass-panel">
+          <div class="feature-header">
+            <span class="feature-icon">{feature.icon}</span>
+            <h3>{feature.title}</h3>
+          </div>
+          <p class="feature-desc">{feature.description}</p>
+          <ul class="feature-details">
+            {feature.details.map(d => <li>✓ {d}</li>)}
           </ul>
         </div>
-        <div class="prod-visual">
-            <div class="visual-card-glass">
-                <div class="v-head">checkout.payment.confirmed</div>
-                <div class="v-body">
-                    <div class="payment-node">
-                        <div class="p-icon">💰</div>
-                        <div class="p-details">
-                            <span class="p-title">PIX RECEBIDO</span>
-                            <span class="p-val">R$ 249,00</span>
-                        </div>
-                    </div>
-                    <div class="p-meta">
-                        <span>Ref: #NEXO-9821</span>
-                        <span class="p-status">SUCCESS</span>
-                    </div>
-                </div>
+      ))}
+    </div>
+  </section>
+
+  <!-- Payment Methods -->
+  <section class="payments-section">
+    <div class="glass-panel payments-box">
+      <div class="payments-content">
+        <h2>Múltiplos métodos de <span class="text-gradient">pagamento</span></h2>
+        <p>Ofereça a forma de pagamento que seu cliente prefere, tudo integrado ao chat.</p>
+        
+        <div class="payment-methods">
+          {paymentMethods.map(pm => (
+            <div class={`payment-method ${pm.popular ? 'popular' : ''}`}>
+              <span class="pm-icon">{pm.icon}</span>
+              <div class="pm-info">
+                <strong>{pm.name}</strong>
+                <span>{pm.desc}</span>
+              </div>
+              {pm.popular && <span class="pm-badge">Mais usado</span>}
             </div>
+          ))}
+        </div>
+      </div>
+      
+      <div class="pix-demo">
+        <div class="pix-modal glass-panel">
+          <div class="pix-header">
+            <span class="pix-icon">💚</span>
+            <span>Pagamento PIX</span>
+          </div>
+          <div class="pix-body">
+            <div class="qr-placeholder">
+              <div class="qr-grid">
+                {Array(81).fill(0).map(() => <span></span>)}
+              </div>
+            </div>
+            <p class="pix-value">R$ 127,90</p>
+            <p class="pix-ref">Pedido #NEXO-4821</p>
+            <button class="pix-copy">📋 Copiar código PIX</button>
+          </div>
+          <div class="pix-footer">
+            <span class="pix-timer">⏱️ Expira em 15:00</span>
+          </div>
         </div>
       </div>
     </div>
   </section>
 
-  <section class="prod-cta">
-    <h2>Pare de mandar o cliente para o site.</h2>
-    <p>Venda onde seu cliente está: no WhatsApp. Aumente sua taxa de conversão em até 3x.</p>
-    <div class="btn-wrap">
-        <a href="/criar-bot" class="btn-primary-glow">Ativar Vendas no Chat</a>
-        <a href="/ecommerce" class="btn-outline">Ver Integrações</a>
+  <!-- Integrations Preview -->
+  <section class="integrations-preview">
+    <h2>Integra com seu <span class="text-gradient">e-commerce</span></h2>
+    <p class="section-subtitle">Sincronização automática de produtos, estoque e pedidos</p>
+    
+    <div class="integrations-logos">
+      <div class="int-logo">🛍️ Shopify</div>
+      <div class="int-logo">🔌 WooCommerce</div>
+      <div class="int-logo">☁️ Nuvemshop</div>
+      <div class="int-logo">📦 Bling</div>
+      <div class="int-logo">💳 Mercado Pago</div>
+      <div class="int-logo">🏦 PagSeguro</div>
+    </div>
+    
+    <a href="/integracoes" class="link-more">Ver todas as integrações →</a>
+  </section>
+
+  <!-- Testimonials -->
+  <section class="testimonials-section">
+    <h2>O que nossos clientes <span class="text-gradient">dizem</span></h2>
+    
+    <div class="testimonials-grid">
+      {testimonials.map(t => (
+        <div class="testimonial-card glass-panel">
+          <div class="t-header">
+            <span class="t-avatar">{t.avatar}</span>
+            <div class="t-info">
+              <strong>{t.name}</strong>
+              <span>{t.company}</span>
+            </div>
+          </div>
+          <p class="t-text">"{t.text}"</p>
+        </div>
+      ))}
     </div>
   </section>
+
+  <!-- FAQ Section -->
+  <section class="faq-section">
+    <h2>Perguntas <span class="text-gradient">frequentes</span></h2>
+    
+    <div class="faq-list">
+      {faqs.map(faq => (
+        <details class="faq-item glass-panel">
+          <summary>
+            <span class="faq-q">{faq.q}</span>
+            <span class="faq-toggle">+</span>
+          </summary>
+          <p class="faq-a">{faq.a}</p>
+        </details>
+      ))}
+    </div>
+  </section>
+
+  <!-- Final CTA -->
+  <section class="final-cta">
+    <div class="glass-panel cta-box">
+      <h2>Pronto para <span class="text-gradient">vender 3x mais</span>?</h2>
+      <p>Pare de perder vendas. Ative o checkout no WhatsApp hoje e veja seus resultados decolarem.</p>
+      <div class="cta-buttons">
+        <a href="/criar-bot" class="btn-primary-glow">Começar Gratuitamente</a>
+        <a href="/precos" class="btn-outline">Ver Planos</a>
+      </div>
+      <p class="cta-note">Sem cartão de crédito • Setup em 12 minutos • Suporte especializado</p>
+    </div>
+  </section>
+
 </Layout>
 
 <style>
-  .prod-hero { text-align: center; padding: 10rem 5% 5rem; }
-  .hero-badge { background: rgba(0, 212, 255, 0.1); color: #00d4ff; padding: 0.5rem 1.2rem; border-radius: 50px; font-size: 0.85rem; font-weight: 700; display: inline-block; margin-bottom: 2rem; border: 1px solid rgba(0,212,255,0.2); }
-  .prod-hero h1 { font-size: 3.5rem; margin-bottom: 1.5rem; font-weight: 800; }
-  .prod-hero p { color: #94a3b8; font-size: 1.25rem; max-width: 700px; margin: 0 auto; }
+  /* Hero */
+  .prod-hero {
+    text-align: center;
+    padding: 10rem 5% 5rem;
+    max-width: 1200px;
+    margin: 0 auto;
+  }
 
-  .prod-content { padding: 4rem 5%; max-width: 1200px; margin: 0 auto; }
-  .main-panel { padding: 5rem; border-radius: 40px; }
-  .prod-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 4rem; align-items: center; }
-  
-  .prod-info h2 { color: white; font-size: 2rem; margin-bottom: 3rem; font-weight: 800; }
-  .feature-list { list-style: none; padding: 0; display: flex; flex-direction: column; gap: 2.5rem; }
-  .feature-list li { display: flex; gap: 1.5rem; align-items: flex-start; }
-  .feature-list .icon { font-size: 1.8rem; background: rgba(255,255,255,0.03); width: 50px; height: 50px; display: flex; align-items: center; justify-content: center; border-radius: 12px; flex-shrink: 0; }
-  .feature-list .txt strong { color: #00ff9d; font-size: 1.1rem; display: block; margin-bottom: 0.4rem; }
-  .feature-list .txt p { color: #94a3b8; font-size: 0.95rem; line-height: 1.6; }
+  .hero-badge {
+    background: rgba(0, 212, 255, 0.1);
+    color: #00d4ff;
+    padding: 0.5rem 1.2rem;
+    border-radius: 50px;
+    font-size: 0.85rem;
+    font-weight: 700;
+    display: inline-block;
+    margin-bottom: 2rem;
+    border: 1px solid rgba(0,212,255,0.2);
+  }
 
-  .prod-visual { display: flex; justify-content: center; }
-  .visual-card-glass { background: rgba(0, 255, 157, 0.05); border: 1px solid rgba(0, 255, 157, 0.1); border-radius: 20px; padding: 3rem; width: 100%; max-width: 400px; font-family: 'JetBrains Mono', monospace; box-shadow: 0 20px 50px rgba(0,0,0,0.3); }
-  .v-head { color: #00ff9d; font-size: 0.8rem; margin-bottom: 2.5rem; font-weight: 700; border-bottom: 1px solid rgba(255,255,255,0.05); padding-bottom: 0.5rem; text-transform: uppercase; }
-  .v-body { display: flex; flex-direction: column; gap: 1.5rem; }
-  
-  .payment-node { display: flex; align-items: center; gap: 1.5rem; background: rgba(0,0,0,0.4); padding: 1.5rem; border-radius: 12px; border: 1px solid rgba(0, 255, 157, 0.2); }
-  .p-icon { font-size: 2.5rem; }
-  .p-details { display: flex; flex-direction: column; gap: 0.2rem; }
-  .p-title { color: #00ff9d; font-weight: 800; font-size: 0.7rem; letter-spacing: 1px; }
-  .p-val { color: white; font-size: 1.8rem; font-weight: 900; }
-  
-  .p-meta { display: flex; justify-content: space-between; margin-top: 1rem; color: #334155; font-size: 0.75rem; font-weight: 700; }
-  .p-status { color: #00ff9d; }
+  .prod-hero h1 {
+    font-size: 3.5rem;
+    margin-bottom: 1.5rem;
+    font-weight: 900;
+    color: white;
+    line-height: 1.1;
+  }
 
-  .prod-cta { padding: 6rem 5% 10rem; text-align: center; max-width: 800px; margin: 0 auto; }
-  .prod-cta h2 { color: white; font-size: 2.5rem; margin-bottom: 1rem; font-weight: 800; }
-  .prod-cta p { color: #94a3b8; font-size: 1.2rem; margin-bottom: 3rem; }
-  .btn-wrap { display: flex; justify-content: center; gap: 2rem; }
+  .hero-subtitle {
+    color: #94a3b8;
+    font-size: 1.3rem;
+    max-width: 800px;
+    margin: 0 auto 3rem;
+    line-height: 1.6;
+  }
 
-  .btn-primary-glow { background: linear-gradient(135deg, #00d4ff, #00ff9d); color: black; padding: 1.2rem 3rem; border-radius: 12px; font-weight: 900; text-decoration: none; transition: 0.3s; box-shadow: 0 10px 30px rgba(0,212,255,0.2); }
-  .btn-outline { border: 1px solid rgba(255,255,255,0.1); color: white; padding: 1.2rem 3rem; border-radius: 12px; font-weight: 700; text-decoration: none; transition: 0.3s; background: rgba(255,255,255,0.03); }
+  .hero-stats {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 1.5rem;
+    max-width: 900px;
+    margin: 0 auto 3rem;
+  }
 
-  @media (max-width: 900px) {
-    .prod-grid { grid-template-columns: 1fr; gap: 3rem; }
-    .main-panel { padding: 2.5rem; }
-    .btn-wrap { flex-direction: column; gap: 1rem; }
-    .prod-hero h1 { font-size: 2.5rem; }
+  .stat-card {
+    padding: 1.5rem;
+    text-align: center;
+  }
+
+  .stat-value {
+    display: block;
+    font-size: 2.5rem;
+    font-weight: 900;
+    color: #00ff9d;
+    line-height: 1;
+  }
+
+  .stat-label {
+    display: block;
+    color: white;
+    font-weight: 700;
+    font-size: 1rem;
+    margin-top: 0.3rem;
+  }
+
+  .stat-desc {
+    display: block;
+    color: #64748b;
+    font-size: 0.75rem;
+    margin-top: 0.3rem;
+  }
+
+  .hero-ctas {
+    display: flex;
+    gap: 1.5rem;
+    justify-content: center;
+    flex-wrap: wrap;
+  }
+
+  .btn-primary-glow {
+    background: linear-gradient(135deg, #00d4ff, #00ff9d);
+    color: black;
+    padding: 1.2rem 2.8rem;
+    border-radius: 12px;
+    font-weight: 900;
+    text-decoration: none;
+    transition: 0.3s;
+    box-shadow: 0 10px 30px rgba(0,212,255,0.2);
+  }
+
+  .btn-primary-glow:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 15px 40px rgba(0,212,255,0.4);
+  }
+
+  .btn-outline {
+    border: 1px solid rgba(255,255,255,0.1);
+    color: white;
+    padding: 1.2rem 2.8rem;
+    border-radius: 12px;
+    font-weight: 700;
+    text-decoration: none;
+    background: rgba(255,255,255,0.03);
+    transition: 0.3s;
+  }
+
+  .btn-outline:hover {
+    background: rgba(255,255,255,0.08);
+    border-color: #00d4ff;
+  }
+
+  /* How It Works */
+  .how-it-works {
+    padding: 6rem 5%;
+    max-width: 1200px;
+    margin: 0 auto;
+    text-align: center;
+  }
+
+  .how-it-works h2 {
+    font-size: 2.5rem;
+    color: white;
+    font-weight: 800;
+    margin-bottom: 1rem;
+  }
+
+  .section-subtitle {
+    color: #64748b;
+    font-size: 1.1rem;
+    margin-bottom: 4rem;
+  }
+
+  .steps-grid {
+    display: grid;
+    grid-template-columns: repeat(6, 1fr);
+    gap: 1rem;
+    position: relative;
+  }
+
+  .step-card {
+    text-align: center;
+    padding: 1.5rem 1rem;
+    position: relative;
+  }
+
+  .step-num {
+    display: block;
+    font-size: 2rem;
+    font-weight: 900;
+    color: #00d4ff;
+    opacity: 0.3;
+    margin-bottom: 0.5rem;
+  }
+
+  .step-card h4 {
+    color: white;
+    font-size: 0.95rem;
+    font-weight: 700;
+    margin-bottom: 0.5rem;
+  }
+
+  .step-card p {
+    color: #64748b;
+    font-size: 0.8rem;
+    line-height: 1.4;
+  }
+
+  .step-arrow {
+    position: absolute;
+    right: -0.8rem;
+    top: 50%;
+    color: #00ff9d;
+    font-size: 1.2rem;
+    opacity: 0.5;
+  }
+
+  /* Features */
+  .features-section {
+    padding: 6rem 5%;
+    max-width: 1300px;
+    margin: 0 auto;
+    text-align: center;
+  }
+
+  .features-section h2 {
+    font-size: 2.5rem;
+    color: white;
+    font-weight: 800;
+    margin-bottom: 1rem;
+  }
+
+  .features-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 2rem;
+    margin-top: 4rem;
+  }
+
+  .feature-card {
+    padding: 2.5rem;
+    text-align: left;
+    transition: 0.3s;
+  }
+
+  .feature-card:hover {
+    transform: translateY(-5px);
+    border-color: rgba(0, 255, 157, 0.3);
+  }
+
+  .feature-header {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+    margin-bottom: 1rem;
+  }
+
+  .feature-icon {
+    font-size: 2rem;
+  }
+
+  .feature-card h3 {
+    color: white;
+    font-size: 1.2rem;
+    font-weight: 800;
+  }
+
+  .feature-desc {
+    color: #94a3b8;
+    font-size: 0.95rem;
+    line-height: 1.6;
+    margin-bottom: 1.5rem;
+  }
+
+  .feature-details {
+    list-style: none;
+    padding: 0;
+  }
+
+  .feature-details li {
+    color: #64748b;
+    font-size: 0.85rem;
+    padding: 0.3rem 0;
+  }
+
+  /* Payments */
+  .payments-section {
+    padding: 6rem 5%;
+    max-width: 1100px;
+    margin: 0 auto;
+  }
+
+  .payments-box {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 4rem;
+    padding: 4rem;
+    border-radius: 32px;
+  }
+
+  .payments-content h2 {
+    font-size: 2rem;
+    color: white;
+    font-weight: 800;
+    margin-bottom: 1rem;
+  }
+
+  .payments-content > p {
+    color: #94a3b8;
+    margin-bottom: 2rem;
+    line-height: 1.6;
+  }
+
+  .payment-methods {
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+  }
+
+  .payment-method {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+    background: rgba(255,255,255,0.03);
+    padding: 1rem 1.5rem;
+    border-radius: 12px;
+    border: 1px solid rgba(255,255,255,0.05);
+    transition: 0.3s;
+  }
+
+  .payment-method.popular {
+    border-color: rgba(0, 255, 157, 0.3);
+    background: rgba(0, 255, 157, 0.05);
+  }
+
+  .pm-icon {
+    font-size: 1.5rem;
+  }
+
+  .pm-info {
+    flex: 1;
+  }
+
+  .pm-info strong {
+    display: block;
+    color: white;
+    font-size: 0.95rem;
+  }
+
+  .pm-info span {
+    color: #64748b;
+    font-size: 0.8rem;
+  }
+
+  .pm-badge {
+    background: #00ff9d;
+    color: black;
+    padding: 0.2rem 0.6rem;
+    border-radius: 10px;
+    font-size: 0.65rem;
+    font-weight: 800;
+  }
+
+  /* PIX Demo */
+  .pix-demo {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+
+  .pix-modal {
+    width: 280px;
+    padding: 1.5rem;
+    border-color: rgba(0, 255, 157, 0.2);
+  }
+
+  .pix-header {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    font-weight: 700;
+    color: white;
+    margin-bottom: 1.5rem;
+    padding-bottom: 0.8rem;
+    border-bottom: 1px solid rgba(255,255,255,0.05);
+  }
+
+  .pix-icon {
+    font-size: 1.2rem;
+  }
+
+  .pix-body {
+    text-align: center;
+  }
+
+  .qr-placeholder {
+    width: 160px;
+    height: 160px;
+    margin: 0 auto 1.5rem;
+    padding: 0.5rem;
+    background: white;
+    border-radius: 12px;
+  }
+
+  .qr-grid {
+    display: grid;
+    grid-template-columns: repeat(9, 1fr);
+    gap: 2px;
+    height: 100%;
+  }
+
+  .qr-grid span {
+    background: black;
+    opacity: 0.8;
+    border-radius: 1px;
+  }
+
+  .qr-grid span:nth-child(odd) {
+    opacity: 0.2;
+  }
+
+  .pix-value {
+    font-size: 1.8rem;
+    font-weight: 900;
+    color: #00ff9d;
+    margin-bottom: 0.3rem;
+  }
+
+  .pix-ref {
+    color: #64748b;
+    font-size: 0.8rem;
+    margin-bottom: 1.5rem;
+  }
+
+  .pix-copy {
+    background: rgba(0, 255, 157, 0.1);
+    border: 1px solid rgba(0, 255, 157, 0.3);
+    color: #00ff9d;
+    padding: 0.8rem 1.5rem;
+    border-radius: 10px;
+    font-weight: 700;
+    cursor: pointer;
+    width: 100%;
+    font-size: 0.85rem;
+  }
+
+  .pix-footer {
+    margin-top: 1.5rem;
+    text-align: center;
+  }
+
+  .pix-timer {
+    color: #64748b;
+    font-size: 0.8rem;
+  }
+
+  /* Integrations Preview */
+  .integrations-preview {
+    padding: 6rem 5%;
+    max-width: 1000px;
+    margin: 0 auto;
+    text-align: center;
+  }
+
+  .integrations-preview h2 {
+    font-size: 2.5rem;
+    color: white;
+    font-weight: 800;
+    margin-bottom: 1rem;
+  }
+
+  .integrations-logos {
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+    gap: 1.5rem;
+    margin: 3rem 0;
+  }
+
+  .int-logo {
+    background: rgba(255,255,255,0.03);
+    border: 1px solid rgba(255,255,255,0.05);
+    padding: 1rem 2rem;
+    border-radius: 12px;
+    color: #94a3b8;
+    font-weight: 600;
+    font-size: 0.95rem;
+    transition: 0.3s;
+  }
+
+  .int-logo:hover {
+    border-color: rgba(0, 212, 255, 0.3);
+    color: white;
+  }
+
+  .link-more {
+    color: #00d4ff;
+    font-weight: 700;
+    text-decoration: none;
+  }
+
+  /* Testimonials */
+  .testimonials-section {
+    padding: 6rem 5%;
+    max-width: 1100px;
+    margin: 0 auto;
+    text-align: center;
+  }
+
+  .testimonials-section h2 {
+    font-size: 2.5rem;
+    color: white;
+    font-weight: 800;
+    margin-bottom: 3rem;
+  }
+
+  .testimonials-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 2rem;
+  }
+
+  .testimonial-card {
+    padding: 2rem;
+    text-align: left;
+  }
+
+  .t-header {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+    margin-bottom: 1.5rem;
+  }
+
+  .t-avatar {
+    font-size: 2.5rem;
+  }
+
+  .t-info strong {
+    display: block;
+    color: white;
+    font-size: 1rem;
+  }
+
+  .t-info span {
+    color: #64748b;
+    font-size: 0.85rem;
+  }
+
+  .t-text {
+    color: #94a3b8;
+    font-size: 0.95rem;
+    line-height: 1.6;
+    font-style: italic;
+  }
+
+  /* FAQ */
+  .faq-section {
+    padding: 6rem 5%;
+    max-width: 800px;
+    margin: 0 auto;
+  }
+
+  .faq-section h2 {
+    font-size: 2.5rem;
+    color: white;
+    font-weight: 800;
+    margin-bottom: 3rem;
+    text-align: center;
+  }
+
+  .faq-list {
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+  }
+
+  .faq-item {
+    padding: 1.5rem;
+    cursor: pointer;
+  }
+
+  .faq-item summary {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    list-style: none;
+  }
+
+  .faq-item summary::-webkit-details-marker {
+    display: none;
+  }
+
+  .faq-q {
+    color: white;
+    font-weight: 700;
+    font-size: 1rem;
+  }
+
+  .faq-toggle {
+    color: #00d4ff;
+    font-size: 1.5rem;
+    font-weight: 300;
+    transition: 0.3s;
+  }
+
+  .faq-item[open] .faq-toggle {
+    transform: rotate(45deg);
+  }
+
+  .faq-a {
+    color: #94a3b8;
+    font-size: 0.95rem;
+    line-height: 1.6;
+    margin-top: 1.5rem;
+    padding-top: 1rem;
+    border-top: 1px solid rgba(255,255,255,0.05);
+  }
+
+  /* Final CTA */
+  .final-cta {
+    padding: 4rem 5% 8rem;
+    max-width: 900px;
+    margin: 0 auto;
+  }
+
+  .cta-box {
+    padding: 5rem;
+    text-align: center;
+    border-radius: 40px;
+  }
+
+  .cta-box h2 {
+    font-size: 2.8rem;
+    color: white;
+    font-weight: 800;
+    margin-bottom: 1rem;
+  }
+
+  .cta-box > p {
+    color: #94a3b8;
+    font-size: 1.2rem;
+    margin-bottom: 2.5rem;
+  }
+
+  .cta-buttons {
+    display: flex;
+    gap: 1.5rem;
+    justify-content: center;
+    flex-wrap: wrap;
+    margin-bottom: 2rem;
+  }
+
+  .cta-note {
+    color: #475569;
+    font-size: 0.85rem;
+  }
+
+  /* Responsive */
+  @media (max-width: 1000px) {
+    .hero-stats {
+      grid-template-columns: repeat(2, 1fr);
+    }
+    .steps-grid {
+      grid-template-columns: repeat(3, 1fr);
+    }
+    .step-arrow {
+      display: none;
+    }
+    .features-grid {
+      grid-template-columns: repeat(2, 1fr);
+    }
+    .payments-box {
+      grid-template-columns: 1fr;
+    }
+    .testimonials-grid {
+      grid-template-columns: 1fr;
+    }
+  }
+
+  @media (max-width: 768px) {
+    .prod-hero h1 {
+      font-size: 2.5rem;
+    }
+    .hero-stats {
+      grid-template-columns: 1fr 1fr;
+      gap: 1rem;
+    }
+    .steps-grid {
+      grid-template-columns: repeat(2, 1fr);
+    }
+    .features-grid {
+      grid-template-columns: 1fr;
+    }
+    .cta-box {
+      padding: 3rem 2rem;
+    }
+    .cta-box h2 {
+      font-size: 2rem;
+    }
   }
 </style>

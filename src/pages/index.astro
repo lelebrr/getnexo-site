@@ -1,11 +1,71 @@
 ---
 import Layout from '../layouts/Layout.astro';
-const title = "GetNexo: IA que Vende Sozinha 24h no WhatsApp | API Oficial Grátis";
-const description = "Descubra a melhor plataforma WhatsApp API oficial com IA que vende sozinha. Chatbot inteligente, PIX nativo, broadcast ilimitado e recuperação de carrinho.";
-const keywords = "ia que vende sozinha whatsapp, assistente vendas whatsapp grátis, api whatsapp oficial gratuita, chatbot ia whatsapp vendas, automação vendas whatsapp 24h, pix whatsapp nativo, getnexo";
+const title = "GetNexo: A Melhor Plataforma de IA para Vendas no WhatsApp | API Oficial";
+const description = "Scale suas vendas 24h por dia com a IA mais avançada para WhatsApp. API Oficial Meta, PIX Nativo, Recuperação de Carrinhos e Automação de Altíssima Conversão.";
+const keywords = "melhor plataforma whatsapp vendas, ia para whatsapp, api whatsapp oficial, automação de vendas whatsapp, recuperar carrinho whatsapp, pix no whatsapp, getnexo ia";
+
+const homeSchema = {
+  "@context": "https://schema.org",
+  "@graph": [
+    {
+      "@type": "Organization",
+      "@id": "https://getnexo.com.br/#organization",
+      "name": "GetNexo",
+      "url": "https://getnexo.com.br",
+      "logo": "https://getnexo.com.br/logo.svg",
+      "sameAs": [
+        "https://linkedin.com/company/getnexo",
+        "https://instagram.com/getnexo",
+        "https://github.com/lelebrr"
+      ]
+    },
+    {
+      "@type": "WebSite",
+      "@id": "https://getnexo.com.br/#website",
+      "url": "https://getnexo.com.br",
+      "name": "GetNexo",
+      "publisher": { "@id": "https://getnexo.com.br/#organization" },
+      "potentialAction": {
+        "@type": "SearchAction",
+        "target": "https://getnexo.com.br/buscar?q={search_term_string}",
+        "query-input": "required name=search_term_string"
+      }
+    },
+    {
+      "@type": "FAQPage",
+      "mainEntity": [
+        {
+          "@type": "Question",
+          "name": "O GetNexo usa API Oficial?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Sim, o GetNexo é 100% compatível com a API Oficial da Meta via Evolution API, garantindo segurança e zero risco de banimento."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "Como funciona a IA para vendas?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Nossa IA é treinada com os dados do seu negócio e catálogo de produtos, permitindo que ela tire dúvidas, sugira produtos e feche vendas automaticamente 24h por dia."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "Tem suporte para PIX?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Sim, temos PIX Nativo. O bot gera o código copia e cola ou QR Code e confirma o pagamento instantaneamente na conversa."
+          }
+        }
+      ]
+    }
+  ]
+};
 ---
 
 <Layout title={title} description={description} keywords={keywords} isLanding={true}>
+  <script type="application/ld+json" is:inline set:html={JSON.stringify(homeSchema)}></script>
   
   <!-- Modern Hero with 3D Phone Simulation -->
   <section class="hero-split">
@@ -42,7 +102,7 @@ const keywords = "ia que vende sozinha whatsapp, assistente vendas whatsapp grá
 
             <!-- Floating Mini Chat UI next to Hologram -->
             <div class="floating-chat glass-panel">
-                <div class="chat-header-mini">Ara Ativa</div>
+                <div class="chat-header-mini">Nexus IA</div>
                 <div class="chat-body-mini" id="hero-chat"></div>
             </div>
         </div>
@@ -50,35 +110,34 @@ const keywords = "ia que vende sozinha whatsapp, assistente vendas whatsapp grá
   </section>
 
   <!-- Value Propositions Grid -->
-  <section class="section-container">
     <div class="section-header reveal">
-        <h2 class="text-gradient">Potencialize seu Negócio</h2>
-        <p>Tudo o que você precisa para dominar o WhatsApp em um só lugar.</p>
+        <h2 class="text-gradient">A Infraestrutura Definitiva para Escalar suas Vendas</h2>
+        <p>A única plataforma que combina IA Generativa, PIX Nativo e Automação Oficial Meta para transformar seu Chat em uma máquina de lucro 24h por dia.</p>
     </div>
     
     <div class="grid-cards">
       <div class="glass-panel p-card reveal">
         <div class="p-icon">🤖</div>
-        <h3>Automação com IA</h3>
-        <p>Chatbot inteligente treinado com seus dados que responde clientes instantaneamente.</p>
+        <h3>IA Generativa de Vendas</h3>
+        <p>Agente virtual treinado com seu catálogo que converte leads em lucro 24/7 de forma humanizada.</p>
         <a href="/produtos/automacao" class="p-link">Explorar IA →</a>
       </div>
       <div class="glass-panel p-card reveal">
         <div class="p-icon">💰</div>
-        <h3>Vendas & PIX</h3>
-        <p>Checkout nativo e geração de PIX automático sem o cliente sair da conversa.</p>
+        <h3>Checkout & PIX Nativo</h3>
+        <p>Experiência de compra fluida com geração de PIX e confirmação automática sem sair do chat.</p>
         <a href="/produtos/vendas" class="p-link">Ver Checkout →</a>
       </div>
       <div class="glass-panel p-card reveal">
         <div class="p-icon">🚀</div>
-        <h3>Marketing Master</h3>
-        <p>Broadcast ilimitado e Click-to-WhatsApp Ads com mensuração de ROI total.</p>
+        <h3>Broadcast & Ads de Alta Performance</h3>
+        <p>Envios em massa inteligentes e Click-to-WhatsApp Ads com mensuração de ROI em tempo real.</p>
         <a href="/produtos/marketing" class="p-link">Ativar Ads →</a>
       </div>
       <div class="glass-panel p-card reveal">
         <div class="p-icon">👥</div>
-        <h3>CRM Multi-Agente</h3>
-        <p>Organize sua equipe em Kanban e nunca mais perca o fio de uma negociação.</p>
+        <h3>Pipeline & CRM Estratégico</h3>
+        <p>Visão 360º do seu funil com gestão multi-agente e automação inteligente de follow-up.</p>
         <a href="/produtos/crm" class="p-link">Gerir Leads →</a>
       </div>
     </div>
@@ -105,8 +164,8 @@ const keywords = "ia que vende sozinha whatsapp, assistente vendas whatsapp grá
   <!-- Final Squeeze -->
   <section class="final-cta reveal">
     <div class="glass-panel cta-box">
-        <h2 class="text-gradient">Pronto para vender 5x mais?</h2>
-        <p>Instale o GetNexo no seu servidor ou use nossa nuvem. Comece agora.</p>
+        <h2 class="text-gradient">Pronto para transformar seu Chat em uma Máquina de Vendas?</h2>
+        <p>Domine o WhatsApp com a infraestrutura mais robusta do mercado. Ative sua IA em menos de 10 minutos.</p>
         <div class="cta-actions">
             <a href="/criar-bot" class="btn-primary-glow">Instalar Gratuitamente</a>
             <a href="/precos" class="btn-outline">Ver Planos Pro</a>
@@ -114,7 +173,7 @@ const keywords = "ia que vende sozinha whatsapp, assistente vendas whatsapp grá
     </div>
   </section>
 
-</Layout>
+
 
 <script is:inline>
     // Hero Chat Simulation
@@ -167,6 +226,7 @@ const keywords = "ia que vende sozinha whatsapp, assistente vendas whatsapp grá
 
     document.querySelectorAll('.reveal').forEach(el => observer.observe(el));
 </script>
+</Layout>
 
 <style>
   .hero-split { display: grid; grid-template-columns: 1fr 1fr; gap: 4rem; padding: 12rem 5% 6rem; max-width: 1400px; margin: 0 auto; align-items: center; }
@@ -184,8 +244,8 @@ const keywords = "ia que vende sozinha whatsapp, assistente vendas whatsapp grá
   .hero-trust { display: flex; gap: 2rem; color: #64748b; font-size: 0.9rem; font-weight: 700; }
 
   /* 3D Ara Hologram */
-  .hologram-container { position: relative; width: 400px; height: 500px; display: flex; align-items: center; justify-content: center; perspective: 1000px; margin: 0 auto; }
-  .hologram-core { position: relative; width: 200px; height: 200px; transform-style: preserve-3d; transition: transform 0.1s ease-out; }
+  .hologram-container { position: relative; width: 500px; height: 600px; display: flex; align-items: center; justify-content: center; perspective: 1000px; margin: 0 auto; }
+  .hologram-core { position: relative; width: 250px; height: 250px; transform-style: preserve-3d; transition: transform 0.1s ease-out; }
   
   .hologram-ring { position: absolute; inset: -20px; border: 2px solid #00d4ff; border-radius: 50%; opacity: 0.3; }
   .ring-1 { transform: rotateX(70deg); animation: ringRotate 4s linear infinite; }
@@ -193,7 +253,7 @@ const keywords = "ia que vende sozinha whatsapp, assistente vendas whatsapp grá
   .ring-3 { transform: rotateX(70deg) rotateY(-45deg); animation: ringRotate 8s linear infinite; }
   @keyframes ringRotate { from { transform: rotateX(70deg) rotateZ(0deg); } to { transform: rotateX(70deg) rotateZ(360deg); } }
 
-  .ara-avatar { font-size: 5rem; display: flex; align-items: center; justify-content: center; height: 100%; filter: drop-shadow(0 0 20px #00d4ff); animation: floatAra 3s ease-in-out infinite alternate; }
+  .ara-avatar { font-size: 6rem; display: flex; align-items: center; justify-content: center; height: 100%; filter: drop-shadow(0 0 20px #00d4ff); animation: floatAra 3s ease-in-out infinite alternate; }
   @keyframes floatAra { from { transform: translateY(-10px); } to { transform: translateY(10px); } }
 
   .hologram-shards span { position: absolute; width: 4px; height: 4px; background: #00ff9d; border-radius: 50%; box-shadow: 0 0 10px #00ff9d; animation: shardMove 2s infinite linear; }
@@ -201,16 +261,16 @@ const keywords = "ia que vende sozinha whatsapp, assistente vendas whatsapp grá
   .hologram-shards span:nth-child(2) { bottom: -10%; right: 20%; animation-delay: 1.2s; }
   @keyframes shardMove { 0% { opacity: 0; transform: translateY(0); } 50% { opacity: 1; } 100% { opacity: 0; transform: translateY(-40px); } }
 
-  .hologram-base { position: absolute; bottom: 50px; width: 120px; height: 10px; background: rgba(0, 212, 255, 0.4); border-radius: 50%; filter: blur(10px); animation: pulseBase 3s infinite alternate; }
+  .hologram-base { position: absolute; bottom: 50px; width: 150px; height: 12px; background: rgba(0, 212, 255, 0.4); border-radius: 50%; filter: blur(10px); animation: pulseBase 3s infinite alternate; }
   @keyframes pulseBase { from { transform: scale(0.8); opacity: 0.3; } to { transform: scale(1.2); opacity: 0.6; } }
 
-  .hologram-glow { position: absolute; top: 0; width: 300px; height: 300px; background: radial-gradient(circle, rgba(0, 212, 255, 0.15) 0%, transparent 70%); border-radius: 50%; z-index: -1; }
+  .hologram-glow { position: absolute; top: 0; width: 350px; height: 350px; background: radial-gradient(circle, rgba(0, 212, 255, 0.15) 0%, transparent 70%); border-radius: 50%; z-index: -1; }
 
   /* Floating Mini Chat */
-  .floating-chat { position: absolute; width: 220px; bottom: 20px; right: -40px; padding: 1rem; border-color: rgba(0, 255, 157, 0.2); animation: floatChat 6s ease-in-out infinite alternate; }
+  .floating-chat { position: absolute; width: 240px; bottom: 30px; right: -50px; padding: 1rem; border-color: rgba(0, 255, 157, 0.2); animation: floatChat 6s ease-in-out infinite alternate; }
   @keyframes floatChat { from { transform: translateY(0) rotate(2deg); } to { transform: translateY(-15px) rotate(-1deg); } }
   
-  .chat-header-mini { font-size: 0.6rem; font-weight: 900; color: #00ff9d; text-transform: uppercase; letter-spacing: 1px; margin-bottom: 0.8rem; border-bottom: 1px solid rgba(255,255,255,0.05); padding-bottom: 0.3rem; }
+  .chat-header-mini { font-size: 0.7rem; font-weight: 900; color: #00ff9d; text-transform: uppercase; letter-spacing: 1px; margin-bottom: 0.8rem; border-bottom: 1px solid rgba(255,255,255,0.05); padding-bottom: 0.3rem; }
   .chat-body-mini { height: 150px; overflow-y: auto; display: flex; flex-direction: column; gap: 0.8rem; }
   .chat-msg { font-size: 0.75rem; line-height: 1.4; animation: msgPop 0.3s cubic-bezier(0.18, 0.89, 0.32, 1.28) forwards; }
   .msg-inner { padding: 0.5rem 0.8rem; border-radius: 8px; }
@@ -251,6 +311,11 @@ const keywords = "ia que vende sozinha whatsapp, assistente vendas whatsapp grá
   .reveal { opacity: 0; transform: translateY(30px); transition: 0.8s cubic-bezier(0.2, 0.8, 0.2, 1); }
   .reveal.active { opacity: 1; transform: translateY(0); }
 
+  /* Segments Section */
+  .segments-section { padding: 4rem 5% 0; }
+  .segment-card { display: flex; flex-direction: column; align-items: center; justify-content: center; padding: 2rem; text-decoration: none; transition: 0.3s; border: 1px solid rgba(255,255,255,0.05); }
+  .segment-card:hover { border-color: #00ff9d; background: rgba(255,255,255,0.03); transform: translateY(-5px); }
+  
   @media (max-width: 1000px) {
     .hero-split { grid-template-columns: 1fr; text-align: center; gap: 6rem; }
     .hero-subtitle, .hero-trust { margin-left: auto; margin-right: auto; }
@@ -260,5 +325,6 @@ const keywords = "ia que vende sozinha whatsapp, assistente vendas whatsapp grá
     .metric-divider { height: 1px; width: 50%; margin: 0 auto; }
     .cta-actions { flex-direction: column; gap: 1rem; }
     .cta-box h2 { font-size: 2.5rem; }
+    .grid-cards { grid-template-columns: 1fr; }
   }
 </style>

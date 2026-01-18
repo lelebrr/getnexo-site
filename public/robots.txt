@@ -1,7 +1,54 @@
+# Robots.txt Ultra Otimizado para Google e Bing
+# SEO Strategy: Controle total do crawl budget e indexação
+
 User-agent: *
 Allow: /
-Disallow: /admin/
-Disallow: /login/
-Disallow: /api/
-Disallow: /demo/
+
+# Páginas principais - Alta prioridade
+Allow: /
+Allow: /integracoes
+Allow: /blog
+Allow: /criar-bot
+Allow: /precos
+
+# Bloquear páginas desnecessárias
+Disallow: /admin
+Disallow: /dashboard
+Disallow: /api
+Disallow: /404
+Disallow: /_astro/
+Disallow: /node_modules/
+
+# Permitir crawling de páginas de integração (ricas em conteúdo)
+Allow: /integracoes/
+Allow: /blog/
+
+# Sitemap principal
 Sitemap: https://getnexo.com.br/sitemap.xml
+
+# Sitemap adicional para imagens (se existir)
+# Sitemap: https://getnexo.com.br/sitemap-images.xml
+
+# Crawl-delay para não sobrecarregar o servidor
+Crawl-delay: 1
+
+# User-agent específico para Googlebot
+User-agent: Googlebot
+Allow: /
+Crawl-delay: 1
+
+# User-agent específico para Bingbot
+User-agent: Bingbot
+Allow: /
+Crawl-delay: 1
+
+# User-agent específico para motores de busca móveis
+User-agent: Googlebot-Mobile
+Allow: /
+Crawl-delay: 1
+
+# User-agent específico para imagens
+User-agent: Googlebot-Image
+Allow: /
+Disallow: /admin/
+Disallow: /dashboard/

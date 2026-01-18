@@ -1,184 +1,586 @@
 ---
 import Layout from '../layouts/Layout.astro';
+
+// Enhanced SEO Constants for Top Google Ranking
+const pageTitle = "Documentação GetNexo: Guia de Infraestrutura e Configuração | API Oficial";
+const pageDescription = "Documentação técnica completa GetNexo: instalação Docker, configuração Evolution API, IA, n8n workflows, Cloudflare Tunnel. Manual para deployment e manutenção.";
+const pageKeywords = "documentacao getnexo, instalacao docker, evolution api, n8n workflows, cloudflare tunnel, infraestrutura whatsapp, guia tecnico getnexo";
+
+// Schema.org Technical Documentation
+const schema = {
+  "@context": "https://schema.org",
+  "@type": "TechArticle",
+  "headline": "Guia de Infraestrutura e Configuração GetNexo",
+  "description": "Explicação técnica detalhada sobre como montar e gerenciar a infraestrutura GetNexo.",
+  "articleSection": "Technical Documentation",
+  "author": {
+    "@type": "Organization",
+    "name": "GetNexo Technical Team"
+  }
+};
 ---
 
-   <section class="docs-hero">
-    <div class="hero-badge">Guia do Administrador</div>
-    <h1 class="text-gradient">Documentação Técnica</h1>
-    <p>Aprenda a instalar, configurar e escalar sua infraestrutura GetNexo.</p>
-  </section>
+<Layout title={pageTitle} description={pageDescription} keywords={pageKeywords}>
+  
+  <!-- Auth Guard Script (Immediate Execution) -->
+  <script is:inline>
+    (function() {
+      const token = localStorage.getItem('omnichat_token') || localStorage.getItem('adminToken');
+      if (!token) {
+        window.location.href = '/admin/login?redirect=' + encodeURIComponent(window.location.pathname);
+      }
+    })();
+  </script>
 
-  <nav class="docs-nav glass-panel">
-    <a href="#requisitos">Requisitos</a>
-    <a href="#instalacao">Instalação</a>
-    <a href="#configuracao">Configuração</a>
-    <a href="#whatsapp">WhatsApp</a>
-    <a href="#n8n">Automações</a>
-    <a href="#troubleshooting">Suporte</a>
-  </nav>
-
-  <section class="docs-content">
-    <article id="requisitos" class="doc-section">
-      <h2 class="section-title">📋 Requisitos do Sistema</h2>
-      <div class="requirements-grid">
-        <div class="req-card glass-panel">
-          <h3>Infraestrutura Mínima</h3>
-          <ul>
-            <li>CPU: 2 vCPUs (x64)</li>
-            <li>RAM: 8GB DDR4</li>
-            <li>Disco: 20GB SSD/NVMe</li>
-            <li>Rede: 10Mbps (Estável)</li>
-          </ul>
-        </div>
-        <div class="req-card glass-panel">
-          <h3>Ambiente de Software</h3>
-          <ul>
-            <li>Ubuntu 22.04 LTS (Recomendado)</li>
-            <li>Docker v24.0+ & Compose</li>
-            <li>WSL2 (Se rodar no Windows)</li>
-            <li>Domínio Próprio Gerenciado</li>
-          </ul>
-        </div>
+  <div class="docs-wrapper">
+    <!-- Sidebar Navigation -->
+    <aside class="docs-sidebar">
+      <div class="sidebar-header">
+        <div class="brand-badge">SISTEMA MESTRE</div>
+        <h3>Arquitetura</h3>
       </div>
-    </article>
-
-    <article id="instalacao" class="doc-section">
-      <h2 class="section-title">🚀 Instalação via CLI (Docker)</h2>
-      <p>O GetNexo foi projetado para ser executado em containers, garantindo isolamento e facilidade de atualização.</p>
-      
-      <div class="code-wrapper">
-        <div class="code-header">
-          <span>bash terminal</span>
+      <nav class="sidebar-nav">
+        <div class="nav-group">
+          <span class="group-label">Fundamentos</span>
+          <a href="#arquitetura" class="nav-link active">🏗️ Visão Geral</a>
+          <a href="#requisitos" class="nav-link">📋 Requisitos</a>
         </div>
-        <pre><code># 1. Obtenha o pacote oficial
+        <div class="nav-group">
+          <span class="group-label">Implantação</span>
+          <a href="#docker" class="nav-link">🐳 Docker Compose</a>
+          <a href="#env" class="nav-link">🔑 Variáveis Env</a>
+          <a href="#cloudflare" class="nav-link">🛡️ Túneis & DNS</a>
+        </div>
+        <div class="nav-group">
+          <span class="group-label">Componentes</span>
+          <a href="#evolution" class="nav-link">💬 Evolution API</a>
+          <a href="#brain" class="nav-link">🧠 IA Brain Core</a>
+          <a href="#n8n" class="nav-link">⚙️ Workflows n8n</a>
+        </div>
+        <div class="nav-group">
+          <span class="group-label">Manutenção</span>
+          <a href="#logs" class="nav-link">📜 Logs & Monitoria</a>
+          <a href="#backup" class="nav-link">💾 Backups</a>
+        </div>
+      </nav>
+    </aside>
+
+    <!-- Main Content -->
+    <main class="docs-main">
+      <header class="docs-page-header">
+        <div class="breadcrumb">Documentação > Infraestrutura</div>
+        <h1>Centro de Conhecimento <span class="text-gradient">GetNexo</span></h1>
+        <p class="lead">Manual técnico para o "GetNexo OS". Siga estas instruções para garantir uma operação de alta disponibilidade e latência zero.</p>
+        
+        <div class="status-indicator">
+          <span class="pulse"></span> v4.2 stable • Homologado Meta API
+        </div>
+      </header>
+
+      <div class="docs-grid">
+        <!-- Quick Start Card -->
+        <div class="docs-card highlight-card">
+          <div class="card-icon">⚡</div>
+          <div class="card-text">
+            <h4>Quick Start</h4>
+            <p>Git clone, Docker up e Cloudflare Tunnel. Em 12 minutos sua infraestrutura estará rodando.</p>
+          </div>
+          <a href="#docker" class="card-btn">Ver Guia</a>
+        </div>
+
+        <!-- Section: Arquitetura -->
+        <section id="arquitetura" class="content-section">
+          <h2>🏗️ Arquitetura do Sistema</h2>
+          <p>O GetNexo não é apenas um script, é um micro-ecossistema distribuído via Docker. Ele se divide em 4 camadas principais:</p>
+          
+          <div class="architecture-grid">
+            <div class="arch-item glass-panel">
+              <span class="arch-label">Edge layer</span>
+              <h4>Cloudflare Zero Trust</h4>
+              <p>Proteção contra DDoS, SSL Automático e túneis seguros sem abrir portas no roteador.</p>
+            </div>
+            <div class="arch-item glass-panel">
+              <span class="arch-label">Processing layer</span>
+              <h4>Nginx & Backend Core</h4>
+              <p>Roteamento de requisições, gestão de Webhooks e orquestração de mensagens.</p>
+            </div>
+            <div class="arch-item glass-panel">
+              <span class="arch-label">Intelligence layer</span>
+              <h4>OpenAI & Ollama</h4>
+              <p>Processamento de linguagem natural (LLM) para automação de vendas e suporte.</p>
+            </div>
+            <div class="arch-item glass-panel">
+              <span class="arch-label">Messaging layer</span>
+              <h4>Evolution API</h4>
+              <p>O coração do WhatsApp. Sincronização multi-instância e estabilidade de conexão.</p>
+            </div>
+          </div>
+        </section>
+
+        <!-- Section: Docker -->
+        <section id="docker" class="content-section">
+          <h2>🐳 Implantação Docker</h2>
+          <p>Toda a infraestrutura é controlada via <code>docker-compose.yml</code>. Certifique-se de ter o Docker v24+ instalado.</p>
+          
+          <div class="code-terminal">
+            <div class="terminal-header">
+              <div class="terminal-dots"><span></span><span></span><span></span></div>
+              <span class="terminal-title">setup.sh</span>
+            </div>
+            <div class="terminal-body">
+              <pre><code><span class="code-comment"># Clonar repositório</span>
 git clone https://github.com/lelebrr/usenexo.git
 cd usenexo
 
-# 2. Defina suas chaves mestre
-cp .env.example .env
-nano .env # Insira suas credenciais OpenAI/Meta
-
-# 3. Levante o ecossistema
+<span class="code-comment"># Subir serviços em background</span>
 docker compose up -d
 
-# 4. Monitore a saúde dos containers
-docker compose ps</code></pre>
-      </div>
-      <p class="doc-note">💡 Dica: Use o comando <code>docker compose logs -f</code> para acompanhar o boot inicial.</p>
-    </article>
+<span class="code-comment"># Verificar integridade dos containers</span>
+docker ps --format "table &#123;&#123;.Names&#125;&#125;\t&#123;&#123;.Status&#125;&#125;\t&#123;&#123;.Ports&#125;&#125;"</code></pre>
+            </div>
+          </div>
 
-    <article id="configuracao" class="doc-section">
-      <h2 class="section-title">⚙️ Túnel Seguro (Cloudflare)</h2>
-      <div class="steps-flow">
-        <div class="step-item">
-          <div class="step-icon">1</div>
-          <div class="step-text">
-            <h4>Crie o Túnel</h4>
-            <p>No painel Cloudflare Zero Trust, crie um "Tunnel" do tipo Docker e copie o token gerado.</p>
+          <div class="alert warn">
+            <strong>CUIDADO:</strong> Nunca abra as portas 8080 ou 3000 diretamente no seu firewall. Utilize sempre o Cloudflare Tunnel para exposição segura.
+          </div>
+        </section>
+
+        <!-- Section: Evolution API -->
+        <section id="evolution" class="content-section">
+          <h2>💬 Configurando Evolution API</h2>
+          <p>A Evolution é o que permite ao GetNexo falar com o WhatsApp. Ela roda na porta <code>3000</code> interna.</p>
+          <ul class="styled-list">
+            <li><strong>Manager URL:</strong> <code>https://evolution.seusite.com.br</code></li>
+            <li><strong>Instância:</strong> Crie uma instância chamada 'GetNexoInstance'.</li>
+            <li><strong>Webhooks:</strong> Aponte o webhook para <code>https://api.seusite.com.br/webhook</code></li>
+            <li><strong>Eventos:</strong> Habilite 'MESSAGES_UPSERT' e 'PRESENCE_UPDATE'.</li>
+          </ul>
+        </section>
+
+        <!-- Section: Logs -->
+        <section id="logs" class="content-section">
+          <h2>📜 Auditoria & Logs</h2>
+          <p>Para depurar problemas de conexão ou de processamento de IA, utilize os logs em tempo real:</p>
+          <div class="code-terminal">
+            <div class="terminal-body">
+              <pre><code><span class="code-comment"># Ver logs do Backend</span>
+docker logs -f backend-getnexo --tail 100
+
+<span class="code-comment"># Ver logs do WhatsApp (Evolution)</span>
+docker logs -f evolution-api --tail 50</code></pre>
+            </div>
+          </div>
+        </section>
+      </div>
+
+      <footer class="docs-footer">
+        <div class="footer-cta glass-panel">
+          <h3>Precisa de suporte extra?</h3>
+          <p>Se você encontrou um bug crítico ou precisa de consultoria para deployment enterprise.</p>
+          <div class="cta-row">
+            <a href="https://wa.me/5511999999999" class="btn-whatsapp">Falar com DevOps</a>
+            <a href="https://github.com/lelebrr" class="btn-github">GitHub Issues</a>
           </div>
         </div>
-        <div class="step-item">
-          <div class="step-icon">2</div>
-          <div class="step-text">
-            <h4>Configure os Hostnames</h4>
-            <p>Aponte subdomínios (chat, api, n8n) para os IPs locais dos containers no painel Public Hostnames.</p>
-          </div>
-        </div>
-      </div>
-    </article>
+      </footer>
+    </main>
+  </div>
 
-    <article id="troubleshooting" class="doc-section">
-      <h2 class="section-title">🔧 Troubleshooting & FAQ</h2>
-      <div class="trouble-grid">
-        <div class="trouble-item glass-panel">
-          <h4>WhatsApp deslogado</h4>
-          <p>Verifique se o celular está com bateria e conexão estável. Reconecte via Manager QR Code.</p>
-        </div>
-        <div class="trouble-item glass-panel">
-          <h4>IA não responde</h4>
-          <p>Confirme se sua cota na OpenAI está ativa ou se o modelo local no Ollama está carregado.</p>
-        </div>
-        <div class="trouble-item glass-panel">
-          <h4>Erro de CORS</h4>
-          <p>Verifique se os domínios no <code>.env</code> coincidem exatamente com os configurados no Cloudflare.</p>
-        </div>
-      </div>
-    </article>
-  </section>
+  <script type="application/ld+json" is:inline set:html={JSON.stringify(schema)}></script>
 
-  <section class="docs-footer">
-    <div class="glass-panel footer-cta">
-        <h3>Ainda com dúvidas técnicas?</h3>
-        <p>Acesse nossa comunidade no GitHub ou chame nosso suporte IA agora mesmo.</p>
-        <div class="footer-btns">
-            <a href="#" onclick="window.$chatwoot.toggle(); return false;" class="btn-primary-glow">Chamar IA →</a>
-            <a href="https://github.com/lelebrr" target="_blank" class="btn-secondary">GitHub Official</a>
-        </div>
-    </div>
-  </section>
+</Layout>
 
 <style>
-  .docs-hero { text-align: center; padding: 8rem 5% 4rem; }
-  .hero-badge { background: rgba(0, 212, 255, 0.1); color: #00d4ff; padding: 0.5rem 1.2rem; border-radius: 50px; font-size: 0.85rem; font-weight: 700; border: 1px solid rgba(0, 212, 255, 0.2); display: inline-block; margin-bottom: 2rem; }
-  .docs-hero h1 { font-size: 3.5rem; margin-bottom: 1rem; }
-  .docs-hero p { color: #94a3b8; font-size: 1.25rem; max-width: 600px; margin: 0 auto; }
-
-  .docs-nav { 
-    display: flex; justify-content: center; gap: 1rem; padding: 1rem; 
-    position: sticky; top: 90px; z-index: 100; max-width: 800px; margin: 0 auto 4rem;
-    border-radius: 16px; flex-wrap: wrap; backdrop-filter: blur(20px);
+  /* Layout Base */
+  .docs-wrapper {
+    display: flex;
+    min-height: 100vh;
+    background: #030712;
+    color: #e2e8f0;
   }
-  .docs-nav a { 
-    color: #94a3b8; text-decoration: none; font-size: 0.9rem; font-weight: 700; 
-    padding: 0.6rem 1.2rem; border-radius: 10px; transition: 0.2s;
+
+  /* Sidebar Styles */
+  .docs-sidebar {
+    width: 280px;
+    background: rgba(10, 15, 26, 0.8);
+    border-right: 1px solid rgba(255, 255, 255, 0.05);
+    height: 100vh;
+    position: sticky;
+    top: 0;
+    padding: 2rem 1.5rem;
+    overflow-y: auto;
+    backdrop-filter: blur(15px);
   }
-  .docs-nav a:hover { color: #00ff9d; background: rgba(0, 255, 157, 0.05); }
 
-  .docs-content { max-width: 900px; margin: 0 auto; padding: 0 5%; }
-  .doc-section { margin-bottom: 6rem; }
-  .section-title { color: white; font-size: 2rem; margin-bottom: 2rem; font-weight: 800; }
-
-  .requirements-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 1.5rem; }
-  .req-card { padding: 2rem; border-color: rgba(255,255,255,0.03); }
-  .req-card h3 { color: #00ff9d; font-size: 1.1rem; margin-bottom: 1.5rem; }
-  .req-card ul { list-style: none; padding: 0; }
-  .req-card li { color: #94a3b8; font-size: 0.95rem; margin-bottom: 0.8rem; padding-left: 1.5rem; position: relative; }
-  .req-card li::before { content: "→"; position: absolute; left: 0; color: #00d4ff; }
-
-  .code-wrapper { background: #070b14; border-radius: 16px; border: 1px solid rgba(255,255,255,0.05); overflow: hidden; margin: 2rem 0; }
-  .code-header { background: rgba(255,255,255,0.02); padding: 0.8rem 1.5rem; border-bottom: 1px solid rgba(255,255,255,0.05); font-family: monospace; font-size: 0.8rem; color: #64748b; }
-  .code-wrapper pre { padding: 1.5rem; overflow-x: auto; margin: 0; }
-  .code-wrapper code { font-family: 'JetBrains Mono', monospace; font-size: 0.9rem; color: #e2e8f0; line-height: 1.6; }
-  .doc-note { background: rgba(0, 212, 255, 0.05); color: #00d4ff; padding: 1rem 1.5rem; border-radius: 12px; font-size: 0.9rem; }
-
-  .steps-flow { display: flex; flex-direction: column; gap: 2rem; }
-  .step-item { display: flex; gap: 1.5rem; align-items: flex-start; }
-  .step-icon { 
-    background: linear-gradient(135deg, #00d4ff, #00ff9d); color: black; 
-    width: 2.5rem; height: 2.5rem; border-radius: 50%; display: flex; align-items: center; justify-content: center;
-    font-weight: 900; shrink: 0;
+  .brand-badge {
+    background: linear-gradient(135deg, #00d4ff, #00ff9d);
+    color: black;
+    font-size: 0.65rem;
+    font-weight: 900;
+    padding: 0.25rem 0.6rem;
+    border-radius: 4px;
+    display: inline-block;
+    letter-spacing: 1px;
+    margin-bottom: 0.5rem;
   }
-  .step-text h4 { color: white; margin-bottom: 0.3rem; }
-  .step-text p { color: #94a3b8; font-size: 0.95rem; }
 
-  .trouble-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(260px, 1fr)); gap: 1.5rem; }
-  .trouble-item { padding: 1.5rem; border-bottom: 4px solid rgba(255,255,255,0.05); transition: 0.3s; }
-  .trouble-item:hover { border-bottom-color: #00ff9d; transform: translateY(-3px); }
-  .trouble-item h4 { color: white; margin-bottom: 0.5rem; }
-  .trouble-item p { color: #64748b; font-size: 0.9rem; }
+  .sidebar-header h3 {
+    font-size: 1.25rem;
+    font-weight: 800;
+    color: white;
+    margin-bottom: 2rem;
+  }
 
-  .docs-footer { padding: 4rem 5% 10rem; }
-  .footer-cta { padding: 4rem; text-align: center; }
-  .footer-cta h3 { color: white; font-size: 2rem; margin-bottom: 1rem; }
-  .footer-cta p { color: #94a3b8; margin-bottom: 2.5rem; }
-  .footer-btns { display: flex; justify-content: center; gap: 1rem; }
+  .nav-group {
+    margin-bottom: 2rem;
+  }
 
-  .btn-primary-glow { background: linear-gradient(135deg, #00d4ff, #00ff9d); color: black; padding: 0.8rem 2rem; border-radius: 12px; font-weight: 800; text-decoration: none; transition: 0.3s; }
-  .btn-secondary { background: rgba(255,255,255,0.05); color: white; padding: 0.8rem 2rem; border-radius: 12px; font-weight: 700; text-decoration: none; border: 1px solid rgba(255,255,255,0.1); }
+  .group-label {
+    display: block;
+    font-size: 0.7rem;
+    font-weight: 900;
+    color: #475569;
+    text-transform: uppercase;
+    letter-spacing: 2px;
+    margin-bottom: 1rem;
+  }
 
-  @media (max-width: 768px) {
-    .docs-hero h1 { font-size: 2.5rem; }
-    .footer-btns { flex-direction: column; }
-    .footer-cta { padding: 2rem; }
+  .nav-link {
+    display: block;
+    padding: 0.6rem 1rem;
+    color: #94a3b8;
+    text-decoration: none;
+    font-size: 0.9rem;
+    font-weight: 600;
+    border-radius: 8px;
+    transition: 0.2s;
+    margin-bottom: 0.25rem;
+  }
+
+  .nav-link:hover {
+    color: white;
+    background: rgba(255, 255, 255, 0.03);
+  }
+
+  .nav-link.active {
+    color: #00ff9d;
+    background: rgba(0, 255, 157, 0.05);
+    border-left: 2px solid #00ff9d;
+    border-radius: 0 8px 8px 0;
+  }
+
+  /* Main Content Styles */
+  .docs-main {
+    flex: 1;
+    padding: 6rem 5% 4rem;
+    max-width: 1000px;
+    margin: 0 auto;
+  }
+
+  .docs-page-header {
+    margin-bottom: 4rem;
+  }
+
+  .breadcrumb {
+    font-size: 0.8rem;
+    color: #64748b;
+    margin-bottom: 1rem;
+    font-weight: 700;
+  }
+
+  .docs-page-header h1 {
+    font-size: 3.5rem;
+    font-weight: 900;
+    color: white;
+    margin-bottom: 1.5rem;
+    line-height: 1.1;
+  }
+
+  .lead {
+    font-size: 1.25rem;
+    color: #94a3b8;
+    line-height: 1.6;
+    margin-bottom: 2rem;
+  }
+
+  .status-indicator {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.5rem;
+    background: rgba(15, 23, 42, 0.6);
+    border: 1px solid rgba(255, 255, 255, 0.05);
+    padding: 0.5rem 1rem;
+    border-radius: 50px;
+    font-size: 0.85rem;
+    font-weight: 700;
+    color: #00ff9d;
+  }
+
+  .pulse {
+    width: 8px;
+    height: 8px;
+    background: #00ff9d;
+    border-radius: 50%;
+    box-shadow: 0 0 10px #00ff9d;
+    animation: docs-pulse 2s infinite;
+  }
+
+  @keyframes docs-pulse {
+    0% { transform: scale(0.95); box-shadow: 0 0 0 0 rgba(0, 255, 157, 0.7); }
+    70% { transform: scale(1); box-shadow: 0 0 0 10px rgba(0, 255, 157, 0); }
+    100% { transform: scale(0.95); box-shadow: 0 0 0 0 rgba(0, 255, 157, 0); }
+  }
+
+  /* Cards & Grid */
+  .highlight-card {
+    display: flex;
+    align-items: center;
+    gap: 2rem;
+    background: linear-gradient(to right, rgba(0, 212, 255, 0.1), transparent);
+    border: 1px solid rgba(0, 212, 255, 0.2);
+    padding: 2.5rem;
+    border-radius: 24px;
+    margin-bottom: 4rem;
+  }
+
+  .card-icon {
+    font-size: 3rem;
+  }
+
+  .card-text h4 {
+    font-size: 1.5rem;
+    font-weight: 800;
+    color: white;
+    margin-bottom: 0.5rem;
+  }
+
+  .card-btn {
+    margin-left: auto;
+    background: #00d4ff;
+    color: black;
+    padding: 0.8rem 1.5rem;
+    border-radius: 12px;
+    font-weight: 800;
+    text-decoration: none;
+    transition: 0.3s;
+  }
+
+  .card-btn:hover {
+    transform: translateX(5px);
+    box-shadow: 0 0 20px rgba(0, 212, 255, 0.4);
+  }
+
+  /* Content Sections */
+  .content-section {
+    margin-bottom: 6rem;
+    scroll-margin-top: 100px;
+  }
+
+  .content-section h2 {
+    font-size: 2.25rem;
+    font-weight: 800;
+    color: white;
+    margin-bottom: 2rem;
+  }
+
+  .content-section p {
+    font-size: 1.1rem;
+    color: #94a3b8;
+    line-height: 1.7;
+    margin-bottom: 1.5rem;
+  }
+
+  .architecture-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+    gap: 1rem;
+    margin-top: 2.5rem;
+  }
+
+  .arch-item {
+    padding: 2rem;
+    border-radius: 20px;
+    background: rgba(15, 23, 42, 0.3);
+    border: 1px solid rgba(255, 255, 255, 0.03);
+    transition: 0.3s;
+  }
+
+  .arch-item:hover {
+    border-color: #00d4ff;
+    transform: translateY(-5px);
+  }
+
+  .arch-label {
+    font-size: 0.65rem;
+    font-weight: 900;
+    color: #00d4ff;
+    text-transform: uppercase;
+    letter-spacing: 1.5px;
+    display: block;
+    margin-bottom: 1rem;
+  }
+
+  .arch-item h4 {
+    color: white;
+    font-weight: 700;
+    margin-bottom: 0.75rem;
+  }
+
+  .arch-item p {
+    font-size: 0.9rem;
+    margin-bottom: 0;
+  }
+
+  /* Terminal UI */
+  .code-terminal {
+    background: #070b14;
+    border: 1px solid #1e293b;
+    border-radius: 16px;
+    overflow: hidden;
+    margin: 2rem 0;
+  }
+
+  .terminal-header {
+    background: #111827;
+    padding: 0.75rem 1.25rem;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    border-bottom: 1px solid #1e293b;
+  }
+
+  .terminal-dots {
+    display: flex;
+    gap: 0.5rem;
+  }
+
+  .terminal-dots span {
+    width: 10px;
+    height: 10px;
+    border-radius: 50%;
+  }
+
+  .terminal-dots span:nth-child(1) { background: #ff5f56; }
+  .terminal-dots span:nth-child(2) { background: #ffbd2e; }
+  .terminal-dots span:nth-child(3) { background: #27c93f; }
+
+  .terminal-title {
+    font-size: 0.75rem;
+    font-family: 'JetBrains Mono', monospace;
+    color: #64748b;
+  }
+
+  .terminal-body {
+    padding: 1.5rem;
+    overflow-x: auto;
+  }
+
+  .terminal-body pre {
+    margin: 0;
+  }
+
+  .terminal-body code {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 0.9rem;
+    color: #e2e8f0;
+    line-height: 1.6;
+  }
+
+  .code-comment {
+    color: #64748b;
+    font-style: italic;
+  }
+
+  /* Alerts */
+  .alert {
+    padding: 1.25rem 1.5rem;
+    border-radius: 12px;
+    font-size: 0.95rem;
+    margin: 2rem 0;
+  }
+
+  .alert.warn {
+    background: rgba(251, 191, 36, 0.05);
+    border: 1px solid rgba(251, 191, 36, 0.2);
+    color: #fbbf24;
+  }
+
+  /* Lists */
+  .styled-list {
+    list-style: none;
+    padding: 0;
+    margin: 2rem 0;
+  }
+
+  .styled-list li {
+    padding: 1rem 0;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+    color: #94a3b8;
+  }
+
+  .styled-list li strong {
+    color: white;
+    margin-right: 0.5rem;
+  }
+
+  /* Footer Section */
+  .docs-footer {
+    border-top: 1px solid rgba(255, 255, 255, 0.05);
+    padding-top: 4rem;
+    margin-top: 4rem;
+  }
+
+  .footer-cta {
+    padding: 4rem;
+    text-align: center;
+    border-radius: 32px;
+  }
+
+  .footer-cta h3 {
+    font-size: 2rem;
+    font-weight: 800;
+    color: white;
+    margin-bottom: 1rem;
+  }
+
+  .cta-row {
+    display: flex;
+    justify-content: center;
+    gap: 1.5rem;
+    margin-top: 2.5rem;
+  }
+
+  .btn-whatsapp {
+    background: #25D366;
+    color: black;
+    padding: 1rem 2rem;
+    border-radius: 12px;
+    font-weight: 800;
+    text-decoration: none;
+    transition: 0.3s;
+  }
+
+  .btn-github {
+    background: rgba(255, 255, 255, 0.05);
+    color: white;
+    padding: 1rem 2rem;
+    border-radius: 12px;
+    font-weight: 700;
+    text-decoration: none;
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    transition: 0.3s;
+  }
+
+  .btn-github:hover {
+    background: rgba(255, 255, 255, 0.1);
+  }
+
+  @media (max-width: 1024px) {
+    .docs-sidebar { display: none; }
+    .docs-main { padding-top: 4rem; }
+    .docs-page-header h1 { font-size: 2.5rem; }
+    .cta-row { flex-direction: column; }
+    .highlight-card { flex-direction: column; text-align: center; }
+    .card-btn { margin: 0; width: 100%; }
   }
 </style>

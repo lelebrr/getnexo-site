@@ -1,364 +1,224 @@
 ---
 import Layout from '../layouts/Layout.astro';
-const title = "Sobre GetNexo – Quem Somos: Assistente de Vendas WhatsApp IA Grátis Open Source";
-const description = "Conheça a história do GetNexo: assistente de vendas WhatsApp com IA grátis, open source, self-hosted. Missão democratizar automação vendas Brasil, valores privacidade e empoderamento.";
-const keywords = "sobre getnexo whatsapp, quem somos getnexo, assistente vendas whatsapp gratis historia, open source whatsapp ia, self hosted vendas automatico, getnexo missao valores, privacidade primeiro whatsapp";
-const ogImage = "https://getnexo.com.br/assets/og-poster.jpg";
+// Enhanced SEO Constants for Top Google Ranking
+const title = "Sobre GetNexo: Revolução IA WhatsApp | Soberania Digital 2026";
+const description = "Sobre GetNexo: democratizamos IA para vendas WhatsApp. Soberania digital, API oficial Meta, zero custos ocultos. Conheça nossa missão e visão para 2026.";
+const keywords = "sobre getnexo, missao getnexo, visao getnexo, soberania digital, ia whatsapp oficial, api meta gratuita";
+
+const aboutSchema = {
+  "@context": "https://schema.org",
+  "@graph": [
+    {
+      "@type": "Organization",
+      "name": "GetNexo",
+      "url": "https://getnexo.com.br",
+      "logo": "https://getnexo.com.br/logo.svg",
+      "description": "Plataforma de IA e Automação para WhatsApp focada em performance e soberania digital."
+    },
+    {
+      "@type": "WebPage",
+      "name": "Sobre Nós - GetNexo",
+      "description": "A história e missão da GetNexo no ecossistema de vendas conversacionais."
+    }
+  ]
+};
 ---
+
+<Layout title={title} description={description} keywords={keywords}>
+  <script type="application/ld+json" is:inline set:html={JSON.stringify(aboutSchema)}></script>
+
   <section class="about-hero">
-    <div class="hero-badge">Nossa História</div>
-    <h1 class="text-gradient">O Futuro das Vendas é Conversacional</h1>
-    <p>A história do GetNexo: democratizando a IA para cada empreendedor brasileiro.</p>
+    <div class="hero-badge reveal">Nossa Essência</div>
+    <h1 class="text-gradient reveal">Democratizando a Elite da <span class="white">Automação</span></h1>
+    <p class="hero-subtitle reveal">
+      Nascemos da inconformidade com ferramentas caras e limitadas. O GetNexo é o manifesto pela liberdade comercial e performance absoluta.
+    </p>
   </section>
 
-  <section class="mission-section">
-    <div class="mission-content glass-panel">
-      <h2 class="text-gradient">Nossa Missão</h2>
-      <p>Acreditamos que todo negócio, do pequeno produtor ao CEO de uma grande empresa, merece ter acesso às ferramentas mais avançadas de automação sem ser refém de mensalidades abusivas.</p>
-      <p>O GetNexo nasceu para quebrar a barreira do custo. Somos a primeira plataforma <strong>Enterprise-Grade 100% Gratuita</strong> via Self-Hosting do Brasil.</p>
+  <section class="mission-vision">
+    <div class="mission-grid">
+      <div class="glass-panel mv-card reveal">
+        <div class="mv-icon">🎯</div>
+        <h3>Nossa Missão</h3>
+        <p>Prover tecnologia de ponta para que qualquer negócio possa escalar suas vendas no WhatsApp com a mesma sofisticação das gigantes do mercado, sem as taxas abusivas.</p>
+      </div>
+      <div class="glass-panel mv-card reveal">
+        <div class="mv-icon">👁️</div>
+        <h3>Nossa Visão</h3>
+        <p>Ser a infraestrutura padrão global para comércio conversacional, onde a privacidade e o controle dos dados pertencem exclusivamente ao empreendedor.</p>
+      </div>
     </div>
   </section>
 
-  <section class="story-section">
-    <h2 class="section-title">A Jornada GetNexo</h2>
-    <div class="timeline-container">
+  <section class="story-timeline-modern">
+    <h2 class="section-title reveal">Nossa Evolução</h2>
+    <div class="timeline-wrapper">
       <div class="timeline-line"></div>
       
-      <div class="timeline-item">
-        <div class="time-dot"></div>
-        <div class="time-card glass-panel">
-          <span class="year">2024</span>
-          <h3>O Despertar</h3>
-          <p>Identificamos que 80% das empresas desistiam da automação pelo custo proibitivo de ferramentas SaaS fechadas.</p>
+      <div class="timeline-block reveal">
+        <div class="block-content glass-panel">
+          <span class="block-year">2024</span>
+          <h4>A Rachadura no Sistema</h4>
+          <p>Percebemos que o mercado de automação estava quebrado: ou era muito caro (SaaS), ou muito instável (APIs paralelas). Começamos a desenhar a solução.</p>
         </div>
+        <div class="block-dot"></div>
       </div>
 
-      <div class="timeline-item reversed">
-        <div class="time-dot"></div>
-        <div class="time-card glass-panel">
-          <span class="year">2025</span>
-          <h3>A Engenharia</h3>
-          <p>Unimos Evolution API, n8n e IA Generativa em um único ecossistema open-source de alta performance.</p>
+      <div class="timeline-block reverse reveal">
+        <div class="block-content glass-panel">
+          <span class="block-year">2025</span>
+          <h4>O Nascimento do Nexus</h4>
+          <p>Unificamos a API Oficial da Meta com a inteligência do Gemini e a flexibilidade do n8n. O primeiro protocolo de autogestão de vendas foi criado.</p>
         </div>
+        <div class="block-dot"></div>
       </div>
 
-      <div class="timeline-item">
-        <div class="time-dot"></div>
-        <div class="time-card glass-panel">
-          <span class="year">2026</span>
-          <h3>A Revolução</h3>
-          <p>Lançamento oficial da GetNexo. Democratização total: Instalável em 10 minutos, escalável para milhões.</p>
+      <div class="timeline-block reveal">
+        <div class="block-content glass-panel">
+          <span class="block-year">2026</span>
+          <h4>A Escala Global</h4>
+          <p>Hoje, o GetNexo processa milhões de mensagens diárias, garantindo que o chat de cada cliente seja uma máquina de lucro ininterrupta e soberana.</p>
         </div>
+        <div class="block-dot"></div>
       </div>
     </div>
   </section>
 
-  <section class="values-section">
-    <h2 class="section-title">Nossos Pilares</h2>
+  <section class="core-values">
+    <h2 class="section-title reveal">Pilares Inegociáveis</h2>
     <div class="values-grid">
-      <div class="value-card glass-panel">
-        <div class="value-icon">🔓</div>
-        <h3>Open Source</h3>
-        <p>Transparência total. Código auditável pela comunidade e livre de amarras contratuais.</p>
+      <div class="value-item reveal">
+        <div class="v-icon">🏰</div>
+        <h3>Soberania Digital</h3>
+        <p>Seus dados são seu maior ativo. No GetNexo, você manda no seu servidor e nas suas informações.</p>
       </div>
-      <div class="value-card glass-panel">
-        <div class="value-icon">🛡️</div>
-        <h3>Privacidade First</h3>
-        <p>Seus dados, sua propriedade. Nenhuma conversa sai do seu servidor sem sua permissão.</p>
+      <div class="value-item reveal">
+        <div class="v-icon">⚡</div>
+        <h3>Alta Performance</h3>
+        <p>Latência zero e conversão máxima. Cada linha de código é otimizada para o ROI do seu negócio.</p>
       </div>
-      <div class="value-card glass-panel">
-        <div class="value-icon">⚡</div>
-        <h3>Alta Conversão</h3>
-        <p>IA treinada especificamente para o comportamento de compra do consumidor brasileiro.</p>
+      <div class="value-item reveal">
+        <div class="v-icon">🤝</div>
+        <h3>Ética & Transparência</h3>
+        <p>API Oficial Meta e conformidade com LGPD. Honestidade absoluta em cada atualização.</p>
       </div>
-    </div>
-  </section>
-
-  <section class="tech-explore">
-    <h2 class="section-title">Tecnologia de Ponta</h2>
-    <div class="tech-stack-grid">
-      <div class="tech-tag glass-panel">Evolution API</div>
-      <div class="tech-tag glass-panel">n8n Workflow</div>
-      <div class="tech-tag glass-panel">GPT-4 / Llama 3</div>
-      <div class="tech-tag glass-panel">Docker Core</div>
-      <div class="tech-tag glass-panel">Cloudflare Tunnel</div>
-      <div class="tech-tag glass-panel">PostgreSQL</div>
     </div>
   </section>
 
   <section class="about-cta">
-    <div class="glass-panel cta-wrap">
-        <h2>Faça parte da nossa história</h2>
-        <p>Junte-se a milhares de empreendedores que já recuperaram sua autonomia digital.</p>
-        <div class="cta-actions">
-            <a href="/criar-bot" class="btn-primary-glow">Começar Minha Jornada</a>
-            <a href="https://github.com/lelebrr" class="btn-outline">Ver Repositório</a>
-        </div>
+    <div class="glass-panel cta-box reveal">
+      <h2>Pronto para escrever o próximo capítulo conosco?</h2>
+      <p>A revolução das vendas conversacionais já começou. Sua empresa está pronta?</p>
+      <div class="cta-btns">
+        <a href="/criar-bot" class="btn-primary-glow">Ativar Minha IA Agora</a>
+        <a href="/contato" class="btn-outline">Falar com um Estrategista</a>
+      </div>
     </div>
   </section>
-
-<style>
-  .about-hero { text-align: center; padding: 10rem 5% 4rem; }
-  .hero-badge { background: rgba(0, 212, 255, 0.1); color: #00d4ff; padding: 0.5rem 1.2rem; border-radius: 50px; font-size: 0.85rem; font-weight: 700; display: inline-block; margin-bottom: 2rem; border: 1px solid rgba(0,212,255,0.2); }
-  .about-hero h1 { font-size: 3.5rem; margin-bottom: 1rem; }
-  .about-hero p { color: #94a3b8; font-size: 1.25rem; }
-
-  .mission-section { padding: 4rem 5%; max-width: 900px; margin: 0 auto; }
-  .mission-content { padding: 4rem; text-align: center; border-radius: 32px; }
-  .mission-content h2 { font-size: 2.2rem; margin-bottom: 1.5rem; font-weight: 800; }
-  .mission-content p { color: #cbd5e1; font-size: 1.15rem; line-height: 1.8; margin-bottom: 1.5rem; }
-
-  .section-title { text-align: center; font-size: 2.5rem; margin-bottom: 4rem; color: white; font-weight: 800; }
-
-  .story-section { padding: 6rem 5%; max-width: 1000px; margin: 0 auto; }
-  .timeline-container { position: relative; padding: 2rem 0; }
-  .timeline-line { position: absolute; left: 50%; top: 0; bottom: 0; width: 2px; background: linear-gradient(to bottom, transparent, #00d4ff, #00ff9d, transparent); transform: translateX(-50%); }
-  
-  .timeline-item { display: flex; justify-content: flex-end; padding-right: 50%; position: relative; margin-bottom: 4rem; width: 100%; }
-  .timeline-item.reversed { justify-content: flex-start; padding-right: 0; padding-left: 50%; }
-  
-  .time-dot { position: absolute; left: 50%; top: 2rem; width: 16px; height: 16px; background: #00ff9d; border: 4px solid #0a0e17; border-radius: 50%; transform: translateX(-50%); z-index: 2; box-shadow: 0 0 15px #00ff9d; }
-  
-  .time-card { margin: 0 2rem; padding: 2.5rem; border-radius: 20px; transition: 0.3s; width: 100%; }
-  .time-card:hover { transform: translateY(-5px); border-color: #00ff9d; }
-  .year { display: block; color: #00ff9d; font-size: 1.5rem; font-weight: 900; margin-bottom: 0.5rem; }
-  .time-card h3 { color: white; font-size: 1.25rem; margin-bottom: 0.8rem; }
-  .time-card p { color: #94a3b8; line-height: 1.6; }
-
-  .values-section { padding: 6rem 5%; max-width: 1100px; margin: 0 auto; }
-  .values-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 2rem; }
-  .value-card { padding: 3rem; text-align: center; border-radius: 24px; }
-  .value-icon { font-size: 3rem; margin-bottom: 1.5rem; }
-  .value-card h3 { color: white; margin-bottom: 1rem; font-size: 1.4rem; }
-  .value-card p { color: #94a3b8; line-height: 1.6; }
-
-  .tech-explore { padding: 6rem 5%; text-align: center; }
-  .tech-stack-grid { display: flex; flex-wrap: wrap; justify-content: center; gap: 1rem; max-width: 800px; margin: 0 auto; }
-  .tech-tag { padding: 0.8rem 1.5rem; border-radius: 50px; font-weight: 700; color: #00d4ff; font-size: 0.9rem; }
-
-  .about-cta { padding: 6rem 5% 10rem; max-width: 900px; margin: 0 auto; }
-  .cta-wrap { padding: 4rem; text-align: center; border-radius: 32px; border: 1px solid rgba(0, 255, 157, 0.1); }
-  .cta-wrap h2 { color: white; font-size: 2.5rem; margin-bottom: 1rem; }
-  .cta-wrap p { color: #94a3b8; font-size: 1.1rem; margin-bottom: 2.5rem; }
-  .cta-actions { display: flex; justify-content: center; gap: 1.5rem; }
-
-  .btn-primary-glow { background: linear-gradient(135deg, #00d4ff, #00ff9d); color: black; padding: 1.1rem 2.5rem; border-radius: 12px; font-weight: 900; text-decoration: none; transition: 0.3s; box-shadow: 0 10px 30px rgba(0, 212, 255, 0.2); }
-  .btn-outline { border: 1px solid rgba(255,255,255,0.1); color: white; padding: 1.1rem 2.5rem; border-radius: 12px; font-weight: 700; text-decoration: none; transition: 0.3s; background: rgba(255,255,255,0.03); }
-
-  @media (max-width: 768px) {
-    .timeline-line { left: 2rem; }
-    .timeline-item, .timeline-item.reversed { justify-content: flex-start; padding-right: 0; padding-left: 4rem; }
-    .time-dot { left: 2rem; }
-    .time-card { margin: 0; }
-    .cta-actions { flex-direction: column; }
-    .mission-content { padding: 2rem; }
-  }
-</style>
 </Layout>
 
 <style>
   .about-hero {
+    padding: 12rem 5% 6rem;
     text-align: center;
-    padding: 7rem 5% 4rem;
-    background: linear-gradient(135deg, var(--dark), var(--gray));
+    max-width: 1000px;
+    margin: 0 auto;
+  }
+  .hero-badge {
+    background: rgba(0, 212, 255, 0.1);
+    color: #00d4ff;
+    padding: 0.6rem 1.4rem;
+    border-radius: 50px;
+    font-size: 0.85rem;
+    font-weight: 800;
+    border: 1px solid rgba(0, 212, 255, 0.2);
+    display: inline-block;
+    margin-bottom: 2rem;
   }
   .about-hero h1 {
-    font-size: 3.5rem;
-    background: linear-gradient(90deg, var(--primary), var(--success));
-    -webkit-background-clip: text;
-    color: transparent;
-  }
-  .about-hero p {
-    color: var(--text);
-    font-size: 1.3rem;
-    margin-top: 1rem;
-  }
-
-  .mission {
-    max-width: 900px;
-    margin: 4rem auto;
-    padding: 0 5%;
-  }
-  .mission h2 {
-    font-size: 2.5rem;
-    color: var(--success);
+    font-size: clamp(2.5rem, 6vw, 4rem);
+    line-height: 1.1;
     margin-bottom: 1.5rem;
   }
-  .mission p {
-    font-size: 1.2rem;
-    color: var(--light);
-    line-height: 1.8;
-    margin-bottom: 1rem;
-  }
-
-  .story {
-    max-width: 900px;
-    margin: 4rem auto;
-    padding: 3rem 5%;
-    background: rgba(0,212,255,0.05);
-    border-radius: 24px;
-  }
-  .story h2 {
-    text-align: center;
-    font-size: 2rem;
-    color: var(--light);
-    margin-bottom: 3rem;
-  }
-  .story-timeline {
-    position: relative;
-    padding-left: 3rem;
-    border-left: 2px solid var(--primary);
-  }
-  .timeline-item {
-    margin-bottom: 2.5rem;
-    position: relative;
-  }
-  .timeline-item::before {
-    content: '';
-    position: absolute;
-    left: -3.5rem;
-    top: 0;
-    width: 12px;
-    height: 12px;
-    background: var(--success);
-    border-radius: 50%;
-  }
-  .year {
-    color: var(--primary);
-    font-weight: 800;
-    font-size: 1.2rem;
-  }
-  .timeline-item h3 {
-    color: var(--light);
-    margin: 0.5rem 0;
-  }
-  .timeline-item p {
-    color: var(--text);
+  .white { color: white; }
+  .hero-subtitle {
+    font-size: 1.4rem;
+    color: #94a3b8;
     line-height: 1.6;
+    max-width: 800px;
+    margin: 0 auto;
   }
 
-  .values {
-    max-width: 1100px;
-    margin: 4rem auto;
-    padding: 0 5%;
-  }
-  .values h2 {
-    text-align: center;
-    font-size: 2rem;
-    color: var(--light);
-    margin-bottom: 2rem;
-  }
-  .values-grid {
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
-    gap: 2rem;
-  }
-  .value-card {
-    background: rgba(30,41,59,0.8);
-    backdrop-filter: blur(10px);
-    border: 1px solid rgba(0,212,255,0.15);
-    border-radius: 16px;
-    padding: 2rem;
-    text-align: center;
-    transition: all 0.3s;
-  }
-  .value-card:hover {
-    transform: translateY(-5px);
-    border-color: var(--primary);
-  }
-  .value-card .icon {
-    font-size: 2.5rem;
-    margin-bottom: 1rem;
-  }
-  .value-card h3 {
-    color: var(--success);
-    margin-bottom: 0.5rem;
-  }
-  .value-card p {
-    color: var(--text);
-    font-size: 0.95rem;
-    line-height: 1.6;
+  /* Mission Vision */
+  .mission-vision { padding: 4rem 5%; max-width: 1200px; margin: 0 auto; }
+  .mission-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 2rem; }
+  .mv-card { padding: 3rem; border-radius: 32px; transition: 0.4s; }
+  .mv-card:hover { transform: translateY(-10px); border-color: #00ff9d; }
+  .mv-icon { font-size: 2.5rem; margin-bottom: 1.5rem; }
+  .mv-card h3 { font-size: 1.8rem; color: white; margin-bottom: 1rem; font-weight: 800; }
+  .mv-card p { color: #94a3b8; font-size: 1.1rem; line-height: 1.7; }
+
+  /* Timeline */
+  .story-timeline-modern { padding: 8rem 5%; max-width: 1100px; margin: 0 auto; }
+  .section-title { text-align: center; font-size: 3rem; font-weight: 900; margin-bottom: 5rem; color: white; }
+  
+  .timeline-wrapper { position: relative; }
+  .timeline-line { position: absolute; left: 50%; top: 0; bottom: 0; width: 2px; background: linear-gradient(to bottom, transparent, #00d4ff, #00ff9d, transparent); transform: translateX(-50%); }
+  
+  .timeline-block { display: flex; justify-content: flex-end; width: 100%; margin-bottom: 4rem; position: relative; }
+  .timeline-block.reverse { justify-content: flex-start; }
+  
+  .block-content { width: 45%; padding: 3rem; border-radius: 24px; }
+  .block-year { font-size: 2rem; font-weight: 900; color: #00ff9d; display: block; margin-bottom: 0.5rem; }
+  .block-content h4 { font-size: 1.4rem; color: white; margin-bottom: 1rem; }
+  .block-content p { color: #64748b; line-height: 1.6; }
+  
+  .block-dot { position: absolute; left: 50%; top: 2rem; width: 20px; height: 20px; background: #00ff9d; border: 4px solid #030712; border-radius: 50%; transform: translateX(-50%); box-shadow: 0 0 20px #00ff9d; }
+
+  /* Core Values */
+  .core-values { padding: 6rem 5%; max-width: 1200px; margin: 0 auto; text-align: center; }
+  .values-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 3rem; margin-top: 4rem; }
+  .v-icon { font-size: 3rem; margin-bottom: 2rem; }
+  .value-item h3 { font-size: 1.5rem; color: white; margin-bottom: 1rem; font-weight: 800; }
+  .value-item p { color: #94a3b8; line-height: 1.6; }
+
+  /* About CTA */
+  .about-cta { padding: 6rem 5% 12rem; max-width: 1100px; margin: 0 auto; }
+  .cta-box { padding: 6rem 4rem; text-align: center; border-radius: 48px; }
+  .cta-box h2 { font-size: 3rem; color: white; font-weight: 900; margin-bottom: 1.5rem; }
+  .cta-box p { color: #94a3b8; font-size: 1.2rem; margin-bottom: 3rem; }
+  .cta-btns { display: flex; gap: 2rem; justify-content: center; }
+
+  .btn-primary-glow { background: linear-gradient(135deg, #00d4ff, #00ff9d); color: black; padding: 1.2rem 3rem; border-radius: 12px; font-weight: 900; text-decoration: none; transition: 0.3s; box-shadow: 0 10px 30px rgba(0, 212, 255, 0.2); }
+  .btn-outline { border: 1px solid rgba(255,255,255,0.1); color: white; padding: 1.2rem 3rem; border-radius: 12px; font-weight: 700; text-decoration: none; transition: 0.3s; background: rgba(255,255,255,0.03); }
+  .btn-primary-glow:hover { transform: translateY(-3px); box-shadow: 0 15px 40px rgba(0, 212, 255, 0.4); }
+  .btn-outline:hover { background: rgba(255,255,255,0.08); border-color: #00ff9d; }
+
+  @media (max-width: 900px) {
+    .mission-grid { grid-template-columns: 1fr; }
+    .timeline-line { left: 0; }
+    .timeline-block, .timeline-block.reverse { justify-content: flex-start; padding-left: 2rem; }
+    .block-content { width: 100%; }
+    .block-dot { left: 0; }
+    .values-grid { grid-template-columns: 1fr; gap: 4rem; }
+    .cta-btns { flex-direction: column; }
+    .cta-box { padding: 4rem 2rem; }
+    .cta-box h2 { font-size: 2rem; }
   }
 
-  .tech-stack {
-    max-width: 1100px;
-    margin: 4rem auto;
-    padding: 0 5%;
-  }
-  .tech-stack h2 {
-    text-align: center;
-    font-size: 2rem;
-    color: var(--light);
-    margin-bottom: 2rem;
-  }
-  .tech-grid {
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(160px, 1fr));
-    gap: 1.5rem;
-  }
-  .tech-item {
-    background: rgba(30,41,59,0.6);
-    border: 1px solid rgba(0,212,255,0.1);
-    border-radius: 12px;
-    padding: 1.5rem;
-    text-align: center;
-  }
-  .tech-item strong {
-    display: block;
-    color: var(--primary);
-    font-size: 1.1rem;
-    margin-bottom: 0.3rem;
-  }
-  .tech-item span {
-    color: var(--text);
-    font-size: 0.85rem;
-  }
-
-  .cta-section {
-    text-align: center;
-    padding: 4rem 5%;
-    background: linear-gradient(135deg, rgba(0,212,255,0.1), rgba(0,255,157,0.1));
-    margin-top: 2rem;
-  }
-  .cta-section h2 {
-    font-size: 2rem;
-    color: var(--light);
-    margin-bottom: 1rem;
-  }
-  .cta-section p {
-    color: var(--text);
-    margin-bottom: 2rem;
-  }
-  .cta-buttons {
-    display: flex;
-    gap: 1.5rem;
-    justify-content: center;
-    flex-wrap: wrap;
-  }
-  .btn-primary {
-    background: linear-gradient(90deg, var(--primary), var(--success));
-    color: #000;
-    padding: 1rem 2rem;
-    border-radius: 50px;
-    font-weight: 800;
-    text-decoration: none;
-    transition: all 0.3s;
-  }
-  .btn-primary:hover {
-    transform: scale(1.05);
-    box-shadow: 0 10px 30px rgba(0,255,157,0.3);
-  }
-  .btn-secondary {
-    border: 2px solid var(--primary);
-    color: var(--primary);
-    padding: 1rem 2rem;
-    border-radius: 50px;
-    font-weight: 800;
-    text-decoration: none;
-    transition: all 0.3s;
-  }
-  .btn-secondary:hover {
-    background: var(--primary);
-    color: #000;
-  }
+  /* Reveal Implementation */
+  .reveal { opacity: 0; transform: translateY(30px); transition: 0.8s cubic-bezier(0.2, 0.8, 0.2, 1); }
+  .reveal.active { opacity: 1; transform: translateY(0); }
 </style>
+
+<script is:inline>
+  const observer = new IntersectionObserver((entries) => {
+    entries.forEach(entry => {
+      if (entry.isIntersecting) {
+        entry.target.classList.add('active');
+      }
+    });
+  }, { threshold: 0.1 });
+
+  document.querySelectorAll('.reveal').forEach(el => observer.observe(el));
+</script>

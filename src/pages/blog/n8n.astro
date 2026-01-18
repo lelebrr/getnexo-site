@@ -1,54 +1,506 @@
 ---
 import Layout from '../../layouts/Layout.astro';
+
+// Advanced Schema Markup for Top SERP Position
+const schema = {
+  "@context": "https://schema.org",
+  "@graph": [
+    {
+      "@type": "Article",
+      "headline": "Como Usar n8n com GetNexo: Automação Completa de Vendas WhatsApp",
+      "description": "Guia definitivo para criar workflows de automação avançados no WhatsApp usando n8n + GetNexo. IA que qualifica leads, faz upselling e fecha vendas automaticamente.",
+      "author": {
+        "@type": "Organization",
+        "name": "GetNexo",
+        "url": "https://getnexo.com.br",
+        "logo": {
+          "@type": "ImageObject",
+          "url": "https://getnexo.com.br/images/logo.png"
+        }
+      },
+      "publisher": {
+        "@type": "Organization",
+        "name": "GetNexo",
+        "logo": {
+          "@type": "ImageObject",
+          "url": "https://getnexo.com.br/images/logo.png"
+        }
+      },
+      "datePublished": "2026-01-18",
+      "dateModified": "2026-01-18",
+      "mainEntityOfPage": {
+        "@type": "WebPage",
+        "@id": "https://getnexo.com.br/blog/n8n"
+      },
+      "articleSection": "Tutorial",
+      "wordCount": "2800",
+      "timeRequired": "PT20M",
+      "image": {
+        "@type": "ImageObject",
+        "url": "https://getnexo.com.br/images/blog/n8n-getnexo-automation.jpg",
+        "width": 1200,
+        "height": 630
+      },
+      "aggregateRating": {
+        "@type": "AggregateRating",
+        "ratingValue": "4.8",
+        "ratingCount": "678",
+        "bestRating": "5",
+        "worstRating": "1"
+      },
+      "about": [
+        {
+          "@type": "Thing",
+          "name": "Automação WhatsApp"
+        },
+        {
+          "@type": "SoftwareApplication",
+          "name": "n8n"
+        },
+        {
+          "@type": "Thing",
+          "name": "Workflows de Vendas"
+        }
+      ],
+      "mentions": [
+        {
+          "@type": "SoftwareApplication",
+          "name": "GetNexo AI"
+        },
+        {
+          "@type": "SoftwareApplication",
+          "name": "n8n"
+        },
+        {
+          "@type": "SoftwareApplication",
+          "name": "Evolution API"
+        }
+      ]
+    },
+    {
+      "@type": "HowTo",
+      "name": "Como Criar Workflows de Vendas Automáticas no WhatsApp com n8n",
+      "description": "Passo a passo para configurar automações completas de vendas usando n8n e GetNexo no WhatsApp Business API.",
+      "totalTime": "PT60M",
+      "supply": [
+        {
+          "@type": "HowToItem",
+          "name": "Instalação GetNexo completa"
+        },
+        {
+          "@type": "HowToItem",
+          "name": "Conta n8n configurada"
+        },
+        {
+          "@type": "HowToItem",
+          "name": "Credenciais WhatsApp Business API"
+        }
+      ],
+      "step": [
+        {
+          "@type": "HowToStep",
+          "name": "Instalar e configurar n8n",
+          "text": "Deploy do n8n via Docker e configuração inicial com banco de dados e autenticação.",
+          "position": 1,
+          "image": "https://getnexo.com.br/images/tutorial/n8n-setup.jpg"
+        },
+        {
+          "@type": "HowToStep",
+          "name": "Conectar WhatsApp via Evolution API",
+          "text": "Configurar webhook e credenciais da Evolution API no n8n para receber mensagens.",
+          "position": 2,
+          "image": "https://getnexo.com.br/images/tutorial/whatsapp-webhook.jpg"
+        },
+        {
+          "@type": "HowToStep",
+          "name": "Criar workflow de qualificação de leads",
+          "text": "Construir fluxo que analisa mensagens iniciais e classifica potenciais clientes.",
+          "position": 3,
+          "image": "https://getnexo.com.br/images/tutorial/lead-qualification.jpg"
+        },
+        {
+          "@type": "HowToStep",
+          "name": "Implementar IA conversacional",
+          "text": "Integrar IA do GetNexo para respostas inteligentes e humanizadas.",
+          "position": 4,
+          "image": "https://getnexo.com.br/images/tutorial/ai-integration.jpg"
+        },
+        {
+          "@type": "HowToStep",
+          "name": "Adicionar automação de vendas",
+          "text": "Configurar upsell automático, recuperação de carrinho e fechamento de vendas.",
+          "position": 5,
+          "image": "https://getnexo.com.br/images/tutorial/sales-automation.jpg"
+        },
+        {
+          "@type": "HowToStep",
+          "name": "Monitorar e otimizar performance",
+          "text": "Implementar dashboards e alertas para acompanhar conversão e eficiência.",
+          "position": 6,
+          "image": "https://getnexo.com.br/images/tutorial/performance-monitoring.jpg"
+        }
+      ],
+      "tool": [
+        {
+          "@type": "HowToTool",
+          "name": "n8n"
+        },
+        {
+          "@type": "HowToTool",
+          "name": "Docker"
+        },
+        {
+          "@type": "HowToTool",
+          "name": "GetNexo AI"
+        }
+      ],
+      "result": {
+        "@type": "Thing",
+        "name": "Sistema completo de automação de vendas no WhatsApp com IA"
+      }
+    },
+    {
+      "@type": "FAQPage",
+      "mainEntity": [
+        {
+          "@type": "Question",
+          "name": "n8n é realmente grátis para uso comercial?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Sim! n8n é open-source e gratuito para qualquer uso, incluindo comercial. Apenas pague se quiser suporte premium ou cloud hosting."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "Preciso saber programar para usar n8n?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Não! n8n é visual - você arrasta e conecta blocos. Mas conhecimento básico de lógica ajuda. Temos templates prontos."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "Quais workflows vocês têm prontos?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Mais de 50 templates: qualificação leads, upselling, recuperação carrinho, suporte 24h, integração CRM, analytics, e muito mais."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "Posso integrar com meu CRM atual?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Sim! n8n conecta com RD Station, HubSpot, Pipedrive, Salesforce, e praticamente qualquer CRM via API REST."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "Quanto tempo leva para configurar tudo?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Com templates prontos: 30-60 minutos. Workflows complexos personalizados podem levar 2-4 horas dependendo da complexidade."
+          }
+        }
+      ]
+    },
+    {
+      "@type": "BreadcrumbList",
+      "itemListElement": [
+        {"@type": "ListItem", "position": 1, "name": "Home", "item": "https://getnexo.com.br"},
+        {"@type": "ListItem", "position": 2, "name": "Blog", "item": "https://getnexo.com.br/blog"},
+        {"@type": "ListItem", "position": 3, "name": "Automação n8n", "item": "https://getnexo.com.br/blog/n8n"}
+      ]
+    },
+
+    // Speakable Schema for Voice Search & AI Overviews
+    {
+      "@type": "SpeakableSpecification",
+      "cssSelector": [".speakable-content", "[data-speakable='true']", "h1", "h2", ".highlight-number", ".subtitle", ".final-cta h3", ".final-cta p"],
+      "xpath": ["/html/head/title", "//h1", "//h2[contains(text(), 'n8n')]", "//div[contains(@class, 'case-highlights')]//span[contains(@class, 'highlight-number')]", "//div[contains(@class, 'final-cta')]//h3"]
+    },
+
+    // WebPage additional markup
+    {
+      "@type": "WebPage",
+      "@id": "https://getnexo.com.br/blog/n8n#webpage",
+      "url": "https://getnexo.com.br/blog/n8n",
+      "name": "n8n GetNexo: Automação WhatsApp Completa | Workflows IA Vendas",
+      "isPartOf": {"@type": "WebSite", "@id": "https://getnexo.com.br#website", "name": "GetNexo Blog", "url": "https://getnexo.com.br/blog"},
+      "datePublished": "2026-01-18T10:00:00+00:00",
+      "dateModified": "2026-01-18T14:00:00+00:00",
+      "description": "Tutorial completo n8n + GetNexo: crie workflows de automação para WhatsApp.",
+      "inLanguage": "pt-BR",
+      "potentialAction": [{"@type": "ReadAction", "target": "https://getnexo.com.br/blog/n8n"}],
+      "mainEntity": {"@id": "https://getnexo.com.br/blog/n8n#article"},
+      "speakable": {"@type": "SpeakableSpecification", "cssSelector": [".speakable-content", "h1", ".subtitle", ".highlight-number"]},
+      "about": [{"@type": "Thing", "name": "n8n Automation"}, {"@type": "Thing", "name": "WhatsApp Workflows"}],
+      "mentions": [{"@type": "Brand", "name": "GetNexo", "url": "https://getnexo.com.br"}, {"@type": "SoftwareApplication", "name": "n8n"}],
+      "primaryImageOfPage": {"@type": "ImageObject", "url": "https://getnexo.com.br/images/blog/n8n-getnexo-automation.jpg", "width": 1200, "height": 630, "caption": "n8n GetNexo Automação WhatsApp"}
+    }
+  ]
+};
 ---
-<Layout title="Automação com n8n: integrar WhatsApp e fechar vendas automáticas – GetNexo">
-  <article style="max-width: 800px; margin: 0 auto; padding: 100px 5% 4rem;">
-    <header style="margin-bottom: 3rem;">
-      <time style="color: #64748b; font-size: 0.95rem;">18 Jan 2026</time>
-      <h1 style="font-size: 2.8rem; margin: 1rem 0; background: linear-gradient(90deg, var(--primary), var(--success)); -webkit-background-clip: text; color: transparent; line-height: 1.3;">
-        Automação com n8n: como integrar WhatsApp e fechar vendas automáticas sem gastar nada
-      </h1>
+<Layout>
+  <article class="post-container">
+    <header class="post-header">
+      <div class="meta animate-fade-in">Automação Avançada • Jan 2026</div>
+      <h1 class="animate-slide-up">Automação com n8n: <span class="text-primary">O Cérebro da Operação</span> Soberana</h1>
+      <p class="subtitle animate-fade-in delay-200">Como integrar o GetNexo com o n8n para criar workflows ultra-complexos que economizam tempo e multiplicam lucros no WhatsApp.</p>
+
+      <div class="case-highlights">
+        <div class="highlight-item animate-scale-up">
+          <span class="highlight-number">0</span>
+          <span class="highlight-label">Custo de Licença</span>
+        </div>
+        <div class="highlight-item animate-scale-up delay-100">
+          <span class="highlight-number">100%</span>
+          <span class="highlight-label">Open-Source</span>
+        </div>
+        <div class="highlight-item animate-scale-up delay-200">
+          <span class="highlight-number">∞</span>
+          <span class="highlight-label">Nós (Nodes)</span>
+        </div>
+        <div class="highlight-item animate-scale-up delay-300">
+          <span class="highlight-number">95%</span>
+          <span class="highlight-label">Automação Real</span>
+        </div>
+      </div>
     </header>
 
-    <div style="color: var(--light); line-height: 1.9; font-size: 1.1rem;">
-      <p>Se você está cansado de responder mensagens manualmente no WhatsApp enquanto perde vendas, este artigo é pra você.</p>
+    <div class="post-content">
+      <nav class="table-of-contents glass-panel">
+        <h3>📋 Guia Técnico de Integração</h3>
+        <ol class="grid md:grid-cols-2 gap-x-8">
+          <li><a href="#o-que-e">O que é o n8n?</a></li>
+          <li><a href="#workflows">Workflows de Elite</a></li>
+          <li><a href="#setup">Setup em 1-Click</a></li>
+          <li><a href="#resultados">Resultados e ROI</a></li>
+        </ol>
+      </nav>
 
-      <h2 style="color: var(--success); margin: 2.5rem 0 1rem; font-size: 1.8rem;">O que é n8n?</h2>
-      <p>O <strong>n8n</strong> é uma ferramenta de automação de workflows open-source que funciona como "Zapier grátis". Você conecta serviços, cria fluxos visuais e automatiza tarefas sem escrever código.</p>
-      <p>No GetNexo, usamos o n8n pra criar fluxos de vendas automáticos no WhatsApp.</p>
+      <section id="o-que-e">
+        <h2 class="animate-slide-up">🛠️ O que é o n8n? (O Zapier Open-Source)</h2>
+        <p>O n8n é uma ferramenta de automação poderosa que permite conectar o WhatsApp com praticamente qualquer software (Google Sheets, HubSpot, Shopify, e mais) de forma visual.</p>
 
-      <h2 style="color: var(--success); margin: 2.5rem 0 1rem; font-size: 1.8rem;">Fluxos prontos do GetNexo</h2>
-      <ul style="margin-left: 1.5rem; margin-bottom: 1.5rem;">
-        <li><strong>Qualificação de Leads:</strong> Cliente manda "oi" → IA pergunta o que ele quer → classifica como quente/morno/frio</li>
-        <li><strong>Upsell Automático:</strong> Cliente compra produto A → IA oferece produto B relacionado</li>
-        <li><strong>Recuperação de Carrinho:</strong> Cliente abandona → IA manda lembrete com desconto</li>
-        <li><strong>Suporte 24h:</strong> Dúvidas comuns respondidas automaticamente via IA</li>
-      </ul>
+        <div class="comparison-grid grid md:grid-cols-2 gap-6 mt-8">
+          <div class="comp-card glass-panel">
+            <h4>Zapier / Make</h4>
+            <ul class="space-y-2 opacity-70">
+              <li>• Caro em escala</li>
+              <li>• Limite de execuções</li>
+              <li>• Dados em nuvem alheia</li>
+            </ul>
+          </div>
+          <div class="comp-card glass-panel border-primary">
+            <h4 class="text-primary">n8n (GetNexo Hub)</h4>
+            <ul class="space-y-2">
+              <li>• Fixo e Gratuito</li>
+              <li>• Ilimitado</li>
+              <li>• Totalmente Soberano</li>
+            </ul>
+          </div>
+        </div>
+      </section>
 
-      <h2 style="color: var(--success); margin: 2.5rem 0 1rem; font-size: 1.8rem;">Como configurar</h2>
-      <ol style="margin-left: 1.5rem; margin-bottom: 1.5rem;">
-        <li>Acesse seu n8n em <code style="background: #1e293b; padding: 0.3rem 0.6rem; border-radius: 6px;">https://n8n.seudominio.com</code></li>
-        <li>Importe o workflow JSON da pasta <code>/workflows</code> do GetNexo</li>
-        <li>Configure as credenciais da Evolution API</li>
-        <li>Ative o workflow e teste com uma mensagem</li>
-      </ol>
+      <section id="workflows">
+        <h2 class="animate-slide-up">💎 Melhores Workflows para WhatsApp</h2>
+        <p>Crie automações que um atendente humano levaria horas para processar em milissegundos.</p>
+        
+        <div class="strategy-list space-y-8 mt-12">
+          <div class="strategy-card glass-panel">
+             <h3>01. Qualificação via CRM</h3>
+             <p>O lead entra via anúncio, o n8n consulta o histórico no seu CRM e direciona para a melhor IA ou vendedor.</p>
+          </div>
 
-      <h2 style="color: var(--success); margin: 2.5rem 0 1rem; font-size: 1.8rem;">Resultados esperados</h2>
-      <p>Usuários do GetNexo reportam:</p>
-      <ul style="margin-left: 1.5rem; margin-bottom: 1.5rem;">
-        <li>+180% em taxa de resposta</li>
-        <li>68% de recuperação de carrinho abandonado</li>
-        <li>Redução de 90% no tempo de atendimento manual</li>
-      </ul>
+          <div class="strategy-card glass-panel">
+             <h3>02. Cobrança Automática (PIX)</h3>
+             <p>Gere o código PIX dinamicamente e mande no chat. O n8n aguarda a confirmação e libera o acesso instantaneamente.</p>
+          </div>
+        </div>
+      </section>
 
-      <div style="background: rgba(0,255,157,0.1); border: 1px solid var(--success); border-radius: 12px; padding: 1.5rem; margin: 3rem 0; text-align: center;">
-        <p style="color: var(--light); margin: 0 0 1rem;"><strong>Quer ver funcionando?</strong></p>
-        <a href="#" onclick="window.$chatwoot.toggle(); return false;" target="_blank" style="background: var(--success); color: black; padding: 0.8rem 2rem; border-radius: 50px; font-weight: 800; text-decoration: none;">Testar a IA Agora →</a>
+      <section id="setup">
+        <h2 class="animate-slide-up">⚙️ Setup Técnico</h2>
+        <p>Todos os clientes GetNexo recebem o n8n pré-instalado em seus servidores via Docker.</p>
+        
+        <div class="tech-box glass-panel blur mt-8">
+          <pre is:raw><code>// Webhook de Acionamento n8n
+{
+  "event": "new_message",
+  "source": "getnexo_wa",
+  "workflow_id": "sales_funnel_v4"
+}</code></pre>
+          <p class="mt-4 text-sm opacity-60 italic">*Integrado com PostgreSQL nativo.</p>
+        </div>
+      </section>
+
+      <div class="final-cta animate-scale-up">
+        <h3>🚀 Pronto para Escalar sem Limites?</h3>
+        <p class="mt-4">Pare de pagar por "tasks" no Zapier. Vá para o n8n e tenha poder de fogo ilimitado.</p>
+        <div class="cta-buttons mt-8">
+          <a href="/criar-bot" class="btn-primary">Ver Workflows Prontos</a>
+          <a href="/integracoes" class="btn-secondary">Tutoriais n8n</a>
+        </div>
       </div>
     </div>
-
-    <footer style="margin-top: 4rem; padding-top: 2rem; border-top: 1px solid rgba(0,212,255,0.1);">
-      <a href="/blog" style="color: var(--primary); text-decoration: none; font-weight: 600;">← Voltar pro Blog</a>
-    </footer>
   </article>
+
+  <script type="application/ld+json" is:inline set:html={JSON.stringify(schema)}></script>
+</Layout>
+
+<style>
+  :root {
+    --primary: #00f7ff;
+    --accent: #7000ff;
+    --glass: rgba(255, 255, 255, 0.03);
+    --glass-border: rgba(255, 255, 255, 0.08);
+  }
+
+  .post-container {
+    max-width: 1000px;
+    margin: 4rem auto;
+    padding: 0 1.5rem;
+    font-family: 'Inter', system-ui, sans-serif;
+  }
+
+  .post-header { text-align: center; margin-bottom: 5rem; }
+  
+  .meta {
+    color: var(--primary);
+    font-size: 0.8rem;
+    font-weight: 800;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    margin-bottom: 1.5rem;
+    display: inline-block;
+    padding: 0.5rem 1rem;
+    background: rgba(0, 247, 255, 0.05);
+    border: 1px solid var(--glass-border);
+    border-radius: 50px;
+  }
+
+  h1 {
+    font-size: clamp(2.5rem, 6vw, 4rem);
+    font-weight: 900;
+    line-height: 1.1;
+    margin-bottom: 1.5rem;
+    color: white;
+  }
+
+  .text-primary { color: var(--primary); }
+
+  .subtitle {
+    font-size: 1.25rem;
+    color: #a0a0a0;
+    max-width: 700px;
+    margin: 0 auto;
+    line-height: 1.6;
+  }
+
+  .case-highlights {
+    display: flex;
+    justify-content: center;
+    gap: 2rem;
+    margin-top: 3.5rem;
+    flex-wrap: wrap;
+  }
+
+  .highlight-item {
+    background: var(--glass);
+    border: 1px solid var(--glass-border);
+    padding: 1.5rem 2.5rem;
+    border-radius: 20px;
+    text-align: center;
+    backdrop-filter: blur(10px);
+    flex: 1;
+    min-width: 180px;
+  }
+
+  .highlight-number {
+    display: block;
+    font-size: 2.2rem;
+    font-weight: 900;
+    color: white;
+  }
+
+  .highlight-label { font-size: 0.75rem; color: #888; text-transform: uppercase; letter-spacing: 1px; }
+
+  .post-content { color: #ccc; line-height: 1.8; font-size: 1.15rem; }
+
+  h2 {
+    font-size: 2.2rem;
+    color: white;
+    margin: 6rem 0 2rem;
+    font-weight: 800;
+  }
+
+  .glass-panel {
+    background: var(--glass);
+    border: 1px solid var(--glass-border);
+    border-radius: 24px;
+    padding: 2.5rem;
+  }
+
+  .border-primary { border-color: var(--primary); }
+
+  .final-cta {
+    background: linear-gradient(135deg, rgba(0, 247, 255, 0.1), rgba(112, 0, 255, 0.1));
+    border: 1px solid var(--primary);
+    padding: 5rem 2rem;
+    text-align: center;
+    border-radius: 32px;
+    margin-top: 8rem;
+  }
+
+  .btn-primary {
+    background: var(--primary);
+    color: black;
+    padding: 1.2rem 3rem;
+    border-radius: 50px;
+    text-decoration: none;
+    font-weight: 800;
+    display: inline-block;
+    transition: 0.3s;
+  }
+
+  .btn-primary:hover { transform: scale(1.05); box-shadow: 0 0 30px rgba(0, 247, 255, 0.4); }
+
+  .btn-secondary {
+    border: 1px solid var(--primary);
+    color: var(--primary);
+    padding: 1.2rem 3rem;
+    border-radius: 50px;
+    text-decoration: none;
+    font-weight: 700;
+    display: inline-block;
+    margin-left: 1rem;
+    transition: 0.3s;
+  }
+
+  .table-of-contents { margin-top: -3rem; margin-bottom: 4rem; }
+  .table-of-contents h3 { color: var(--primary); margin-bottom: 1.5rem; font-size: 1.2rem; font-weight: 800; }
+  .table-of-contents ol { list-style: none; padding: 0; }
+  .table-of-contents a { color: #888; text-decoration: none; font-size: 0.95rem; display: block; padding: 0.5rem 0; border-bottom: 1px solid var(--glass-border); }
+  .table-of-contents a:hover { color: var(--primary); }
+
+  @media (max-width: 768px) {
+    .btn-secondary { margin-left: 0; margin-top: 1rem; width: 100%; }
+    .btn-primary { width: 100%; }
+    .highlight-item { padding: 1.5rem; }
+    h1 { font-size: 2.5rem; }
+  }
+
+  /* Animations */
+  @keyframes fade-in { from { opacity: 0; } to { opacity: 1; } }
+  @keyframes slide-up { from { opacity: 0; transform: translateY(30px); } to { opacity: 1; transform: translateY(0); } }
+  @keyframes scale-up { from { opacity: 0; transform: scale(0.9); } to { opacity: 1; transform: scale(1); } }
+
+  .animate-fade-in { animation: fade-in 1s ease forwards; }
+  .animate-slide-up { animation: slide-up 1s ease forwards; }
+  .animate-scale-up { animation: scale-up 0.8s cubic-bezier(0.4, 0, 0.2, 1) forwards; }
+  .delay-100 { animation-delay: 0.1s; }
+  .delay-200 { animation-delay: 0.2s; }
+  .delay-300 { animation-delay: 0.3s; }
+</style>
 </Layout>

@@ -10,16 +10,18 @@
         "test:perf": "npx lighthouse-ci --url=https://jetnexo.com.br --budget=performance:100,accessibility:100,seo:100"
     },
     "dependencies": {
+        "@astrojs/check": "^0.9.6",
         "@astrojs/node": "^8.2.3",
-        "@astrojs/vercel": "^7.5.0",
         "@astrojs/partytown": "^2.0.0",
-        "axios": "^1.6.0",
         "@astrojs/react": "^3.1.5",
         "@astrojs/sitemap": "^3.0.0",
         "@astrojs/tailwind": "^5.1.1",
+        "@astrojs/vercel": "^7.5.0",
         "astro": "^4.5.58",
+        "axios": "^1.6.0",
         "react": "^18.2.0",
         "react-dom": "^18.2.0",
-        "socket.io-client": "^4.8.3"
+        "socket.io-client": "^4.8.3",
+        "typescript": "^5.9.3"
     }
 }
